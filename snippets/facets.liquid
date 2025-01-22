@@ -28,8 +28,8 @@
   endif
 -%}
 
-<div class="facets-container{% if filter_type == 'drawer' %} facets-container-drawer{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
-  {%- if filter_type == 'vertical' or filter_type == 'horizontal' -%}
+<div class="facets-container facets-container-drawer {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+  {% comment %} {%- if filter_type == 'vertical' or filter_type == 'horizontal' -%}
     <facet-filters-form class="facets small-hide">
       <form
         id="FacetFiltersForm"
@@ -437,7 +437,7 @@
         {%- endif -%}
       </form>
     </facet-filters-form>
-  {%- endif -%}
+  {%- endif -%} {% endcomment %}
   {% comment %}  Drawer and mobile filter {% endcomment %}
   <menu-drawer
     class="mobile-facets__wrapper{% if filter_type == 'horizontal' or filter_type == 'vertical' %} medium-hide large-up-hide{% endif %}"

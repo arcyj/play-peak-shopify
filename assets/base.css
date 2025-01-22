@@ -2405,9 +2405,9 @@ input[type='checkbox'] {
   .header--top-left,
   .header--middle-left:not(.header--has-menu) {
     grid-template-areas:
-      'heading icons'
-      'navigation navigation';
-    grid-template-columns: 1fr auto;
+      'heading search icons'
+      'navigation navigation navigation';
+    grid-template-columns: auto 1fr auto;
   }
 
   .header--top-left.drawer-menu,
@@ -2723,6 +2723,7 @@ details[open] .modal-overlay::after {
 }
 
 .search-modal__form {
+  grid-area: search;
   width: 100%;
 }
 
@@ -2742,10 +2743,6 @@ details[open] .modal-overlay::after {
 }
 
 @media screen and (min-width: 990px) {
-  .search-modal__form {
-    max-width: 74.2rem;
-  }
-
   .search-modal__close-button {
     position: initial;
     margin-left: 0.5rem;
