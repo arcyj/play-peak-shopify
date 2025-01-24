@@ -38,7 +38,7 @@
           "type": "variant_picker",
           "settings": {
             "picker_type": "button",
-            "swatch_shape": "circle"
+            "swatch_shape": "square"
           }
         },
         "quantity_selector": {
@@ -55,6 +55,33 @@
         "description": {
           "type": "description",
           "settings": {}
+        },
+        "sku_LfrNpq": {
+          "type": "sku",
+          "settings": {
+            "text_style": "body"
+          }
+        },
+        "complementary_LnCC7T": {
+          "type": "complementary",
+          "settings": {
+            "block_heading": "Pairs well with",
+            "make_collapsible_row": false,
+            "icon": "price_tag",
+            "product_list_limit": 10,
+            "products_per_page": 3,
+            "pagination_style": "counter",
+            "image_ratio": "square",
+            "enable_quick_add": false
+          }
+        },
+        "inventory_7aDLXj": {
+          "type": "inventory",
+          "settings": {
+            "text_style": "body",
+            "inventory_threshold": 10,
+            "show_inventory_quantity": true
+          }
         }
       },
       "block_order": [
@@ -65,7 +92,10 @@
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
-        "description"
+        "description",
+        "sku_LfrNpq",
+        "complementary_LnCC7T",
+        "inventory_7aDLXj"
       ],
       "settings": {
         "enable_sticky_info": true,
@@ -75,7 +105,7 @@
         "media_fit": "contain",
         "gallery_layout": "stacked",
         "media_position": "left",
-        "image_zoom": "lightbox",
+        "image_zoom": "hover",
         "mobile_thumbnails": "hide",
         "hide_variants": true,
         "enable_video_looping": false,
