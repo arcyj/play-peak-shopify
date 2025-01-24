@@ -2,7 +2,6 @@
   display: grid;
   grid-template-columns: repeat(2, auto);
   grid-template-rows: repeat(2, auto);
-  padding-top: 1rem;
 }
 
 .active-facets-mobile {
@@ -70,6 +69,7 @@
 }
 
 .facet-filters__field {
+  background-color: #f4f5f7;
   align-items: center;
   display: flex;
   flex-grow: 1;
@@ -104,12 +104,14 @@
 }
 
 .facet-filters__sort {
-  background-color: transparent;
+  background-color: #f4f5f7;
+  color: #110516;
   border: 0;
   border-radius: 0;
-  font-size: 1.4rem;
+  font-size: 14px;
   height: auto;
-  line-height: calc(1 + 0.5 / var(--font-body-scale));
+  line-height: 22px;
+  font-weight: 600;
   margin: 0;
   padding-left: 0;
   padding-right: 1.75rem;
@@ -169,7 +171,7 @@
   display: grid;
   gap: 0 3.5rem;
   grid-template-columns: 1fr max-content max-content;
-  margin-bottom: 0.5rem;
+  padding-right: 8px;
 }
 
 .facets__wrapper {
@@ -779,7 +781,6 @@ a.active-facets__button.focused .active-facets__button-inner {
 
 .mobile-facets__wrapper {
   margin-left: 0;
-  display: flex;
 }
 
 .mobile-facets__wrapper .disclosure-has-popup[open] > summary::before {
@@ -840,6 +841,16 @@ a.active-facets__button.focused .active-facets__button-inner {
   margin: 0;
 }
 
+.facets-button {
+  background-color: #f4f5f7;
+  color: #110516;
+  padding: 12px 16px 12px 12px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 22px;
+  border-radius: 6px;
+}
+
 .mobile-facets__count {
   color: rgba(var(--color-foreground), 0.7);
   font-size: 1.3rem;
@@ -854,8 +865,6 @@ a.active-facets__button.focused .active-facets__button-inner {
 .mobile-facets__open {
   text-align: left;
   width: 100%;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
   display: flex;
   align-items: center;
   color: rgba(var(--color-link), var(--alpha-link));
@@ -1246,11 +1255,7 @@ input.mobile-facets__checkbox {
     flex-flow: row wrap;
     align-items: center;
     column-gap: 0;
-  }
-
-  .facets-container-drawer .mobile-facets__wrapper {
-    margin-right: 2rem;
-    flex-grow: 1;
+    justify-content: space-between;
   }
 
   .facets-container-drawer .product-count {

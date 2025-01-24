@@ -40,6 +40,13 @@ const typographyConfig = {
       lineHeight: '27px !important',
     },
   },
+  '.text-regular': {
+    font: "400 14px/20px 'Gilroy', sans-serif !important",
+    '@media (max-width: 768px)': {
+      fontSize: '15px !important',
+      lineHeight: '27px !important',
+    },
+  },
   '.text-large': {
     font: "500 18px/24px 'Gilroy', sans-serif !important",
     '@media (max-width: 768px)': {
@@ -60,12 +67,8 @@ module.exports = {
   ],
   theme: {
     screens: {
-      sm: '320px',
-      md: '750px',
-      lg: '990px',
-      xlg: '1440px',
-      x2lg: '1920px',
-      pageMaxWidth: '1440px',
+      tablet: '769px', // => @media (min-width: 768px) { ... }
+      desktop: '1024px', // => @media (min-width: 1024px) { ... }
     },
     extend: {
       fontFamily: {

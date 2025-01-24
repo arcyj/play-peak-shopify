@@ -1,0 +1,17 @@
+{% comment %}
+  Renders side menu item for collection side menu
+
+  Accepts:
+  - title: {String} Title of collection
+  - url: {String} Url of collection
+  - isLast: {Boolean} Hide the border for the last item
+
+  Usage:
+   {% render 'collection-side-menu-link', title: collection.title, url: collection.url, isLast: forloop.last %}
+{% endcomment %}
+<a
+  class="tw-block tw-mx-24 tw-py-24 tw-text-large tw-text-dark {% unless isLast %}tw-border-b tw-border-lightGray{% endunless %}"
+  href="{{ url }}"
+>
+  {{ title }}
+</a>

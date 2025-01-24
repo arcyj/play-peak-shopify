@@ -103,30 +103,31 @@
         {{ 'component-facets.css' | asset_url | stylesheet_tag }}
         <script src='{{ 'facets.js' | asset_url }}' defer='defer'></script>
 
-        <div class='tw-w-3/12 tw-mr-12'>
+        <div class='tw-w-3/12 tw-mr-12 tw-hidden desktop:tw-block'>
           <div class='tw-bg-surface-lightGrey tw-rounded'>
-            <h2 class='tw-text-h2 tw-text-text-dark tw-px-20 tw-pt-20'>{{ collection.title }}</h2>
-            {% assign child_collection = collection.metafields.custom.child_collections.value %}
-            <script>
-              console.log({{ child_collection | json }})
-            </script>
-            <a
-              class="tw-block tw-mx-24 tw-py-16 tw-text-large tw-text-dark tw-border-b tw-border-lightGray"
-              href='{{ collection.url }}'
-            >
-              All products
-            </a>
+            {% assign main_collection = collection.metafields.category.parent.value %}
+
+            {% if main_collection %}
+              {% assign child_collection = main_collection.metafields.custom.child_collections.value %}
+            {% else %}
+              {% assign child_collection = collection.metafields.custom.child_collections.value %}
+            {% endif %}
+
+            <h2 class='tw-text-h2 tw-text-text-dark tw-px-20 tw-pt-20 tw-pb-16'>{{ main_collection.title }}</h2>
+
             {% for collection in child_collection %}
-              <a
-                class="tw-block tw-mx-24 tw-py-16 tw-text-large tw-text-dark {% unless forloop.last %}tw-border-b tw-border-lightGray{% endunless %}"
-                href='{{ collection.url }}'
-              >
-                {{ collection.title }}
-              </a>
+              {% if forloop.first %}
+                {% render 'collection-side-menu-link', title: 'All products', url: collection.url, isLast: false %}
+              {% endif %}
+              {% render 'collection-side-menu-link',
+                title: collection.title,
+                url: collection.url,
+                isLast: forloop.last
+              %}
             {% endfor %}
           </div>
         </div>
-        <div class='tw-w-9/12'>
+        <div class='tw-w-full desktop:tw-w-9/12'>
           {%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
             <aside
               aria-labelledby='verticalTitle'

@@ -199,7 +199,7 @@
       "from": "From",
       "filter_and_sort": "Filter and sort",
       "filter_by_label": "Filter:",
-      "filter_button": "Filter",
+      "filter_button": "All Filters",
       "filters_selected": {
         "one": "{{ count }} selected",
         "other": "{{ count }} selected"
