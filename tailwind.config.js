@@ -27,6 +27,13 @@ const typographyConfig = {
     },
   },
   '.text-h3': {
+    font: "700 26px/24px 'Gilroy', sans-serif !important",
+    '@media (max-width: 768px)': {
+      fontSize: '15px !important',
+      lineHeight: '27px !important',
+    },
+  },
+  '.text-h4': {
     font: "700 16px/24px 'Gilroy', sans-serif !important",
     '@media (max-width: 768px)': {
       fontSize: '15px !important',
@@ -42,6 +49,13 @@ const typographyConfig = {
   },
   '.text-regular': {
     font: "400 14px/20px 'Gilroy', sans-serif !important",
+    '@media (max-width: 768px)': {
+      fontSize: '15px !important',
+      lineHeight: '27px !important',
+    },
+  },
+  '.text-regular-semi': {
+    font: "500 14px/20px 'Gilroy', sans-serif !important",
     '@media (max-width: 768px)': {
       fontSize: '15px !important',
       lineHeight: '27px !important',
