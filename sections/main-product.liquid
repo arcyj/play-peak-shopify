@@ -81,7 +81,6 @@
         </div>
         <div class="tw-bg-white tw-border tw-border-solid tw-border-lightGray tw-p-32">
           <h3 class='tw-text-dark tw-text-h3 tw-mb-24'>Product Specification</h3>
-
           <div class="desktop:tw-flex">
             {%- if product.description != blank -%}
               <div class='product__description desktop:tw-w-1/2 tw-mr-24 tw-text-regular tw-text-dark' {{ block.shopify_attributes }}>
@@ -103,6 +102,8 @@
         >
           {%- assign product_form_id = 'product-form-' | append: section.id -%}
 
+          <script>console.log({{ product.metafields.details.short_description.value | json }})</script>
+
           {%- for block in section.blocks -%}
             {%- case block.type -%}
               {%- when '@app' -%}
@@ -115,14 +116,11 @@
                   {{- block.settings.text -}}
                 </p>
               {%- when 'title' -%}
-                <div class='product__title' {{ block.shopify_attributes }}>
+                <div class='product__title tw-mb-24' {{ block.shopify_attributes }}>
                   <h1 class='tw-text-h1'>{{ product.title | escape }}</h1>
-                  <a href='{{ product.url }}' class='product__title'>
-                    <h2 class='h1'>
-                      {{ product.title | escape }}
-                    </h2>
-                  </a>
                 </div>
+                <p class="tw-text-regular-semi tw-mb-24">{{ product.metafields.details.short_description.value }}</p>
+                <span class="divider tw-mb-24"></span>
               {%- when 'price' -%}
                 <div class="tw-flex">
                     <div id='price-{{ section.id }}' role='status' {{ block.shopify_attributes }}>
@@ -130,7 +128,7 @@
                         product: product,
                         use_variant: true,
                         show_badges: true,
-                        price_class: 'price--large'
+                        price_class: 'price--large tw-flex tw-items-end tw-h-full tw-mr-32'
                       -%}
                     </div>
                     {% comment %}  Start qty input{% endcomment %}
@@ -156,7 +154,7 @@
                           >
                         </span>
                       </label>
-                      <div class='price-per-item__container'>
+                      <div class='tw-flex'>
                         <quantity-input class='quantity' data-url='{{ product.url }}' data-section='{{ section.id }}'>
                           <button class='quantity__button' name='minus' type='button'>
                             <span class='visually-hidden'>
@@ -191,7 +189,7 @@
                             </span>
                           </button>
                         </quantity-input>
-                        {%- liquid
+                        {% comment %} {%- liquid
                           assign volume_pricing_array = product.selected_or_first_available_variant.quantity_price_breaks | sort: 'quantity' | reverse
                           assign current_qty_for_volume_pricing = cart_qty | plus: product.selected_or_first_available_variant.quantity_rule.min
                           if cart_qty > 0
@@ -274,9 +272,9 @@
                               </div>
                             {%- endif -%}
                           </price-per-item>
-                        {%- endif -%}
+                        {%- endif -%} {% endcomment %}
                       </div>
-                      <div class='quantity__rules caption' id='Quantity-Rules-{{ section.id }}'>
+                      {% comment %} <div class='quantity__rules caption' id='Quantity-Rules-{{ section.id }}'>
                         {%- if product.selected_or_first_available_variant.quantity_rule.increment > 1 -%}
                           <span class='divider'>
                             {{-
@@ -301,8 +299,8 @@
                             -}}
                           </span>
                         {%- endif -%}
-                      </div>
-                      {%- if product.quantity_price_breaks_configured? -%}
+                      </div> {% endcomment %}
+                      {% comment %} {%- if product.quantity_price_breaks_configured? -%}
                         <volume-pricing class='parent-display' id='Volume-{{ section.id }}'>
                           {%- if product.selected_or_first_available_variant.quantity_price_breaks.size > 0 -%}
                             <span class='caption-large'>{{ 'products.product.volume_pricing.title' | t }}</span>
@@ -344,7 +342,7 @@
                             {%- endif -%}
                           {%- endif -%}
                         </volume-pricing>
-                      {%- endif -%}
+                      {%- endif -%} {% endcomment %}
                     </div>
                      {% comment %} End qty input {% endcomment %}
                 </div>
@@ -353,7 +351,7 @@
                     <span>{{ 'products.product.volume_pricing.note' | t }}</span>
                   </div>
                 {%- endif -%}
-                {%- if cart.taxes_included or cart.duties_included or shop.shipping_policy.body != blank -%}
+                {% comment %} {%- if cart.taxes_included or cart.duties_included or shop.shipping_policy.body != blank -%}
                   <div class='product__tax caption rte'>
                     {%- if cart.duties_included and cart.taxes_included -%}
                       {{ 'products.product.duties_and_taxes_included' | t }}
@@ -366,7 +364,7 @@
                       {{ 'products.product.shipping_policy_html' | t: link: shop.shipping_policy.url }}
                     {%- endif -%}
                   </div>
-                {%- endif -%}
+                {%- endif -%} {% endcomment %}
                 <div {{ block.shopify_attributes }}>
                   {%- assign product_form_installment_id = 'product-form-installment-' | append: section.id -%}
                   {%- form 'product', product, id: product_form_installment_id, class: 'installment caption-large' -%}

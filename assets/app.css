@@ -720,6 +720,10 @@ video {
   margin-right: 8px;
 }
 
+.tw-mr-32 {
+  margin-right: 32px;
+}
+
 .tw-block {
   display: block;
 }
@@ -734,6 +738,10 @@ video {
 
 .tw-h-\[8px\] {
   height: 8px;
+}
+
+.tw-h-full {
+  height: 100%;
 }
 
 .tw-min-h-\[79px\] {
