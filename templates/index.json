@@ -87,10 +87,114 @@
         "padding_top": 12,
         "padding_bottom": 36
       }
+    },
+    "collection_list_iGbMQh": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_cAVdaY": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "lorcana-tcg"
+          }
+        },
+        "featured_collection_jpg6Qa": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "obsidian-flames"
+          }
+        },
+        "featured_collection_Xc3LBz": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "paradox-rift"
+          }
+        },
+        "featured_collection_nz44hY": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "prismatic-evolutions"
+          }
+        },
+        "featured_collection_xHzikH": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "scarlet-violet"
+          }
+        },
+        "featured_collection_Wq8rFc": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "shrouded-fable"
+          }
+        },
+        "featured_collection_CJ3xYC": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "twilight-masquerade"
+          }
+        },
+        "featured_collection_niYQHH": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "temporal-forces"
+          }
+        },
+        "featured_collection_daWftG": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "pokemon-tcg"
+          }
+        },
+        "featured_collection_GzzzQ8": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "paradox-rift"
+          }
+        },
+        "featured_collection_zwiUx6": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "paldea-evolved"
+          }
+        },
+        "featured_collection_4HBrYf": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "paldean-fates"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_cAVdaY",
+        "featured_collection_jpg6Qa",
+        "featured_collection_Xc3LBz",
+        "featured_collection_nz44hY",
+        "featured_collection_xHzikH",
+        "featured_collection_Wq8rFc",
+        "featured_collection_CJ3xYC",
+        "featured_collection_niYQHH",
+        "featured_collection_daWftG",
+        "featured_collection_GzzzQ8",
+        "featured_collection_zwiUx6",
+        "featured_collection_4HBrYf"
+      ],
+      "settings": {
+        "title": "Lates Pokemon TCG Releases",
+        "heading_size": "h2",
+        "image_ratio": "adapt",
+        "columns_desktop": 6,
+        "color_scheme": "scheme-2",
+        "show_view_all": false,
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 48,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
     "image_with_text_qE4weF",
-    "featured_collection"
+    "featured_collection",
+    "collection_list_iGbMQh"
   ]
 }
