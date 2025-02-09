@@ -185,7 +185,6 @@ slider-component.slider-component-full-width {
   }
 
   .slider--desktop .slider__slide:first-child {
-    margin-left: var(--desktop-margin-left-first-item);
     scroll-margin-left: var(--desktop-margin-left-first-item);
   }
 
@@ -375,17 +374,52 @@ slider-component.slider-component-full-width {
 }
 
 .slider-button {
-  color: rgba(var(--color-foreground), 0.75);
-  background: transparent;
-  border: none;
+  border: 1px solid #eeeeee;
+  background: #fff;
+  border-radius: 4px;
   cursor: pointer;
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 20;
 }
 
+.slider-gradient-left:is([disabled]) {
+  display: none;
+}
+.slider-gradient-right:is([disabled]) {
+  display: none;
+}
+.slider-gradient-left:not([disabled]) {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  position: absolute;
+  left: 0;
+  top: 0px;
+  height: 100%;
+}
+.slider-gradient-right:not([disabled]) {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  position: absolute;
+  right: 0;
+  top: 0px;
+  height: 100%;
+}
+@media screen and (min-width: 989px) {
+  .slider-gradient-right:not([disabled]) {
+    background: linear-gradient(to left, white, rgba(255, 255, 255, 0));
+    width: 130px;
+  }
+  .slider-gradient-left:not([disabled]) {
+    background: linear-gradient(to right, white, rgba(255, 255, 255, 0));
+    width: 130px;
+  }
+}
 .slider-button:not([disabled]):hover {
   color: rgb(var(--color-foreground));
 }

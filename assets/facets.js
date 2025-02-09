@@ -370,6 +370,7 @@ class PriceRange extends HTMLElement {
   constructor() {
     super();
     this.querySelectorAll('input').forEach((element) => {
+      console.log(element);
       element.addEventListener('change', this.onRangeChange.bind(this));
       element.addEventListener('keydown', this.onKeyDown.bind(this));
     });
@@ -401,6 +402,7 @@ class PriceRange extends HTMLElement {
   }
 
   adjustToValidValues(input) {
+    console.log(input.value);
     const value = Number(input.value);
     const min = Number(input.getAttribute('data-min'));
     const max = Number(input.getAttribute('data-max'));

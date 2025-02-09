@@ -850,16 +850,23 @@ class SliderComponent extends HTMLElement {
     this.pageTotalElement = this.querySelector('.slider-counter--total');
     this.prevButton = this.querySelector('button[name="previous"]');
     this.nextButton = this.querySelector('button[name="next"]');
+    this.prevButtonContainer = this.querySelector('.slider-gradient-left');
+    this.nextButtonContainer = this.querySelector('.slider-gradient-right');
+    this.isDragging = false;
+    this.startX = 0;
+    this.scrollLeft = 0;
 
     if (!this.slider || !this.nextButton) return;
 
     this.initPages();
-    const resizeObserver = new ResizeObserver((entries) => this.initPages());
+    const resizeObserver = new ResizeObserver(() => this.initPages());
     resizeObserver.observe(this.slider);
 
     this.slider.addEventListener('scroll', this.update.bind(this));
     this.prevButton.addEventListener('click', this.onButtonClick.bind(this));
     this.nextButton.addEventListener('click', this.onButtonClick.bind(this));
+
+    this.initDragEvents();
   }
 
   initPages() {
@@ -884,20 +891,19 @@ class SliderComponent extends HTMLElement {
   }
 
   update() {
-    // Temporarily prevents unneeded updates resulting from variant changes
-    // This should be refactored as part of https://github.com/Shopify/dawn/issues/2057
-    if (!this.slider || !this.nextButton) return;
+    if (!this.slider) return;
 
     const previousPage = this.currentPage;
     this.currentPage =
       Math.round(this.slider.scrollLeft / this.sliderItemOffset) + 1;
 
+    console.log('currentPage', this.currentPage);
     if (this.currentPageElement && this.pageTotalElement) {
       this.currentPageElement.textContent = this.currentPage;
       this.pageTotalElement.textContent = this.totalPages;
     }
 
-    if (this.currentPage != previousPage) {
+    if (this.currentPage !== previousPage) {
       this.dispatchEvent(
         new CustomEvent('slideChanged', {
           detail: {
@@ -910,24 +916,23 @@ class SliderComponent extends HTMLElement {
 
     if (this.enableSliderLooping) return;
 
-    if (
-      this.isSlideVisible(this.sliderItemsToShow[0]) &&
-      this.slider.scrollLeft === 0
-    ) {
-      this.prevButton.setAttribute('disabled', 'disabled');
-    } else {
-      this.prevButton.removeAttribute('disabled');
-    }
-
-    if (
+    this.prevButton.toggleAttribute('disabled', this.slider.scrollLeft === 0);
+    this.prevButtonContainer.toggleAttribute(
+      'disabled',
+      this.slider.scrollLeft === 0,
+    );
+    this.nextButtonContainer.toggleAttribute(
+      'disabled',
       this.isSlideVisible(
         this.sliderItemsToShow[this.sliderItemsToShow.length - 1],
-      )
-    ) {
-      this.nextButton.setAttribute('disabled', 'disabled');
-    } else {
-      this.nextButton.removeAttribute('disabled');
-    }
+      ),
+    );
+    this.nextButton.toggleAttribute(
+      'disabled',
+      this.isSlideVisible(
+        this.sliderItemsToShow[this.sliderItemsToShow.length - 1],
+      ),
+    );
   }
 
   isSlideVisible(element, offset = 0) {
@@ -950,9 +955,37 @@ class SliderComponent extends HTMLElement {
   }
 
   setSlidePosition(position) {
-    this.slider.scrollTo({
-      left: position,
-    });
+    this.slider.scrollTo({ left: position, behavior: 'smooth' });
+  }
+
+  initDragEvents() {
+    this.slider.addEventListener('mousedown', this.onDragStart.bind(this));
+    this.slider.addEventListener('mouseleave', this.onDragEnd.bind(this));
+    this.slider.addEventListener('mouseup', this.onDragEnd.bind(this));
+    this.slider.addEventListener('mousemove', this.onDragMove.bind(this));
+  }
+
+  onDragStart(event) {
+    this.isDragging = true;
+    console.log('start drag');
+    this.slider.classList.add('dragging');
+    this.startX = event.pageX - this.slider.offsetLeft;
+    this.scrollLeft = this.slider.scrollLeft;
+  }
+
+  onDragMove(event) {
+    if (!this.isDragging) return;
+    console.log('dragging');
+    event.preventDefault();
+    const x = event.pageX - this.slider.offsetLeft;
+    const walk = (x - this.startX) * 2; // Adjust scroll speed
+    this.slider.scrollLeft = this.scrollLeft - walk;
+  }
+
+  onDragEnd() {
+    console.log('end drag');
+    this.isDragging = false;
+    this.slider.classList.remove('dragging');
   }
 }
 
@@ -1068,6 +1101,7 @@ class SlideshowComponent extends SliderComponent {
     super.update();
     this.sliderControlButtons = this.querySelectorAll('.slider-counter__link');
     this.prevButton.removeAttribute('disabled');
+    this.prevButtonContainer.removeAttribute('disabled');
 
     if (!this.sliderControlButtons.length) return;
 

@@ -28,7 +28,6 @@
   endif
 -%}
 
-<script>console.log({{results | json }})</script>
 <div class='tw-mb-24 facets-container facets-container-drawer {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}'>
   <div>
     <h2 class="tw-text-h2">{{ results.title }} <span class="tw-text-text-gray">({{ results.all_products_count }})</span></h2>
@@ -128,7 +127,7 @@
     >
       <details class='mobile-facets__disclosure disclosure-has-popup'>
         <summary class='mobile-facets__open-wrapper focus-offset'>
-          <span class='facets-button mobile-facets__open '>
+          {% comment %} <span class='facets-button mobile-facets__open '>
             <span class='svg-wrapper'>
               {{- 'filter.svg' | inline_asset_content -}}
             </span>
@@ -151,7 +150,7 @@
             <span class='svg-wrapper'>
               {{- 'icon-close.svg' | inline_asset_content -}}
             </span>
-          </span>
+          </span> {% endcomment %}
         </summary>
         <facet-filters-form>
           <form id='FacetFiltersFormMobile' class='mobile-facets'>

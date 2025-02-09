@@ -61,6 +61,13 @@ const typographyConfig = {
       lineHeight: '27px !important',
     },
   },
+  '.text-medium-semi': {
+    font: "600 15px/22px 'Gilroy', sans-serif !important",
+    '@media (max-width: 768px)': {
+      fontSize: '15px !important',
+      lineHeight: '27px !important',
+    },
+  },
   '.text-large': {
     font: "500 18px/24px 'Gilroy', sans-serif !important",
     '@media (max-width: 768px)': {
