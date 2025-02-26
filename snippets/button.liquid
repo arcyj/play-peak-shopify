@@ -1,0 +1,41 @@
+{% comment %}
+  Button Snippet (Tailwind)
+  Props:
+  - label: Button text (required)
+  - url: Button URL (optional, defaults to #)
+  - variant: "solid", "solid-yellow", "solid-green", "tertiary-dark", "tertiary-light" (default: "solid")
+  - size: "large", "medium", "small" (default: "medium")
+{% endcomment %}
+
+{% assign btn_label = label | default: "Click Here" %}
+{% assign btn_url = url | default: "#" %}
+{% assign btn_variant = variant | default: "solid" %}
+{% assign btn_size = size | default: "medium" %}
+
+{%- case btn_variant -%}
+  {%- when "solid" -%}
+    {% assign btn_class = "tw-bg-blue-500 tw-text-white hover:tw-bg-blue-600" %}
+  {%- when "solid-yellow" -%}
+    {% assign btn_class = "tw-bg-yellow-400 tw-text-black hover:tw-bg-yellow-500" %}
+  {%- when "solid-green" -%}
+    {% assign btn_class = "tw-bg-green-500 tw-text-white hover:tw-bg-green-600" %}
+  {%- when "tertiary-dark" -%}
+    {% assign btn_class = "tw-border tw-border-white tw-text-white hover:tw-bg-white hover:tw-text-black" %}
+  {%- when "tertiary-light" -%}
+    {% assign btn_class = "tw-border tw-border-black tw-text-black hover:tw-bg-black hover:tw-text-white" %}
+  {%- else -%}
+    {% assign btn_class = "tw-bg-blue-500 tw-text-white hover:tw-bg-blue-600" %}
+{%- endcase -%}
+
+{%- case btn_size -%}
+  {%- when "large" -%}
+    {% assign size_class = "tw-text-text-button-large tw-px-44 tw-py-16" %}
+  {%- when "small" -%}
+    {% assign size_class = "tw-text-sm tw-px-4 tw-py-2" %}
+  {%- else -%}
+    {% assign size_class = "tw-text-base tw-px-6 tw-py-3" %}
+{%- endcase -%}
+
+<a href="{{ btn_url }}" class="tw-inline-block tw-rounded-md tw-font-semibold tw-transition tw-duration-300 {{ btn_class }} {{ size_class }}">
+  {{ btn_label }}
+</a>

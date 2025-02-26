@@ -1,0 +1,184 @@
+<div class="page-width tw-py-36">
+  {% for block in section.blocks %}
+    {% case block.type %}
+      {% when "mainBanner" %}
+        <style>
+          .mainBanner-gradient-bg {
+            background: linear-gradient(to right, {{ block.settings.mainBanner_gradient_start }}, {{ block.settings.mainBanner_gradient_end }});
+          }
+        </style>
+        <div class="mainBanner-gradient-bg tw-grid tw-grid-cols-2 tw-p-32 tw-rounded tw-relative tw-z-0">
+          <div class="tw-flex tw-flex-col tw-justify-between tw-z-10">
+            {% if block.settings.mainBanner_image %}
+              <span>
+                <img src="{{ block.settings.mainBanner_logo | img_url: 'medium' }}" alt="Main Banner logo">
+              </span>
+            {% endif %}
+            <div>
+              <h2 class="tw-text-h1 tw-text-text-white tw-pb-8">{{ block.settings.mainBanner_heading }}</h2>
+              <p class="tw-text-regular-semi tw-text-text-white tw-pb-24">{{ block.settings.mainBanner_text }}</p>
+              {% if block.settings.mainBanner_button_text != blank and block.settings.mainBanner_button_url != blank %}
+                {% render 'button', label: block.settings.mainBanner_button_text, url: block.settings.mainBanner_button_url , variant: 'solid-yellow', size: 'large' %}
+              {% endif %}
+            </div>
+          </div>
+          <div class="tw-flex tw-justify-end">
+            {% if block.settings.mainBanner_image %}
+              <div class="tw--mb-32 tw-z-0">
+                <img src="{{ block.settings.mainBanner_image | img_url: 'large' }}" alt="Main Banner Image">
+                <div class="tw-h-128 tw-w-full tw-absolute tw-bottom-0 tw-left-0"
+                  style="background: linear-gradient(to bottom, rgba({{ block.settings.mainBanner_gradient_start | color_extract: 'red' }}, {{ block.settings.mainBanner_gradient_start | color_extract: 'green' }}, {{ block.settings.mainBanner_gradient_start | color_extract: 'blue' }}, 0), {{ block.settings.mainBanner_gradient_start }});">
+                </div>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      {% when "smallBanner" %}
+        <style>
+          .smallBanner-gradient-bg {
+            background: linear-gradient(to right, {{ block.settings.smallBanner_gradient_start }}, {{ block.settings.smallBanner_gradient_end }});
+          }
+        </style>
+        <div class="smallBanner smallBanner-gradient-bg tw-p-32 tw-mt-8 tw-rounded">
+          {% if block.settings.smallBanner_bg %}
+            <div class="smallBanner-bg" style="background-image: url('{{ block.settings.smallBanner_bg | img_url: 'large' }}');">
+          {% else %}
+            <div class="smallBanner-bg">
+          {% endif %}
+            <div class="tw-flex tw-justify-between tw-items-center">
+              <div>
+                <h3 class="tw-text-h1 tw-text-text-white tw-pb-8">{{ block.settings.smallBanner_heading }}</h3>
+                <p class="tw-text-regular-semi tw-text-text-white tw-pb-24">{{ block.settings.smallBanner_text }}</p>
+              </div>
+              <div>
+                {% if block.settings.smallBanner_button_text != blank and block.settings.smallBanner_button_url != blank %}
+                  {% render 'button', label: block.settings.smallBanner_button_text, url: block.settings.smallBanner_button_url , variant: 'tertiary-dark', size: 'large' %}
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+    {% endcase %}
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "Hero Section",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Slideshow Title",
+      "default": "Slideshow"
+    },
+  ],
+  "blocks": [
+    {
+      "type": "mainBanner",
+      "name": "Main Banner",
+      "settings": [
+        {
+          "type": "color",
+          "id": "mainBanner_gradient_start",
+          "label": "Gradient Start Color",
+          "default": "#3383BF"
+        },
+        {
+          "type": "color",
+          "id": "mainBanner_gradient_end",
+          "label": "Gradient End Color",
+          "default": "#1069AD"
+        },
+        {
+          "type": "image_picker",
+          "id": "mainBanner_image",
+          "label": "Background Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "mainBanner_logo",
+          "label": "Logo"
+        },
+        {
+          "type": "text",
+          "id": "mainBanner_heading",
+          "label": "Heading"
+        },
+        {
+          "type": "text",
+          "id": "mainBanner_text",
+          "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "mainBanner_button_text",
+          "label": "Button text"
+        },
+        {
+          "type": "url",
+          "id": "mainBanner_button_url",
+          "label": "Button url"
+        }
+      ]
+    },
+    {
+      "type": "smallBanner",
+      "name": "Small Banner",
+      "settings": [
+        {
+          "type": "color",
+          "id": "smallBanner_gradient_start",
+          "label": "Gradient Start Color",
+          "default": "#D21242"
+        },
+        {
+          "type": "color",
+          "id": "smallBanner_gradient_end",
+          "label": "Gradient End Color",
+          "default": "#D21258"
+        },
+        {
+          "type": "image_picker",
+          "id": "smallBanner_bg",
+          "label": "Background Image"
+        },
+        {
+          "type": "text",
+          "id": "smallBanner_heading",
+          "label": "Heading"
+        },
+        {
+          "type": "text",
+          "id": "smallBanner_text",
+          "label": "Text"
+        },
+        {
+          "type": "text",
+          "id": "smallBanner_button_text",
+          "label": "Button text"
+        },
+        {
+          "type": "url",
+          "id": "smallBanner_button_url",
+          "label": "Button url"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Section",
+      "blocks": [
+        {
+          "type": "mainBanner"
+        },
+        {
+          "type": "smallBanner"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
