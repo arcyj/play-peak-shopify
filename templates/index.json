@@ -30,10 +30,10 @@
           "settings": {
             "smallBanner_gradient_start": "#D21242",
             "smallBanner_gradient_end": "#D21258",
-            "smallBanner_heading": "",
-            "smallBanner_text": "",
-            "smallBanner_button_text": "",
-            "smallBanner_button_url": ""
+            "smallBanner_heading": "Sale is HERE!",
+            "smallBanner_text": "Don’t miss new special xmas sale and save up to -40% on all goods from our store!",
+            "smallBanner_button_text": "View Products",
+            "smallBanner_button_url": "shopify://collections"
           }
         }
       },
