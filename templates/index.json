@@ -52,13 +52,13 @@
         ".price {font-size: 1.6rem; letter-spacing: 0.001rem; line-height: calc(1 + 0.5 / var(--font-body-scale)); color: rgb(var(--color-foreground));}"
       ],
       "settings": {
-        "title": "Featured products",
-        "description": "",
-        "show_description": false,
+        "title": "On sale now!",
+        "description": "<p>Save up to <strong>-20% OFF</strong></p>",
+        "show_description": true,
         "collection": "all",
         "products_to_show": 8,
         "columns_desktop": 6,
-        "show_view_all": false,
+        "show_view_all": true,
         "enable_desktop_slider": true
       }
     },
