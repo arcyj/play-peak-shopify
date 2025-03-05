@@ -74,11 +74,25 @@
         "show_view_all": true,
         "enable_desktop_slider": true
       }
+    },
+    "featured_collection_6j3Gm3": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Our top picks",
+        "description": "<p>Recommended by most of our customers</p>",
+        "show_description": true,
+        "collection": "pokemon-tcg",
+        "products_to_show": 18,
+        "columns_desktop": 6,
+        "show_view_all": false,
+        "enable_desktop_slider": false
+      }
     }
   },
   "order": [
     "hero_block_CEUTCB",
     "featured_collection",
-    "featured_collection_6eCXcf"
+    "featured_collection_6eCXcf",
+    "featured_collection_6j3Gm3"
   ]
 }
