@@ -86,6 +86,7 @@
 .card--card .card__inner .card__media {
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
+  max-height: 160px;
 }
 
 .card--standard.card--text {
@@ -572,7 +573,33 @@
 }
 
 /* Card Shape Hover Rules */
+.card-wrapper.product-card-wrapper {
+  position: relative;
+  overflow: hidden;
+}
 
+.product-card__button {
+  position: absolute;
+  bottom: -50px; /* Hidden below the card */
+  left: 0;
+  width: 100%;
+  text-align: center;
+  transition: bottom 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  opacity: 0;
+  height: 79px;
+  background-color: #f5f7fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Only apply hover effect on screens wider than 768px */
+@media (min-width: 768px) {
+  .card-wrapper.product-card-wrapper:hover .product-card__button {
+    bottom: 0px; /* Slide up to be fully visible */
+    opacity: 1;
+  }
+}
 @media (prefers-reduced-motion: no-preference) {
   .product-card-wrapper .shape--round {
     transition: clip-path var(--duration-long) ease;

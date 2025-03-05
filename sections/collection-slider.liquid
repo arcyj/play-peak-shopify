@@ -1,0 +1,78 @@
+<div
+  class="color-{{ section.settings.color_scheme }} isolate gradient tw-pt-80"
+>
+  <slider-component class="slider-mobile-gutter{% if section.settings.full_width %} slider-component-full-width{% endif %}{% if show_mobile_slider == false %} page-width{% endif %} page-width-desktop  slider-component-desktop {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+    <ul
+      id="Slider-{{ section.id }}"
+      data-id="{{ section.id }}"
+      class="grid collection-grid slider"
+      role="list"
+      aria-label="{{ 'general.slider.name' | t }}"
+    >
+      {%- for collection in section.settings.collections -%}
+        <li
+          id="Slide-{{ section.id }}-{{ forloop.index }}"
+          class="grid__item slider__slide {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+          {% if settings.animations_reveal_on_scroll %}
+            data-cascade
+            style="--animation-order: {{ forloop.index }};"
+          {% endif %}
+        >
+          <a href="{{ collection.url }}" class="collection-card">
+            <img src="{{ collection.image | default: collection.products.first.image | img_url: 'medium' }}" alt="{{ collection.title }}" class="collection-image" />
+            <h3 class="collection-title">{{ collection.title }}</h3>
+            <p class="collection-product-count">{{ collection.products_count }} products</p>
+          </a>
+        </li>
+      {%- endfor -%}
+    </ul>
+    <span class="slider-gradient-left">
+      <button
+        type="button"
+        class="slider-button slider-button--prev slider-button-left"
+        name="previous"
+        aria-label="{{ 'general.slider.previous_slide' | t }}"
+      >
+        <span class="svg-wrapper">
+          {{- 'icon-caret.svg' | inline_asset_content -}}
+        </span>
+      </button>
+    </span>
+    <span class="slider-gradient-right">
+      <button
+        type="button"
+        class="slider-button slider-button--next slider-button-right"
+        name="next"
+        aria-label="{{ 'general.slider.next_slide' | t }}"
+      >
+        <span class="svg-wrapper">
+          {{- 'icon-caret.svg' | inline_asset_content -}}
+        </span>
+      </button>
+    </span>
+  </slider-component>
+</div>
+
+{% schema %}
+{
+  "name": "Collection slider",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "collection_list",
+      "id": "collections",
+      "label": "Select Collections",
+      "limit": 10
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection Slider"
+    }
+  ]
+}
+{% endschema %}

@@ -5,9 +5,11 @@
   - url: Button URL (optional, defaults to #)
   - variant: "solid", "solid-yellow", "solid-green", "tertiary-dark", "tertiary-light" (default: "solid")
   - size: "large", "medium", "small" (default: "medium")
+
+  {% render 'button', label: block.settings.mainBanner_button_text, url: block.settings.mainBanner_button_url , variant: 'solid-yellow', size: 'large' %}
 {% endcomment %}
 
-{% assign btn_label = label | default: "Click Here" %}
+{% assign btn_label = label | default: "Button Text" %}
 {% assign btn_url = url | default: "#" %}
 {% assign btn_variant = variant | default: "solid" %}
 {% assign btn_size = size | default: "medium" %}
@@ -29,13 +31,13 @@
 
 {%- case btn_size -%}
   {%- when "large" -%}
-    {% assign size_class = "tw-text-text-button-large tw-px-44 tw-py-16" %}
+    {% assign size_class = "tw-text-text-button-large tw-px-24 tw-py-16" %}
   {%- when "small" -%}
     {% assign size_class = "tw-text-sm tw-px-4 tw-py-2" %}
   {%- else -%}
-    {% assign size_class = "tw-text-base tw-px-6 tw-py-3" %}
+    {% assign size_class = "tw-text-text-button-large tw-px-24 tw-py-8" %}
 {%- endcase -%}
 
-<a href="{{ btn_url }}" class="tw-inline-block tw-rounded-md tw-font-semibold tw-transition tw-duration-300 {{ btn_class }} {{ size_class }}">
+<a href="{{ btn_url }}" class="tw-inline-block tw-text-nowrap tw-text-center tw-rounded-md tw-font-semibold tw-transition tw-duration-300 {{ btn_class }} {{ size_class }}">
   {{ btn_label }}
 </a>

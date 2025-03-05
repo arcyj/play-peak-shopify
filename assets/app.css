@@ -730,10 +730,6 @@ video {
   z-index: 10;
 }
 
-.tw-z-\[1\] {
-  z-index: 1;
-}
-
 .tw-m-auto {
   margin: auto;
 }
@@ -747,8 +743,16 @@ video {
   margin-bottom: -32px;
 }
 
+.tw-mb-0 {
+  margin-bottom: 0px;
+}
+
 .tw-mb-24 {
   margin-bottom: 24px;
+}
+
+.tw-mb-32 {
+  margin-bottom: 32px;
 }
 
 .tw-mr-12 {
@@ -773,6 +777,13 @@ video {
 
 .tw-mt-8 {
   margin-top: 8px;
+}
+
+.tw-line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 .tw-block {
@@ -811,8 +822,12 @@ video {
   height: 100%;
 }
 
-.tw-min-h-\[79px\] {
-  min-height: 79px;
+.tw-max-h-\[160px\] {
+  max-height: 160px;
+}
+
+.tw-min-h-\[69px\] {
+  min-height: 69px;
 }
 
 .tw-w-3\/12 {
@@ -861,6 +876,18 @@ video {
 
 .tw-justify-between {
   justify-content: space-between;
+}
+
+.tw-overflow-hidden {
+  overflow: hidden;
+}
+
+.tw-text-ellipsis {
+  text-overflow: ellipsis;
+}
+
+.tw-text-nowrap {
+  text-wrap: nowrap;
 }
 
 .tw-rounded {
@@ -987,16 +1014,6 @@ video {
   padding-right: 4px;
 }
 
-.tw-px-44 {
-  padding-left: 44px;
-  padding-right: 44px;
-}
-
-.tw-px-6 {
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
-}
-
 .tw-py-16 {
   padding-top: 16px;
   padding-bottom: 16px;
@@ -1012,24 +1029,14 @@ video {
   padding-bottom: 24px;
 }
 
-.tw-py-3 {
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-}
-
-.tw-py-8 {
-  padding-top: 8px;
-  padding-bottom: 8px;
-}
-
 .tw-py-36 {
   padding-top: 36px;
   padding-bottom: 36px;
 }
 
-.tw-px-36 {
-  padding-left: 36px;
-  padding-right: 36px;
+.tw-py-8 {
+  padding-top: 8px;
+  padding-bottom: 8px;
 }
 
 .tw-pb-16 {
@@ -1072,13 +1079,16 @@ video {
   padding-top: 4px;
 }
 
-.tw-text-\[20px\] {
-  font-size: 20px;
+.tw-pt-80 {
+  padding-top: 80px;
 }
 
-.tw-text-base {
-  font-size: 1rem;
-  line-height: 1.5rem;
+.tw-text-center {
+  text-align: center;
+}
+
+.tw-text-\[20px\] {
+  font-size: 20px;
 }
 
 .tw-text-sm {
@@ -1094,9 +1104,8 @@ video {
   font-weight: 600;
 }
 
-.tw-text-\[\#110516\] {
-  --tw-text-opacity: 1;
-  color: rgb(17 5 22 / var(--tw-text-opacity));
+.tw-uppercase {
+  text-transform: uppercase;
 }
 
 .tw-text-accent-pink {
@@ -1131,10 +1140,6 @@ video {
 .tw-text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.tw-opacity-40 {
-  opacity: 0.4;
 }
 
 .tw-mix-blend-darken {
