@@ -15,8 +15,8 @@
         "main_banner_WcVc4n": {
           "type": "mainBanner",
           "settings": {
-            "mainBanner_gradient_start": "#3383BF",
-            "mainBanner_gradient_end": "#1069AD",
+            "mainBanner_gradient_start": "#3383bf",
+            "mainBanner_gradient_end": "#1069ad",
             "mainBanner_image": "shopify://shop_images/main_banner-boosterpack.png",
             "mainBanner_logo": "shopify://shop_images/Pokemon_Trading_Card_Game_logo_svg.png",
             "mainBanner_heading": "Meet the new booster packs",
@@ -28,8 +28,8 @@
         "small_banner_nRfiAR": {
           "type": "smallBanner",
           "settings": {
-            "smallBanner_gradient_start": "#D21242",
-            "smallBanner_gradient_end": "#D21258",
+            "smallBanner_gradient_start": "#d21242",
+            "smallBanner_gradient_end": "#d21258",
             "smallBanner_heading": "Sale is HERE!",
             "smallBanner_text": "Don’t miss new special xmas sale and save up to -40% on all goods from our store!",
             "smallBanner_button_text": "View Products",
@@ -45,193 +45,40 @@
         "title": "Slideshow"
       }
     },
-    "image_with_text_qE4weF": {
-      "type": "image-with-text",
-      "blocks": {
-        "heading_MnYEMf": {
-          "type": "heading",
-          "settings": {
-            "heading": "Image with text",
-            "heading_size": "h1"
-          }
-        },
-        "text_YLbWVN": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "text_style": "body"
-          }
-        },
-        "button_Heqmim": {
-          "type": "button",
-          "settings": {
-            "button_label": "Button label",
-            "button_link": "",
-            "button_style_secondary": false
-          }
-        }
-      },
-      "block_order": [
-        "heading_MnYEMf",
-        "text_YLbWVN",
-        "button_Heqmim"
-      ],
-      "settings": {
-        "height": "adapt",
-        "desktop_image_width": "medium",
-        "layout": "image_first",
-        "desktop_content_position": "top",
-        "desktop_content_alignment": "left",
-        "content_layout": "no-overlap",
-        "section_color_scheme": "",
-        "color_scheme": "",
-        "image_behavior": "none",
-        "mobile_content_alignment": "left",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
     "featured_collection": {
       "type": "featured-collection",
       "custom_css": [
         ".tw-text-small {font: 500 12px / 12px Gilroy, sans-serif !important;}",
-        "",
         ".price {font-size: 1.6rem; letter-spacing: 0.001rem; line-height: calc(1 + 0.5 / var(--font-body-scale)); color: rgb(var(--color-foreground));}"
       ],
       "settings": {
         "title": "Featured products",
-        "heading_size": "h2",
         "description": "",
         "show_description": false,
-        "description_style": "body",
         "collection": "all",
         "products_to_show": 8,
         "columns_desktop": 6,
-        "full_width": false,
         "show_view_all": false,
-        "view_all_style": "link",
-        "enable_desktop_slider": true,
-        "color_scheme": "scheme-1",
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 12,
-        "padding_bottom": 36
+        "enable_desktop_slider": true
       }
     },
-    "collection_list_iGbMQh": {
-      "type": "collection-list",
-      "blocks": {
-        "featured_collection_cAVdaY": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "lorcana-tcg"
-          }
-        },
-        "featured_collection_jpg6Qa": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "obsidian-flames"
-          }
-        },
-        "featured_collection_Xc3LBz": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "paradox-rift"
-          }
-        },
-        "featured_collection_nz44hY": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "prismatic-evolutions"
-          }
-        },
-        "featured_collection_xHzikH": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "scarlet-violet"
-          }
-        },
-        "featured_collection_Wq8rFc": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "shrouded-fable"
-          }
-        },
-        "featured_collection_CJ3xYC": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "twilight-masquerade"
-          }
-        },
-        "featured_collection_niYQHH": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "temporal-forces"
-          }
-        },
-        "featured_collection_daWftG": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "pokemon-tcg"
-          }
-        },
-        "featured_collection_GzzzQ8": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "paradox-rift"
-          }
-        },
-        "featured_collection_zwiUx6": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "paldea-evolved"
-          }
-        },
-        "featured_collection_4HBrYf": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "paldean-fates"
-          }
-        }
-      },
-      "block_order": [
-        "featured_collection_cAVdaY",
-        "featured_collection_jpg6Qa",
-        "featured_collection_Xc3LBz",
-        "featured_collection_nz44hY",
-        "featured_collection_xHzikH",
-        "featured_collection_Wq8rFc",
-        "featured_collection_CJ3xYC",
-        "featured_collection_niYQHH",
-        "featured_collection_daWftG",
-        "featured_collection_GzzzQ8",
-        "featured_collection_zwiUx6",
-        "featured_collection_4HBrYf"
-      ],
+    "featured_collection_6eCXcf": {
+      "type": "featured-collection",
       "settings": {
-        "title": "Lates Pokemon TCG Releases",
-        "heading_size": "h2",
-        "image_ratio": "adapt",
+        "title": "New arrivals",
+        "description": "",
+        "show_description": false,
+        "collection": "pokemon-tcg",
+        "products_to_show": 9,
         "columns_desktop": 6,
-        "color_scheme": "scheme-2",
-        "show_view_all": false,
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
-        "padding_top": 48,
-        "padding_bottom": 36
+        "show_view_all": true,
+        "enable_desktop_slider": true
       }
     }
   },
   "order": [
     "hero_block_CEUTCB",
-    "image_with_text_qE4weF",
     "featured_collection",
-    "collection_list_iGbMQh"
+    "featured_collection_6eCXcf"
   ]
 }
