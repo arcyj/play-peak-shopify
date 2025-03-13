@@ -1,0 +1,33 @@
+{% comment %}
+  Badge Snippet (Tailwind)
+  Props:
+  - label: Badge text (required)
+  - variant: "on-sale", "new", "good-price" (default: "on-sale")
+  - class: Custom CSS classes (optional)
+
+  Usage:
+  {% render 'badge', label: 'New', variant: 'new', class: 'custom-class' %}
+{% endcomment %}
+
+{% assign badge_label = label | default: "Badge" %}
+{% assign badge_variant = variant | default: "on-sale" %}
+{% assign badge_class_custom = class | default: "" %}
+
+{%- case badge_variant -%}
+  {%- when "on-sale" -%}
+    {% assign badge_class = "tw-text-white tw-rounded-b" %}
+    {% assign badge_gradient = "radial-gradient(circle, #FF638A 0%, #FF3763 100%)" %}
+  {%- when "new" -%}
+    {% assign badge_class = "tw-text-white tw-rounded" %}
+    {% assign badge_gradient = "radial-gradient(circle, #4F86F7 0%, #0044CC 100%)" %}
+  {%- when "good-price" -%}
+    {% assign badge_class = "tw-text-white tw-rounded" %}
+    {% assign badge_gradient = "radial-gradient(circle, #4CAF50 0%, #087F23 100%)" %}
+  {%- else -%}
+    {% assign badge_class = "tw-text-white tw-rounded" %}
+    {% assign badge_gradient = "radial-gradient(circle, #9E9E9E 0%, #616161 100%)" %}
+{%- endcase -%}
+
+<span class="tw-inline-block tw-text-[11px] tw-font-semibold tw-px-12 tw-py-4 tw-z-50 {{ badge_class }} {{ badge_class_custom }}" style="background: {{ badge_gradient }};">
+  {{ badge_label }}
+</span>

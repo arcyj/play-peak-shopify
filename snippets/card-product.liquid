@@ -39,9 +39,21 @@
     if ratio == 0 or ratio == null
       assign ratio = 1
     endif
+
+     # Calculate Discount Percentage
+     assign compare_at_price = card_product.compare_at_price
+     assign price = card_product.price
+     assign discount_percentage = 0
+     if compare_at_price > price
+       assign discount_percentage = compare_at_price | minus: price | times: 100 | divided_by: compare_at_price
+       assign discount_percentage_text = "-" | append: discount_percentage | round | append: "% OFF"
+     endif
   -%}
 
   <div class="card-wrapper product-card-wrapper tw-bg-surface-lightGrey tw-rounded tw-px-12 tw-pt-12 tw-pb-24">
+    {%- if card_product.compare_at_price > card_product.price and card_product.available -%}
+      {% render 'badge', label: discount_percentage_text, variant: 'on-sale' class: "tw-absolute tw-top-0" %}
+    {%- endif -%}
     <div
       class="
         card card--{{ settings.card_style }}
@@ -107,18 +119,6 @@
             </div>
           </div>
         {%- endif -%}
-        <div class="">
-          <div class="card__badge {{ settings.badge_position }}">
-            {%- if card_product.compare_at_price > card_product.price and card_product.available -%}
-              <span
-                id="NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}"
-                class="badge badge--bottom-left color-{{ settings.sale_badge_color_scheme }}"
-              >
-                {{- 'products.product.on_sale' | t -}}
-              </span>
-            {%- endif -%}
-          </div>
-        </div>
       </div>
       <div class="card__content">
           <span class="tw-text-small tw-text-text-gray tw-pt-4">{{ card_product.vendor }}</span>

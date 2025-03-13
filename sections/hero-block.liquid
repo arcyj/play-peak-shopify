@@ -7,25 +7,25 @@
             background: linear-gradient(to right, {{ block.settings.mainBanner_gradient_start }}, {{ block.settings.mainBanner_gradient_end }});
           }
         </style>
-        <div class="mainBanner-gradient-bg tw-grid tw-grid-cols-2 tw-p-32 tw-rounded tw-relative tw-z-0">
+        <div class="mainBanner-gradient-bg tw-flex tw-flex-col tw-flex-col-reverse tablet:tw-grid tw-grid-cols-2 tw-p-32 tw-rounded tw-relative tw-z-0">
           <div class="tw-flex tw-flex-col tw-justify-between tw-z-10">
             {% if block.settings.mainBanner_image %}
-              <span>
+              <span class="tw-hidden tablet:tw-block">
                 <img src="{{ block.settings.mainBanner_logo | img_url: 'medium' }}" alt="Main Banner logo">
               </span>
             {% endif %}
-            <div>
-              <h2 class="tw-text-h1 tw-text-text-white tw-pb-8">{{ block.settings.mainBanner_heading }}</h2>
-              <p class="tw-text-regular-semi tw-text-text-white tw-pb-24">{{ block.settings.mainBanner_text }}</p>
+            <div class="">
+              <h2 class="max-tablet:tw-text-center tw-text-h1 tw-text-text-white tw-pb-8">{{ block.settings.mainBanner_heading }}</h2>
+              <p class="max-tablet:tw-text-center tw-text-regular-semi tw-text-text-white tw-pb-24">{{ block.settings.mainBanner_text }}</p>
               {% if block.settings.mainBanner_button_text != blank and block.settings.mainBanner_button_url != blank %}
-                {% render 'button', label: block.settings.mainBanner_button_text, url: block.settings.mainBanner_button_url , variant: 'solid-yellow', size: 'large' %}
+                {% render 'button', label: block.settings.mainBanner_button_text, url: block.settings.mainBanner_button_url , variant: 'solid-yellow', size: 'large' class: 'max-tablet:tw-w-full' %}
               {% endif %}
             </div>
           </div>
-          <div class="tw-flex tw-justify-end">
+          <div class="tw-flex tw-justify-center tablet:tw-justify-end" >
             {% if block.settings.mainBanner_image %}
-              <div class="tw--mb-32 tw-z-0">
-                <img src="{{ block.settings.mainBanner_image | img_url: 'large' }}" alt="Main Banner Image">
+              <div class="tablet:tw--mb-32 tw-z-0">
+                <img src="{{ block.settings.mainBanner_image | img_url: 'large' }}" class=" max-tablet:tw-max-h-[230px]" alt="Main Banner Image">
                 <div class="tw-h-128 tw-w-full tw-absolute tw-bottom-0 tw-left-0"
                   style="background: linear-gradient(to bottom, rgba({{ block.settings.mainBanner_gradient_start | color_extract: 'red' }}, {{ block.settings.mainBanner_gradient_start | color_extract: 'green' }}, {{ block.settings.mainBanner_gradient_start | color_extract: 'blue' }}, 0), {{ block.settings.mainBanner_gradient_start }});">
                 </div>

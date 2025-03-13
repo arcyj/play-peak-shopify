@@ -79,7 +79,7 @@
         <div class='product__media-wrapper'>
           {% render 'product-media-gallery', variant_images: variant_images %}
         </div>
-        <div class="tw-bg-white tw-border tw-border-solid tw-border-lightGray tw-p-32">
+        <div class="tw-bg-white tw-border tw-border-solid tw-border-lightGray tw-p-32 tw-hidden tablet:tw-block">
           <h3 class='tw-text-dark tw-text-h3 tw-mb-24'>Product Specification</h3>
           <div class="desktop:tw-flex">
             {%- if product.description != blank -%}
