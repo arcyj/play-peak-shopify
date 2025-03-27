@@ -31,19 +31,27 @@
                 tabindex="-1"
               >
                 <ul
-                  class="mega-menu__list page-width{% if link.levels == 1 %} mega-menu__list--condensed{% endif %}"
+                  class="tw-flex mega-menu__list page-width"
                   role="list"
                 >
                   {%- for childlink in link.links -%}
-                    <li>
+                    <li class="">
+                      {% assign linked_item = childlink.object %}
                       <a
                         id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
                         href="{{ childlink.url }}"
-                        class="mega-menu__link mega-menu__link--level-2 tw-font-semibold tw-text-dark link {% if childlink.current %} mega-menu__link--active{% endif %}"
+                        class="mega-menu__link mega-menu__link--level-2 tw-font-semibold tw-text-dark link tw-flex tw-flex-col tw-justify-center tw-items-center {% if childlink.current %} mega-menu__link--active{% endif %}"
                         {% if childlink.current %}
                           aria-current="page"
                         {% endif %}
                       >
+                        {% if linked_item.metafields.custom.menu_image %}
+                          <span class="tw-mb-8 tw-h-[50px]">
+                            <img src="{{ linked_item.metafields.custom.menu_image | img_url: 'medium'}}"
+                              style="height: 100%; width: auto;"
+                              alt="{{ link.title }}">
+                          </span>
+                        {% endif %}
                         {{ childlink.title | escape }}
                       </a>
                       {%- if childlink.links != blank -%}

@@ -37,13 +37,12 @@
 .mega-menu__list {
   display: grid;
   gap: 1.8rem 4rem;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-columns: repeat(8, minmax(0, 1fr));
   list-style: none;
 }
 
 .mega-menu__link {
   color: rgba(var(--color-foreground), 0.75);
-  display: block;
   line-height: calc(1 + 0.3 / var(--font-body-scale));
   padding-bottom: 0.6rem;
   padding-top: 0.6rem;
