@@ -87,12 +87,53 @@
         "show_view_all": false,
         "enable_desktop_slider": false
       }
+    },
+    "collage_AhA6XM": {
+      "type": "collage",
+      "blocks": {
+        "image_atBQXK": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/img_378864_46fd001ee33e807829e0aba91cc8b5bd_2.jpg"
+          }
+        },
+        "product_GyfULi": {
+          "type": "product",
+          "settings": {
+            "product": "one-piece-tcg-500-years-in-the-future-booster-box-op-07",
+            "second_image": false
+          }
+        },
+        "collection_mNDgNL": {
+          "type": "collection",
+          "settings": {
+            "collection": "booster-packs"
+          }
+        }
+      },
+      "block_order": [
+        "image_atBQXK",
+        "product_GyfULi",
+        "collection_mNDgNL"
+      ],
+      "name": "t:sections.collage.presets.name",
+      "settings": {
+        "heading": "Multimedia collage",
+        "heading_size": "h1",
+        "desktop_layout": "left",
+        "mobile_layout": "column",
+        "card_styles": "product-card-wrapper",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
     "hero_block_CEUTCB",
     "featured_collection",
     "featured_collection_6eCXcf",
-    "featured_collection_6j3Gm3"
+    "featured_collection_6j3Gm3",
+    "collage_AhA6XM"
   ]
 }
