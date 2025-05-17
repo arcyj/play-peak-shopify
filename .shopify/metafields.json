@@ -1,0 +1,238 @@
+{
+  "article": [],
+  "blog": [],
+  "brand": [],
+  "collection": [
+    {
+      "key": "parent",
+      "namespace": "category",
+      "name": "Main Category",
+      "description": "",
+      "type": {
+        "name": "collection_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "child_collections",
+      "namespace": "custom",
+      "name": "Child collections",
+      "description": "List all collections of the same group",
+      "type": {
+        "name": "list.collection_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "menu_image",
+      "namespace": "custom",
+      "name": "Menu Image",
+      "description": "",
+      "type": {
+        "name": "file_reference",
+        "category": "REFERENCE"
+      }
+    }
+  ],
+  "company": [],
+  "company_location": [],
+  "location": [],
+  "market": [],
+  "order": [],
+  "page": [
+    {
+      "key": "menu_image",
+      "namespace": "custom",
+      "name": "Menu image",
+      "description": "",
+      "type": {
+        "name": "file_reference",
+        "category": "REFERENCE"
+      }
+    }
+  ],
+  "product": [
+    {
+      "key": "trading-card-packaging",
+      "namespace": "shopify",
+      "name": "Trading card packaging",
+      "description": "Identifies how trading cards are packaged, such as blister pack or booster pack",
+      "type": {
+        "name": "list.metaobject_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "queries",
+      "namespace": "shopify--discovery--product_search_boost",
+      "name": "Search product boosts",
+      "description": "List of search queries for which a product gets higher rank in search results",
+      "type": {
+        "name": "list.single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "related_products",
+      "namespace": "shopify--discovery--product_recommendation",
+      "name": "Related products",
+      "description": "List of related products",
+      "type": {
+        "name": "list.product_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "related_products_display",
+      "namespace": "shopify--discovery--product_recommendation",
+      "name": "Related products settings",
+      "description": "Determines how related products are displayed along with algorithmic product recommendations",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "complementary_products",
+      "namespace": "shopify--discovery--product_recommendation",
+      "name": "Complementary products",
+      "description": "List of complementary products",
+      "type": {
+        "name": "list.product_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "complementary_products",
+      "namespace": "globo--filter--product_recommendation",
+      "name": "Complementary products",
+      "description": null,
+      "type": {
+        "name": "list.product_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "related_products",
+      "namespace": "globo--filter--product_recommendation",
+      "name": "Related products",
+      "description": null,
+      "type": {
+        "name": "list.product_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "bought_together_products",
+      "namespace": "globo--filter--product_recommendation",
+      "name": "Bought together products",
+      "description": null,
+      "type": {
+        "name": "list.product_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "card-attributes",
+      "namespace": "shopify",
+      "name": "Card attributes",
+      "description": "Describes special features of collectible trading cards, like foil or holographic",
+      "type": {
+        "name": "list.metaobject_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "rarity",
+      "namespace": "shopify",
+      "name": "Rarity",
+      "description": "Specifies the uniqueness of items, typically for collectibles; e.g. limited edition, ultra rare",
+      "type": {
+        "name": "list.metaobject_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "age",
+      "namespace": "details",
+      "name": "Suitable Age",
+      "description": "",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "language",
+      "namespace": "details",
+      "name": "Language",
+      "description": "",
+      "type": {
+        "name": "metaobject_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "color-pattern",
+      "namespace": "shopify",
+      "name": "Color",
+      "description": "Defines the primary color or pattern, such as blue or striped",
+      "type": {
+        "name": "list.metaobject_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "recommended-age-group",
+      "namespace": "shopify",
+      "name": "Recommended age group",
+      "description": "Identifies the suitable age range for a product, typically toys and games; e.g. babies, teens",
+      "type": {
+        "name": "list.metaobject_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "toy-game-material",
+      "namespace": "shopify",
+      "name": "Toy/Game material",
+      "description": "Identifies the main material used in a toy or game, such as plastic or wood",
+      "type": {
+        "name": "list.metaobject_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "theme",
+      "namespace": "shopify",
+      "name": "Theme",
+      "description": "Describes the product's primary theme or motif, such as sport, space, or holidays",
+      "type": {
+        "name": "list.metaobject_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "short_description",
+      "namespace": "details",
+      "name": "Short Description",
+      "description": "",
+      "type": {
+        "name": "multi_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "expansion",
+      "namespace": "custom",
+      "name": "Expansion",
+      "description": "",
+      "type": {
+        "name": "metaobject_reference",
+        "category": "REFERENCE"
+      }
+    }
+  ],
+  "variant": [],
+  "shop": []
+}
