@@ -155,8 +155,16 @@ product-info {
 
 .shopify-payment-button,
 .product-form__submit {
-  width: 50%;
+  width: 100%;
 }
+
+@media (min-width: 769px) {
+  .shopify-payment-button,
+  .product-form__submit {
+    width: 50%;
+  }
+}
+
 .product-form__submit {
   background-color: #ffffff;
   border: 2px solid #110516;
@@ -1083,6 +1091,9 @@ a.product__text {
   color: rgb(var(--color-foreground));
   cursor: pointer;
   background-color: transparent;
+  border-width: 1.2px;
+  padding: 5px;
+  border-radius: 4px;
 }
 
 .thumbnail:hover {
@@ -1095,7 +1106,7 @@ a.product__text {
 
 .thumbnail[aria-current] {
   box-shadow: 0 0 0rem 0.1rem rgb(var(--color-foreground));
-  border-color: rgb(var(--color-foreground));
+  border-color: #9812d2;
 }
 
 .image-magnify-full-size {

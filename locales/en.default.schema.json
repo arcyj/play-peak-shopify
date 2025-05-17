@@ -778,6 +778,9 @@
         "enable_desktop_slider": {
           "label": "Enable carousel on desktop"
         },
+        "enable_mobile_slider": {
+          "label": "Enable carousel on mobile"
+        },
         "full_width": {
           "label": "Make products full width"
         },

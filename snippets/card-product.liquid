@@ -40,113 +40,115 @@
       assign ratio = 1
     endif
 
-     # Calculate Discount Percentage
-     assign compare_at_price = card_product.compare_at_price
-     assign price = card_product.price
-     assign discount_percentage = 0
-     if compare_at_price > price
-       assign discount_percentage = compare_at_price | minus: price | times: 100 | divided_by: compare_at_price
-       assign discount_percentage_text = "-" | append: discount_percentage | round | append: "% OFF"
-     endif
+    # Calculate Discount Percentage
+    assign compare_at_price = card_product.compare_at_price
+    assign price = card_product.price
+    assign discount_percentage = 0
+    if compare_at_price > price
+      assign discount_percentage = compare_at_price | minus: price | times: 100 | divided_by: compare_at_price
+      assign discount_percentage_text = '-' | append: discount_percentage | round | append: '% OFF'
+    endif
   -%}
 
-  <div class="card-wrapper product-card-wrapper tw-bg-surface-lightGrey tw-rounded tw-px-12 tw-pt-12 tw-pb-24">
-    {%- if card_product.compare_at_price > card_product.price and card_product.available -%}
-      {% render 'badge', label: discount_percentage_text, variant: 'on-sale' class: "tw-absolute tw-top-0" %}
-    {%- endif -%}
-    <div
-      class="
-        card card--{{ settings.card_style }}
-        {% if card_product.featured_media %} card--media{% else %} card--text{% endif %}
-        {% if settings.card_style == 'card' %} color-{{ settings.card_color_scheme }} gradient{% endif %}
-        {% if image_shape and image_shape != 'default' %} card--shape{% endif %}
-        {% if extend_height %} card--extend-height{% endif %}
-        {% if card_product.featured_media == nil and settings.card_style == 'card' %} ratio{% endif %}
-        {% if horizontal_class %} card--horizontal{% endif %}
-      "
-      style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;"
-    >
+  <div class='card-wrapper product-card-wrapper tw-bg-surface-lightGrey tw-rounded tw-px-12 tw-pt-12 tw-pb-24'>
+    <a href='{{ card_product.url }}' class='tw-block tw-no-underline'>
+      {%- if card_product.compare_at_price > card_product.price and card_product.available -%}
+        {% render 'badge', label: discount_percentage_text, variant: 'on-sale', class: 'tw-absolute tw-top-0' %}
+      {%- endif -%}
       <div
-        class="tw-mix-blend-darken tw-max-h-[160px] card__inner {% if settings.card_style == 'standard' %}color-{{ settings.card_color_scheme }} gradient{% endif %}{% if card_product.featured_media or settings.card_style == 'standard' %} ratio{% endif %}"
-        style="--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;"
+        class='
+          card card--{{ settings.card_style }}
+          {% if card_product.featured_media %} card--media{% else %} card--text{% endif %}
+          {% if settings.card_style == 'card' %} color-{{ settings.card_color_scheme }} gradient{% endif %}
+          {% if image_shape and image_shape != 'default' %} card--shape{% endif %}
+          {% if extend_height %} card--extend-height{% endif %}
+          {% if card_product.featured_media == nil and settings.card_style == 'card' %} ratio{% endif %}
+          {% if horizontal_class %} card--horizontal{% endif %}
+        '
+        style='--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;'
       >
-        {%- if card_product.featured_media -%}
-          <div class="card__media{% if image_shape and image_shape != 'default' %} shape--{{ image_shape }} color-{{ settings.card_color_scheme }} gradient{% endif %}">
-            <div class="media media--transparent media--hover-effect">
-              {% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
-              <img
-                srcset="
-                  {%- if card_product.featured_media.width >= 165 -%}{{ card_product.featured_media | image_url: width: 165 }} 165w,{%- endif -%}
-                  {%- if card_product.featured_media.width >= 360 -%}{{ card_product.featured_media | image_url: width: 360 }} 360w,{%- endif -%}
-                  {%- if card_product.featured_media.width >= 533 -%}{{ card_product.featured_media | image_url: width: 533 }} 533w,{%- endif -%}
-                  {%- if card_product.featured_media.width >= 720 -%}{{ card_product.featured_media | image_url: width: 720 }} 720w,{%- endif -%}
-                  {%- if card_product.featured_media.width >= 940 -%}{{ card_product.featured_media | image_url: width: 940 }} 940w,{%- endif -%}
-                  {%- if card_product.featured_media.width >= 1066 -%}{{ card_product.featured_media | image_url: width: 1066 }} 1066w,{%- endif -%}
-                  {{ card_product.featured_media | image_url }} {{ card_product.featured_media.width }}w
-                "
-                src="{{ card_product.featured_media | image_url: width: 533 }}"
-                sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 130 | divided_by: 4 }}px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
-                alt="{{ card_product.featured_media.alt | escape }}"
-                class="motion-reduce"
-                {% unless lazy_load == false %}
-                  loading="lazy"
-                {% endunless %}
-                width="{{ card_product.featured_media.width }}"
-                height="{{ card_product.featured_media.height }}"
-              >
-              {% comment %}theme-check-enable ImgLazyLoading{% endcomment %}
-
-              {%- if card_product.media[1] != null and show_secondary_image -%}
+        <div
+          class='tw-mix-blend-darken tw-max-h-[160px] card__inner {% if settings.card_style == 'standard' %}color-{{ settings.card_color_scheme }} gradient{% endif %}{% if card_product.featured_media or settings.card_style == 'standard' %} ratio{% endif %}'
+          style='--ratio-percent: {{ 1 | divided_by: ratio | times: 100 }}%;'
+        >
+          {%- if card_product.featured_media -%}
+            <div class='card__media{% if image_shape and image_shape != 'default' %} shape--{{ image_shape }} color-{{ settings.card_color_scheme }} gradient{% endif %}'>
+              <div class='media media--transparent media--hover-effect'>
+                {% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
                 <img
-                  srcset="
-                    {%- if card_product.media[1].width >= 165 -%}{{ card_product.media[1] | image_url: width: 165 }} 165w,{%- endif -%}
-                    {%- if card_product.media[1].width >= 360 -%}{{ card_product.media[1] | image_url: width: 360 }} 360w,{%- endif -%}
-                    {%- if card_product.media[1].width >= 533 -%}{{ card_product.media[1] | image_url: width: 533 }} 533w,{%- endif -%}
-                    {%- if card_product.media[1].width >= 720 -%}{{ card_product.media[1] | image_url: width: 720 }} 720w,{%- endif -%}
-                    {%- if card_product.media[1].width >= 940 -%}{{ card_product.media[1] | image_url: width: 940 }} 940w,{%- endif -%}
-                    {%- if card_product.media[1].width >= 1066 -%}{{ card_product.media[1] | image_url: width: 1066 }} 1066w,{%- endif -%}
-                    {{ card_product.media[1] | image_url }} {{ card_product.media[1].width }}w
-                  "
-                  src="{{ card_product.media[1] | image_url: width: 533 }}"
-                  sizes="(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 130 | divided_by: 4 }}px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)"
-                  alt=""
-                  class="motion-reduce"
-                  loading="lazy"
-                  width="{{ card_product.media[1].width }}"
-                  height="{{ card_product.media[1].height }}"
+                  srcset='
+                    {%- if card_product.featured_media.width >= 165 -%}{{ card_product.featured_media | image_url: width: 165 }} 165w,{%- endif -%}
+                    {%- if card_product.featured_media.width >= 360 -%}{{ card_product.featured_media | image_url: width: 360 }} 360w,{%- endif -%}
+                    {%- if card_product.featured_media.width >= 533 -%}{{ card_product.featured_media | image_url: width: 533 }} 533w,{%- endif -%}
+                    {%- if card_product.featured_media.width >= 720 -%}{{ card_product.featured_media | image_url: width: 720 }} 720w,{%- endif -%}
+                    {%- if card_product.featured_media.width >= 940 -%}{{ card_product.featured_media | image_url: width: 940 }} 940w,{%- endif -%}
+                    {%- if card_product.featured_media.width >= 1066 -%}{{ card_product.featured_media | image_url: width: 1066 }} 1066w,{%- endif -%}
+                    {{ card_product.featured_media | image_url }} {{ card_product.featured_media.width }}w
+                  '
+                  src='{{ card_product.featured_media | image_url: width: 533 }}'
+                  sizes='(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 130 | divided_by: 4 }}px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)'
+                  alt='{{ card_product.featured_media.alt | escape }}'
+                  class='motion-reduce'
+                  {% unless lazy_load == false %}
+                    loading='lazy'
+                  {% endunless %}
+                  width='{{ card_product.featured_media.width }}'
+                  height='{{ card_product.featured_media.height }}'
                 >
-              {%- endif -%}
+                {% comment %}theme-check-enable ImgLazyLoading{% endcomment %}
+
+                {%- if card_product.media[1] != null and show_secondary_image -%}
+                  <img
+                    srcset='
+                      {%- if card_product.media[1].width >= 165 -%}{{ card_product.media[1] | image_url: width: 165 }} 165w,{%- endif -%}
+                      {%- if card_product.media[1].width >= 360 -%}{{ card_product.media[1] | image_url: width: 360 }} 360w,{%- endif -%}
+                      {%- if card_product.media[1].width >= 533 -%}{{ card_product.media[1] | image_url: width: 533 }} 533w,{%- endif -%}
+                      {%- if card_product.media[1].width >= 720 -%}{{ card_product.media[1] | image_url: width: 720 }} 720w,{%- endif -%}
+                      {%- if card_product.media[1].width >= 940 -%}{{ card_product.media[1] | image_url: width: 940 }} 940w,{%- endif -%}
+                      {%- if card_product.media[1].width >= 1066 -%}{{ card_product.media[1] | image_url: width: 1066 }} 1066w,{%- endif -%}
+                      {{ card_product.media[1] | image_url }} {{ card_product.media[1].width }}w
+                    '
+                    src='{{ card_product.media[1] | image_url: width: 533 }}'
+                    sizes='(min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 130 | divided_by: 4 }}px, (min-width: 990px) calc((100vw - 130px) / 4), (min-width: 750px) calc((100vw - 120px) / 3), calc((100vw - 35px) / 2)'
+                    alt=''
+                    class='motion-reduce'
+                    loading='lazy'
+                    width='{{ card_product.media[1].width }}'
+                    height='{{ card_product.media[1].height }}'
+                  >
+                {%- endif -%}
+              </div>
             </div>
-          </div>
-        {%- endif -%}
-      </div>
-      <div class="card__content">
-          <span class="tw-text-small tw-text-text-gray tw-pt-4">{{ card_product.vendor }}</span>
+          {%- endif -%}
+        </div>
+        <div class='card__content'>
+          <span class='tw-text-small tw-text-text-gray tw-pt-4'>{{ card_product.vendor }}</span>
           <h3
-            class="tw-text-h4 tw-pt-12 tw-line-clamp-2 tw-overflow-hidden tw-text-ellipsis"
+            class='tw-text-h4 tw-pt-12 tw-line-clamp-2 tw-overflow-hidden tw-text-ellipsis'
             {% if card_product.featured_media or settings.card_style == 'card' %}
-              id="title-{{ section_id }}-{{ card_product.id }}"
+              id='title-{{ section_id }}-{{ card_product.id }}'
             {% endif %}
           >
-            <a
-              href="{{ card_product.url }}"
-              id="CardLink-{{ section_id }}-{{ card_product.id }}"
-              class="tw-p-0"
-              aria-labelledby="CardLink-{{ section_id }}-{{ card_product.id }} Badge-{{ section_id }}-{{ card_product.id }}"
-            >
+            <span class='tw-p-0'>
               {{ card_product.title | escape }}
-            </a>
+            </span>
           </h3>
 
-        {% assign = price = card_product.price | money %}
-        {% assign priceText = "Buy for " | append: price%}
+          {% assign = price = card_product.price | money %}
+          {% assign priceText = 'Buy for ' | append: price %}
 
-        <div class="product-card__button">
-          {% render 'button', label: priceText, url: card_product.url , variant: 'tertiary-light', size: 'large' %}
+          <div class='product-card__button'>
+            {% render 'button', label: priceText, url: card_product.url, variant: 'tertiary-light', size: 'large' %}
+          </div>
+
+          {% render 'price',
+            product: card_product,
+            price_class: 'tw-flex tw-items-end tw-min-h-[69px]',
+            show_compare_at_price: true,
+            showQuantity: true
+          %}
         </div>
-
-        {% render 'price', product: card_product, price_class: 'tw-flex tw-items-end tw-min-h-[69px]', show_compare_at_price: true, showQuantity: true %}
       </div>
-    </div>
+    </a>
   </div>
 {%- endif -%}

@@ -5,14 +5,16 @@
   - url: Button URL (optional, defaults to #)
   - variant: "solid", "solid-yellow", "solid-green", "tertiary-dark", "tertiary-light" (default: "solid")
   - size: "large", "medium", "small" (default: "medium")
+  - custom_class: Custom class for the button (optional, defaults to '')
 
-  {% render 'button', label: block.settings.mainBanner_button_text, url: block.settings.mainBanner_button_url , variant: 'solid-yellow', size: 'large' %}
+  {% render 'button', label: block.settings.mainBanner_button_text, url: block.settings.mainBanner_button_url , variant: 'solid-yellow', size: 'large' custom_class: 'tw-block'%}
 {% endcomment %}
 
 {% assign btn_label = label | default: "Button Text" %}
 {% assign btn_url = url | default: "#" %}
 {% assign btn_variant = variant | default: "solid" %}
 {% assign btn_size = size | default: "medium" %}
+{% assign class_name = custom_class | default: "" %}
 
 {%- case btn_variant -%}
   {%- when "solid" -%}
@@ -38,6 +40,6 @@
     {% assign size_class = "tw-text-text-button-large tw-px-24 tw-py-8" %}
 {%- endcase -%}
 
-<a href="{{ btn_url }}" class="tw-inline-block tw-text-nowrap tw-text-center tw-rounded-md tw-font-semibold tw-transition tw-duration-300 max-tablet:tw-w-full {{ btn_class }} {{ size_class }}">
+<a href="{{ btn_url }}" class="tw-inline-block tw-text-nowrap tw-text-center tw-rounded-md tw-font-semibold tw-transition tw-duration-300 max-tablet:tw-w-full {{ btn_class }} {{ size_class }} {{ class_name }}">
   {{ btn_label }}
 </a>
