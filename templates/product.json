@@ -12,16 +12,16 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "title": {
-          "type": "title",
-          "settings": {}
-        },
         "vendor": {
           "type": "text",
           "settings": {
             "text": "{{ product.vendor }}",
             "text_style": "uppercase"
           }
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
         },
         "price": {
           "type": "price",
@@ -78,8 +78,8 @@
         }
       },
       "block_order": [
-        "title",
         "vendor",
+        "title",
         "price",
         "variant_picker",
         "quantity_selector",
