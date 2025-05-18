@@ -7,7 +7,7 @@
 
 <nav class=''>
   <ul class='list-menu tw-flex' role='list'>
-    {%- for link in section.settings.menu.links -%}
+    {%- for link in section.settings.topbar-menu.links -%}
       <li class='tw-flex tw-items-center {% if forloop.first %}tw-pr-12{% elsif forloop.last %}tw-pl-12{% else %}tw-px-12{% endif %}'>
         <a
           id='TopBarMenu-{{ link.handle }}'
