@@ -231,6 +231,16 @@
         "name": "metaobject_reference",
         "category": "REFERENCE"
       }
+    },
+    {
+      "key": "product_badge",
+      "namespace": "custom",
+      "name": "Product badge",
+      "description": "",
+      "type": {
+        "name": "list.metaobject_reference",
+        "category": "REFERENCE"
+      }
     }
   ],
   "variant": [],

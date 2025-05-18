@@ -1,0 +1,77 @@
+
+{%- liquid
+  if section.settings.enable_country_selector or section.settings.enable_language_selector
+    assign language_country_selector = true
+  endif
+  if section.blocks.size > 0
+    assign top_bar_menu = true
+  endif
+-%}
+<div style="background: linear-gradient(to right, #1A0822 0%, #041611 100%);">
+  <div
+    class="page-width tw-hidden tablet:tw-block tw-py-8"
+  >
+    <div class="tw-flex tw-justify-between">
+      <div class="localization-wrapper">
+        {%- if section.settings.enable_country_selector and localization.available_countries.size > 1 -%}
+          <localization-form class="small-hide medium-hide">
+            {%- form 'localization', id: 'AnnouncementCountryForm', class: 'localization-form' -%}
+              <div>
+                <h2 class="visually-hidden" id="AnnouncementCountryLabel">{{ 'localization.country_label' | t }}</h2>
+                {%- render 'country-localization', localPosition: 'AnnouncementCountry' -%}
+              </div>
+            {%- endform -%}
+          </localization-form>
+        {% endif %}
+
+        {%- if section.settings.enable_language_selector and localization.available_languages.size > 1 -%}
+          <localization-form class="small-hide medium-hide">
+            {%- form 'localization', id: 'TopBarLanguageForm', class: 'localization-form' -%}
+              <div>
+                <h2 class="visually-hidden" id="TopBarLanguageLabel">{{ 'localization.language_label' | t }}</h2>
+                {%- render 'language-localization', localPosition: 'TopBarLanguage' -%}
+              </div>
+            {%- endform -%}
+          </localization-form>
+        {%- endif -%}
+      </div>
+      <div>
+        {% render 'topbar-menu' %}
+      </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Topbar Menu",
+  "class": "top-bar-menu-section",
+  "enabled_on": {
+    "groups": ["header"]
+  },
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-4"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "default": "topbar-menu",
+      "label": "t:sections.header.settings.menu.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_country_selector",
+      "default": false,
+      "label": "t:sections.announcement-bar.settings.enable_country_selector.label"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Topbar menu",
+    }
+  ]
+}
+{% endschema %}

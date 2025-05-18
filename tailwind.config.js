@@ -3,6 +3,7 @@ const plugin = require('tailwindcss/plugin');
 const colorConfig = {
   lightGrey: '#F5F7FA',
   almostWhite: '#FAFAFC',
+  almostWhite2: '#ffffff3d',
   white: '#FFFFFF',
   lightGrey2: 'rgba(17 5 22/.08)',
   gray: 'rgba(17 5 22/.40)',
@@ -43,6 +44,13 @@ const typographyConfig = {
   },
   '.text-small': {
     font: "700 12px/20px 'Gilroy', sans-serif !important",
+    '@media (max-width: 768px)': {
+      fontSize: '15px !important',
+      lineHeight: '27px !important',
+    },
+  },
+  '.text-medium': {
+    font: "500 13px/22px 'Gilroy', sans-serif !important",
     '@media (max-width: 768px)': {
       fontSize: '15px !important',
       lineHeight: '27px !important',
@@ -132,6 +140,7 @@ module.exports = {
       borderColor: {
         'accent-purple': colorConfig.purple,
         lightGray: colorConfig.lightGrey2,
+        almostWhite: colorConfig.almostWhite2,
       },
       colors: {
         'accent-purple': colorConfig.purple,
