@@ -11,6 +11,15 @@
   "name": "t:sections.header.name",
   "type": "header",
   "sections": {
+    "top_bar_menu_MdeU9q": {
+      "type": "top-bar-menu",
+      "name": "Topbar menu",
+      "settings": {
+        "color_scheme": "",
+        "topbar-menu": "topbar-menu",
+        "enable_country_selector": true
+      }
+    },
     "header": {
       "type": "header",
       "settings": {
@@ -32,6 +41,7 @@
     }
   },
   "order": [
+    "top_bar_menu_MdeU9q",
     "header"
   ]
 }
