@@ -58,7 +58,7 @@
         "collection": "all",
         "products_to_show": 8,
         "columns_desktop": 6,
-        "columns_mobile": 2,
+        "columns_mobile": 1,
         "show_view_all": true,
         "enable_desktop_slider": true,
         "enable_mobile_slider": true
@@ -73,7 +73,7 @@
         "collection": "pokemon-tcg",
         "products_to_show": 9,
         "columns_desktop": 6,
-        "columns_mobile": 2,
+        "columns_mobile": 1,
         "show_view_all": true,
         "enable_desktop_slider": true,
         "enable_mobile_slider": true
