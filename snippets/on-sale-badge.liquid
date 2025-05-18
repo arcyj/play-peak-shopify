@@ -1,0 +1,24 @@
+{% comment %}
+  Badge Snippet (Tailwind)
+  Props:
+  - product: product object (required)
+  - class: Custom CSS classes (optional)
+
+  Usage:
+  {% render 'on-sale-badge', product: {product}, class: 'custom-class' %}
+{% endcomment %}
+
+{%- liquid
+  # Calculate Discount Percentage
+  assign compare_at_price = product.compare_at_price
+  assign price = product.price
+  assign discount_percentage = 0
+  if compare_at_price > price
+    assign discount_percentage = compare_at_price | minus: price | times: 100 | divided_by: compare_at_price
+    assign discount_percentage_text = '-' | append: discount_percentage | round | append: '% OFF'
+  endif
+-%}
+
+{%- if product.compare_at_price > product.price and product.available -%}
+  {% render 'badge', label: discount_percentage_text, variant: 'on-sale', class: class %}
+{%- endif -%}

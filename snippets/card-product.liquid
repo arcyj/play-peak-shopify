@@ -39,22 +39,18 @@
     if ratio == 0 or ratio == null
       assign ratio = 1
     endif
-
-    # Calculate Discount Percentage
-    assign compare_at_price = card_product.compare_at_price
-    assign price = card_product.price
-    assign discount_percentage = 0
-    if compare_at_price > price
-      assign discount_percentage = compare_at_price | minus: price | times: 100 | divided_by: compare_at_price
-      assign discount_percentage_text = '-' | append: discount_percentage | round | append: '% OFF'
-    endif
   -%}
 
   <div class='card-wrapper product-card-wrapper tw-bg-surface-lightGrey tw-rounded tw-px-12 tw-pt-12 tw-pb-24'>
     <a href='{{ card_product.url }}' class='tw-block tw-no-underline'>
-      {%- if card_product.compare_at_price > card_product.price and card_product.available -%}
-        {% render 'badge', label: discount_percentage_text, variant: 'on-sale', class: 'tw-absolute tw-top-0' %}
-      {%- endif -%}
+        {% render 'on-sale-badge', product: card_product, class: 'tw-absolute tw-top-0 !tw-rounded-t-none' %}
+        <div class='tw-absolute tw-z-50 tw-top-4 tw-right-4'>
+          {% if card_product.metafields.custom.product_badge %}
+            {% for badge in card_product.metafields.custom.product_badge.value %}
+              {% render 'badge', label: badge.label, variant: badge.variant, class: '' %}
+            {% endfor %}
+          {% endif %}
+        </div>
       <div
         class='
           card card--{{ settings.card_style }}

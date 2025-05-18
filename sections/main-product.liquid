@@ -81,22 +81,26 @@
         </p>
         <h1 class='tw-text-h1'>{{ product.title | escape }}</h1>
       </div>
+
       <div class='grid__item'>
         <div class='product__media-wrapper'>
           {% render 'product-media-gallery', variant_images: variant_images %}
         </div>
-        <div class="tw-bg-white tw-border tw-border-solid tw-border-lightGray tw-p-32 tw-hidden tablet:tw-block">
+        <div class='tw-bg-white tw-border tw-border-solid tw-border-lightGray tw-p-32 tw-hidden tablet:tw-block'>
           <h3 class='tw-text-dark tw-text-h3 tw-mb-24'>Product Specification</h3>
-          <div class="desktop:tw-flex">
+          <div class='desktop:tw-flex'>
             {%- if product.description != blank -%}
-              <div class='product__description desktop:tw-w-1/2 tw-mr-24 tw-text-regular tw-text-dark' {{ block.shopify_attributes }}>
+              <div
+                class='product__description desktop:tw-w-1/2 tw-mr-24 tw-text-regular tw-text-dark'
+                {{ block.shopify_attributes }}
+              >
                 {{ product.description }}
               </div>
             {%- endif -%}
-            <div class="desktop:tw-w-1/2">
-              {% render 'product-detail', label: "Brand", value: product.vendor %}
-              {% render 'product-detail', label: "Langauge", value:product.metafields.details.language.value.name %}
-              {% render 'product-detail', label: "Suitable age", value:product.metafields.details.age.value %}
+            <div class='desktop:tw-w-1/2'>
+              {% render 'product-detail', label: 'Brand', value: product.vendor %}
+              {% render 'product-detail', label: 'Langauge', value: product.metafields.details.language.value.name %}
+              {% render 'product-detail', label: 'Suitable age', value: product.metafields.details.age.value %}
             </div>
           </div>
         </div>
@@ -107,8 +111,6 @@
           class='product__info-container product__column-sticky tw-roudnded tw-bg-white tw-border tw-border-solid tw-border-lightGray tw-p-32'
         >
           {%- assign product_form_id = 'product-form-' | append: section.id -%}
-
-          <script>console.log({{ product | json }})</script>
 
           {%- for block in section.blocks -%}
             {%- case block.type -%}
@@ -122,77 +124,78 @@
                 <div class='product__title tw-mb-24 tw-hidden tablet:tw-block' {{ block.shopify_attributes }}>
                   <h1 class='tw-text-h1'>{{ product.title | escape }}</h1>
                 </div>
-                <p class="tw-text-regular-semi tw-mb-24">{{ product.metafields.details.short_description.value }}</p>
-                <span class="divider tw-mb-24"></span>
+                <p class='tw-text-regular-semi tw-mb-24'>{{ product.metafields.details.short_description.value }}</p>
+                <span class='divider tw-mb-24'></span>
               {%- when 'price' -%}
-                <div class="tw-flex max-tablet:tw-justify-between">
-                    <div id='price-{{ section.id }}' role='status' {{ block.shopify_attributes }}>
-                      {%- render 'price',
-                        product: product,
-                        use_variant: true,
-                        show_badges: true,
-                        price_class: 'price--large tw-flex tw-items-end tw-h-full tw-mr-32'
-                      -%}
-                    </div>
-                    {% comment %}  Start qty input{% endcomment %}
-                    <div
-                      id='Quantity-Form-{{ section.id }}'
-                      class='product-form__quantity{% if settings.inputs_shadow_vertical_offset != 0 and settings.inputs_shadow_vertical_offset < 0 %} product-form__quantity-top{% endif %}'
-                      {{ block.shopify_attributes }}
-                    >
-                      {% comment %} TODO: enable theme-check once `item_count_for_variant` is accepted as valid filter {% endcomment %}
-                      {% # theme-check-disable %}
-                      {%- assign cart_qty = cart
-                        | item_count_for_variant: product.selected_or_first_available_variant.id
-                      -%}
-                      {% # theme-check-enable %}
-                      <label class='quantity__label form__label' for='Quantity-{{ section.id }}'>
-                        {{ 'products.product.quantity.label' | t }}
-                        <span class='quantity__rules-cart{% if cart_qty == 0 %} hidden{% endif %}'>
-                          {%- render 'loading-spinner' -%}
-                          <span
-                            >(
-                            {{- 'products.product.quantity.in_cart_html' | t: quantity: cart_qty -}}
-                            )</span
-                          >
-                        </span>
-                      </label>
-                      <div class='tw-flex'>
-                        <quantity-input class='quantity' data-url='{{ product.url }}' data-section='{{ section.id }}'>
-                          <button class='quantity__button' name='minus' type='button'>
-                            <span class='visually-hidden'>
-                              {{- 'products.product.quantity.decrease' | t: product: product.title | escape -}}
-                            </span>
-                            <span class='svg-wrapper'>
-                              {{- 'icon-minus.svg' | inline_asset_content -}}
-                            </span>
-                          </button>
-                          <input
-                            class='quantity__input'
-                            type='number'
-                            name='quantity'
-                            id='Quantity-{{ section.id }}'
-                            data-cart-quantity='{{ cart_qty }}'
-                            data-min='{{ product.selected_or_first_available_variant.quantity_rule.min }}'
-                            min='{{ product.selected_or_first_available_variant.quantity_rule.min }}'
-                            {% if product.selected_or_first_available_variant.quantity_rule.max != null %}
-                              data-max='{{ product.selected_or_first_available_variant.quantity_rule.max }}'
-                              max='{{ product.selected_or_first_available_variant.quantity_rule.max }}'
-                            {% endif %}
-                            step='{{ product.selected_or_first_available_variant.quantity_rule.increment }}'
-                            value='{{ product.selected_or_first_available_variant.quantity_rule.min }}'
-                            form='{{ product_form_id }}'
-                          >
-                          <button class='quantity__button' name='plus' type='button'>
-                            <span class='visually-hidden'>
-                              {{- 'products.product.quantity.increase' | t: product: product.title | escape -}}
-                            </span>
-                            <span class='svg-wrapper'>
-                              {{- 'icon-plus.svg' | inline_asset_content -}}
-                            </span>
-                          </button>
-                        </quantity-input>
-                        {% comment %} {%- liquid
+                <div class='tw-flex max-tablet:tw-justify-between'>
+                  <div id='price-{{ section.id }}' role='status' {{ block.shopify_attributes }}>
+                    {%- render 'price',
+                      product: product,
+                      use_variant: true,
+                      show_badges: true,
+                      price_class: 'price--large tw-flex tw-items-end tw-h-full tw-mr-32'
+                    -%}
+                  </div>
+                  {% comment %}  Start qty input{% endcomment %}
+                  <div
+                    id='Quantity-Form-{{ section.id }}'
+                    class='product-form__quantity{% if settings.inputs_shadow_vertical_offset != 0 and settings.inputs_shadow_vertical_offset < 0 %} product-form__quantity-top{% endif %}'
+                    {{ block.shopify_attributes }}
+                  >
+                    {% comment %} TODO: enable theme-check once `item_count_for_variant` is accepted as valid filter {% endcomment %}
+                    {% # theme-check-disable %}
+                    {%- assign cart_qty = cart
+                      | item_count_for_variant: product.selected_or_first_available_variant.id
+                    -%}
+                    {% # theme-check-enable %}
+                    <label class='quantity__label form__label' for='Quantity-{{ section.id }}'>
+                      {{ 'products.product.quantity.label' | t }}
+                      <span class='quantity__rules-cart{% if cart_qty == 0 %} hidden{% endif %}'>
+                        {%- render 'loading-spinner' -%}
+                        <span
+                          >(
+                          {{- 'products.product.quantity.in_cart_html' | t: quantity: cart_qty -}}
+                          )</span
+                        >
+                      </span>
+                    </label>
+                    <div class='tw-flex'>
+                      <quantity-input class='quantity' data-url='{{ product.url }}' data-section='{{ section.id }}'>
+                        <button class='quantity__button' name='minus' type='button'>
+                          <span class='visually-hidden'>
+                            {{- 'products.product.quantity.decrease' | t: product: product.title | escape -}}
+                          </span>
+                          <span class='svg-wrapper'>
+                            {{- 'icon-minus.svg' | inline_asset_content -}}
+                          </span>
+                        </button>
+                        <input
+                          class='quantity__input'
+                          type='number'
+                          name='quantity'
+                          id='Quantity-{{ section.id }}'
+                          data-cart-quantity='{{ cart_qty }}'
+                          data-min='{{ product.selected_or_first_available_variant.quantity_rule.min }}'
+                          min='{{ product.selected_or_first_available_variant.quantity_rule.min }}'
+                          {% if product.selected_or_first_available_variant.quantity_rule.max != null %}
+                            data-max='{{ product.selected_or_first_available_variant.quantity_rule.max }}'
+                            max='{{ product.selected_or_first_available_variant.quantity_rule.max }}'
+                          {% endif %}
+                          step='{{ product.selected_or_first_available_variant.quantity_rule.increment }}'
+                          value='{{ product.selected_or_first_available_variant.quantity_rule.min }}'
+                          form='{{ product_form_id }}'
+                        >
+                        <button class='quantity__button' name='plus' type='button'>
+                          <span class='visually-hidden'>
+                            {{- 'products.product.quantity.increase' | t: product: product.title | escape -}}
+                          </span>
+                          <span class='svg-wrapper'>
+                            {{- 'icon-plus.svg' | inline_asset_content -}}
+                          </span>
+                        </button>
+                      </quantity-input>
+                      {% comment %}
+                        {%- liquid
                           assign volume_pricing_array = product.selected_or_first_available_variant.quantity_price_breaks | sort: 'quantity' | reverse
                           assign current_qty_for_volume_pricing = cart_qty | plus: product.selected_or_first_available_variant.quantity_rule.min
                           if cart_qty > 0
@@ -275,9 +278,11 @@
                               </div>
                             {%- endif -%}
                           </price-per-item>
-                        {%- endif -%} {% endcomment %}
-                      </div>
-                      {% comment %} <div class='quantity__rules caption' id='Quantity-Rules-{{ section.id }}'>
+                        {%- endif -%}
+                      {% endcomment %}
+                    </div>
+                    {% comment %}
+                      <div class='quantity__rules caption' id='Quantity-Rules-{{ section.id }}'>
                         {%- if product.selected_or_first_available_variant.quantity_rule.increment > 1 -%}
                           <span class='divider'>
                             {{-
@@ -302,8 +307,10 @@
                             -}}
                           </span>
                         {%- endif -%}
-                      </div> {% endcomment %}
-                      {% comment %} {%- if product.quantity_price_breaks_configured? -%}
+                      </div>
+                    {% endcomment %}
+                    {% comment %}
+                      {%- if product.quantity_price_breaks_configured? -%}
                         <volume-pricing class='parent-display' id='Volume-{{ section.id }}'>
                           {%- if product.selected_or_first_available_variant.quantity_price_breaks.size > 0 -%}
                             <span class='caption-large'>{{ 'products.product.volume_pricing.title' | t }}</span>
@@ -345,29 +352,32 @@
                             {%- endif -%}
                           {%- endif -%}
                         </volume-pricing>
-                      {%- endif -%} {% endcomment %}
-                    </div>
-                     {% comment %} End qty input {% endcomment %}
+                      {%- endif -%}
+                    {% endcomment %}
+                  </div>
+                  {% comment %} End qty input {% endcomment %}
                 </div>
                 {%- if product.quantity_price_breaks_configured? -%}
                   <div class='volume-pricing-note' id='Volume-Note-{{ section.id }}'>
                     <span>{{ 'products.product.volume_pricing.note' | t }}</span>
                   </div>
                 {%- endif -%}
-                {% comment %} {%- if cart.taxes_included or cart.duties_included or shop.shipping_policy.body != blank -%}
-                  <div class='product__tax caption rte'>
-                    {%- if cart.duties_included and cart.taxes_included -%}
-                      {{ 'products.product.duties_and_taxes_included' | t }}
-                    {%- elsif cart.taxes_included -%}
-                      {{ 'products.product.taxes_included' | t }}
-                    {%- elsif cart.duties_included -%}
-                      {{ 'products.product.duties_included' | t }}
-                    {%- endif -%}
-                    {%- if shop.shipping_policy.body != blank -%}
-                      {{ 'products.product.shipping_policy_html' | t: link: shop.shipping_policy.url }}
-                    {%- endif -%}
-                  </div>
-                {%- endif -%} {% endcomment %}
+                {% comment %}
+                  {%- if cart.taxes_included or cart.duties_included or shop.shipping_policy.body != blank -%}
+                    <div class='product__tax caption rte'>
+                      {%- if cart.duties_included and cart.taxes_included -%}
+                        {{ 'products.product.duties_and_taxes_included' | t }}
+                      {%- elsif cart.taxes_included -%}
+                        {{ 'products.product.taxes_included' | t }}
+                      {%- elsif cart.duties_included -%}
+                        {{ 'products.product.duties_included' | t }}
+                      {%- endif -%}
+                      {%- if shop.shipping_policy.body != blank -%}
+                        {{ 'products.product.shipping_policy_html' | t: link: shop.shipping_policy.url }}
+                      {%- endif -%}
+                    </div>
+                  {%- endif -%}
+                {% endcomment %}
                 <div {{ block.shopify_attributes }}>
                   {%- assign product_form_installment_id = 'product-form-installment-' | append: section.id -%}
                   {%- form 'product', product, id: product_form_installment_id, class: 'installment caption-large' -%}
@@ -382,49 +392,51 @@
                   id='Inventory-{{ section.id }}'
                   role='status'
                 >
-                  {% comment %} {%- if product.selected_or_first_available_variant.inventory_management == 'shopify' -%}
-                    {%- if product.selected_or_first_available_variant.inventory_quantity > 0 -%}
-                      {%- if product.selected_or_first_available_variant.inventory_quantity
-                          <= block.settings.inventory_threshold
-                      -%}
-                        <span class='svg-wrapper' style='color: rgb(238, 148, 65)'>
-                          {{- 'icon-inventory-status.svg' | inline_asset_content -}}
-                        </span>
-                        {%- if block.settings.show_inventory_quantity -%}
-                          {{-
-                            'products.product.inventory_low_stock_show_count'
-                            | t: quantity: product.selected_or_first_available_variant.inventory_quantity
-                          -}}
+                  {% comment %}
+                    {%- if product.selected_or_first_available_variant.inventory_management == 'shopify' -%}
+                      {%- if product.selected_or_first_available_variant.inventory_quantity > 0 -%}
+                        {%- if product.selected_or_first_available_variant.inventory_quantity
+                            <= block.settings.inventory_threshold
+                        -%}
+                          <span class='svg-wrapper' style='color: rgb(238, 148, 65)'>
+                            {{- 'icon-inventory-status.svg' | inline_asset_content -}}
+                          </span>
+                          {%- if block.settings.show_inventory_quantity -%}
+                            {{-
+                              'products.product.inventory_low_stock_show_count'
+                              | t: quantity: product.selected_or_first_available_variant.inventory_quantity
+                            -}}
+                          {%- else -%}
+                            {{- 'products.product.inventory_low_stock' | t -}}
+                          {%- endif -%}
                         {%- else -%}
-                          {{- 'products.product.inventory_low_stock' | t -}}
+                          <span class='svg-wrapper' style='color: rgb(62, 214, 96)'>
+                            {{- 'icon-inventory-status.svg' | inline_asset_content -}}
+                          </span>
+                          {%- if block.settings.show_inventory_quantity -%}
+                            {{-
+                              'products.product.inventory_in_stock_show_count'
+                              | t: quantity: product.selected_or_first_available_variant.inventory_quantity
+                            -}}
+                          {%- else -%}
+                            {{- 'products.product.inventory_in_stock' | t -}}
+                          {%- endif -%}
                         {%- endif -%}
                       {%- else -%}
-                        <span class='svg-wrapper' style='color: rgb(62, 214, 96)'>
-                          {{- 'icon-inventory-status.svg' | inline_asset_content -}}
-                        </span>
-                        {%- if block.settings.show_inventory_quantity -%}
-                          {{-
-                            'products.product.inventory_in_stock_show_count'
-                            | t: quantity: product.selected_or_first_available_variant.inventory_quantity
-                          -}}
+                        {%- if product.selected_or_first_available_variant.inventory_policy == 'continue' -%}
+                          <span class='svg-wrapper' style='color: rgb(62, 214, 96)'>
+                            {{- 'icon-inventory-status.svg' | inline_asset_content -}}
+                          </span>
+                          {{- 'products.product.inventory_out_of_stock_continue_selling' | t -}}
                         {%- else -%}
-                          {{- 'products.product.inventory_in_stock' | t -}}
+                          <span class='svg-wrapper' style='color: rgb(200, 200, 200)'>
+                            {{- 'icon-inventory-status.svg' | inline_asset_content -}}
+                          </span>
+                          {{- 'products.product.inventory_out_of_stock' | t -}}
                         {%- endif -%}
-                      {%- endif -%}
-                    {%- else -%}
-                      {%- if product.selected_or_first_available_variant.inventory_policy == 'continue' -%}
-                        <span class='svg-wrapper' style='color: rgb(62, 214, 96)'>
-                          {{- 'icon-inventory-status.svg' | inline_asset_content -}}
-                        </span>
-                        {{- 'products.product.inventory_out_of_stock_continue_selling' | t -}}
-                      {%- else -%}
-                        <span class='svg-wrapper' style='color: rgb(200, 200, 200)'>
-                          {{- 'icon-inventory-status.svg' | inline_asset_content -}}
-                        </span>
-                        {{- 'products.product.inventory_out_of_stock' | t -}}
                       {%- endif -%}
                     {%- endif -%}
-                  {%- endif -%} {% endcomment %}
+                  {% endcomment %}
                 </p>
               {%- when 'popup' -%}
                 <modal-opener
