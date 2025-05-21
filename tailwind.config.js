@@ -2,6 +2,7 @@ const plugin = require('tailwindcss/plugin');
 
 const colorConfig = {
   lightGrey: '#F5F7FA',
+  F4F5F7: '#F4F5F7',
   almostWhite: '#FAFAFC',
   almostWhite2: '#ffffff3d',
   white: '#FFFFFF',
@@ -157,6 +158,7 @@ module.exports = {
         },
         surface: {
           lightGrey: colorConfig.lightGrey,
+          gray: colorConfig.F4F5F7,
         },
       },
     },

@@ -15,15 +15,10 @@
 
 .localization-form:only-child .button,
 .localization-form:only-child .localization-form__select {
-  margin: 1rem 1rem 0.5rem;
   flex-grow: 1;
 }
 
 @media screen and (min-width: 750px) {
-  .localization-form {
-    padding: 1rem 2rem 1rem 0;
-  }
-
   .localization-form:first-of-type {
     padding-left: 0;
   }
@@ -32,11 +27,6 @@
     justify-content: start;
     width: auto;
     margin: 0 1rem 0 0;
-  }
-
-  .localization-form:only-child .button,
-  .localization-form:only-child .localization-form__select {
-    margin: 1rem 0;
   }
 }
 
@@ -72,16 +62,7 @@
 }
 
 .disclosure__button.localization-form__select {
-  padding: calc(2rem + var(--inputs-border-width));
   background: rgb(var(--color-background));
-}
-
-.localization-form__select .icon-caret {
-  position: absolute;
-  content: '';
-  height: 0.6rem;
-  right: calc(var(--inputs-border-width) + 1.5rem);
-  top: calc(50% - 0.2rem);
 }
 
 .localization-selector.link {
@@ -93,10 +74,6 @@
   width: 100%;
   padding-right: 4rem;
   padding-bottom: 1.5rem;
-}
-
-.disclosure .localization-form__select {
-  padding-top: 1.5rem;
 }
 
 .localization-selector option {
@@ -128,8 +105,6 @@
   border-color: rgba(var(--color-foreground), var(--popup-border-opacity));
   overflow: hidden;
   position: absolute;
-  bottom: 100%;
-  transform: translateY(-1rem);
   z-index: 2;
   background-color: rgb(var(--color-background));
   border-radius: var(--popup-corner-radius);
@@ -417,12 +392,6 @@
   .localization-form__select
   > span {
   max-width: 26ch;
-}
-
-.header-localization:not(.menu-drawer__localization)
-  .localization-form__select
-  .icon-caret {
-  right: 0.8rem;
 }
 
 .header-localization:not(.menu-drawer__localization) .disclosure__list-wrapper {

@@ -11,7 +11,7 @@
   <div
     class="page-width tw-hidden tablet:tw-block tw-py-8"
   >
-    <div class="tw-flex tw-justify-between">
+    <div class="tw-flex tw-justify-between tw-items-center">
       <div class="localization-wrapper">
         {%- if section.settings.enable_country_selector and localization.available_countries.size > 1 -%}
           <localization-form class="small-hide medium-hide">
@@ -25,7 +25,7 @@
         {% endif %}
 
         {%- if section.settings.enable_language_selector and localization.available_languages.size > 1 -%}
-          <localization-form class="small-hide medium-hide">
+          <localization-form class="">
             {%- form 'localization', id: 'TopBarLanguageForm', class: 'localization-form' -%}
               <div>
                 <h2 class="visually-hidden" id="TopBarLanguageLabel">{{ 'localization.language_label' | t }}</h2>
@@ -65,6 +65,12 @@
       "id": "enable_country_selector",
       "default": false,
       "label": "t:sections.announcement-bar.settings.enable_country_selector.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_language_selector",
+      "default": false,
+      "label": "t:sections.announcement-bar.settings.enable_language_selector.label"
     }
   ],
   "presets": [

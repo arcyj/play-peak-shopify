@@ -10,7 +10,7 @@ if (!customElements.get('localization-form')) {
           input: this.querySelector(
             'input[name="locale_code"], input[name="country_code"]',
           ),
-          button: this.querySelector('button.localization-form__select'),
+          button: this.querySelector('button.localization-form__select_button'),
           panel: this.querySelector('.disclosure__list-wrapper'),
           search: this.querySelector('input[name="country_filter"]'),
           closeButton: this.querySelector('.country-selector__close-button'),

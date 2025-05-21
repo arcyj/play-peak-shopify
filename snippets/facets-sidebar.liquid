@@ -143,72 +143,43 @@
                                 {%- endcapture -%}
 
                                 <li class='mobile-facets__item list-menu__item'>
-                                  {% if presentation == 'swatch' %}
-                                    <div class='{{ label_class }}'>
-                                      <div class='swatch-input-wrapper'>
-                                        {% render 'swatch-input',
-                                          id: input_id,
-                                          type: 'checkbox',
-                                          name: value.param_name,
-                                          value: value.value,
-                                          product_form_id: 'FacetFiltersFormMobile',
-                                          swatch: value.swatch,
-                                          checked: value.active,
-                                          disabled: is_disabled
-                                        %}
+                                  <label for='{{ input_id }}' class='{{ label_class }}'>
+                                    <input
+                                      class='mobile-facets__checkbox'
+                                      type='checkbox'
+                                      name='{{ value.param_name }}'
+                                      value='{{ value.value }}'
+                                      id='{{ input_id }}'
+                                      {% if value.active %}
+                                        checked
+                                      {% endif %}
+                                      {% if is_disabled %}
+                                        disabled
+                                      {% endif %}
+                                    >
+
+                                    {%- if presentation == 'image' -%}
+                                      <div class='facets__image-wrapper'>
+                                        {%- if value.image -%}
+                                          {{
+                                            value.image
+                                            | image_url: width: 300
+                                            | image_tag: class: 'facets__image', alt: value.alt
+                                          }}
+                                        {%- endif -%}
                                       </div>
+                                    {%- else -%}
+                                      <span class='mobile-facets__highlight'></span>
+                                      {{- 'square.svg' | inline_asset_content -}}
+                                      {{- 'icon-checkmark.svg' | inline_asset_content -}}
+                                    {%- endif %}
 
-                                      {{ text_value }}
-                                    </div>
-                                  {% else %}
-                                    <label for='{{ input_id }}' class='{{ label_class }}'>
-                                      <input
-                                        class='mobile-facets__checkbox'
-                                        type='checkbox'
-                                        name='{{ value.param_name }}'
-                                        value='{{ value.value }}'
-                                        id='{{ input_id }}'
-                                        {% if value.active %}
-                                          checked
-                                        {% endif %}
-                                        {% if is_disabled %}
-                                          disabled
-                                        {% endif %}
-                                      >
-
-                                      {%- if presentation == 'image' -%}
-                                        <div class='facets__image-wrapper'>
-                                          {%- if value.image -%}
-                                            {{
-                                              value.image
-                                              | image_url: width: 300
-                                              | image_tag: class: 'facets__image', alt: value.alt
-                                            }}
-                                          {%- endif -%}
-                                        </div>
-                                      {%- else -%}
-                                        <span class='mobile-facets__highlight'></span>
-                                        {{- 'square.svg' | inline_asset_content -}}
-                                        {{- 'icon-checkmark.svg' | inline_asset_content -}}
-                                      {%- endif %}
-
-                                      {{ text_value }}
-                                    </label>
-                                  {% endif %}
+                                    {{ text_value }}
+                                  </label>
                                 </li>
                               {%- endfor -%}
                             </ul>
                           </div>
-                        </div>
-                      {% when 'price_range' %}
-                        <div
-                          id='Details-Mobile-{{ filter.param_name | escape }}-{{ section.id }}'
-                          class='js-filter'
-                          data-index='mobile-{{ forloop.index }}'
-                        >
-                          <price-range class='facets__price'>
-                            {% render 'price-facet', filter: filter, id_prefix: 'Mobile-Filter-' %}
-                          </price-range>
                         </div>
                     {% endcase %}
                   {%- endfor -%}

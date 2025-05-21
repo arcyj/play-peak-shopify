@@ -237,8 +237,8 @@
         "other": "{{ count }} suggestions"
       },
       "results_products_with_count": {
-        "one": "{{ count }} product",
-        "other": "{{ count }} products"
+        "one": "{{ count }} selected",
+        "other": "{{ count }} selected"
       },
       "results_with_count": {
         "one": "{{ count }} result",

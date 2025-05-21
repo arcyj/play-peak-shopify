@@ -3,6 +3,7 @@
   Props:
   - label: Button text (required)
   - url: Button URL (optional, defaults to #)
+    - onClick: JavaScript to run on click (optional)
   - variant: "solid", "solid-yellow", "solid-green", "tertiary-dark", "tertiary-light" (default: "solid")
   - size: "large", "medium", "small" (default: "medium")
   - custom_class: Custom class for the button (optional, defaults to '')
@@ -19,6 +20,8 @@
 {%- case btn_variant -%}
   {%- when "solid" -%}
     {% assign btn_class = "tw-bg-blue-500 tw-text-white hover:tw-bg-blue-600" %}
+  {%- when "solid-purple" -%}
+    {% assign btn_class = "tw-bg-[#943BF2] tw-text-white hover:tw-bg-[#AE6AF5]" %}
   {%- when "solid-yellow" -%}
     {% assign btn_class = "tw-bg-yellow-400 tw-text-black hover:tw-bg-yellow-500" %}
   {%- when "solid-green" -%}
@@ -40,6 +43,19 @@
     {% assign size_class = "tw-text-text-button-large tw-px-24 tw-py-8" %}
 {%- endcase -%}
 
-<a href="{{ btn_url }}" class="tw-inline-block tw-text-nowrap tw-text-center tw-rounded-md tw-font-semibold tw-transition tw-duration-300 max-tablet:tw-w-full {{ btn_class }} {{ size_class }} {{ class_name }}">
-  {{ btn_label }}
-</a>
+{%- if btn_onclick != "" -%}
+  <button
+    type="button"
+    onclick="{{ btn_onclick }}"
+    class="tw-inline-block tw-text-nowrap tw-text-center tw-rounded-md tw-font-semibold tw-transition tw-duration-300 max-tablet:tw-w-full {{ btn_class }} {{ size_class }} {{ class_name }}"
+  >
+    {{ btn_label }}
+  </button>
+{%- else -%}
+  <a
+    href="{{ btn_url }}"
+    class="tw-inline-block tw-text-nowrap tw-text-center tw-rounded-md tw-font-semibold tw-transition tw-duration-300 max-tablet:tw-w-full {{ btn_class }} {{ size_class }} {{ class_name }}"
+  >
+    {{ btn_label }}
+  </a>
+{%- endif -%}

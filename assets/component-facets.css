@@ -818,9 +818,7 @@ a.active-facets__button.focused .active-facets__button-inner {
 }
 
 .mobile-facets__header {
-  border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.08);
   padding: 1rem 2.5rem;
-  text-align: center;
   display: flex;
   position: sticky;
   top: 0;
@@ -953,7 +951,6 @@ details.menu-opening .mobile-facets__close .svg-wrapper {
 }
 
 .mobile-facets__main {
-  padding: 2.7rem 0 0;
   position: relative;
   z-index: 1;
   flex-grow: 1;
@@ -994,19 +991,6 @@ details.menu-opening .mobile-facets__close .svg-wrapper {
 .mobile-facets__summary > div {
   display: flex;
   align-items: center;
-}
-
-.js .mobile-facets__submenu {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  bottom: 0;
-  left: 0;
-  z-index: 3;
-  transform: translateX(100%);
-  visibility: hidden;
-  display: flex;
-  flex-direction: column;
 }
 
 .js details[open] > .mobile-facets__submenu {
