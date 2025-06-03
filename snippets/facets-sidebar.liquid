@@ -82,7 +82,7 @@
           <form id='FacetFiltersFormSidebar' class='  '>
 
               <div
-                id='FacetsWrapperMobile'
+                id='FacetsWrapperSidebar'
                 class=''
               >
                 {%- if enable_filtering -%}
@@ -99,8 +99,13 @@
                     {% case filter.type %}
                       {% when 'boolean', 'list' %}
                         <div
-                          class='js-filter'
+                          class='js-filter tw-bg-surface-gray tw-rounded tw-mb-16'
                         >
+                          <summary class='mobile-facets__summary focus-inset'>
+                            <div>
+                              <span class="tw-text-large tw-text-black">{{ filter.label | escape }}</span>
+                            </div>
+                          </summary>
                           <div
                             id='FacetMobile-{{ forloop.index }}-{{ section.id }}'
                           >
@@ -177,8 +182,35 @@
                                     {{ text_value }}
                                   </label>
                                 </li>
+
                               {%- endfor -%}
                             </ul>
+                          </div>
+                        </div>
+                      {% when 'price_range' %}
+                        <div
+                          id='Details-Mobile-{{ filter.param_name | escape }}-{{ section.id }}'
+                          class='js-filter tw-bg-surface-gray tw-rounded tw-mb-16'
+                          data-index='mobile-{{ forloop.index }}'
+                        >
+                          <summary class='mobile-facets__summary focus-inset'>
+                            <div>
+                              <span class="tw-text-large tw-text-black">{{ filter.label | escape }}</span>
+                            </div>
+                          </summary>
+                          <div
+                            id='FacetMobile-{{ forloop.index }}-{{ section.id }}'
+                            class='mobile-facets__submenu '
+                          >
+                            {%- assign max_price_amount = filter.range_max | money | strip_html | escape -%}
+                            <p class='mobile-facets__info'>
+                              {{ 'products.facets.max_price' | t: price: max_price_amount }}
+                            </p>
+
+                            <price-range class='facets__price tw-gap-8'>
+                              {% render 'price-facet', filter: filter, id_prefix: 'Mobile-Filter-' %}
+                            </price-range>
+
                           </div>
                         </div>
                     {% endcase %}

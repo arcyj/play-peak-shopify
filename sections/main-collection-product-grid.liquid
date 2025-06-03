@@ -46,7 +46,7 @@
         <script src='{{ 'facets.js' | asset_url }}' defer='defer'></script>
 
         <div class='tw-w-3/12 tw-mr-12 tw-hidden desktop:tw-block'>
-          <div class='tw-bg-surface-lightGrey tw-rounded'>
+          <div>
             {% assign main_collection = collection.metafields.category.parent.value %}
 
             {% comment %} <h2 class='tw-text-h2 tw-text-text-dark tw-px-20 tw-pt-20 tw-pb-16'>{{ main_collection.title }}</h2> {% endcomment %}

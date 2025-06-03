@@ -870,6 +870,10 @@ video {
   margin-top: auto;
 }
 
+.tw-mb-1 {
+  margin-bottom: 0.25rem;
+}
+
 .tw-line-clamp-2 {
   overflow: hidden;
   display: -webkit-box;
@@ -975,6 +979,10 @@ video {
 
 .tw-items-center {
   align-items: center;
+}
+
+.tw-justify-end {
+  justify-content: flex-end;
 }
 
 .tw-justify-center {
@@ -1441,6 +1449,10 @@ video {
 
   .tablet\:tw-hidden {
     display: none;
+  }
+
+  .tablet\:\!tw-hidden {
+    display: none !important;
   }
 
   .tablet\:tw-flex-row {
