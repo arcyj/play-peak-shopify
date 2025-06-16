@@ -14,7 +14,7 @@
         <search-form class="search-modal__form">
       {%- endif -%}
         <form action="{{ routes.search_url }}" method="get" role="search" class="search search-modal__form tw-max-w-[900px] tw-m-auto">
-          <div class="field tw-border-2 tw-border-solid tw-border-accent-purple tw-rounded">
+          <div class="field tw-border-2 tw-border-solid tw-bg-accent-purple tw-border-accent-purple tw-rounded">
             <input
               class="search__input field__input tw-rounded"
               id="{{ input_id }}"
@@ -37,7 +37,7 @@
             >
             <label class="field__label" for="{{ input_id }}">{{ 'general.search.search' | t }}</label>
             <input type="hidden" name="options[prefix]" value="last">
-            <button
+            {% comment %} <button
               type="reset"
               class="reset__button field__button{% if search.terms == blank %} hidden{% endif %}"
               aria-label="{{ 'general.search.reset' | t }}"
@@ -45,7 +45,7 @@
               <span class="svg-wrapper">
                 {{- 'icon-reset.svg' | inline_asset_content -}}
               </span>
-            </button>
+            </button> {% endcomment %}
             <button class="tw-bg-accent-purple tw-px-12 tw-flex tw-items-center tw-justify-center tw-w-[80px]" aria-label="{{ 'general.search.search' | t }}">
               <span class="svg-wrapper">
                 {{- 'icon-search.svg' | inline_asset_content -}}

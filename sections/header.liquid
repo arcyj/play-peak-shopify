@@ -15,7 +15,6 @@
 <style>
   header-drawer {
     justify-self: start;
-    margin-left: -1.2rem;
   }
 
   {%- if section.settings.sticky_header_type == 'reduce-logo-size' -%}
@@ -73,10 +72,6 @@
 </style>
 
 {%- style -%}
-  .header {
-    padding: {{ section.settings.padding_top | times: 0.5 | round: 0 }}px 3rem {{ section.settings.padding_bottom | times: 0.5 | round: 0 }}px 3rem;
-  }
-
   .section-header {
     position: sticky; /* This is for fixing a Safari z-index issue. PR #2147 */
     margin-bottom: {{ section.settings.margin_bottom | times: 0.75 | round: 0 }}px;
@@ -85,13 +80,6 @@
   @media screen and (min-width: 750px) {
     .section-header {
       margin-bottom: {{ section.settings.margin_bottom }}px;
-    }
-  }
-
-  @media screen and (min-width: 990px) {
-    .header {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
 {%- endstyle -%}
@@ -132,7 +120,7 @@
 
     {%- if section.settings.logo_position != 'middle-center' -%}
       {%- if request.page_type == 'index' -%}
-        <h1 class="header__heading">
+        <h1 class="header__heading tw-justify-self-start">
       {%- endif -%}
           <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
             {%- if settings.logo != blank -%}
@@ -253,7 +241,7 @@
               endif
             -%}
           </span>
-          <span class="header__icon-text">Sign in</span>
+          <span class="header__icon-text tw-hidden desktop:tw-block">Sign in</span>
         </a>
       {%- endif -%}
 
@@ -266,7 +254,7 @@
 
       <a href="{{ routes.cart_url }}" class="header__icon header__icon--heart link focus-inset">
         <span class="svg-wrapper">{{'icon-heart.svg' | inline_asset_content }}</span>
-        <span class="header__icon-text">Wishlist</span>
+        <span class="tw-hidden desktop:tw-block">Wishlist</span>
     </a>
 
       <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
@@ -284,7 +272,7 @@
             <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
           </div>
         {%- endif -%}
-        <span class="header__icon-text">Cart</span>
+        <span class="tw-hidden desktop:tw-flex">Cart</span>
       </a>
     </div>
   </header>
