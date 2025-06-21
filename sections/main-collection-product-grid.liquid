@@ -45,7 +45,7 @@
         {{ 'component-facets.css' | asset_url | stylesheet_tag }}
         <script src='{{ 'facets.js' | asset_url }}' defer='defer'></script>
 
-        <div class='tw-w-3/12 tw-mr-12 tw-hidden desktop:tw-block'>
+        <div class='tw-w-[20%] tw-mr-12 tw-hidden desktop:tw-block'>
           <div>
             {% assign main_collection = collection.metafields.category.parent.value %}
 
@@ -73,7 +73,7 @@
             </div>
           </div>
         </div>
-        <div class='tw-w-full desktop:tw-w-9/12'>
+        <div class='tw-w-full desktop:tw-w-[80%]'>
           {% assign child_collection = collection.metafields.custom.child_collections.value %}
           <slider-component class="tw-mb-24 slider-mobile-gutter{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
             <div
