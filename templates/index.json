@@ -9,6 +9,97 @@
  */
 {
   "sections": {
+    "collection_list_MBPGeV": {
+      "type": "collection-list",
+      "blocks": {
+        "featured_collection_FHdaeE": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "booster-box-1"
+          }
+        },
+        "featured_collection_XfFbwD": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "trove-packs"
+          }
+        },
+        "featured_collection_7aX6fx": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "star-wars-unlimited"
+          }
+        },
+        "featured_collection_RfwN7m": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "one-piece"
+          }
+        },
+        "featured_collection_G7yngK": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "lorcana-tcg"
+          }
+        },
+        "featured_collection_mEWK8P": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "all-tcg"
+          }
+        },
+        "featured_collection_wapTXw": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "elite-trainer-box"
+          }
+        },
+        "featured_collection_7ebKpF": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "accessories"
+          }
+        },
+        "featured_collection_C9bPqn": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "magic-the-gathering"
+          }
+        },
+        "featured_collection_H4rVBc": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "pokemon-tcg"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_FHdaeE",
+        "featured_collection_XfFbwD",
+        "featured_collection_7aX6fx",
+        "featured_collection_RfwN7m",
+        "featured_collection_G7yngK",
+        "featured_collection_mEWK8P",
+        "featured_collection_wapTXw",
+        "featured_collection_7ebKpF",
+        "featured_collection_C9bPqn",
+        "featured_collection_H4rVBc"
+      ],
+      "disabled": true,
+      "name": "t:sections.collection-list.presets.name",
+      "settings": {
+        "title": "Collections",
+        "heading_size": "h1",
+        "image_ratio": "square",
+        "columns_desktop": 5,
+        "color_scheme": "",
+        "show_view_all": true,
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 16,
+        "padding_bottom": 16
+      }
+    },
     "hero_block_CEUTCB": {
       "type": "hero-block",
       "blocks": {
@@ -96,6 +187,7 @@
     }
   },
   "order": [
+    "collection_list_MBPGeV",
     "hero_block_CEUTCB",
     "featured_collection",
     "featured_collection_6eCXcf",
