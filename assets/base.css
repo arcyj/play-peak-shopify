@@ -2148,11 +2148,6 @@ input[type='checkbox'] {
 .header-wrapper {
   display: block;
   position: relative;
-  box-shadow: 0 -8px 12px 8px rgb(0 0 0 / 0.15);
-}
-
-.header-wrapper--border-bottom {
-  border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.08);
 }
 
 .header {

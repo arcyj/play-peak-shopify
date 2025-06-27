@@ -645,7 +645,7 @@ class HeaderDrawer extends MenuDrawer {
   }
 
   openMenuDrawer(summaryElement) {
-    this.header = this.header || document.querySelector('.section-header');
+    this.header = this.header || document.querySelector('.mega-menu-section');
     this.borderOffset =
       this.borderOffset ||
       this.closest('.header-wrapper').classList.contains(

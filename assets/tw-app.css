@@ -759,6 +759,10 @@ video {
   right: 8px;
 }
 
+.tw-right-\[90px\] {
+  right: 90px;
+}
+
 .tw-top-0 {
   top: 0px;
 }
@@ -769,18 +773,6 @@ video {
 
 .tw-top-4 {
   top: 4px;
-}
-
-.tw-right-\[\] {
-  right: ;
-}
-
-.tw-right-\[90pc\] {
-  right: 90pc;
-}
-
-.tw-right-\[90px\] {
-  right: 90px;
 }
 
 .tw-top-\[15px\] {
@@ -945,8 +937,8 @@ video {
   width: 50%;
 }
 
-.tw-w-3\/12 {
-  width: 25%;
+.tw-w-\[20\%\] {
+  width: 20%;
 }
 
 .tw-w-\[80px\] {
@@ -959,34 +951,6 @@ video {
 
 .tw-w-full {
   width: 100%;
-}
-
-.tw-w-2\/12 {
-  width: 16.666667%;
-}
-
-.tw-w-1\/12 {
-  width: 8.333333%;
-}
-
-.tw-w-1\/6 {
-  width: 16.666667%;
-}
-
-.tw-w-2\/6 {
-  width: 33.333333%;
-}
-
-.tw-w-\[\] {
-  width: ;
-}
-
-.tw-w-\[2\] {
-  width: 2;
-}
-
-.tw-w-\[20\%\] {
-  width: 20%;
 }
 
 .tw-min-w-0 {
@@ -1078,16 +1042,16 @@ video {
   border-width: 1px;
 }
 
+.tw-border-0 {
+  border-width: 0px;
+}
+
 .tw-border-2 {
   border-width: 2px;
 }
 
 .tw-border-\[1\.5px\] {
   border-width: 1.5px;
-}
-
-.tw-border-0 {
-  border-width: 0px;
 }
 
 .tw-border-b {
@@ -1179,6 +1143,10 @@ video {
   background-color: rgb(245 247 250 / var(--tw-bg-opacity));
 }
 
+.tw-bg-transparent {
+  background-color: transparent;
+}
+
 .tw-bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
@@ -1187,10 +1155,6 @@ video {
 .tw-bg-yellow-400 {
   --tw-bg-opacity: 1;
   background-color: rgb(250 204 21 / var(--tw-bg-opacity));
-}
-
-.tw-bg-transparent {
-  background-color: transparent;
 }
 
 .tw-p-0 {
@@ -1397,14 +1361,6 @@ video {
   mix-blend-mode: darken;
 }
 
-.tw-shadow-md {
-  --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color),
-    0 2px 4px -2px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
-    var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
-
 .tw-transition {
   transition-property: color, background-color, border-color, fill, stroke,
     opacity, box-shadow, transform, filter, -webkit-text-decoration-color,
@@ -1539,30 +1495,6 @@ video {
 
   .desktop\:tw-w-1\/2 {
     width: 50%;
-  }
-
-  .desktop\:tw-w-9\/12 {
-    width: 75%;
-  }
-
-  .desktop\:tw-w-10\/12 {
-    width: 83.333333%;
-  }
-
-  .desktop\:tw-w-1\/6 {
-    width: 16.666667%;
-  }
-
-  .desktop\:tw-w-5\/6 {
-    width: 83.333333%;
-  }
-
-  .desktop\:tw-w-4\/6 {
-    width: 66.666667%;
-  }
-
-  .desktop\:tw-w-\[\] {
-    width: ;
   }
 
   .desktop\:tw-w-\[80\%\] {
