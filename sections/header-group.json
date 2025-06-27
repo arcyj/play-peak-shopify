@@ -15,9 +15,10 @@
       "type": "top-bar-menu",
       "name": "Topbar menu",
       "settings": {
-        "color_scheme": "",
+        "color_scheme": "scheme-4",
         "topbar-menu": "topbar-menu",
-        "enable_country_selector": true
+        "enable_country_selector": true,
+        "enable_language_selector": false
       }
     },
     "header": {
@@ -29,7 +30,7 @@
         "sticky_header_type": "always",
         "show_line_separator": true,
         "color_scheme": "scheme-1",
-        "menu_color_scheme": "",
+        "menu_color_scheme": "scheme-2",
         "enable_country_selector": false,
         "enable_language_selector": false,
         "enable_customer_avatar": true,
@@ -38,10 +39,18 @@
         "padding_top": 20,
         "padding_bottom": 20
       }
+    },
+    "mega_menu_BccPei": {
+      "type": "mega-menu",
+      "name": "Mega menu",
+      "settings": {
+        "meag_menu": "main-menu"
+      }
     }
   },
   "order": [
     "top_bar_menu_MdeU9q",
-    "header"
+    "header",
+    "mega_menu_BccPei"
   ]
 }
