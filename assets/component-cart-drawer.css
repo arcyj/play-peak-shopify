@@ -17,7 +17,7 @@
 
 .drawer__inner {
   height: 100%;
-  width: 40rem;
+  width: 490px;
   max-width: calc(100vw - 3rem);
   padding: 0 1.5rem;
   border: 0.1rem solid rgba(var(--color-foreground), 0.2);
@@ -267,8 +267,9 @@ cart-drawer-items {
 .cart-drawer .cart-item__totals {
   pointer-events: none;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: flex-end;
+  font-weight: 600;
 }
 
 .cart-drawer.cart-drawer .cart-item__price-wrapper > *:only-child {

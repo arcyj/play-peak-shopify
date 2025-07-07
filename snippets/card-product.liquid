@@ -43,14 +43,14 @@
 
   <div class='card-wrapper product-card-wrapper tw-bg-surface-lightGrey tw-rounded tw-px-12 tw-pt-12 tw-pb-24'>
     <a href='{{ card_product.url }}' class='tw-block tw-no-underline'>
-        {% render 'on-sale-badge', product: card_product, class: 'tw-absolute tw-top-0 !tw-rounded-t-none' %}
-        <div class='tw-absolute tw-z-50 tw-top-4 tw-right-4'>
-          {% if card_product.metafields.custom.product_badge %}
-            {% for badge in card_product.metafields.custom.product_badge.value %}
-              {% render 'badge', label: badge.label, variant: badge.variant, class: '' %}
-            {% endfor %}
-          {% endif %}
-        </div>
+      {% render 'on-sale-badge', product: card_product, class: 'tw-absolute tw-top-0 !tw-rounded-t-none' %}
+      <div class='tw-absolute tw-z-50 tw-top-4 tw-right-4'>
+        {% if card_product.metafields.custom.product_badge %}
+          {% for badge in card_product.metafields.custom.product_badge.value %}
+            {% render 'badge', label: badge.label, variant: badge.variant, class: '' %}
+          {% endfor %}
+        {% endif %}
+      </div>
       <div
         class='
           card card--{{ settings.card_style }}
@@ -133,8 +133,47 @@
           {% assign = price = card_product.price | money %}
           {% assign priceText = 'Buy for ' | append: price %}
 
+          <script>
+            console.log("prodct", {{ card_product | json }});
+          </script>
           <div class='product-card__button'>
-            {% render 'button', label: priceText, url: card_product.url, variant: 'tertiary-light', size: 'large' %}
+            <product-form class='product-form' data-section-id='{{ section_id }}'>
+              {%- form 'product',
+                card_product,
+                id: card_product.id,
+                class: 'form',
+                novalidate: 'novalidate',
+                data-type: 'add-to-cart-form'
+              -%}
+                <input type='hidden' name='id' value='{{ card_product.selected_or_first_available_variant.id }}'>
+                <input type='hidden' name='quantity' value='1'>
+                <button
+                  id='ProductSubmitButton-{{ section_id }}'
+                  type='submit'
+                  name='add'
+                  class='tw-inline-block tw-text-nowrap tw-text-center tw-rounded-md tw-font-semibold tw-transition tw-duration-300 max-tablet:tw-w-full tw-border tw-border-black tw-text-black hover:tw-bg-black hover:tw-text-white tw-text-text-button-large tw-px-24 tw-py-16'
+                  {% if card_product.selected_or_first_available_variant.available == false
+                    or quantity_rule_soldout
+                    or card_product.selected_or_first_available_variant == null
+                  %}
+                    disabled
+                  {% endif %}
+                >
+                  <span>
+                    {%- if card_product.selected_or_first_available_variant == null -%}
+                      {{ 'products.product.unavailable' | t }}
+                    {%- elsif card_product.selected_or_first_available_variant.available == false
+                      or quantity_rule_soldout
+                    -%}
+                      {{ 'products.product.sold_out' | t }}
+                    {%- else -%}
+                      {{ 'products.product.add_to_cart' | t }}
+                    {%- endif -%}
+                  </span>
+                  {%- render 'loading-spinner' -%}
+                </button>
+              {%- endform -%}
+            </product-form>
           </div>
 
           {% render 'price',

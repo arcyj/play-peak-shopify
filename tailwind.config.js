@@ -40,7 +40,7 @@ const typographyConfig = {
     font: "700 16px/24px 'Gilroy', sans-serif !important",
     '@media (max-width: 768px)': {
       fontSize: '15px !important',
-      lineHeight: '27px !important',
+      lineHeight: '23px !important',
     },
   },
   '.text-small': {

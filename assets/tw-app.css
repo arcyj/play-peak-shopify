@@ -647,7 +647,7 @@ video {
 @media (max-width: 768px) {
   .tw-text-h4 {
     font-size: 15px !important;
-    line-height: 27px !important;
+    line-height: 23px !important;
   }
 }
 
@@ -1222,6 +1222,11 @@ video {
 .tw-py-\[6px\] {
   padding-top: 6px;
   padding-bottom: 6px;
+}
+
+.tw-py-12 {
+  padding-top: 12px;
+  padding-bottom: 12px;
 }
 
 .tw-pb-16 {

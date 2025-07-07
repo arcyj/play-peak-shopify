@@ -259,7 +259,7 @@ cart-remove-button .icon-remove {
 
   .cart-item__totals {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     justify-content: flex-end;
   }
 }

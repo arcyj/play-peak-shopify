@@ -11,50 +11,51 @@
   {% render 'button', label: block.settings.mainBanner_button_text, url: block.settings.mainBanner_button_url , variant: 'solid-yellow', size: 'large' custom_class: 'tw-block'%}
 {% endcomment %}
 
-{% assign btn_label = label | default: "Button Text" %}
-{% assign btn_url = url | default: "#" %}
-{% assign btn_variant = variant | default: "solid" %}
-{% assign btn_size = size | default: "medium" %}
-{% assign class_name = custom_class | default: "" %}
+{% assign btn_label = label | default: 'Button Text' %}
+{% assign btn_url = url | default: '#' %}
+{% assign btn_variant = variant | default: 'solid' %}
+{% assign btn_size = size | default: 'medium' %}
+{% assign class_name = custom_class | default: '' %}
+{% assign btn_onclick = onClick | default: '' %}
 
 {%- case btn_variant -%}
-  {%- when "solid" -%}
-    {% assign btn_class = "tw-bg-blue-500 tw-text-white hover:tw-bg-blue-600" %}
-  {%- when "solid-purple" -%}
-    {% assign btn_class = "tw-bg-[#943BF2] tw-text-white hover:tw-bg-[#AE6AF5]" %}
-  {%- when "solid-yellow" -%}
-    {% assign btn_class = "tw-bg-yellow-400 tw-text-black hover:tw-bg-yellow-500" %}
-  {%- when "solid-green" -%}
-    {% assign btn_class = "tw-bg-green-500 tw-text-white hover:tw-bg-green-600" %}
-  {%- when "tertiary-dark" -%}
-    {% assign btn_class = "tw-border tw-border-white tw-text-white hover:tw-bg-white hover:tw-text-black" %}
-  {%- when "tertiary-light" -%}
-    {% assign btn_class = "tw-border tw-border-black tw-text-black hover:tw-bg-black hover:tw-text-white" %}
+  {%- when 'solid' -%}
+    {% assign btn_class = 'tw-bg-blue-500 tw-text-white hover:tw-bg-blue-600' %}
+  {%- when 'solid-purple' -%}
+    {% assign btn_class = 'tw-bg-[#943BF2] tw-text-white hover:tw-bg-[#AE6AF5]' %}
+  {%- when 'solid-yellow' -%}
+    {% assign btn_class = 'tw-bg-yellow-400 tw-text-black hover:tw-bg-yellow-500' %}
+  {%- when 'solid-green' -%}
+    {% assign btn_class = 'tw-bg-green-500 tw-text-white hover:tw-bg-green-600' %}
+  {%- when 'tertiary-dark' -%}
+    {% assign btn_class = 'tw-border tw-border-white tw-text-white hover:tw-bg-white hover:tw-text-black' %}
+  {%- when 'tertiary-light' -%}
+    {% assign btn_class = 'tw-border tw-border-black tw-text-black hover:tw-bg-black hover:tw-text-white' %}
   {%- else -%}
-    {% assign btn_class = "tw-bg-blue-500 tw-text-white hover:tw-bg-blue-600" %}
+    {% assign btn_class = 'tw-bg-blue-500 tw-text-white hover:tw-bg-blue-600' %}
 {%- endcase -%}
 
 {%- case btn_size -%}
-  {%- when "large" -%}
-    {% assign size_class = "tw-text-text-button-large tw-px-24 tw-py-16" %}
-  {%- when "small" -%}
-    {% assign size_class = "tw-text-sm tw-px-4 tw-py-2" %}
+  {%- when 'large' -%}
+    {% assign size_class = 'tw-text-text-button-large tw-px-24 tw-py-16' %}
+  {%- when 'small' -%}
+    {% assign size_class = 'tw-text-sm tw-px-4 tw-py-2' %}
   {%- else -%}
-    {% assign size_class = "tw-text-text-button-large tw-px-24 tw-py-8" %}
+    {% assign size_class = 'tw-text-text-button-large tw-px-24 tw-py-8' %}
 {%- endcase -%}
 
-{%- if btn_onclick != "" -%}
+{%- if btn_onclick != '' -%}
   <button
-    type="button"
-    onclick="{{ btn_onclick }}"
-    class="tw-inline-block tw-text-nowrap tw-text-center tw-rounded-md tw-font-semibold tw-transition tw-duration-300 max-tablet:tw-w-full {{ btn_class }} {{ size_class }} {{ class_name }}"
+    type='button'
+    onclick='{{ btn_onclick }}'
+    class='tw-inline-block tw-text-nowrap tw-text-center tw-rounded-md tw-font-semibold tw-transition tw-duration-300 max-tablet:tw-w-full {{ btn_class }} {{ size_class }} {{ class_name }}'
   >
     {{ btn_label }}
   </button>
 {%- else -%}
   <a
-    href="{{ btn_url }}"
-    class="tw-inline-block tw-text-nowrap tw-text-center tw-rounded-md tw-font-semibold tw-transition tw-duration-300 max-tablet:tw-w-full {{ btn_class }} {{ size_class }} {{ class_name }}"
+    href='{{ btn_url }}'
+    class='tw-inline-block tw-text-nowrap tw-text-center tw-rounded-md tw-font-semibold tw-transition tw-duration-300 max-tablet:tw-w-full {{ btn_class }} {{ size_class }} {{ class_name }}'
   >
     {{ btn_label }}
   </a>

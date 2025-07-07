@@ -190,6 +190,16 @@ cart-items {
 
 .cart__checkout-button {
   max-width: 36rem;
+  background-color: #63e96c;
+  border: 2px solid #63e96c;
+  color: #110516;
+  font-weight: 600;
+  border-radius: 6px;
+}
+.cart__checkout-button:hover {
+  background-color: #000;
+  border: 2px solid #000;
+  color: #fff;
 }
 
 .cart__ctas {

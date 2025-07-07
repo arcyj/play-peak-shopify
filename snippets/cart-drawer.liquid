@@ -62,7 +62,7 @@
         </div>
       {%- endif -%}
       <div class="drawer__header">
-        <h2 class="drawer__heading">{{ 'sections.cart.title' | t }}</h2>
+        <h2 class="drawer__heading tw-text-large">{{ 'sections.cart.title' | t }}</h2>
         <button
           class="drawer__close"
           type="button"
@@ -118,7 +118,7 @@
 
                   <tbody role="rowgroup">
                     {%- for item in cart.items -%}
-                      <tr id="CartDrawer-Item-{{ item.index | plus: 1 }}" class="cart-item" role="row">
+                      <tr id="CartDrawer-Item-{{ item.index | plus: 1 }}" class="cart-item tw-border-solid tw-border-b tw-py-12" role="row">
                         <td class="cart-item__media" role="cell" headers="CartDrawer-ColumnProductImage">
                           {% if item.image %}
                             {% comment %} Leave empty space due to a:empty CSS display: none rule {% endcomment %}
@@ -139,7 +139,7 @@
                             <p class="caption-with-letter-spacing light">{{ item.product.vendor }}</p>
                           {%- endif -%}
 
-                          <a href="{{ item.url }}" class="cart-item__name h4 break">
+                          <a href="{{ item.url }}" class="cart-item__name tw-text-h4 break">
                             {{- item.product.title | escape -}}
                           </a>
 
@@ -333,7 +333,7 @@
                               >
                                 <button
                                   type="button"
-                                  class="button button--tertiary cart-remove-button"
+                                  class="button button--tertiary cart-remove-button tw-px-4 tw-py-2"
                                   aria-label="{{ 'sections.cart.remove_title' | t: title: item.title | escape }}"
                                   data-variant-id="{{ item.variant.id }}"
                                 >
@@ -494,8 +494,8 @@
           </div>
 
           <div class="totals" role="status">
-            <h2 class="totals__total">{{ 'sections.cart.estimated_total' | t }}</h2>
-            <p class="totals__total-value">{{ cart.total_price | money_with_currency }}</p>
+            <h2 class="totals__total tw-text-h4">{{ 'sections.cart.estimated_total' | t }}</h2>
+            <p class="totals__total-value tw-text-h3">{{ cart.total_price | money_with_currency }}</p>
           </div>
 
           <small class="tax-note caption-large rte">

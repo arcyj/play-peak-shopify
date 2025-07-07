@@ -23,7 +23,7 @@ product-info {
   .product__column-sticky {
     display: block;
     position: sticky;
-    top: 170px;
+    top: 70px;
     z-index: 2;
   }
 
