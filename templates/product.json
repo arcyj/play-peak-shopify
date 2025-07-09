@@ -57,16 +57,10 @@
             "heading_3": "Heading"
           }
         },
-        "custom_liquid_z4MmFA": {
+        "custom_liquid_HBiNrH": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "I NEED IT HERE"
-          }
-        },
-        "custom_liquid_UEHGNp": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": ""
+            "custom_liquid": "<div style=\"border-top:1px solid #eee; padding:16px 0;\">\n  <div style=\"display:flex; align-items:center; gap:8px; margin-bottom:8px;\">\n    <span>🚚</span>\n    <span>Thu, Jul 10 – Fri, Jul 11</span>\n  </div>\n</div>\n\n<div style=\"border-top:1px solid #eee; padding:16px 0;\">\n  <div style=\"display:flex; align-items:center; gap:8px; margin-bottom:4px;\">\n    <span>✔</span>\n    <span>Secure payment</span>\n  </div>\n  <div style=\"display:flex; align-items:center; gap:8px;\">\n    <span>✔</span>\n    <span>14-day return policy</span>\n  </div>\n</div>\n\n<div style=\"border-top:1px solid #eee; padding:16px 0;\">\n  <div style=\"display:flex; align-items:center; gap:8px;\">\n    <span>🏪</span>\n    <span>Sold and shipped by <strong>Linné Elektronikhandel</strong> <span style=\"border:1px solid #000; border-radius:50%; padding:0 4px; font-size:12px;\">i</span></span>\n  </div>\n</div>"
           }
         },
         "description": {
@@ -84,12 +78,12 @@
           "settings": {
             "block_heading": "Pairs well with",
             "make_collapsible_row": false,
-            "icon": "price_tag",
+            "icon": "question_mark",
             "product_list_limit": 10,
             "products_per_page": 3,
-            "pagination_style": "counter",
-            "image_ratio": "square",
-            "enable_quick_add": false
+            "pagination_style": "numbers",
+            "image_ratio": "portrait",
+            "enable_quick_add": true
           }
         },
         "inventory_7aDLXj": {
@@ -98,12 +92,6 @@
             "text_style": "subtitle",
             "inventory_threshold": 39,
             "show_inventory_quantity": true
-          }
-        },
-        "custom_liquid_HBiNrH": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "<div style=\"border-top:1px solid #eee; padding:16px 0;\">\n  <div style=\"display:flex; align-items:center; gap:8px; margin-bottom:8px;\">\n    <span>🚚</span>\n    <span>Thu, Jul 10 – Fri, Jul 11</span>\n  </div>\n</div>\n\n<div style=\"border-top:1px solid #eee; padding:16px 0;\">\n  <div style=\"display:flex; align-items:center; gap:8px; margin-bottom:4px;\">\n    <span>✔</span>\n    <span>Secure payment</span>\n  </div>\n  <div style=\"display:flex; align-items:center; gap:8px;\">\n    <span>✔</span>\n    <span>14-day return policy</span>\n  </div>\n</div>\n\n<div style=\"border-top:1px solid #eee; padding:16px 0;\">\n  <div style=\"display:flex; align-items:center; gap:8px;\">\n    <span>🏪</span>\n    <span>Sold and shipped by <strong>Linné Elektronikhandel</strong> <span style=\"border:1px solid #000; border-radius:50%; padding:0 4px; font-size:12px;\">i</span></span>\n  </div>\n</div>"
           }
         }
       },
@@ -115,13 +103,11 @@
         "quantity_selector",
         "buy_buttons",
         "icon_with_text_gBH7hW",
-        "custom_liquid_z4MmFA",
-        "custom_liquid_UEHGNp",
+        "custom_liquid_HBiNrH",
         "description",
         "sku_LfrNpq",
         "complementary_LnCC7T",
-        "inventory_7aDLXj",
-        "custom_liquid_HBiNrH"
+        "inventory_7aDLXj"
       ],
       "custom_css": [
         ".tw-bg-white,.product__info-container,.product__column-sticky,.grid_item,.tw-border,.tw-border-solid,.tw-border-lightGray,.product__media-wrapper,.product-media-gallery {background: transparent !important; border: none !important;}",
@@ -133,7 +119,7 @@
         "media_size": "large",
         "constrain_to_viewport": true,
         "media_fit": "contain",
-        "gallery_layout": "thumbnail",
+        "gallery_layout": "stacked",
         "media_position": "left",
         "image_zoom": "hover",
         "mobile_thumbnails": "hide",
