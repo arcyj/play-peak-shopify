@@ -103,8 +103,8 @@
         "inventory_7aDLXj"
       ],
       "custom_css": [
-        ".tw-bg-white,.product__info-container,.product__column-sticky,.grid_item,.tw-border,.tw-border-solid,.tw-border-lightGray,.product__media,.product__media-wrapper {background: transparent !important; border: none !important;}",
-        "img {mix-blend-mode: multiply !important;}"
+        ".tw-bg-white,.product__info-container,.product__column-sticky,.grid_item,.tw-border,.tw-border-solid,.tw-border-lightGray,.product__media-wrapper,.product-media-gallery {background: transparent !important; border: none !important;}",
+        ".product-media-gallery,.product-media-gallery *,.product__media-wrapper *,img {mix-blend-mode: multiply !important; background: transparent !important;}"
       ],
       "settings": {
         "enable_sticky_info": true,
