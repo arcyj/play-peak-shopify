@@ -57,34 +57,9 @@
             "heading_3": "Heading"
           }
         },
-        "custom_liquid_HBiNrH": {
-          "type": "custom_liquid",
-          "settings": {
-            "custom_liquid": "<div style=\"border-top:1px solid #eee; padding:16px 0;\">\n  <div style=\"display:flex; align-items:center; gap:8px; margin-bottom:8px;\">\n    <span>🚚</span>\n    <span>Thu, Jul 10 – Fri, Jul 11</span>\n  </div>\n</div>\n\n<div style=\"border-top:1px solid #eee; padding:16px 0;\">\n  <div style=\"display:flex; align-items:center; gap:8px; margin-bottom:4px;\">\n    <span>✔</span>\n    <span>Secure payment</span>\n  </div>\n  <div style=\"display:flex; align-items:center; gap:8px;\">\n    <span>✔</span>\n    <span>14-day return policy</span>\n  </div>\n</div>\n\n<div style=\"border-top:1px solid #eee; padding:16px 0;\">\n  <div style=\"display:flex; align-items:center; gap:8px;\">\n    <span>🏪</span>\n    <span>Sold and shipped by <strong>Linné Elektronikhandel</strong> <span style=\"border:1px solid #000; border-radius:50%; padding:0 4px; font-size:12px;\">i</span></span>\n  </div>\n</div>"
-          }
-        },
         "description": {
           "type": "description",
           "settings": {}
-        },
-        "sku_LfrNpq": {
-          "type": "sku",
-          "settings": {
-            "text_style": "body"
-          }
-        },
-        "complementary_LnCC7T": {
-          "type": "complementary",
-          "settings": {
-            "block_heading": "Pairs well with",
-            "make_collapsible_row": false,
-            "icon": "question_mark",
-            "product_list_limit": 10,
-            "products_per_page": 3,
-            "pagination_style": "numbers",
-            "image_ratio": "portrait",
-            "enable_quick_add": true
-          }
         },
         "inventory_7aDLXj": {
           "type": "inventory",
@@ -103,10 +78,7 @@
         "quantity_selector",
         "buy_buttons",
         "icon_with_text_gBH7hW",
-        "custom_liquid_HBiNrH",
         "description",
-        "sku_LfrNpq",
-        "complementary_LnCC7T",
         "inventory_7aDLXj"
       ],
       "custom_css": [
@@ -119,7 +91,7 @@
         "media_size": "large",
         "constrain_to_viewport": true,
         "media_fit": "contain",
-        "gallery_layout": "stacked",
+        "gallery_layout": "thumbnail",
         "media_position": "left",
         "image_zoom": "hover",
         "mobile_thumbnails": "hide",
@@ -127,88 +99,6 @@
         "enable_video_looping": false,
         "padding_top": 16,
         "padding_bottom": 16
-      }
-    },
-    "image-with-text": {
-      "type": "image-with-text",
-      "blocks": {
-        "image-with-text-0": {
-          "type": "heading",
-          "settings": {
-            "heading": "Image with text",
-            "heading_size": "h1"
-          }
-        },
-        "image-with-text-1": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "text_style": "body"
-          }
-        }
-      },
-      "block_order": [
-        "image-with-text-0",
-        "image-with-text-1"
-      ],
-      "disabled": true,
-      "settings": {
-        "height": "small",
-        "desktop_image_width": "medium",
-        "layout": "text_first",
-        "desktop_content_position": "top",
-        "desktop_content_alignment": "left",
-        "content_layout": "no-overlap",
-        "section_color_scheme": "",
-        "color_scheme": "scheme-2",
-        "image_behavior": "none",
-        "mobile_content_alignment": "left",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
-    "multicolumn": {
-      "type": "multicolumn",
-      "blocks": {
-        "column-0": {
-          "type": "column",
-          "settings": {
-            "title": "Free Shipping",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column-1": {
-          "type": "column",
-          "settings": {
-            "title": "Hassle-Free Exchanges",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "column-0",
-        "column-1"
-      ],
-      "disabled": true,
-      "settings": {
-        "title": "",
-        "heading_size": "h1",
-        "image_width": "full",
-        "image_ratio": "adapt",
-        "columns_desktop": 2,
-        "column_alignment": "left",
-        "background_style": "none",
-        "button_label": "",
-        "button_link": "",
-        "color_scheme": "scheme-1",
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
       }
     },
     "related-products": {
@@ -228,19 +118,10 @@
         "padding_top": 36,
         "padding_bottom": 28
       }
-    },
-    "17501469051ba487a3": {
-      "type": "apps",
-      "settings": {
-        "include_margins": true
-      }
     }
   },
   "order": [
     "main",
-    "image-with-text",
-    "multicolumn",
-    "related-products",
-    "17501469051ba487a3"
+    "related-products"
   ]
 }
