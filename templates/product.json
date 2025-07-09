@@ -102,7 +102,13 @@
         "complementary_LnCC7T",
         "inventory_7aDLXj"
       ],
-      "custom_css": [],
+      "custom_css": [
+        ".tw-bg-white {background: transparent !important; border: none !important;}",
+        ".product__info-container,.product__column-sticky,.grid_item {background: transparent !important; border: none !important;}",
+        ".tw-border,.tw-border-solid,.tw-border-lightGray {border: none !important;}",
+        "img {mix-blend-mode: multiply !important;}",
+        ".product-media-gallery img,[class*=\"product\"] img {mix-blend-mode: multiply !important;}"
+      ],
       "settings": {
         "enable_sticky_info": true,
         "color_scheme": "scheme-1",
