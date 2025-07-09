@@ -102,14 +102,7 @@
         "complementary_LnCC7T",
         "inventory_7aDLXj"
       ],
-      "custom_css": [
-        ".product-form {background: transparent !important;}",
-        ".product__info {background: transparent !important;}",
-        ".product__text {background: transparent !important;}",
-        ".accordion {background: transparent !important;}",
-        ".card {background: transparent !important;}",
-        "/* Remove box shadows and borders */.product-form,.product__info,.product__text,.accordion,.card {box-shadow: none !important; border: none !important;}"
-      ],
+      "custom_css": [],
       "settings": {
         "enable_sticky_info": true,
         "color_scheme": "scheme-1",
