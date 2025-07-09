@@ -57,6 +57,18 @@
             "heading_3": "Heading"
           }
         },
+        "custom_liquid_z4MmFA": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "I NEED IT HERE"
+          }
+        },
+        "custom_liquid_UEHGNp": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": ""
+          }
+        },
         "description": {
           "type": "description",
           "settings": {}
@@ -87,6 +99,12 @@
             "inventory_threshold": 39,
             "show_inventory_quantity": true
           }
+        },
+        "custom_liquid_HBiNrH": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div style=\"border-top:1px solid #eee; padding:16px 0;\">\n  <div style=\"display:flex; align-items:center; gap:8px; margin-bottom:8px;\">\n    <span>🚚</span>\n    <span>Thu, Jul 10 – Fri, Jul 11</span>\n  </div>\n</div>\n\n<div style=\"border-top:1px solid #eee; padding:16px 0;\">\n  <div style=\"display:flex; align-items:center; gap:8px; margin-bottom:4px;\">\n    <span>✔</span>\n    <span>Secure payment</span>\n  </div>\n  <div style=\"display:flex; align-items:center; gap:8px;\">\n    <span>✔</span>\n    <span>14-day return policy</span>\n  </div>\n</div>\n\n<div style=\"border-top:1px solid #eee; padding:16px 0;\">\n  <div style=\"display:flex; align-items:center; gap:8px;\">\n    <span>🏪</span>\n    <span>Sold and shipped by <strong>Linné Elektronikhandel</strong> <span style=\"border:1px solid #000; border-radius:50%; padding:0 4px; font-size:12px;\">i</span></span>\n  </div>\n</div>"
+          }
         }
       },
       "block_order": [
@@ -97,10 +115,13 @@
         "quantity_selector",
         "buy_buttons",
         "icon_with_text_gBH7hW",
+        "custom_liquid_z4MmFA",
+        "custom_liquid_UEHGNp",
         "description",
         "sku_LfrNpq",
         "complementary_LnCC7T",
-        "inventory_7aDLXj"
+        "inventory_7aDLXj",
+        "custom_liquid_HBiNrH"
       ],
       "custom_css": [
         ".tw-bg-white,.product__info-container,.product__column-sticky,.grid_item,.tw-border,.tw-border-solid,.tw-border-lightGray,.product__media-wrapper,.product-media-gallery {background: transparent !important; border: none !important;}",
