@@ -55,6 +55,18 @@
             "show_gift_card_recipient": true
           }
         },
+        "icon_with_text_gBH7hW": {
+          "type": "icon-with-text",
+          "settings": {
+            "layout": "horizontal",
+            "icon_1": "heart",
+            "heading_1": "Heading",
+            "icon_2": "return",
+            "heading_2": "Heading",
+            "icon_3": "truck",
+            "heading_3": "Heading"
+          }
+        },
         "description": {
           "type": "description",
           "settings": {}
@@ -94,6 +106,7 @@
         "price",
         "quantity_selector",
         "buy_buttons",
+        "icon_with_text_gBH7hW",
         "description",
         "sku_LfrNpq",
         "complementary_LnCC7T",
