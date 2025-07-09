@@ -9,6 +9,16 @@
  */
 {
   "sections": {
+    "custom_liquid_kzKQY6": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<nav class=\"breadcrumb\" role=\"navigation\" aria-label=\"breadcrumbs\">\n  <a href=\"{{ routes.root_url }}\">Home</a>\n\n  {% if collection %}\n    &nbsp;›&nbsp;\n    <a href=\"{{ collection.url }}\">{{ collection.title }}</a>\n  {% endif %}\n\n  {% if product %}\n    {% unless collection %}\n      &nbsp;›&nbsp;\n      <a href=\"/collections/all\">All Products</a>\n    {% endunless %}\n    &nbsp;›&nbsp;\n    <span>{{ product.title }}</span>\n  {% elsif article %}\n    &nbsp;›&nbsp;\n    <a href=\"{{ blog.url }}\">{{ blog.title }}</a>\n    &nbsp;›&nbsp;\n    <span>{{ article.title }}</span>\n  {% elsif page %}\n    &nbsp;›&nbsp;\n    <span>{{ page.title }}</span>\n  {% elsif collection %}\n    &nbsp;›&nbsp;\n    <span>{{ collection.title }}</span>\n  {% endif %}\n</nav>",
+        "color_scheme": "",
+        "padding_top": 12,
+        "padding_bottom": 12
+      }
+    },
     "banner": {
       "type": "main-collection-banner",
       "disabled": true,
@@ -22,11 +32,11 @@
       "type": "main-collection-product-grid",
       "settings": {
         "products_per_page": 36,
-        "columns_desktop": 5,
+        "columns_desktop": 4,
         "color_scheme": "scheme-1",
-        "image_ratio": "square",
+        "image_ratio": "portrait",
         "image_shape": "default",
-        "show_secondary_image": false,
+        "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": true,
         "quick_add": "standard",
@@ -37,10 +47,28 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "featured_collection_pQwUnP": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "title": "Featured collection",
+        "description": "",
+        "show_description": true,
+        "collection": "{{ collection }}",
+        "products_to_show": 25,
+        "columns_desktop": 6,
+        "columns_mobile": 5,
+        "show_view_all": true,
+        "enable_desktop_slider": true,
+        "enable_mobile_slider": true
+      }
     }
   },
   "order": [
+    "custom_liquid_kzKQY6",
     "banner",
-    "product-grid"
+    "product-grid",
+    "featured_collection_pQwUnP"
   ]
 }
