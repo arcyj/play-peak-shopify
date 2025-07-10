@@ -11,11 +11,11 @@ jobs:
         uses: ZoeyVid/tailwindcss-update@main
         with:
           input: assets/app-tailwind.css
-          output: assets/app.css
+          output: assets/tw-app.css
           params: ""
       - name: Commit & Push
         run: |
-          git add --force assets/app.css
+          git add --force assets/tw-app.css
           git config user.name "GitHub"
           git config user.email "noreply@github.com"
           git diff-index --quiet HEAD || git commit -m "ci: tailwindcss-update"

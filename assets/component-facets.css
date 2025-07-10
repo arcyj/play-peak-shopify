@@ -1029,7 +1029,7 @@ input.mobile-facets__checkbox {
 }
 
 .mobile-facets__label {
-  padding: 1.5rem 2rem 1.5rem 2.5rem;
+  padding: 6px 24px;
   width: 100%;
   transition: background-color 0.2s ease;
   word-break: break-word;

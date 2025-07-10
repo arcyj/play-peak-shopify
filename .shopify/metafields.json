@@ -32,6 +32,16 @@
         "name": "file_reference",
         "category": "REFERENCE"
       }
+    },
+    {
+      "key": "menu_icon",
+      "namespace": "custom",
+      "name": "Menu Icon",
+      "description": "",
+      "type": {
+        "name": "file_reference",
+        "category": "REFERENCE"
+      }
     }
   ],
   "company": [],
@@ -237,6 +247,16 @@
       "namespace": "custom",
       "name": "Product badge",
       "description": "",
+      "type": {
+        "name": "list.metaobject_reference",
+        "category": "REFERENCE"
+      }
+    },
+    {
+      "key": "toy-figure-features",
+      "namespace": "shopify",
+      "name": "Toy figure features",
+      "description": "Highlights special characteristics of toy figures, like articulated joints or realistic details",
       "type": {
         "name": "list.metaobject_reference",
         "category": "REFERENCE"

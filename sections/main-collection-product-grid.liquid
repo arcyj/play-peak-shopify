@@ -40,7 +40,6 @@
 <div class='section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}'>
   <div>
     {%- paginate collection.products by section.settings.products_per_page -%}
-
       <div class='page-width tw-flex'>
         {{ 'component-facets.css' | asset_url | stylesheet_tag }}
         <script src='{{ 'facets.js' | asset_url }}' defer='defer'></script>
@@ -51,16 +50,18 @@
 
             {% comment %} <h2 class='tw-text-h2 tw-text-text-dark tw-px-20 tw-pt-20 tw-pb-16'>{{ main_collection.title }}</h2> {% endcomment %}
 
-            {% comment %} {% for collection in child_collection %}
-              {% if forloop.first %}
-                {% render 'collection-side-menu-link', title: 'All products', url: collection.url, isLast: false %}
-              {% endif %}
-              {% render 'collection-side-menu-link',
-                title: collection.title,
-                url: collection.url,
-                isLast: forloop.last
-              %}
-            {% endfor %} {% endcomment %}
+            {% comment %}
+              {% for collection in child_collection %}
+                {% if forloop.first %}
+                  {% render 'collection-side-menu-link', title: 'All products', url: collection.url, isLast: false %}
+                {% endif %}
+                {% render 'collection-side-menu-link',
+                  title: collection.title,
+                  url: collection.url,
+                  isLast: forloop.last
+                %}
+              {% endfor %}
+            {% endcomment %}
 
             <div>
               {% render 'facets-sidebar',
@@ -75,59 +76,83 @@
         </div>
         <div class='tw-w-full desktop:tw-w-[80%]'>
           {% assign child_collection = collection.metafields.custom.child_collections.value %}
-          <slider-component class="tw-mb-24 slider-mobile-gutter{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
-            <div
-              class="grid slider slider--desktop slider--tablet grid--peek tw-relative"
-              id="Slider-{{ section.id }}"
-              role="list"
-            >
-              {% for collection in child_collection %}
-                <div id="Slide-{{ forloop.index }}" class="slider__slide">
-                  <a href="{{ collection.url }}">
-                  <div class="tw-border-[1.5px] tw-py-8 tw-px-24 tw-rounded tw-flex tw-items-center">
-                      <div class="tw-pr-16">
-                        <img
-                          src="{{ collection.image | img_url: '150x150' }}"
-                          alt="{{ collection.title }}"
-                          class="tw-h-64"
-                          width="100%"
-                          height="64px"
-                        />
-                      </div>
-                      <div>
-                        <p class="tw-text-medium-semi">{{ collection.title }}</p>
-                        <p class="tw-text-regular tw-text-text-gray">{{ collection.all_products_count }} goods</p>
-                      </div>
-                    </div>
-                  </a>
-                </div>
-              {% endfor %}
-          </div>
-            <span class="slider-gradient-left">
-              <button
-                type="button"
-                class="slider-button slider-button--prev slider-button-left"
-                name="previous"
-                aria-label="{{ 'general.slider.previous_slide' | t }}"
+          {% assign collectionCount = 0 %}
+          <script> console.log("child_collections", {{ collection.metafields.custom.child_collections.value | json }}) </script>
+          {% if collection.metafields.custom.child_collections != blank %}
+            <slider-component class='tw-mb-24 slider-mobile-gutter{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'>
+              <div
+                class='grid slider slider--desktop slider--tablet grid--peek tw-relative'
+                id='Slider-{{ section.id }}'
+                role='list'
               >
-                <span class="svg-wrapper">
-                  {{- 'icon-caret.svg' | inline_asset_content -}}
+                {% for collection in child_collection %}
+                  {% assign collectionCount = collectionCount | plus: 1 %}
+                  <div id='Slide-{{ forloop.index }}' class='slider__slide'>
+                    <a href='{{ collection.url }}'>
+                      <div class='tw-border-[1.5px] tw-py-8 tw-px-24 tw-rounded tw-flex tw-items-center'>
+                        <div class='tw-pr-16'>
+                          <img
+                            src='{{ collection.image | img_url: '150x150' }}'
+                            alt='{{ collection.title }}'
+                            class='tw-h-48'
+                            width='100%'
+                            height='48px'
+                          >
+                        </div>
+                        <div>
+                          <p class='tw-text-medium-semi'>{{ collection.title }}</p>
+                          {% comment %} <p class="tw-text-regular tw-text-text-gray">{{ collection.all_products_count }} goods</p> {% endcomment %}
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                {% endfor %}
+              </div>
+
+              {% if collectionCount > 1 %}
+                <span class='slider-gradient-left'>
+                  <button
+                    type='button'
+                    class='slider-button slider-button--prev slider-button-left'
+                    name='previous'
+                    aria-label='{{ 'general.slider.previous_slide' | t }}'
+                  >
+                    <span class='svg-wrapper'>
+                      {{- 'icon-caret.svg' | inline_asset_content -}}
+                    </span>
+                  </button>
                 </span>
-              </button>
-            </span>
-            <span class="slider-gradient-right">
-              <button
-                type="button"
-                class="slider-button slider-button--next slider-button-right"
-                name="next"
-                aria-label="{{ 'general.slider.next_slide' | t }}"
-              >
-                <span class="svg-wrapper">
-                  {{- 'icon-caret.svg' | inline_asset_content -}}
+                <span class='slider-gradient-right'>
+                  <button
+                    type='button'
+                    class='slider-button slider-button--next slider-button-right'
+                    name='next'
+                    aria-label='{{ 'general.slider.next_slide' | t }}'
+                  >
+                    <span class='svg-wrapper'>
+                      {{- 'icon-caret.svg' | inline_asset_content -}}
+                    </span>
+                  </button>
                 </span>
-              </button>
-            </span>
-          </slider-component>
+              {% endif %}
+            </slider-component>
+          {% endif %}
+
+          {%- if section.settings.image_shape == 'arch' -%}
+            <div class='mask-arch'></div>
+          {%- endif -%}
+
+          {%- if section.settings.image_shape == 'blob' -%}
+            <div class='mask-blobs'></div>
+          {%- endif -%}
+
+          {%- if section.settings.image_shape == 'chevronleft' -%}
+            <div class='mask-chevronleft'></div>
+          {%- endif -%}
+
+          {%- if section.settings.image_shape == 'chevronright' -%}
+            <div class='mask-chevronright'></div>
+          {%- endif -%}
           {%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
             <aside
               aria-labelledby='verticalTitle'
