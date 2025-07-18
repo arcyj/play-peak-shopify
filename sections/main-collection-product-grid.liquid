@@ -38,6 +38,7 @@
   }
 {%- endstyle -%}
 <div class='section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}'>
+  {%- render 'breadcrumbs' -%}
   <div>
     {%- paginate collection.products by section.settings.products_per_page -%}
       <div class='page-width tw-flex'>
@@ -77,7 +78,9 @@
         <div class='tw-w-full desktop:tw-w-[80%]'>
           {% assign child_collection = collection.metafields.custom.child_collections.value %}
           {% assign collectionCount = 0 %}
-          <script> console.log("child_collections", {{ collection.metafields.custom.child_collections.value | json }}) </script>
+          <script>
+            console.log("child_collections", {{ collection.metafields.custom.child_collections.value | json }})
+          </script>
           {% if collection.metafields.custom.child_collections != blank %}
             <slider-component class='tw-mb-24 slider-mobile-gutter{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'>
               <div
