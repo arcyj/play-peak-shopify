@@ -9,16 +9,6 @@
  */
 {
   "sections": {
-    "custom_liquid_kzKQY6": {
-      "type": "custom-liquid",
-      "name": "t:sections.custom-liquid.presets.name",
-      "settings": {
-        "custom_liquid": "<nav class=\"breadcrumb\">\n  <a href=\"/collections/all\">All Products</a>\n\n  {% if product %}\n    {% assign sorted_collections = product.collections | sort: 'title' %}\n\n    {% for c in sorted_collections limit: 2 %}\n      &nbsp;›&nbsp;<a href=\"{{ c.url }}\">{{ c.title }}</a>\n    {% endfor %}\n\n    &nbsp;›&nbsp;<span>{{ product.title }}</span>\n  \n  {% elsif collection %}\n    &nbsp;›&nbsp;<span>{{ collection.title }}</span>\n  {% endif %}\n</nav>",
-        "color_scheme": "",
-        "padding_top": 12,
-        "padding_bottom": 12
-      }
-    },
     "banner": {
       "type": "main-collection-banner",
       "disabled": true,
@@ -66,7 +56,6 @@
     }
   },
   "order": [
-    "custom_liquid_kzKQY6",
     "banner",
     "product-grid",
     "featured_collection_pQwUnP"
