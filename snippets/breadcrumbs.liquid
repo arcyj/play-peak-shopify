@@ -73,7 +73,7 @@
           {%- when 'product' -%}
             {%- for collection in product.collections -%}
               {%- assign main_collection = collection.metafields.category.parent.value -%}
-              {%- if main_collection -%}
+              {%- if main_collection and main_collection.url != collection.url -%}
                 <span class='breadcrumbs__item'>
                   <a class='breadcrumbs__link' href='{{ main_collection.url }}'>{{ main_collection.title }}</a>
                 </span>

@@ -77,7 +77,7 @@
   <div class='page-width'>
     <div class='max-tablet:tw-bg-white product tw-w-full product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}'>
       <div class='product__title tw-px-16 tw-mb-24 tw-mt-16 tw-block tablet:tw-hidden'>
-        <p class='product__text inline-richtext'>
+        <p class=''>
           {{- product.vendor -}}
         </p>
         <h1 class='tw-text-h1'>{{ product.title | escape }}</h1>
@@ -97,6 +97,11 @@
               {{ product.description }}
             </div>
           {%- endif -%}
+          <div class='tw-flex tw-gap-8 tw-mt-24 tw-flex-wrap'>
+            {% render 'product-detail', label: 'Expansion', value: product.metafields.custom.expansion.value.title %}
+            {% render 'product-detail', label: 'Langauge', value: product.metafields.details.language.value.name %}
+            {% render 'product-detail', label: 'Suitable age', value: product.metafields.details.age.value %}
+          </div>
         </div>
       </div>
       <div class='product__info-wrapper grid__item{% if settings.page_width > 1400 and section.settings.media_size == "small" %} product__info-wrapper--extra-padding{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'>
@@ -105,13 +110,12 @@
           class='product__info-container product__column-sticky tw-roudnded tw-bg-white tw-border tw-border-solid tw-border-lightGray tw-p-32 tw-rounded'
         >
           {%- assign product_form_id = 'product-form-' | append: section.id -%}
-
           {%- for block in section.blocks -%}
             {%- case block.type -%}
               {%- when '@app' -%}
                 {% render block %}
               {%- when 'text' -%}
-                <p class='tw-hidden tablet:tw-block product__text inline-richtext'>
+                <p class='tw-hidden tablet:tw-block tw-text-text-gray tw-text-medium'>
                   {{- product.vendor -}}
                 </p>
               {%- when 'title' -%}
@@ -119,11 +123,6 @@
                   <h1 class='tw-text-h1'>{{ product.title | escape }}</h1>
                 </div>
                 <p class='tw-text-regular-semi tw-mb-24'>{{ product.metafields.details.short_description.value }}</p>
-                 <div class='desktop:tw-w-1/2'>
-                  {% render 'product-detail', label: 'Brand', value: product.vendor %}
-                  {% render 'product-detail', label: 'Langauge', value: product.metafields.details.language.value.name %}
-                  {% render 'product-detail', label: 'Suitable age', value: product.metafields.details.age.value %}
-                </div>
                 <span class='divider tw-mb-24'></span>
               {%- when 'price' -%}
                 <div class='tw-flex max-tablet:tw-justify-between'>
@@ -138,7 +137,7 @@
                   {% comment %}  Start qty input{% endcomment %}
                   <div
                     id='Quantity-Form-{{ section.id }}'
-                    class='product-form__quantity{% if settings.inputs_shadow_vertical_offset != 0 and settings.inputs_shadow_vertical_offset < 0 %} product-form__quantity-top{% endif %}'
+                    class='product-form__quantity tw-flex tw-flex-col tw-justify-end {% if settings.inputs_shadow_vertical_offset != 0 and settings.inputs_shadow_vertical_offset < 0 %} product-form__quantity-top{% endif %}'
                     {{ block.shopify_attributes }}
                   >
                     {% comment %} TODO: enable theme-check once `item_count_for_variant` is accepted as valid filter {% endcomment %}
@@ -149,14 +148,6 @@
                     {% # theme-check-enable %}
                     <label class='quantity__label form__label' for='Quantity-{{ section.id }}'>
                       {{ 'products.product.quantity.label' | t }}
-                      <span class='quantity__rules-cart{% if cart_qty == 0 %} hidden{% endif %}'>
-                        {%- render 'loading-spinner' -%}
-                        <span
-                          >(
-                          {{- 'products.product.quantity.in_cart_html' | t: quantity: cart_qty -}}
-                          )</span
-                        >
-                      </span>
                     </label>
                     <div class='tw-flex'>
                       <quantity-input class='quantity' data-url='{{ product.url }}' data-section='{{ section.id }}'>

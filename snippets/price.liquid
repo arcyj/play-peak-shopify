@@ -52,11 +52,11 @@
       {%- if show_badges %} price--show-badge{% endif -%} {% endcomment %}
     '
   >
-    <div class='price__container tw-w-full'>
+    <div class='tw-w-full'>
       <div class='price__regular tw-pt-16'>
         {%- if compare_at_price -%}
           {%- unless product.price_varies == false and product.compare_at_price_varies %}
-            <span class='tw-block tw-text-small tw-text-text-gray tw-pb-4'>
+            <span class='tw-block tw-text-small tw-text-text-gray tw-pb-8'>
               <s>
                 {{ compare_at_price | money }}
               </s>
@@ -66,7 +66,7 @@
         <div class="tw-flex tw-items-center tw-justify-between tw-w-full">
           <span
             class='
-              tw-text-[20px] tw-font-bold
+              tw-text-[26px] tw-leading-[26px] tw-font-bold
               {% if compare_at_price %} tw-text-accent-pink {% endif %}
             '>
             {{ money_price }}

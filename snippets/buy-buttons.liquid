@@ -70,7 +70,7 @@
               assign quantity_rule_soldout = true
             endif
           -%}
-          {%- if show_dynamic_checkout -%}
+          {%- if show_dynamic_checkout and product.selected_or_first_available_variant.available == true -%}
             {{ form | payment_button }}
           {%- endif -%}
           <button
@@ -85,13 +85,14 @@
               disabled
             {% endif %}
           >
-            <span>
+            <span class="tw-flex tw-items-center">
               {%- if product.selected_or_first_available_variant == null -%}
                 {{ 'products.product.unavailable' | t }}
               {%- elsif product.selected_or_first_available_variant.available == false or quantity_rule_soldout -%}
                 {{ 'products.product.sold_out' | t }}
               {%- else -%}
-                {{ 'products.product.add_to_cart' | t }}
+                <span class="svg-wrapper tw-mr-8">{{ 'icon-cart.svg' | inline_asset_content }}</span>
+                <span>{{ 'products.product.add_to_cart' | t }}</span>
               {%- endif -%}
             </span>
             {%- render 'loading-spinner' -%}
