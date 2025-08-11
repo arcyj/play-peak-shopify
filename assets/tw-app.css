@@ -977,10 +977,6 @@ video {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
-.tw-flex-row {
-  flex-direction: row;
-}
-
 .tw-flex-col {
   flex-direction: column;
 }
@@ -1262,10 +1258,6 @@ video {
   padding-bottom: 24px;
 }
 
-.tw-pb-4 {
-  padding-bottom: 4px;
-}
-
 .tw-pb-8 {
   padding-bottom: 8px;
 }
@@ -1318,25 +1310,13 @@ video {
   font-size: 11px;
 }
 
-.tw-text-\[20px\] {
-  font-size: 20px;
+.tw-text-\[26px\] {
+  font-size: 26px;
 }
 
 .tw-text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
-}
-
-.tw-text-\[22px\] {
-  font-size: 22px;
-}
-
-.tw-text-\[32px\] {
-  font-size: 32px;
-}
-
-.tw-text-\[26px\] {
-  font-size: 26px;
 }
 
 .tw-font-bold {
