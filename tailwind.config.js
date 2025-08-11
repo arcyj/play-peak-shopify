@@ -18,8 +18,8 @@ const typographyConfig = {
   '.text-h1': {
     font: "700 28px/34px 'Gilroy', sans-serif",
     '@media (max-width: 768px)': {
-      fontSize: '28px',
-      lineHeight: '39px',
+      fontSize: '22px',
+      lineHeight: '32px',
     },
   },
   '.text-h2': {

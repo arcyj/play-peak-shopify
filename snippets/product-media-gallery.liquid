@@ -33,6 +33,10 @@
     assign hide_mobile_slider = true
   endif
 
+  if section.settings.mobile_thumbnails == 'hide' and media_count > 1
+    assign hide_mobile_slider = false
+  endif
+
   if section.settings.media_size == 'large'
     assign media_width = 0.65
   elsif section.settings.media_size == 'medium'
@@ -50,7 +54,7 @@
   data-desktop-layout='{{ section.settings.gallery_layout }}'
 >
   <div id='GalleryStatus-{{ section.id }}' class='visually-hidden' role='status'></div>
-  <div class='tw-flex tw-w-full tw-bg-white tw-p-16 tablet:tw-p-32'>
+  <div class='desktop:tw-flex tw-w-full tw-bg-white desktop:tw-p-16 tablet:tw-p-32'>
     <div class='tw-absolute tw-z-50 tw-top-16 tw-right-16'>
       {% render 'on-sale-badge', product: product, class: 'tw-top-0' %}
       {% if product.metafields.custom.product_badge %}
@@ -61,7 +65,7 @@
     </div>
     <slider-component
       id='GalleryViewer-{{ section.id }}'
-      class='slider-mobile-gutter tw-w-full tw-order-2 tablet:tw-pl-32'
+      class='slider-mobile-gutter tw-w-full tw-order-2 tablet:tw-pl-32 {% if hide_mobile_slider %} hide-mobile-slider{% endif %}'
     >
       <a class='skip-to-content-link button visually-hidden quick-add-hidden' href='#ProductInfo-{{ section.id }}'>
         {{ 'accessibility.skip_to_product_info' | t }}

@@ -77,17 +77,17 @@
   <div class='page-width'>
     <div class='max-tablet:tw-bg-white product tw-w-full product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}'>
       <div class='product__title tw-px-16 tw-mb-24 tw-mt-16 tw-block tablet:tw-hidden'>
-        <p class=''>
+        <p class='tw-text-text-gray tw-text-medium tw-mb-8'>
           {{- product.vendor -}}
         </p>
         <h1 class='tw-text-h1'>{{ product.title | escape }}</h1>
       </div>
 
       <div class='grid__item'>
-        <div class='product__media-wrapper tw-border tw-border-solid tw-border-lightGray tw-mb-16 tw-rounded'>
+        <div class='product__media-wrapper desktop:tw-border tw-border-solid tw-border-lightGray tw-mb-16 tw-rounded'>
           {% render 'product-media-gallery', variant_images: variant_images %}
         </div>
-        <div class='tw-bg-white tw-border tw-border-solid tw-border-lightGray tw-p-32 tw-hidden tablet:tw-block tw-rounded'>
+        <div class='tw-bg-white desktop:tw-border tw-border-solid tw-border-lightGray tw-p-32 tw-hidden tablet:tw-block tw-rounded'>
           <h3 class='tw-text-dark tw-text-h3 tw-mb-24'>Product Specification</h3>
           {%- if product.description != blank -%}
             <div
@@ -107,7 +107,7 @@
       <div class='product__info-wrapper grid__item{% if settings.page_width > 1400 and section.settings.media_size == "small" %} product__info-wrapper--extra-padding{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'>
         <section
           id='ProductInfo-{{ section.id }}'
-          class='product__info-container product__column-sticky tw-roudnded tw-bg-white tw-border tw-border-solid tw-border-lightGray tw-p-32 tw-rounded'
+          class='product__info-container product__column-sticky tw-roudnded tw-bg-white desktop:tw-border tw-border-solid tw-border-lightGray tw-px-32 desktop:tw-pt-32 tw-pb-32 tw-rounded'
         >
           {%- assign product_form_id = 'product-form-' | append: section.id -%}
           {%- for block in section.blocks -%}
@@ -132,6 +132,7 @@
                       use_variant: true,
                       show_badges: true,
                       price_class: 'price--large tw-flex tw-items-end tw-h-full tw-mr-32'
+                      price_text_class: '!tw-text-[28px]'
                     -%}
                   </div>
                   {% comment %}  Start qty input{% endcomment %}

@@ -613,8 +613,8 @@ video {
 
 @media (max-width: 768px) {
   .tw-text-h1 {
-    font-size: 28px;
-    line-height: 39px;
+    font-size: 22px;
+    line-height: 32px;
   }
 }
 
@@ -1250,6 +1250,11 @@ video {
   padding-bottom: 6px;
 }
 
+.tw-px-32 {
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
 .tw-pb-16 {
   padding-bottom: 16px;
 }
@@ -1302,6 +1307,10 @@ video {
   padding-top: 80px;
 }
 
+.tw-pb-32 {
+  padding-bottom: 32px;
+}
+
 .tw-text-center {
   text-align: center;
 }
@@ -1317,6 +1326,18 @@ video {
 .tw-text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
+}
+
+.tw-text-\[18px\] {
+  font-size: 18px;
+}
+
+.tw-text-\[28px\] {
+  font-size: 28px;
+}
+
+.\!tw-text-\[28px\] {
+  font-size: 28px !important;
 }
 
 .tw-font-bold {
@@ -1376,6 +1397,10 @@ video {
 .tw-text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.tw-text-\[\] {
+  color: ;
 }
 
 .tw-no-underline {
@@ -1526,5 +1551,25 @@ video {
 
   .desktop\:tw-w-\[80\%\] {
     width: 80%;
+  }
+
+  .desktop\:tw-border {
+    border-width: 1px;
+  }
+
+  .desktop\:tw-p-16 {
+    padding: 16px;
+  }
+
+  .desktop\:tw-pt-32 {
+    padding-top: 32px;
+  }
+
+  .desktop\:tw-text-\[26px\] {
+    font-size: 26px;
+  }
+
+  .desktop\:tw-text-\[22px\] {
+    font-size: 22px;
   }
 }

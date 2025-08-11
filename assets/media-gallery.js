@@ -10,6 +10,15 @@ if (!customElements.get('media-gallery')) {
           thumbnails: this.querySelector('[id^="GalleryThumbnails"]'),
         };
         this.mql = window.matchMedia('(min-width: 750px)');
+
+        // Initialize viewer functionality even without thumbnails
+        if (this.elements.viewer) {
+          this.elements.viewer.addEventListener(
+            'slideChanged',
+            debounce(this.onSlideChanged.bind(this), 500),
+          );
+        }
+
         if (!this.elements.thumbnails) return;
 
         this.elements.viewer.addEventListener(
@@ -38,6 +47,8 @@ if (!customElements.get('media-gallery')) {
       }
 
       onSlideChanged(event) {
+        if (!this.elements.thumbnails) return;
+
         const thumbnail = this.elements.thumbnails.querySelector(
           `[data-target="${event.detail.currentElement.dataset.mediaId}"]`,
         );

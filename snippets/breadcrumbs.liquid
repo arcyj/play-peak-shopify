@@ -51,11 +51,32 @@
   .breadcrumbs__link[aria-current='page']:hover,
   .breadcrumbs__link[aria-current='page']:focus {
   }
+
+  /* Mobile breadcrumbs - hide middle items and show ellipsis */
+  @media screen and (max-width: 749px) {
+    .breadcrumbs__item:not(:first-child):not(:last-child) {
+      display: none;
+    }
+
+    .breadcrumbs__item:first-child:after {
+      content: ' ... ';
+      display: inline-block;
+      margin: 0 4px;
+      color: #a1a1aa;
+      font-weight: 500;
+    }
+
+    .breadcrumbs__item:first-child:after {
+      background-image: none;
+      width: auto;
+      height: auto;
+    }
+  }
 </style>
 
 {%- unless template == 'index' or template == 'cart' or template == 'list-collections' or template == '404' -%}
   {%- assign t = template | split: '.' | first -%}
-  <div class='page-width'>
+  <div class='page-width tw-hidden desktop:tw-block'>
     <nav class='breadcrumbs' role='navigation' aria-label='breadcrumbs'>
       <div class='breadcrumbs__list'>
         <span class='breadcrumbs__item'>

@@ -1046,8 +1046,8 @@ input.mobile-facets__checkbox {
 
 .mobile-facets__label .icon-checkmark {
   position: absolute;
-  top: 1.9rem;
-  left: 2.8rem;
+  top: 12px;
+  left: 27px;
   visibility: hidden;
   width: 11px;
   height: 9px;
