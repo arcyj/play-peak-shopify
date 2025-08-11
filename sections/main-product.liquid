@@ -185,190 +185,17 @@
                           </span>
                         </button>
                       </quantity-input>
-                      {% comment %}
-                        {%- liquid
-                          assign volume_pricing_array = product.selected_or_first_available_variant.quantity_price_breaks | sort: 'quantity' | reverse
-                          assign current_qty_for_volume_pricing = cart_qty | plus: product.selected_or_first_available_variant.quantity_rule.min
-                          if cart_qty > 0
-                            assign current_qty_for_volume_pricing = cart_qty | plus: product.selected_or_first_available_variant.quantity_rule.increment
-                          endif
-                        -%}
-                        {%- if product.quantity_price_breaks_configured? -%}
-                          <price-per-item
-                            id='Price-Per-Item-{{ section.id }}'
-                            data-section-id='{{ section.id }}'
-                            data-variant-id='{{ product.selected_or_first_available_variant.id }}'
-                          >
-                            {%- if product.selected_or_first_available_variant.quantity_price_breaks.size > 0 -%}
-                              {%- assign variant_price_compare = product.selected_or_first_available_variant.compare_at_price -%}
-                              <div class='price-per-item'>
-                                {%- if variant_price_compare -%}
-                                  <dl class='price-per-item--current'>
-                                    <dt class='visually-hidden'>
-                                      {{ 'products.product.price.regular_price' | t }}
-                                    </dt>
-                                    <dd>
-                                      <s class='variant-item__old-price'>
-                                        {{ variant_price_compare | money_with_currency }}
-                                      </s>
-                                    </dd>
-                                  </dl>
-                                {%- endif -%}
-                                {%- if current_qty_for_volume_pricing < volume_pricing_array.last.minimum_quantity -%}
-                                  {%- assign variant_price = product.selected_or_first_available_variant.price
-                                    | money_with_currency
-                                  -%}
-                                  <span class='price-per-item--current'>
-                                    {{- 'products.product.volume_pricing.price_at_each' | t: price: variant_price -}}
-                                  </span>
-                                {%- else -%}
-                                  {%- for price_break in volume_pricing_array -%}
-                                    {%- if current_qty_for_volume_pricing >= price_break.minimum_quantity -%}
-                                      {%- assign price_break_price = price_break.price | money_with_currency -%}
-                                      <span class='price-per-item--current'>
-                                        {{-
-                                          'products.product.volume_pricing.price_at_each'
-                                          | t: price: price_break_price
-                                        -}}
-                                      </span>
-                                      {%- break -%}
-                                    {%- endif -%}
-                                  {%- endfor -%}
-                                {%- endif -%}
-                              </div>
-                            {%- else -%}
-                              {%- assign variant_price = product.selected_or_first_available_variant.price
-                                | money_with_currency
-                              -%}
-                              {%- assign variant_price_compare = product.selected_or_first_available_variant.compare_at_price -%}
-                              <div class='price-per-item'>
-                                {%- if variant_price_compare -%}
-                                  <dl class='price-per-item--current'>
-                                    <dt class='visually-hidden'>
-                                      {{ 'products.product.price.regular_price' | t }}
-                                    </dt>
-                                    <dd>
-                                      <s class='variant-item__old-price'>
-                                        {{ variant_price_compare | money_with_currency }}
-                                      </s>
-                                    </dd>
-                                    <dt class='visually-hidden'>
-                                      {{ 'products.product.price.sale_price' | t }}
-                                    </dt>
-                                    <dd>
-                                      <span class='price-per-item--current'>
-                                        {{- 'products.product.volume_pricing.price_at_each' | t: price: variant_price -}}
-                                      </span>
-                                    </dd>
-                                  </dl>
-                                {%- else -%}
-                                  <span class='price-per-item--current'>
-                                    {{- 'products.product.volume_pricing.price_at_each' | t: price: variant_price -}}
-                                  </span>
-                                {%- endif -%}
-                              </div>
-                            {%- endif -%}
-                          </price-per-item>
-                        {%- endif -%}
-                      {% endcomment %}
+
                     </div>
-                    {% comment %}
-                      <div class='quantity__rules caption' id='Quantity-Rules-{{ section.id }}'>
-                        {%- if product.selected_or_first_available_variant.quantity_rule.increment > 1 -%}
-                          <span class='divider'>
-                            {{-
-                              'products.product.quantity.multiples_of'
-                              | t: quantity: product.selected_or_first_available_variant.quantity_rule.increment
-                            -}}
-                          </span>
-                        {%- endif -%}
-                        {%- if product.selected_or_first_available_variant.quantity_rule.min > 1 -%}
-                          <span class='divider'>
-                            {{-
-                              'products.product.quantity.minimum_of'
-                              | t: quantity: product.selected_or_first_available_variant.quantity_rule.min
-                            -}}
-                          </span>
-                        {%- endif -%}
-                        {%- if product.selected_or_first_available_variant.quantity_rule.max != null -%}
-                          <span class='divider'>
-                            {{-
-                              'products.product.quantity.maximum_of'
-                              | t: quantity: product.selected_or_first_available_variant.quantity_rule.max
-                            -}}
-                          </span>
-                        {%- endif -%}
-                      </div>
-                    {% endcomment %}
-                    {% comment %}
-                      {%- if product.quantity_price_breaks_configured? -%}
-                        <volume-pricing class='parent-display' id='Volume-{{ section.id }}'>
-                          {%- if product.selected_or_first_available_variant.quantity_price_breaks.size > 0 -%}
-                            <span class='caption-large'>{{ 'products.product.volume_pricing.title' | t }}</span>
-                            <ul class='list-unstyled'>
-                              <li>
-                                <span>{{ product.selected_or_first_available_variant.quantity_rule.min }}+</span>
-                                {%- assign price = product.selected_or_first_available_variant.price
-                                  | money_with_currency
-                                -%}
-                                <span data-text='{{ 'products.product.volume_pricing.price_at_each' | t: price: variant_price }}'>
-                                  {{- 'sections.quick_order_list.each' | t: money: price -}}
-                                </span>
-                              </li>
-                              {%- for price_break in product.selected_or_first_available_variant.quantity_price_breaks -%}
-                                {%- assign price_break_price = price_break.price | money_with_currency -%}
-                                <li class='{%- if forloop.index >= 3 -%}show-more-item hidden{%- endif -%}'>
-                                  <span>
-                                    {{- price_break.minimum_quantity -}}
-                                    <span aria-hidden='true'>+</span></span
-                                  >
-                                  <span data-text='{{ 'products.product.volume_pricing.price_at_each' | t: price: price_break_price }}'>
-                                    {{- 'sections.quick_order_list.each' | t: money: price_break_price -}}
-                                  </span>
-                                </li>
-                              {%- endfor -%}
-                            </ul>
-                            {%- if product.selected_or_first_available_variant.quantity_price_breaks.size >= 3 -%}
-                              <show-more-button>
-                                <button
-                                  class='button-show-more link underlined-link'
-                                  id='Show-More-{{ section.id }}'
-                                  type='button'
-                                >
-                                  <span class='label-show-more label-text'
-                                    ><span aria-hidden='true'>+ </span>{{ 'products.facets.show_more' | t }}
-                                  </span>
-                                </button>
-                              </show-more-button>
-                            {%- endif -%}
-                          {%- endif -%}
-                        </volume-pricing>
-                      {%- endif -%}
-                    {% endcomment %}
+
                   </div>
-                  {% comment %} End qty input {% endcomment %}
+
                 </div>
                 {%- if product.quantity_price_breaks_configured? -%}
                   <div class='volume-pricing-note' id='Volume-Note-{{ section.id }}'>
                     <span>{{ 'products.product.volume_pricing.note' | t }}</span>
                   </div>
                 {%- endif -%}
-                {% comment %}
-                  {%- if cart.taxes_included or cart.duties_included or shop.shipping_policy.body != blank -%}
-                    <div class='product__tax caption rte'>
-                      {%- if cart.duties_included and cart.taxes_included -%}
-                        {{ 'products.product.duties_and_taxes_included' | t }}
-                      {%- elsif cart.taxes_included -%}
-                        {{ 'products.product.taxes_included' | t }}
-                      {%- elsif cart.duties_included -%}
-                        {{ 'products.product.duties_included' | t }}
-                      {%- endif -%}
-                      {%- if shop.shipping_policy.body != blank -%}
-                        {{ 'products.product.shipping_policy_html' | t: link: shop.shipping_policy.url }}
-                      {%- endif -%}
-                    </div>
-                  {%- endif -%}
-                {% endcomment %}
                 <div {{ block.shopify_attributes }}>
                   {%- assign product_form_installment_id = 'product-form-installment-' | append: section.id -%}
                   {%- form 'product', product, id: product_form_installment_id, class: 'installment caption-large' -%}
@@ -383,51 +210,7 @@
                   id='Inventory-{{ section.id }}'
                   role='status'
                 >
-                  {% comment %}
-                    {%- if product.selected_or_first_available_variant.inventory_management == 'shopify' -%}
-                      {%- if product.selected_or_first_available_variant.inventory_quantity > 0 -%}
-                        {%- if product.selected_or_first_available_variant.inventory_quantity
-                            <= block.settings.inventory_threshold
-                        -%}
-                          <span class='svg-wrapper' style='color: rgb(238, 148, 65)'>
-                            {{- 'icon-inventory-status.svg' | inline_asset_content -}}
-                          </span>
-                          {%- if block.settings.show_inventory_quantity -%}
-                            {{-
-                              'products.product.inventory_low_stock_show_count'
-                              | t: quantity: product.selected_or_first_available_variant.inventory_quantity
-                            -}}
-                          {%- else -%}
-                            {{- 'products.product.inventory_low_stock' | t -}}
-                          {%- endif -%}
-                        {%- else -%}
-                          <span class='svg-wrapper' style='color: rgb(62, 214, 96)'>
-                            {{- 'icon-inventory-status.svg' | inline_asset_content -}}
-                          </span>
-                          {%- if block.settings.show_inventory_quantity -%}
-                            {{-
-                              'products.product.inventory_in_stock_show_count'
-                              | t: quantity: product.selected_or_first_available_variant.inventory_quantity
-                            -}}
-                          {%- else -%}
-                            {{- 'products.product.inventory_in_stock' | t -}}
-                          {%- endif -%}
-                        {%- endif -%}
-                      {%- else -%}
-                        {%- if product.selected_or_first_available_variant.inventory_policy == 'continue' -%}
-                          <span class='svg-wrapper' style='color: rgb(62, 214, 96)'>
-                            {{- 'icon-inventory-status.svg' | inline_asset_content -}}
-                          </span>
-                          {{- 'products.product.inventory_out_of_stock_continue_selling' | t -}}
-                        {%- else -%}
-                          <span class='svg-wrapper' style='color: rgb(200, 200, 200)'>
-                            {{- 'icon-inventory-status.svg' | inline_asset_content -}}
-                          </span>
-                          {{- 'products.product.inventory_out_of_stock' | t -}}
-                        {%- endif -%}
-                      {%- endif -%}
-                    {%- endif -%}
-                  {% endcomment %}
+
                 </p>
               {%- when 'popup' -%}
                 <modal-opener
@@ -657,6 +440,22 @@
           </a>
         </section>
       </div>
+        <div class='tw-bg-white desktop:tw-border tw-border-solid tw-border-lightGray tw-p-32 tw-block tablet:tw-hidden tw-rounded'>
+          <h3 class='tw-text-dark tw-text-h3 tw-mb-24'>Product Specification</h3>
+          {%- if product.description != blank -%}
+            <div
+              class='product__description tw-mr-24 tw-text-regular tw-text-dark'
+              {{ block.shopify_attributes }}
+            >
+              {{ product.description }}
+            </div>
+          {%- endif -%}
+          <div class='tw-flex tw-gap-8 tw-mt-24 tw-flex-wrap'>
+            {% render 'product-detail', label: 'Expansion', value: product.metafields.custom.expansion.value.title %}
+            {% render 'product-detail', label: 'Langauge', value: product.metafields.details.language.value.name %}
+            {% render 'product-detail', label: 'Suitable age', value: product.metafields.details.age.value %}
+          </div>
+        </div>
     </div>
 
     {% render 'product-media-modal', variant_images: variant_images %}
