@@ -21,6 +21,7 @@ if (!customElements.get('product-form')) {
       }
 
       onSubmitHandler(evt) {
+        console.log('onSubmitHandler');
         evt.preventDefault();
         if (this.submitButton.getAttribute('aria-disabled') === 'true') return;
 
@@ -48,6 +49,7 @@ if (!customElements.get('product-form')) {
         fetch(`${routes.cart_add_url}`, config)
           .then((response) => response.json())
           .then((response) => {
+            console.log('response', response);
             if (response.status) {
               publish(PUB_SUB_EVENTS.cartError, {
                 source: 'product-form',
@@ -70,15 +72,16 @@ if (!customElements.get('product-form')) {
               return;
             }
 
-            if (!this.error)
-              publish(PUB_SUB_EVENTS.cartUpdate, {
-                source: 'product-form',
-                productVariantId: formData.get('id'),
-                cartData: response,
-              });
-            this.error = false;
+            // if (!this.error)
+            //   publish(PUB_SUB_EVENTS.cartUpdate, {
+            //     source: 'product-form',
+            //     productVariantId: formData.get('id'),
+            //     cartData: response,
+            //   });
+            // this.error = false;
             const quickAddModal = this.closest('quick-add-modal');
             if (quickAddModal) {
+                  console.log('renderContents 1', response);
               document.body.addEventListener(
                 'modalClosed',
                 () => {
@@ -90,6 +93,7 @@ if (!customElements.get('product-form')) {
               );
               quickAddModal.hide(true);
             } else {
+              console.log('renderContents', response);
               this.cart.renderContents(response);
             }
           })
