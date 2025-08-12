@@ -1190,6 +1190,12 @@ a.product__text {
   min-height: 350px;
 }
 
+@media screen and (max-width: 749px) {
+  .product__media {
+    min-height: 250px;
+  }
+}
+
 .thumbnail[aria-current]:focus-visible {
   box-shadow: 0 0 0 0.3rem rgb(var(--color-background)),
     0 0 0rem 0.5rem rgba(var(--color-foreground), 0.5);
@@ -1428,7 +1434,7 @@ a.product__text {
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: none;
 }
 
 .product-media-container.constrain-height .media {
