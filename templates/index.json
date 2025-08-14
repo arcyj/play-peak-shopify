@@ -27,6 +27,7 @@
         },
         "small_banner_nRfiAR": {
           "type": "smallBanner",
+          "disabled": true,
           "settings": {
             "smallBanner_gradient_start": "#d21242",
             "smallBanner_gradient_end": "#d21258",
@@ -55,7 +56,7 @@
         "title": "On sale now!",
         "description": "<p>Save up to <strong>-20% OFF</strong></p>",
         "show_description": true,
-        "collection": "all",
+        "collection": "on-sale",
         "products_to_show": 8,
         "columns_desktop": 6,
         "columns_mobile": 1,
