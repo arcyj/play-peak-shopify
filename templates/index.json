@@ -46,6 +46,37 @@
         "title": "Slideshow"
       }
     },
+    "featured_collection_6j3Gm3": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Our top picks",
+        "description": "<p>Recommended by most of our customers</p>",
+        "show_description": true,
+        "collection": "pokemon-tcg",
+        "products_to_show": 18,
+        "columns_desktop": 6,
+        "columns_mobile": 2,
+        "show_view_all": false,
+        "enable_desktop_slider": false,
+        "enable_mobile_slider": false
+      }
+    },
+    "featured_collection_MVNcmk": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "title": "Lorcana TCG",
+        "description": "",
+        "show_description": false,
+        "collection": "lorcana-tcg",
+        "products_to_show": 12,
+        "columns_desktop": 5,
+        "columns_mobile": 1,
+        "show_view_all": true,
+        "enable_desktop_slider": true,
+        "enable_mobile_slider": true
+      }
+    },
     "featured_collection": {
       "type": "featured-collection",
       "custom_css": [
@@ -72,40 +103,9 @@
         "description": "",
         "show_description": false,
         "collection": "pokemon-tcg",
-        "products_to_show": 9,
+        "products_to_show": 12,
         "columns_desktop": 6,
         "columns_mobile": 1,
-        "show_view_all": true,
-        "enable_desktop_slider": true,
-        "enable_mobile_slider": true
-      }
-    },
-    "featured_collection_6j3Gm3": {
-      "type": "featured-collection",
-      "settings": {
-        "title": "Our top picks",
-        "description": "<p>Recommended by most of our customers</p>",
-        "show_description": true,
-        "collection": "pokemon-tcg",
-        "products_to_show": 18,
-        "columns_desktop": 6,
-        "columns_mobile": 2,
-        "show_view_all": false,
-        "enable_desktop_slider": false,
-        "enable_mobile_slider": false
-      }
-    },
-    "featured_collection_MVNcmk": {
-      "type": "featured-collection",
-      "name": "t:sections.featured-collection.presets.name",
-      "settings": {
-        "title": "Lorcana TCG",
-        "description": "",
-        "show_description": false,
-        "collection": "lorcana-tcg",
-        "products_to_show": 14,
-        "columns_desktop": 5,
-        "columns_mobile": 4,
         "show_view_all": true,
         "enable_desktop_slider": true,
         "enable_mobile_slider": true
