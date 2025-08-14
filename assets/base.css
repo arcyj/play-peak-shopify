@@ -1509,7 +1509,7 @@ details[open] > .share-button__fallback {
 .localization-form__select:focus.localization-form__select:after {
   box-shadow: 0 0 0 0;
   outline: 0;
-  border-radius: var(--inputs-radius);
+  border-radius: 6px;
 }
 
 .localization-form__select:focus {
@@ -2348,9 +2348,13 @@ input[type='checkbox'] {
   display: flex;
   flex-direction: column;
   text-decoration: none;
-  padding: 0px 8px;
+  padding: 4px 8px;
   margin-right: 8px;
   border-radius: 4px;
+}
+
+.header__icon:hover {
+  background-color: #f4f5f7;
 }
 
 @media screen and (max-width: 748px) {

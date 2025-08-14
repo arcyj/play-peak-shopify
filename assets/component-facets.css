@@ -331,12 +331,6 @@
   align-items: center;
 }
 
-/* Hover/focus state */
-.facets-layout-list .facets__label:hover .facet-checkbox__text-label,
-.facets-layout-list input:focus ~ .facet-checkbox__text-label {
-  text-decoration: underline;
-}
-
 .facets-layout-grid > * {
   align-items: flex-start;
 }
@@ -770,7 +764,7 @@ a.active-facets__button.focused .active-facets__button-inner {
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 100;
+  z-index: 99999;
   background-color: rgba(var(--color-foreground), 0.5);
   pointer-events: none;
 }
@@ -1036,8 +1030,26 @@ input.mobile-facets__checkbox {
   display: flex;
 }
 
+.facets__label:hover .mobile-facets__icon {
+  border-color: #943bf2;
+}
+
+.mobile-facets__label:hover .mobile-facets__icon {
+  border-color: #943bf2;
+}
+
+.mobile-facets__icon {
+  background-color: #fff;
+  border: 2px solid #e3e3e3;
+  border-radius: 4px;
+}
+
+.mobile-facets__checkbox:checked + .mobile-facets__icon {
+  background-color: #943bf2;
+  border-color: #943bf2;
+}
+
 .mobile-facets__label > svg {
-  background-color: rgb(var(--color-background));
   position: relative;
   z-index: 2;
   margin-right: 1.2rem;

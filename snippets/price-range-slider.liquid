@@ -1,0 +1,80 @@
+{% comment %}
+  Renders a price range slider component
+
+  Accepts:
+  - filter: {Object} Price range filter object
+  - id_prefix: {String} Prefix for input IDs
+
+  Usage:
+  {% render 'price-range-slider', filter: filter, id_prefix: 'Filter-' %}
+{% endcomment %}
+
+<div class='price-range-slider'>
+  <div class='price-range-slider__header'>
+    <h3 class='tw-text-large tw-text-black'>Price range</h3>
+  </div>
+
+  <div class='price-range-slider__inputs'>
+    <div class='price-range-slider__input-wrapper'>
+      <label class='price-range-slider__label' for='{{ id_prefix }}{{ filter.label | escape }}-GTE'> From </label>
+      <div class='price-range-slider__input-container'>
+        <input
+          class='price-range-slider__input'
+          name='{{ filter.min_value.param_name }}'
+          id='{{ id_prefix }}{{ filter.label | escape }}-GTE'
+          {%- if filter.min_value.value -%}
+            value='{{ filter.min_value.value | divided_by: 100.0 | round: 0 }}'
+          {%- endif -%}
+          type='text'
+          inputmode='decimal'
+          placeholder='{{ 0 | money_without_trailing_zeros | remove: '$' }}'
+          data-pattern='\d| |,|\.'
+          data-min='0'
+          data-max='{{ filter.range_max | money_without_currency }}'
+          data-slider-input='min'
+        >
+        <span class='price-range-slider__currency'>{{ cart.currency.symbol }}</span>
+      </div>
+    </div>
+
+    <div class='price-range-slider__input-wrapper'>
+      <label class='price-range-slider__label' for='{{ id_prefix }}{{ filter.label | escape }}-LTE'> To </label>
+      <div class='price-range-slider__input-container'>
+        <input
+          class='price-range-slider__input'
+          name='{{ filter.max_value.param_name }}'
+          id='{{ id_prefix }}{{ filter.label | escape }}-LTE'
+          {%- if filter.max_value.value -%}
+            value='{{ filter.max_value.value | divided_by: 100.0 | round: 0 }}'
+          {%- endif -%}
+          type='text'
+          inputmode='decimal'
+          placeholder='{{ filter.range_max | money_without_currency | remove: '$' }}'
+          data-pattern='\d| |,|\.'
+          data-min='0'
+          data-max='{{ filter.range_max | money_without_currency }}'
+          data-slider-input='max'
+        >
+        <span class='price-range-slider__currency'>{{ cart.currency.symbol }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class='price-range-slider__track-container'>
+    <div class='price-range-slider__track'>
+      <span class='price-range-slider__range' data-slider-range></span>
+      <span class='price-range-slider__thumb price-range-slider__thumb--min' data-slider-thumb='min'></span>
+      <span class='price-range-slider__thumb price-range-slider__thumb--max' data-slider-thumb='max'></span>
+      <div class='price-range-slider__slider-area' data-slider-area>
+        <input
+          type='range'
+          class='price-range-slider__input-range'
+          data-slider-input-range
+          min='0'
+          max='{{ filter.range_max | divided_by: 100.0 | round: 0 }}'
+          step='1'
+        >
+      </div>
+    </div>
+  </div>
+</div>

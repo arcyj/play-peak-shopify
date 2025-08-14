@@ -17,6 +17,7 @@
 {{ 'component-swatch.css' | asset_url | stylesheet_tag }}
 {{ 'component-accordion.css' | asset_url | stylesheet_tag }}
 {{ 'collapsible-content.css' | asset_url | stylesheet_tag }}
+{{ 'component-price-range-slider.css' | asset_url | stylesheet_tag }}
 
 {%- liquid
   assign sort_by = results.sort_by | default: results.default_sort_by
@@ -106,7 +107,10 @@
                           open
                         {% endif %}
                       >
-                        <summary id='Summary-{{ block.id }}-{{ section.id }}' class="tw-px-24 tw-py-16 tw-flex tw-items-center tw-justify-between focus-inset">
+                        <summary
+                          id='Summary-{{ block.id }}-{{ section.id }}'
+                          class='tw-px-24 tw-py-16 tw-flex tw-items-center tw-justify-between focus-inset'
+                        >
                           <div>
                             <span class='tw-text-large tw-text-black'>{{ filter.label | escape }}</span>
                           </div>
@@ -144,7 +148,7 @@
                                   %}
 
                                   {%- capture label_class -%}
-                            facets__label mobile-facets__label{% if is_disabled %} disabled{% endif %}{% if value.active %} active{% endif %}
+                              facets__label mobile-facets__label{% if is_disabled %} disabled{% endif %}{% if value.active %} active{% endif %}
                             {%- endcapture -%}
 
                                   {%- capture text_value -%}
@@ -189,9 +193,9 @@
                                           {%- endif -%}
                                         </div>
                                       {%- else -%}
-                                        <span class='mobile-facets__highlight'></span>
-                                        {{- 'square.svg' | inline_asset_content -}}
-                                        {{- 'icon-checkmark.svg' | inline_asset_content -}}
+                                        <span class='mobile-facets__icon'>
+                                          {{- 'icon-check.svg' | inline_asset_content -}}
+                                        </span>
                                       {%- endif %}
 
                                       {{ text_value }}
@@ -207,28 +211,10 @@
 
                   {% when 'price_range' %}
                     <div
-                      id='Details-Mobile-{{ filter.param_name | escape }}-{{ section.id }}'
                       class='js-filter tw-bg-surface-gray tw-rounded tw-mb-16'
                       data-index='mobile-{{ forloop.index }}'
                     >
-                      <summary class='mobile-facets__summary focus-inset'>
-                        <div>
-                          <span class='tw-text-large tw-text-black'>{{ filter.label | escape }}</span>
-                        </div>
-                      </summary>
-                      <div
-                        id='FacetMobile-{{ forloop.index }}-{{ section.id }}'
-                        class='mobile-facets__submenu '
-                      >
-                        {%- assign max_price_amount = filter.range_max | money | strip_html | escape -%}
-                        <p class='mobile-facets__info'>
-                          {{ 'products.facets.max_price' | t: price: max_price_amount }}
-                        </p>
-
-                        <price-range class='facets__price tw-gap-8'>
-                          {% render 'price-facet', filter: filter, id_prefix: 'Mobile-Filter-' %}
-                        </price-range>
-                      </div>
+                      {% render 'price-range-slider', filter: filter, id_prefix: 'Mobile-Filter-' %}
                     </div>
                 {% endcase %}
               {%- endfor -%}
