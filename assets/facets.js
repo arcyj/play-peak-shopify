@@ -5,13 +5,52 @@ class FacetFiltersForm extends HTMLElement {
 
     this.debouncedOnSubmit = debounce((event) => {
       this.onSubmitHandler(event);
-    }, 800);
+    }, 50); // Reduced from 100ms to 50ms for faster response
 
     const facetForm = this.querySelector('form');
     facetForm.addEventListener('input', this.debouncedOnSubmit.bind(this));
 
+    // Add immediate visual feedback for mobile filter checkboxes
+    this.addEventListener('change', this.onCheckboxChange.bind(this));
+
     const facetWrapper = this.querySelector('#FacetsWrapperDesktop');
     if (facetWrapper) facetWrapper.addEventListener('keyup', onKeyUpEscape);
+  }
+
+  onCheckboxChange(event) {
+    // Only handle mobile filter checkboxes
+    if (event.target.classList.contains('mobile-facets__checkbox')) {
+      const checkbox = event.target;
+      const label = checkbox.closest('.mobile-facets__label');
+      const icon = label?.querySelector('.mobile-facets__icon');
+      const checkmark = label?.querySelector('.icon-checkmark');
+
+      // Prevent rapid clicking by temporarily disabling the checkbox
+      checkbox.style.pointerEvents = 'none';
+      setTimeout(() => {
+        checkbox.style.pointerEvents = '';
+      }, 100);
+
+      if (checkbox.checked) {
+        // Immediately show checked state
+        if (icon) {
+          icon.style.backgroundColor = '#943bf2';
+          icon.style.borderColor = '#943bf2';
+        }
+        if (checkmark) {
+          checkmark.style.visibility = 'visible';
+        }
+      } else {
+        // Immediately show unchecked state
+        if (icon) {
+          icon.style.backgroundColor = '#fff';
+          icon.style.borderColor = '#e3e3e3';
+        }
+        if (checkmark) {
+          checkmark.style.visibility = 'hidden';
+        }
+      }
+    }
   }
 
   static setListeners() {
@@ -182,6 +221,9 @@ class FacetFiltersForm extends HTMLElement {
     FacetFiltersForm.renderActiveFacets(parsedHTML);
     FacetFiltersForm.renderAdditionalElements(parsedHTML);
 
+    // Sync mobile checkbox visual states after rendering
+    FacetFiltersForm.syncMobileCheckboxStates();
+
     if (countsToRender) {
       const closestJSFilterID = event.target.closest('.js-filter').id;
 
@@ -288,6 +330,38 @@ class FacetFiltersForm extends HTMLElement {
     if (sourceFacetsList && targetFacetsList) {
       targetFacetsList.outerHTML = sourceFacetsList.outerHTML;
     }
+
+    // Re-sync visual states after rendering
+    FacetFiltersForm.syncMobileCheckboxStates();
+  }
+
+  static syncMobileCheckboxStates() {
+    // Sync all mobile checkbox visual states with their actual checked state
+    document
+      .querySelectorAll('.mobile-facets__checkbox')
+      .forEach((checkbox) => {
+        const label = checkbox.closest('.mobile-facets__label');
+        const icon = label?.querySelector('.mobile-facets__icon');
+        const checkmark = label?.querySelector('.icon-checkmark');
+
+        if (checkbox.checked) {
+          if (icon) {
+            icon.style.backgroundColor = '#943bf2';
+            icon.style.borderColor = '#943bf2';
+          }
+          if (checkmark) {
+            checkmark.style.visibility = 'visible';
+          }
+        } else {
+          if (icon) {
+            icon.style.backgroundColor = '#fff';
+            icon.style.borderColor = '#e3e3e3';
+          }
+          if (checkmark) {
+            checkmark.style.visibility = 'hidden';
+          }
+        }
+      });
   }
 
   static updateURLHash(searchParams) {
@@ -317,13 +391,20 @@ class FacetFiltersForm extends HTMLElement {
 
   onSubmitHandler(event) {
     event.preventDefault();
+    console.log('onSubmitHandler called with event:', event);
     const sortFilterForms = document.querySelectorAll(
       'facet-filters-form form',
     );
+    console.log(
+      'Found forms:',
+      Array.from(sortFilterForms).map((f) => f.id),
+    );
+
     if (event.srcElement.className == 'mobile-facets__checkbox') {
       const searchParams = this.createSearchParams(
         event.target.closest('form'),
       );
+      console.log('Mobile checkbox search params:', searchParams);
       this.onSubmitForm(searchParams, event);
     } else {
       const forms = [];
@@ -335,15 +416,22 @@ class FacetFiltersForm extends HTMLElement {
           if (
             form.id === 'FacetSortForm' ||
             form.id === 'FacetFiltersForm' ||
+            form.id === 'FacetFiltersFormSidebar' ||
             form.id === 'FacetSortDrawerForm'
           ) {
-            forms.push(this.createSearchParams(form));
+            const searchParams = this.createSearchParams(form);
+            console.log('Form search params for', form.id, ':', searchParams);
+            forms.push(searchParams);
           }
         } else if (form.id === 'FacetFiltersFormMobile') {
-          forms.push(this.createSearchParams(form));
+          const searchParams = this.createSearchParams(form);
+          console.log('Mobile form search params:', searchParams);
+          forms.push(searchParams);
         }
       });
-      this.onSubmitForm(forms.join('&'), event);
+      const combinedParams = forms.join('&');
+      console.log('Combined search params:', combinedParams);
+      this.onSubmitForm(combinedParams, event);
     }
   }
 
@@ -365,6 +453,11 @@ FacetFiltersForm.searchParamsInitial = window.location.search.slice(1);
 FacetFiltersForm.searchParamsPrev = window.location.search.slice(1);
 customElements.define('facet-filters-form', FacetFiltersForm);
 FacetFiltersForm.setListeners();
+
+// Initialize mobile checkbox states when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+  FacetFiltersForm.syncMobileCheckboxStates();
+});
 
 class PriceRange extends HTMLElement {
   constructor() {
@@ -436,3 +529,18 @@ class FacetRemove extends HTMLElement {
 }
 
 customElements.define('facet-remove', FacetRemove);
+
+// Global function to close mobile facets drawer
+window.closeMobileFacets = function () {
+  const menuDrawer = document.querySelector(
+    'menu-drawer[data-breakpoint="mobile"]',
+  );
+  if (menuDrawer) {
+    const summary = menuDrawer.querySelector('summary');
+    if (summary) {
+      summary.click();
+    }
+    // Ensure overflow is removed
+    document.body.classList.remove('overflow-hidden-mobile');
+  }
+};

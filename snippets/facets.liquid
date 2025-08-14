@@ -120,10 +120,10 @@
         </summary>
         <facet-filters-form>
           <form id='FacetFiltersFormMobile' class='mobile-facets'>
-            <div class='mobile-facets__inner gradient'>
+            <div class='mobile-facets__inner gradient max-desktop:tw-rounded-t-lg'>
               <div class='mobile-facets__header'>
                 <div class='mobile-facets__header-inner'>
-                  <h2 class='tw-text-h2 tw-text-black'>Filters</h2>
+                  <h2 class='tw-text-h1 tw-text-black'>Filters</h2>
                   <p class='mobile-facets__count'>
                     {%- if results.results_count -%}
                       {{
@@ -140,6 +140,16 @@
                     {%- endif -%}
                   </p>
                 </div>
+                <button
+                  class='drawer__close'
+                  type='button'
+                  onclick='closeMobileFacets()'
+                  aria-label='{{ 'accessibility.close' | t }}'
+                >
+                  <span class='svg-wrapper'>
+                    {{- 'icon-close.svg' | inline_asset_content -}}
+                  </span>
+                </button>
               </div>
               <div
                 id='FacetsWrapperMobile'
@@ -225,9 +235,9 @@
                                         disabled
                                       {% endif %}
                                     >
-                                      <span class='mobile-facets__icon'>
-                                        {{- 'icon-check.svg' | inline_asset_content -}}
-                                      </span>
+                                    <span class='mobile-facets__icon'>
+                                      {{- 'icon-check.svg' | inline_asset_content -}}
+                                    </span>
                                     {{ text_value }}
                                   </label>
                                 </li>
@@ -282,7 +292,7 @@
                   </div>
                 {%- endif -%}
 
-                <div class='tw-flex tw-gap-8 tw-sticky tw-bottom-0 tw-left-0 tw-bg-white tw-mt-auto z-[9999]'>
+                <div class='tw-flex tw-gap-8 tw-sticky tw-bottom-0 tw-left-0 tw-bg-white tw-mt-auto z-[9999] tw-pb-8'>
                   <facet-remove class='mobile-facets__clear-wrapper flex-basis-1 tw-min-w-0 tw-w-1/2'>
                     {%
                       render 'button',
@@ -297,7 +307,7 @@
                     label: 'Apply',
                     variant: 'solid-purple',
                     size: 'large',
-                    onClick: "this.closest('.mobile-facets__wrapper').querySelector('summary').click(); document.body.classList.remove('overflow-hidden-mobile')",
+                    onClick: 'closeMobileFacets()',
                     custom_class: 'flex-basis-1 tw-min-w-0 tw-w-1/2'
                   %}
                 </div>

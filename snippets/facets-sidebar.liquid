@@ -212,9 +212,9 @@
                   {% when 'price_range' %}
                     <div
                       class='js-filter tw-bg-surface-gray tw-rounded tw-mb-16'
-                      data-index='mobile-{{ forloop.index }}'
+                      data-index='desktop-{{ forloop.index }}'
                     >
-                      {% render 'price-range-slider', filter: filter, id_prefix: 'Mobile-Filter-' %}
+                      {% render 'price-range-slider', filter: filter, id_prefix: 'Desktop-Filter-' %}
                     </div>
                 {% endcase %}
               {%- endfor -%}

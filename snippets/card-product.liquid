@@ -41,7 +41,13 @@
     endif
   -%}
 
-  <div class='card-wrapper product-card-wrapper tw-bg-surface-lightGrey tw-rounded tw-px-12 tw-pt-12 tw-pb-24'>
+{% assign isSoldout = false %}
+
+{% if card_product.selected_or_first_available_variant.available == false or quantity_rule_soldout %}
+  {% assign isSoldout = true %}
+{% endif %}
+
+  <div class='card-wrapper product-card-wrapper tw-bg-surface-lightGrey tw-rounded tw-px-12 tw-pt-12 tw-pb-24 {% if isSoldout %} tw-opacity-50 {% endif %}'>
     <a href='{{ card_product.url }}' class='tw-block tw-no-underline'>
       {% render 'on-sale-badge', product: card_product, class: 'tw-absolute tw-top-0 !tw-rounded-t-none' %}
       <div class='tw-absolute tw-z-50 tw-top-4 tw-right-4'>

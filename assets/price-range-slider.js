@@ -15,6 +15,14 @@ class PriceRangeSlider {
     const minInputValue = this.parseInputValue(this.minInput.value);
     const maxInputValue = this.parseInputValue(this.maxInput.value);
 
+    console.log('Price range slider initial values:', {
+      minInputValue,
+      maxInputValue,
+      maxValue: this.maxValue,
+      minInputName: this.minInput.name,
+      maxInputName: this.maxInput.name,
+    });
+
     this.currentMin = minInputValue !== null ? minInputValue : 0;
     this.currentMax = maxInputValue !== null ? maxInputValue : this.maxValue;
 
@@ -27,6 +35,9 @@ class PriceRangeSlider {
     this.isDragging = false;
     this.dragTarget = null; // 'min' or 'max'
 
+    // Debounce for AJAX updates during dragging
+    this.updateTimeout = null;
+
     this.init();
   }
 
@@ -37,16 +48,6 @@ class PriceRangeSlider {
 
     this.setupEventListeners();
     this.updateRange();
-
-    // Debug logging
-    console.log('PriceRangeSlider initialized:', {
-      minValue: this.minValue,
-      maxValue: this.maxValue,
-      currentMin: this.currentMin,
-      currentMax: this.currentMax,
-      minInputValue: this.minInput.value,
-      maxInputValue: this.maxInput.value,
-    });
   }
 
   setupEventListeners() {
@@ -67,13 +68,36 @@ class PriceRangeSlider {
       e.preventDefault();
     });
 
-    document.addEventListener('mousemove', (e) => {
+    // Touch events for mobile devices
+    this.minThumb.addEventListener('touchstart', (e) => {
+      this.isDragging = true;
+      this.dragTarget = 'min';
+      this.minThumb.classList.add('dragging');
+      this.disableTransitions();
+      e.preventDefault();
+    });
+
+    this.maxThumb.addEventListener('touchstart', (e) => {
+      this.isDragging = true;
+      this.dragTarget = 'max';
+      this.maxThumb.classList.add('dragging');
+      this.disableTransitions();
+      e.preventDefault();
+    });
+
+    // Handle both mouse and touch movement
+    const handleMove = (e) => {
       if (!this.isDragging) return;
 
       const track = this.container.querySelector('.price-range-slider__track');
       const rect = track.getBoundingClientRect();
       const thumbWidth = 20; // Width of the thumb in pixels
-      const adjustedX = e.clientX - rect.left - thumbWidth / 2;
+
+      // Get clientX from either mouse or touch event
+      const clientX =
+        e.clientX || (e.touches && e.touches[0] ? e.touches[0].clientX : 0);
+
+      const adjustedX = clientX - rect.left - thumbWidth / 2;
       const percent = Math.max(
         0,
         Math.min(100, (adjustedX / (rect.width - thumbWidth)) * 100),
@@ -101,9 +125,13 @@ class PriceRangeSlider {
           this.syncInputValues();
         }
       }
-    });
+    };
 
-    document.addEventListener('mouseup', () => {
+    document.addEventListener('mousemove', handleMove);
+    document.addEventListener('touchmove', handleMove, { passive: false });
+
+    // Handle both mouse and touch end
+    const handleEnd = () => {
       if (this.isDragging) {
         this.isDragging = false;
         this.dragTarget = null;
@@ -111,9 +139,12 @@ class PriceRangeSlider {
         this.maxThumb.classList.remove('dragging');
         this.enableTransitions();
         this.syncInputValues(); // Sync values when drag ends
-        this.triggerFormUpdate();
+        this.triggerFormUpdate(); // Trigger AJAX update when drag ends
       }
-    });
+    };
+
+    document.addEventListener('mouseup', handleEnd);
+    document.addEventListener('touchend', handleEnd);
 
     // Input field events
     this.minInput.addEventListener('input', (e) => {
@@ -121,6 +152,8 @@ class PriceRangeSlider {
       if (value !== null && value <= this.currentMax) {
         this.currentMin = value;
         this.updateRange();
+        // Trigger AJAX update on input change
+        this.triggerFormUpdate();
       }
     });
 
@@ -129,17 +162,18 @@ class PriceRangeSlider {
       if (value !== null && value >= this.currentMin) {
         this.currentMax = value;
         this.updateRange();
+        // Trigger AJAX update on input change
+        this.triggerFormUpdate();
       }
     });
 
-    // Handle input blur to format values and trigger form update
+    // Handle input blur to format values
     this.minInput.addEventListener('blur', (e) => {
       const value = this.parseInputValue(e.target.value);
       if (value !== null && value <= this.currentMax) {
         this.currentMin = value;
         this.updateRange();
         e.target.value = value.toLocaleString();
-        this.triggerFormUpdate();
       }
     });
 
@@ -149,7 +183,6 @@ class PriceRangeSlider {
         this.currentMax = value;
         this.updateRange();
         e.target.value = value.toLocaleString();
-        this.triggerFormUpdate();
       }
     });
 
@@ -167,6 +200,18 @@ class PriceRangeSlider {
         e.target.value = value.toString();
       }
     });
+
+    // Add touch support for clicking on the slider track
+    const sliderArea = this.container.querySelector('[data-slider-area]');
+    if (sliderArea) {
+      sliderArea.addEventListener('click', (e) => {
+        this.handleTrackClick(e);
+      });
+
+      sliderArea.addEventListener('touchend', (e) => {
+        this.handleTrackClick(e);
+      });
+    }
   }
 
   parseInputValue(value) {
@@ -218,32 +263,61 @@ class PriceRangeSlider {
   }
 
   triggerFormUpdate() {
-    // Trigger form submission to update filters
-    const form = this.container.closest('form');
-    if (form) {
-      // Dispatch a custom event that Shopify's facet system can listen to
-      const event = new CustomEvent('priceRangeChanged', {
-        detail: {
-          min: this.currentMin,
-          max: this.currentMax,
-        },
-      });
-      form.dispatchEvent(event);
-
-      // Also trigger the form submission with a small delay to ensure values are set
-      setTimeout(() => {
-        try {
-          if (form.requestSubmit) {
-            form.requestSubmit();
-          } else {
-            // Fallback for older browsers
-            form.submit();
-          }
-        } catch (error) {
-          console.warn('Form submission failed:', error);
-        }
-      }, 200);
+    // Clear any existing timeout
+    if (this.updateTimeout) {
+      clearTimeout(this.updateTimeout);
     }
+
+    // Debounce the update to prevent too many AJAX requests
+    this.updateTimeout = setTimeout(
+      () => {
+        // Update the form inputs with current values
+        const form = this.container.closest('form');
+        if (form) {
+          // Update the hidden input values for the form submission
+          const minInput = form.querySelector(`[name="${this.minInput.name}"]`);
+          const maxInput = form.querySelector(`[name="${this.maxInput.name}"]`);
+
+          if (minInput) {
+            minInput.value = this.currentMin; // Convert back to cents for Shopify
+          }
+          if (maxInput) {
+            maxInput.value = this.currentMax; // Convert back to cents for Shopify
+          }
+
+          // Dispatch a custom event that the facet system can listen to
+          const event = new CustomEvent('priceRangeChanged', {
+            detail: {
+              min: this.currentMin,
+              max: this.currentMax,
+            },
+          });
+          form.dispatchEvent(event);
+
+          // Trigger the facet form's AJAX update instead of form submission
+          const facetForm = form.closest('facet-filters-form');
+          if (facetForm && facetForm.onSubmitHandler) {
+            console.log('Triggering facet form update');
+            // Create a synthetic event to trigger the AJAX update
+            const syntheticEvent = {
+              preventDefault: () => {},
+              target: this.minInput,
+              srcElement: this.minInput,
+            };
+
+            // Use the existing debounced submit handler
+            if (facetForm.debouncedOnSubmit) {
+              facetForm.debouncedOnSubmit(syntheticEvent);
+            }
+          } else {
+            console.log('No facet form found or onSubmitHandler not available');
+          }
+        } else {
+          console.log('No form found for price range slider');
+        }
+      },
+      this.isDragging ? 300 : 100,
+    ); // Longer delay when dragging, shorter when typing
   }
 
   // Public method to get current values
@@ -252,6 +326,49 @@ class PriceRangeSlider {
       min: this.currentMin,
       max: this.currentMax,
     };
+  }
+
+  // Handle clicking on the slider track
+  handleTrackClick(e) {
+    const track = this.container.querySelector('.price-range-slider__track');
+    const rect = track.getBoundingClientRect();
+    const thumbWidth = 20;
+
+    // Get clientX from either mouse or touch event
+    const clientX =
+      e.clientX ||
+      (e.changedTouches && e.changedTouches[0]
+        ? e.changedTouches[0].clientX
+        : 0);
+
+    const adjustedX = clientX - rect.left - thumbWidth / 2;
+    const percent = Math.max(
+      0,
+      Math.min(100, (adjustedX / (rect.width - thumbWidth)) * 100),
+    );
+    const value = Math.round((percent / 100) * this.maxValue);
+
+    // Determine which thumb to move based on which is closer
+    const minDistance = Math.abs(value - this.currentMin);
+    const maxDistance = Math.abs(value - this.currentMax);
+
+    if (minDistance <= maxDistance) {
+      // Move min thumb
+      if (value <= this.currentMax) {
+        this.currentMin = value;
+        this.updateRange();
+        this.syncInputValues();
+        this.triggerFormUpdate();
+      }
+    } else {
+      // Move max thumb
+      if (value >= this.currentMin) {
+        this.currentMax = value;
+        this.updateRange();
+        this.syncInputValues();
+        this.triggerFormUpdate();
+      }
+    }
   }
 
   // Public method to set values
@@ -267,7 +384,9 @@ class PriceRangeSlider {
 // Initialize all price range sliders on the page
 document.addEventListener('DOMContentLoaded', () => {
   const sliders = document.querySelectorAll('.price-range-slider');
-  sliders.forEach((slider) => {
+  console.log('Found price range sliders:', sliders.length);
+  sliders.forEach((slider, index) => {
+    console.log('Initializing price range slider', index + 1);
     new PriceRangeSlider(slider);
   });
 });

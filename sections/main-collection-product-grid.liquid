@@ -37,7 +37,7 @@
     }
   }
 {%- endstyle -%}
-<div class='section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}'>
+<div class='gradient color-{{ section.settings.color_scheme }}'>
   {%- render 'breadcrumbs' -%}
   <div>
     {%- paginate collection.products by section.settings.products_per_page -%}
@@ -92,7 +92,8 @@
                   {% assign collectionCount = collectionCount | plus: 1 %}
                   <div id='Slide-{{ forloop.index }}' class='slider__slide'>
                     <a href='{{ collection.url }}'>
-                      <div class='tw-border-[1.5px] tw-py-8 tw-px-24 tw-rounded tw-flex tw-items-center'>
+                      <div class='tw-border-[1.5px] tw-py-8 tw-px-24 tw-rounded tw-flex tw-items-center hover:tw-bg-surface-lightGrey hover:tw-shadow-lg transition-all duration-200 ease-in-out'>
+                        {% comment %} <div class='tw-pr-16'> {% endcomment %}
                         <div class='tw-pr-16'>
                           <img
                             src='{{ collection.image | img_url: '150x150' }}'

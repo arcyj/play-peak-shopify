@@ -21,7 +21,7 @@
   <div id="CartDrawer" class="cart-drawer">
     <div id="CartDrawer-Overlay" class="cart-drawer__overlay"></div>
     <div
-      class="drawer__inner gradient color-{{ settings.cart_color_scheme }}"
+      class="drawer__inner tw-bg-white max-desktop:tw-rounded-t-lg"
       role="dialog"
       aria-modal="true"
       aria-label="{{ 'sections.cart.title' | t }}"
@@ -61,8 +61,8 @@
           {%- endif -%}
         </div>
       {%- endif -%}
-      <div class="drawer__header">
-        <h2 class="drawer__heading tw-text-large">{{ 'sections.cart.title' | t }}</h2>
+      <div class="tw-py-20 tw-flex tw-items-center tw-justify-between">
+        <h2 class="tw-text-h1 tw-text-black">{{ 'sections.cart.title' | t }}</h2>
         <button
           class="drawer__close"
           type="button"

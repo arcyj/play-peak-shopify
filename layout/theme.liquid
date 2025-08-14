@@ -335,8 +335,8 @@
     </script>
   </head>
 
-  <body class='!tw-bg-background-light {% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}'>
-    <a class='skip-to-content-link button visually-hidden' href='#MainContent'>
+  <body class='{% if template == 'product' %}!tw-bg-background-light{% endif %} {% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}'>
+    <a class='skip-to-content-link button visually-hidden tw-bg-white' href='#MainContent'>
       {{ 'accessibility.skip_to_text' | t }}
     </a>
 

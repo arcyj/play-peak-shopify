@@ -6,7 +6,7 @@
 {% endcomment %}
 
 <nav class='header__inline-menu'>
-  <ul class='list-menu tw-flex tw-justify-between' role='list'>
+  <ul class='tw-flex tw-justify-between tw-pb-2' role='list'>
     {%- for link in section.settings.meag_menu.links -%}
       <script>
         console.log("Rendering header mega menu for link: {{ link | escape }}");
@@ -21,29 +21,28 @@
       </script>
       <li>
         {%- if link.links != blank -%}
-
           <header-menu>
             <details id='Details-HeaderMenu-{{ forloop.index }}' class='mega-menu'>
               <summary
                 id='HeaderMenu-{{ link.handle }}'
                 class='header__menu-item list-menu__item link focus-inset'
               >
-                <a href='{{ link.url }}' class="tw-flex tw-justify-center tw-items-center">
-                <span class='header__menu-item-icon'>
-                  {% assign top_level_item = link.object %}
-                  {% if top_level_item.metafields.custom.menu_icon %}
-                    <img
-                      src='{{ top_level_item.metafields.custom.menu_icon | img_url: 'small' }}'
-                      alt='{{ link.title | escape }}'
-                      width='20'
-                      height='20'
-                      style='width: 20px; height: 20px; margin-right: 8px; vertical-align: middle;'
-                    >
-                  {% endif %}
-                </span>
-                <span>
-                  {{- link.title | escape -}}
-                </span>
+                <a href='{{ link.url }}' class='tw-flex tw-justify-center tw-items-center'>
+                  <span class='header__menu-item-icon'>
+                    {% assign top_level_item = link.object %}
+                    {% if top_level_item.metafields.custom.menu_icon %}
+                      <img
+                        src='{{ top_level_item.metafields.custom.menu_icon | img_url: 'small' }}'
+                        alt='{{ link.title | escape }}'
+                        width='20'
+                        height='20'
+                        style='width: 20px; height: 20px; margin-right: 8px; vertical-align: middle;'
+                      >
+                    {% endif %}
+                  </span>
+                  <span>
+                    {{- link.title | escape -}}
+                  </span>
                 </a>
                 {% comment %} {{- 'icon-caret.svg' | inline_asset_content -}} {% endcomment %}
               </summary>
@@ -75,7 +74,7 @@
                               height='50'
                               style='height: 100%; width: auto;'
                               alt='{{ link.title }}'
-                              class="tw-mix-blend-darken"
+                              class='tw-mix-blend-darken'
                             >
                           </span>
                         {% endif %}
