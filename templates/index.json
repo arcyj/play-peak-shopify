@@ -94,12 +94,29 @@
         "enable_desktop_slider": false,
         "enable_mobile_slider": false
       }
+    },
+    "featured_collection_MVNcmk": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "title": "Lorcana TCG",
+        "description": "",
+        "show_description": false,
+        "collection": "lorcana-tcg",
+        "products_to_show": 14,
+        "columns_desktop": 5,
+        "columns_mobile": 4,
+        "show_view_all": true,
+        "enable_desktop_slider": true,
+        "enable_mobile_slider": true
+      }
     }
   },
   "order": [
     "hero_block_CEUTCB",
+    "featured_collection_6j3Gm3",
+    "featured_collection_MVNcmk",
     "featured_collection",
-    "featured_collection_6eCXcf",
-    "featured_collection_6j3Gm3"
+    "featured_collection_6eCXcf"
   ]
 }
