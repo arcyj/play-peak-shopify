@@ -37,10 +37,10 @@ const typographyConfig = {
     },
   },
   '.text-h4': {
-    font: "700 16px/24px 'Gilroy', sans-serif !important",
+    font: "700 16px/18px 'Gilroy', sans-serif !important",
     '@media (max-width: 768px)': {
       fontSize: '15px !important',
-      lineHeight: '23px !important',
+      lineHeight: '18px !important',
     },
   },
   '.text-small': {
@@ -102,7 +102,9 @@ module.exports = {
   theme: {
     screens: {
       tablet: '769px', // => @media (min-width: 768px) { ... }
-      desktop: '1024px', // => @media (min-width: 1024px) { ... }
+      desktop: '990px', // => @media (min-width: 990px) { ... }
+      mediumDesktop: '1200px', // => @media (min-width: 1200px) { ... }
+      largeDesktop: '1400px', // => @media (min-width: 1024px) { ... }
     },
     extend: {
       fontFamily: {

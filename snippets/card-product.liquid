@@ -126,7 +126,7 @@
         <div class='card__content'>
           <span class='tw-text-small tw-text-text-gray tw-pt-4'>{{ card_product.vendor }}</span>
           <h3
-            class='tw-text-h4 tw-pt-12 tw-line-clamp-2 tw-overflow-hidden tw-text-ellipsis'
+            class='tw-text-h4 tw-pt-4 tw-line-clamp-2 tw-overflow-hidden tw-text-ellipsis'
             {% if card_product.featured_media or settings.card_style == 'card' %}
               id='title-{{ section_id }}-{{ card_product.id }}'
             {% endif %}
@@ -181,7 +181,7 @@
 
           {% render 'price',
             product: card_product,
-            price_class: 'tw-flex tw-items-end tw-min-h-[69px]',
+            price_class: 'tw-flex tw-items-end tw-min-h-[58px]',
             show_compare_at_price: true,
             showQuantity: true
           %}

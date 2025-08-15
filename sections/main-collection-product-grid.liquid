@@ -45,7 +45,7 @@
         {{ 'component-facets.css' | asset_url | stylesheet_tag }}
         <script src='{{ 'facets.js' | asset_url }}' defer='defer'></script>
 
-        <div class='tw-w-[20%] tw-mr-12 tw-hidden desktop:tw-block'>
+        <div class='tw-w-[25%] desktop:tw-w-[30%] tw-mr-12 tw-hidden mediumDesktop:tw-block'>
           <div>
             {% assign main_collection = collection.metafields.category.parent.value %}
 
@@ -75,7 +75,7 @@
             </div>
           </div>
         </div>
-        <div class='tw-w-full desktop:tw-w-[80%]'>
+        <div class='tw-w-full mediumDesktop:tw-block'>
           {% assign child_collection = collection.metafields.custom.child_collections.value %}
           {% assign collectionCount = 0 %}
           <script>
@@ -206,6 +206,7 @@
                     data-id='{{ section.id }}'
                     class='
                       grid product-grid grid--2-col-tablet-down
+                      grid--3-col-tablet
                       grid--5-col-desktop
                       tw-w-full
                       {% if section.settings.quick_add == 'bulk' %} collection-quick-add-bulk{% endif %}

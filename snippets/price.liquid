@@ -53,10 +53,10 @@
     '
   >
     <div class='tw-w-full'>
-      <div class='price__regular tw-pt-16'>
+      <div class='price__regular tw-pt-8'>
         {%- if compare_at_price -%}
           {%- unless product.price_varies == false and product.compare_at_price_varies %}
-            <span class='tw-block tw-text-small tw-text-text-gray tw-pb-8'>
+            <span class='tw-block tw-text-small tw-text-text-gray tw-pb-4'>
               <s>
                 {{ compare_at_price | money }}
               </s>
