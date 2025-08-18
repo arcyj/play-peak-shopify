@@ -880,7 +880,7 @@ summary::-webkit-details-marker {
   width: calc(50% - var(--grid-mobile-horizontal-spacing) / 2);
 }
 
-@media screen and (min-width: 700px) and (max-width: 989px) {
+@media screen and (min-width: 700px) and (max-width: 800px) {
   .grid--2-col .grid__item {
     width: calc(50% - var(--grid-desktop-horizontal-spacing) / 2);
   }
@@ -936,7 +936,7 @@ summary::-webkit-details-marker {
   }
 }
 
-@media screen and (min-width: 990px) and (max-width: 1390px) {
+@media screen and (min-width: 801px) and (max-width: 1390px) {
   .grid--6-col-desktop .grid__item {
     width: calc(25% - var(--grid-desktop-horizontal-spacing) * 3 / 4);
     max-width: calc(25% - var(--grid-desktop-horizontal-spacing) * 3 / 4);
@@ -2444,7 +2444,7 @@ input[type='checkbox'] {
   background-color: #f4f5f7;
 }
 
-@media screen and (max-width: 748px) {
+@media screen and (max-width: 990px) {
   .header__icon {
     color: rgb(var(--color-foreground));
     display: flex;

@@ -42,7 +42,7 @@
     {% comment %} Sort, product count and filter pills at the end when filter is type of Drawer for the correct tabbing order {% endcomment %}
     {%- if enable_sorting and filter_type == 'drawer' -%}
       <facet-filters-form class='facets small-hide'>
-        <form id='FacetSortDrawerForm' class=''>
+        <form id='FacetSortDrawerForm' class='tw-h-full tw-mr-4'>
           <div class='facet-filters sorting caption small-hide'>
             <div class='facet-filters__field '>
               <div class='select facets-button'>
@@ -88,7 +88,7 @@
       </facet-filters-form>
     {%- endif -%}
     <menu-drawer
-      class='mobile-facets__wrapper tablet:!tw-hidden {% if filter_type == 'horizontal' or filter_type == 'vertical' %} medium-hide large-up-hide{% endif %}'
+      class='mobile-facets__wrapper mediumDesktop:!tw-hidden {% if filter_type == 'horizontal' or filter_type == 'vertical' %} medium-hide large-up-hide{% endif %}'
       data-breakpoint='mobile'
     >
       <details class='mobile-facets__disclosure disclosure-has-popup '>

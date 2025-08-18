@@ -1,5 +1,6 @@
 variant-selects {
   display: block;
+  margin-bottom: 12px;
 }
 
 .product--no-media .product-form__input--pill,
@@ -65,7 +66,7 @@ variant-selects {
     rgba(var(--color-foreground), var(--variant-pills-border-opacity));
   background-color: rgb(var(--color-background));
   color: rgba(var(--color-foreground));
-  border-radius: var(--variant-pills-radius);
+  border-radius: 6px;
   color: rgb(var(--color-foreground));
   display: inline-block;
   margin: 0.7rem 0.5rem 0.2rem 0;

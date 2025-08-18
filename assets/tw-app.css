@@ -1584,6 +1584,10 @@ video {
     display: flex;
   }
 
+  .desktop\:\!tw-hidden {
+    display: none !important;
+  }
+
   .desktop\:tw-w-\[30\%\] {
     width: 30%;
   }
@@ -1608,5 +1612,9 @@ video {
 @media (min-width: 1200px) {
   .mediumDesktop\:tw-block {
     display: block;
+  }
+
+  .mediumDesktop\:\!tw-hidden {
+    display: none !important;
   }
 }
