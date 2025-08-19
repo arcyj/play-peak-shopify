@@ -226,7 +226,6 @@ cart-items {
   }
 
   .cart__ctas {
-    display: flex;
     gap: 1rem;
   }
 }
