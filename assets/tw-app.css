@@ -1096,12 +1096,40 @@ video {
   width: 1.25rem;
 }
 
+.tw-w-\[350px\] {
+  width: 350px;
+}
+
+.tw-w-1\/3 {
+  width: 33.333333%;
+}
+
+.tw-w-2\/3 {
+  width: 66.666667%;
+}
+
 .tw-min-w-0 {
   min-width: 0px;
 }
 
+.tw-min-w-\[\] {
+  min-width: ;
+}
+
+.tw-min-w-\[350px\] {
+  min-width: 350px;
+}
+
 .tw-max-w-\[900px\] {
   max-width: 900px;
+}
+
+.tw-max-w-\[\] {
+  max-width: ;
+}
+
+.tw-max-w-\[350px\] {
+  max-width: 350px;
 }
 
 .tw-flex-1 {
@@ -1138,6 +1166,10 @@ video {
 
 .tw-grid-cols-2 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.tw-flex-row {
+  flex-direction: row;
 }
 
 .tw-flex-col {
@@ -1451,6 +1483,10 @@ video {
   padding: 1.5rem;
 }
 
+.tw-p-24 {
+  padding: 24px;
+}
+
 .tw-px-12 {
   padding-left: 12px;
   padding-right: 12px;
@@ -1635,6 +1671,14 @@ video {
   padding-right: 28px;
 }
 
+.tw-pl-24 {
+  padding-left: 24px;
+}
+
+.tw-pb-12 {
+  padding-bottom: 12px;
+}
+
 .tw-text-center {
   text-align: center;
 }
@@ -1668,6 +1712,18 @@ video {
 .tw-text-lg {
   font-size: 1.125rem;
   line-height: 1.75rem;
+}
+
+.tw-text-\[16px\] {
+  font-size: 16px;
+}
+
+.tw-text-\[26px\] {
+  font-size: 26px;
+}
+
+.tw-text-\[22px\] {
+  font-size: 22px;
 }
 
 .tw-font-bold {
@@ -1986,6 +2042,14 @@ video {
 }
 
 @media (min-width: 769px) {
+  .tablet\:tw-order-2 {
+    order: 2;
+  }
+
+  .tablet\:tw-order-1 {
+    order: 1;
+  }
+
   .tablet\:tw--mb-32 {
     margin-bottom: -32px;
   }
@@ -2006,8 +2070,20 @@ video {
     display: none;
   }
 
+  .tablet\:tw-w-2\/3 {
+    width: 66.666667%;
+  }
+
+  .tablet\:tw-w-1\/3 {
+    width: 33.333333%;
+  }
+
   .tablet\:tw-flex-row {
     flex-direction: row;
+  }
+
+  .tablet\:tw-flex-col {
+    flex-direction: column;
   }
 
   .tablet\:tw-justify-end {
@@ -2020,6 +2096,14 @@ video {
 
   .tablet\:tw-pl-32 {
     padding-left: 32px;
+  }
+
+  .tablet\:tw-pr-24 {
+    padding-right: 24px;
+  }
+
+  .tablet\:tw-pl-24 {
+    padding-left: 24px;
   }
 }
 
@@ -2050,6 +2134,14 @@ video {
 
   .desktop\:tw-text-\[22px\] {
     font-size: 22px;
+  }
+
+  .desktop\:tw-text-\[26px\] {
+    font-size: 26px;
+  }
+
+  .desktop\:tw-text-\[32px\] {
+    font-size: 32px;
   }
 }
 
