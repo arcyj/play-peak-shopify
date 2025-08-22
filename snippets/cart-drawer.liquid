@@ -542,7 +542,15 @@
         <!-- CTAs -->
 
         <div class="cart__ctas" {{ block.shopify_attributes }}>
-          <button
+          <a
+            href="/cart"
+            class="cart__checkout-button button tw-w-full"
+            onclick="this.closest('cart-drawer').close()"
+            /
+          >
+            Proceed
+          </a>
+          {% comment %} <button
             type="submit"
             id="CartDrawer-Checkout"
             class="cart__checkout-button button"
@@ -553,7 +561,7 @@
             {% endif %}
           >
             {{ 'sections.cart.checkout' | t }}
-          </button>
+          </button> {% endcomment %}
         </div>
       </div>
     </div>
