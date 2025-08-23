@@ -143,6 +143,11 @@
         "type": "shopify://apps/trustoo-io-reviews/blocks/trustoo-review-switch/c8f15077-6475-4e86-ad06-b66038d5ba2c",
         "disabled": true,
         "settings": {}
+      },
+      "9660143156311636656": {
+        "type": "shopify://apps/parcely-app/blocks/delay/cbdd14b4-8c8a-445b-bf69-fadc23ab031d",
+        "disabled": true,
+        "settings": {}
       }
     },
     "color_schemes": {
