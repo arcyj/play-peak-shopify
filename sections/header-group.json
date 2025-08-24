@@ -13,6 +13,7 @@
   "sections": {
     "top_bar_menu_MdeU9q": {
       "type": "top-bar-menu",
+      "disabled": true,
       "name": "Topbar menu",
       "settings": {
         "color_scheme": "scheme-4",
