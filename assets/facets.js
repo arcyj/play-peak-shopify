@@ -171,8 +171,13 @@ class FacetFiltersForm extends HTMLElement {
     );
 
     // Remove facets that are no longer returned from the server
+    // But preserve price range filters as they should always be present
     Array.from(facetDetailsElementsFromDom).forEach((currentElement) => {
+      const isPriceRangeFilter =
+        currentElement.id && currentElement.id.includes('PriceRange');
+
       if (
+        !isPriceRangeFilter && // Don't remove price range filters
         !Array.from(facetDetailsElementsFromFetch).some(
           ({ id }) => currentElement.id === id,
         )
@@ -210,10 +215,21 @@ class FacetFiltersForm extends HTMLElement {
           }
         }
 
+        // Improved insertion logic to prevent duplication
         if (elementToRender.parentElement) {
-          document
-            .querySelector(`#${elementToRender.parentElement.id} .js-filter`)
-            .before(elementToRender);
+          const parentContainer = document.getElementById(
+            elementToRender.parentElement.id,
+          );
+          if (parentContainer) {
+            // Find the first js-filter element in the parent container
+            const firstJsFilter = parentContainer.querySelector('.js-filter');
+            if (firstJsFilter) {
+              firstJsFilter.before(elementToRender);
+            } else {
+              // If no js-filter found, append to the end of the container
+              parentContainer.appendChild(elementToRender);
+            }
+          }
         }
       }
     });
