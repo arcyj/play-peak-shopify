@@ -3,10 +3,15 @@
   Props:
   - label: Button text (required)
   - url: Button URL (optional, defaults to #)
-    - onClick: JavaScript to run on click (optional)
+  - onClick: JavaScript to run on click (optional)
   - variant: "solid", "solid-yellow", "solid-green", "tertiary-dark", "tertiary-light" (default: "solid")
   - size: "large", "medium", "small" (default: "medium")
   - custom_class: Custom class for the button (optional, defaults to '')
+  - type: Button type - "button", "submit", "reset" (default: "button")
+  - name: Button name attribute (optional)
+  - id: Button id attribute (optional)
+  - disabled: Boolean to disable button (optional)
+  - icon: Icon to display before text (optional)
 
   {% render 'button', label: block.settings.mainBanner_button_text, url: block.settings.mainBanner_button_url , variant: 'solid-yellow', size: 'large' custom_class: 'tw-block'%}
 {% endcomment %}
@@ -17,16 +22,21 @@
 {% assign btn_size = size | default: 'medium' %}
 {% assign class_name = custom_class | default: '' %}
 {% assign btn_onclick = onClick | default: '' %}
+{% assign btn_type = type | default: 'button' %}
+{% assign btn_name = name | default: '' %}
+{% assign btn_id = id | default: '' %}
+{% assign btn_disabled = disabled | default: false %}
+{% assign btn_icon = icon | default: '' %}
 
 {%- case btn_variant -%}
   {%- when 'solid' -%}
     {% assign btn_class = 'tw-bg-blue-500 tw-text-white hover:tw-bg-blue-600' %}
   {%- when 'solid-purple' -%}
-    {% assign btn_class = 'tw-bg-[#943BF2] tw-text-white hover:tw-bg-[#AE6AF5]' %}
+    {% assign btn_class = 'tw-bg-[#943BF2] tw-text-white hover:tw-bg-[#AE6AF5] [&_.svg-wrapper_svg_path]:tw-fill-white [&_.svg-wrapper_svg_path]:tw-transition-all' %}
   {%- when 'solid-yellow' -%}
     {% assign btn_class = 'tw-bg-yellow-400 tw-text-black hover:tw-bg-yellow-500' %}
   {%- when 'solid-green' -%}
-    {% assign btn_class = 'tw-bg-green-500 tw-text-white hover:tw-bg-green-600' %}
+    {% assign btn_class = 'tw-bg-[#63e96c] tw-text-black hover:tw-bg-black hover:tw-text-white [&_.svg-wrapper_svg_path]:hover:tw-fill-white [&_.svg-wrapper_svg]:hover:tw-fill-white [&_.svg-wrapper_svg]:tw-transition-all [&_.svg-wrapper_svg_path]:tw-transition-all' %}
   {%- when 'tertiary-dark' -%}
     {% assign btn_class = 'tw-border tw-border-white tw-text-white hover:tw-bg-white hover:tw-text-black' %}
   {%- when 'tertiary-light' -%}
@@ -44,19 +54,39 @@
     {% assign size_class = 'tw-text-text-button-large tw-px-24 tw-py-8' %}
 {%- endcase -%}
 
-{%- if btn_onclick != '' -%}
+{%- if btn_type == 'submit' or btn_onclick != '' or btn_disabled == true -%}
   <button
-    type='button'
-    onclick='{{ btn_onclick }}'
-    class='tw-inline-block tw-text-nowrap tw-text-center tw-rounded-md tw-font-semibold tw-transition tw-duration-300 max-tablet:tw-w-full {{ btn_class }} {{ size_class }} {{ class_name }}'
+    type='{{ btn_type }}'
+    {% if btn_name != '' %}
+      name='{{ btn_name }}'
+    {% endif %}
+    {% if btn_id != '' %}
+      id='{{ btn_id }}'
+    {% endif %}
+    {% if btn_onclick != '' %}
+      onclick='{{ btn_onclick }}'
+    {% endif %}
+    {% if btn_disabled == true %}
+      disabled
+    {% endif %}
+    class='tw-inline-block tw-text-nowrap tw-text-center tw-rounded-md tw-font-semibold tw-transition tw-duration-300 max-tablet:tw-w-full tw-flex tw-items-center tw-justify-center tw-gap-8 {{ btn_class }} {{ size_class }} {{ class_name }}'
   >
-    {{ btn_label }}
+    {%- if btn_icon != '' -%}
+      <span class='svg-wrapper'>{{ btn_icon | inline_asset_content }}</span>
+    {%- endif -%}
+    <span>{{ btn_label }}</span>
   </button>
 {%- else -%}
   <a
     href='{{ btn_url }}'
-    class='tw-inline-block tw-text-nowrap tw-text-center tw-rounded-md tw-font-semibold tw-transition tw-duration-300 max-tablet:tw-w-full {{ btn_class }} {{ size_class }} {{ class_name }}'
+    {% if btn_id != '' %}
+      id='{{ btn_id }}'
+    {% endif %}
+    class='tw-inline-block tw-text-nowrap tw-text-center tw-rounded-md tw-font-semibold tw-transition tw-duration-300 max-tablet:tw-w-full tw-flex tw-items-center tw-justify-center tw-gap-8 {{ btn_class }} {{ size_class }} {{ class_name }}'
   >
-    {{ btn_label }}
+    {%- if btn_icon != '' -%}
+      <span class='svg-wrapper'>{{ btn_icon | inline_asset_content }}</span>
+    {%- endif -%}
+    <span>{{ btn_label }}</span>
   </a>
 {%- endif -%}
