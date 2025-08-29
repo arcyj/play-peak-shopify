@@ -19,15 +19,6 @@
     },
     "17564533438ddf1bdd": {
       "type": "apps",
-      "blocks": {
-        "parcely_app_parcely_rMJPQf": {
-          "type": "shopify://apps/parcely-app/blocks/parcely/cbdd14b4-8c8a-445b-bf69-fadc23ab031d",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "parcely_app_parcely_rMJPQf"
-      ],
       "settings": {
         "include_margins": true
       }
