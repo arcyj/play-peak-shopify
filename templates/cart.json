@@ -17,6 +17,21 @@
         "padding_bottom": 36
       }
     },
+    "17564533438ddf1bdd": {
+      "type": "apps",
+      "blocks": {
+        "parcely_app_parcely_rMJPQf": {
+          "type": "shopify://apps/parcely-app/blocks/parcely/cbdd14b4-8c8a-445b-bf69-fadc23ab031d",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "parcely_app_parcely_rMJPQf"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
     "cart-with-sticky-footer": {
       "type": "cart-with-sticky-footer",
       "disabled": true,
@@ -49,6 +64,7 @@
   },
   "order": [
     "cart_with_sticky_footer_hcD8cn",
+    "17564533438ddf1bdd",
     "cart-with-sticky-footer",
     "featured-collection",
     "1756453021554f7afc"
