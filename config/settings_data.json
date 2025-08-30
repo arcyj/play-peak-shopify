@@ -12,9 +12,9 @@
     "logo": "shopify://shop_images/LogoPlaypeak.svg",
     "logo_width": 140,
     "favicon": "shopify://shop_images/Favicon-64x64.svg",
-    "type_header_font": "assistant_n4",
+    "type_header_font": "system_ui_n4",
     "heading_scale": 100,
-    "type_body_font": "assistant_n4",
+    "type_body_font": "system_ui_n4",
     "body_scale": 100,
     "page_width": 1440,
     "spacing_sections": 0,
@@ -141,8 +141,29 @@
     "blocks": {
       "1143683040400472741": {
         "type": "shopify://apps/trustoo-io-reviews/blocks/trustoo-review-switch/c8f15077-6475-4e86-ad06-b66038d5ba2c",
-        "disabled": true,
+        "disabled": false,
         "settings": {}
+      },
+      "9660143156311636656": {
+        "type": "shopify://apps/parcely-app/blocks/delay/cbdd14b4-8c8a-445b-bf69-fadc23ab031d",
+        "disabled": false,
+        "settings": {}
+      },
+      "5059203847231188605": {
+        "type": "shopify://apps/smart-product-filter-search/blocks/app-embed/5cc1944c-3014-4a2a-af40-7d65abc0ef73",
+        "disabled": true,
+        "settings": {
+          "productGridSelector": "",
+          "useCustomQuickviewTemplate": false,
+          "customJs": "",
+          "customCss": "",
+          "customProductTemplateLoader": "{%- capture productTemplate -%}{% render 'globo.filter.product', themeTranslation: shop.metafields.globoFilter.themeTranslation.value[request.locale.iso_code] %}{%- endcapture -%}{%- unless productTemplate contains 'Liquid error' -%}<script id=\"gspfProduct\" type=\"template/html\">{{- productTemplate | replace: \"script>\", \"scripttag>\" -}}</script>{%- endunless -%}",
+          "customTreeTemplateLoader": "{%- capture treeTemplate -%}{% render 'globo.filter.tree' %}{%- endcapture -%}{%- unless treeTemplate contains 'Liquid error' -%}<script id=\"gspfFilterTree\" type=\"template/html\">{{- treeTemplate | replace: \"script>\", \"scripttag>\" -}}</script>{%- endunless -%}",
+          "customSortTemplateLoader": "{%- capture sortTemplate -%}{% render 'globo.filter.sort' %}{%- endcapture -%}{%- unless sortTemplate contains 'Liquid error' -%}<script id=\"gspfFilterSort\" type=\"template/html\">{{- sortTemplate | replace: \"script>\", \"scripttag>\" -}}</script>{%- endunless -%}",
+          "customSearchTemplateLoader": "",
+          "customPaginationTemplateLoader": "",
+          "customYMMTemplateLoader": ""
+        }
       }
     },
     "color_schemes": {
