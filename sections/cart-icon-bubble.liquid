@@ -1,5 +1,5 @@
 {% if cart == empty %}
-  <span class="svg-wrapper">{{ 'icon-cart-empty.svg' | inline_asset_content }}</span>
+  <span class="svg-wrapper">{{ 'icon-cart.svg' | inline_asset_content }}</span>
 {% else %}
   <span class="svg-wrapper">{{ 'icon-cart.svg' | inline_asset_content }}</span>
 {% endif %}
@@ -13,3 +13,4 @@
     <span class="visually-hidden">{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
   </div>
 {%- endif -%}
+<span class='tw-hidden desktop:tw-flex'>Cart</span>
