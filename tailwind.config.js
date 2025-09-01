@@ -8,7 +8,7 @@ const colorConfig = {
   white: '#FFFFFF',
   lightGrey2: 'rgba(17 5 22/.08)',
   gray: 'rgba(17 5 22/.40)',
-  purple: '#943BF2',
+  purple: '#6610F2',
   pink: '#FF3763',
   green: '#17DDA0',
   black: '#110516',

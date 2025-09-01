@@ -139,7 +139,7 @@ class CartItems extends HTMLElement {
   }
 
   getSectionsToRender() {
-    return [
+    const sections = [
       {
         id: 'main-cart-items',
         section: document.getElementById('main-cart-items').dataset.id,
@@ -155,12 +155,34 @@ class CartItems extends HTMLElement {
         section: 'cart-live-region-text',
         selector: '.shopify-section',
       },
-      {
-        id: 'main-cart-footer',
-        section: document.getElementById('main-cart-footer').dataset.id,
-        selector: '.js-contents',
-      },
     ];
+
+    // Add main-cart-footer if it exists
+    const mainCartFooter = document.getElementById('main-cart-footer');
+    if (mainCartFooter) {
+      sections.push({
+        id: 'main-cart-footer',
+        section: mainCartFooter.dataset.id,
+        selector: '.js-contents',
+      });
+    }
+
+    // Add sticky footer totals if it exists (for cart-with-sticky-footer section)
+    const stickyFooterTotals = document.getElementById(
+      'cart-sticky-footer-totals',
+    );
+    if (stickyFooterTotals) {
+      const mainCartItems = document.getElementById('main-cart-items');
+      if (mainCartItems) {
+        sections.push({
+          id: 'cart-sticky-footer-totals',
+          section: mainCartItems.dataset.id,
+          selector: '#cart-sticky-footer-totals',
+        });
+      }
+    }
+
+    return sections;
   }
 
   updateQuantity(line, quantity, name, variantId) {
@@ -193,6 +215,7 @@ class CartItems extends HTMLElement {
         this.classList.toggle('is-empty', parsedState.item_count === 0);
         const cartDrawerWrapper = document.querySelector('cart-drawer');
         const cartFooter = document.getElementById('main-cart-footer');
+        const cartStickyFooter = document.querySelector('.cart-footer-sticky');
 
         if (cartFooter)
           cartFooter.classList.toggle('is-empty', parsedState.item_count === 0);
@@ -201,6 +224,61 @@ class CartItems extends HTMLElement {
             'is-empty',
             parsedState.item_count === 0,
           );
+
+        // Handle empty state for cart-with-sticky-footer section
+        if (parsedState.item_count === 0) {
+          const cartContainer = document.querySelector(
+            '.cart-container-' + this.dataset.id,
+          );
+          if (cartContainer) {
+            // Hide the cart items and sticky footer, show empty state
+            const cartItemsWrapper = cartContainer.querySelector(
+              '.cart-items-wrapper-' + this.dataset.id,
+            );
+            const stickyFooter = cartContainer.querySelector('.scroll-trigger');
+
+            if (cartItemsWrapper) cartItemsWrapper.style.display = 'none';
+            if (stickyFooter) stickyFooter.style.display = 'none';
+
+            // Show empty cart state
+            let emptyState = cartContainer.querySelector('.cart__warnings');
+            if (!emptyState) {
+              emptyState = document.createElement('div');
+              emptyState.className = 'cart__warnings';
+              emptyState.innerHTML = `
+                <h1 class="cart__empty-text">${
+                  window.cartStrings?.empty || 'Your cart is empty'
+                }</h1>
+                <a href="${
+                  window.routes?.all_products_collection_url ||
+                  '/collections/all'
+                }" class="button">
+                  ${
+                    window.cartStrings?.continue_shopping || 'Continue shopping'
+                  }
+                </a>
+              `;
+              cartContainer.appendChild(emptyState);
+            }
+            emptyState.style.display = 'block';
+          }
+        } else {
+          // Show cart items and sticky footer when cart has items
+          const cartContainer = document.querySelector(
+            '.cart-container-' + this.dataset.id,
+          );
+          if (cartContainer) {
+            const cartItemsWrapper = cartContainer.querySelector(
+              '.cart-items-wrapper-' + this.dataset.id,
+            );
+            const stickyFooter = cartContainer.querySelector('.scroll-trigger');
+            const emptyState = cartContainer.querySelector('.cart__warnings');
+
+            if (cartItemsWrapper) cartItemsWrapper.style.display = 'block';
+            if (stickyFooter) stickyFooter.style.display = 'block';
+            if (emptyState) emptyState.style.display = 'none';
+          }
+        }
 
         this.getSectionsToRender().forEach((section) => {
           const elementToReplace =

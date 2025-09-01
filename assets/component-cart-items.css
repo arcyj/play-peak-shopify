@@ -265,14 +265,6 @@ cart-remove-button .icon-remove {
 }
 
 @media screen and (min-width: 750px) {
-  .cart-items {
-    border-spacing: 0;
-    border-collapse: separate;
-    box-shadow: none;
-    width: 100%;
-    display: table;
-  }
-
   .cart-items th {
     border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.08);
   }
@@ -288,10 +280,6 @@ cart-remove-button .icon-remove {
   .cart-items td {
     vertical-align: top;
     padding-top: 4rem;
-  }
-
-  .cart-item {
-    display: table-row;
   }
 
   .cart-item > td + td {
