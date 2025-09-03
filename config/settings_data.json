@@ -227,10 +227,10 @@
       },
       "8813414294664651821": {
         "type": "shopify://apps/xb-wishlist/blocks/wishlist_float/cc07f1e9-907b-431d-99f8-4fce3efa75f1",
-        "disabled": false,
+        "disabled": true,
         "settings": {
           "style": "style-1",
-          "button_color": "#fff",
+          "button_color": "#ffffff",
           "button_bg-color": "#6610f2",
           "float_position": "middle-right",
           "custom_position": false,
