@@ -175,23 +175,6 @@
           "custom_open_cart": ""
         }
       },
-      "4218870602807256821": {
-        "type": "shopify://apps/xb-wishlist/blocks/xb-wishlist-header-icon/cc07f1e9-907b-431d-99f8-4fce3efa75f1",
-        "disabled": false,
-        "settings": {
-          "block_height": 44,
-          "block_width": 44,
-          "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 256 256\"><path d=\"M223,57a58.07,58.07,0,0,0-81.92-.1L128,69.05,114.91,56.86A58,58,0,0,0,33,139l89.35,90.66a8,8,0,0,0,11.4,0L223,139a58,58,0,0,0,0-82Zm-11.35,70.76L128,212.6,44.3,127.68a42,42,0,0,1,59.4-59.4l.2.2,18.65,17.35a8,8,0,0,0,10.9,0L152.1,68.48l.2-.2a42,42,0,1,1,59.36,59.44Z\"></path></svg>",
-          "icon_color": "#000",
-          "icon_size": 20,
-          "count_x": 7,
-          "count_y": 43,
-          "count_color": "#fff",
-          "count_bg_color": "#000",
-          "count_font_size": 9,
-          "count_size": 17
-        }
-      },
       "9994742477291898530": {
         "type": "shopify://apps/xb-wishlist/blocks/wishlist_notification/cc07f1e9-907b-431d-99f8-4fce3efa75f1",
         "disabled": false,
@@ -209,19 +192,6 @@
           "notification_animation": "fade"
         }
       },
-      "8813414294664651821": {
-        "type": "shopify://apps/xb-wishlist/blocks/wishlist_float/cc07f1e9-907b-431d-99f8-4fce3efa75f1",
-        "disabled": false,
-        "settings": {
-          "style": "style-1",
-          "button_color": "#fff",
-          "button_bg-color": "#ff0000",
-          "float_position": "bottom-right",
-          "custom_position": false,
-          "x_position": 0,
-          "y_position": 0
-        }
-      },
       "11413113034274116516": {
         "type": "shopify://apps/xb-wishlist/blocks/wishlist_collection/cc07f1e9-907b-431d-99f8-4fce3efa75f1",
         "disabled": false,
@@ -236,6 +206,36 @@
           "icon_size": 2,
           "icon_color": "#ff0000",
           "custom_placement": ""
+        }
+      },
+      "4218870602807256821": {
+        "type": "shopify://apps/xb-wishlist/blocks/xb-wishlist-header-icon/cc07f1e9-907b-431d-99f8-4fce3efa75f1",
+        "disabled": false,
+        "settings": {
+          "block_height": 44,
+          "block_width": 44,
+          "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 256 256\"><path d=\"M223,57a58.07,58.07,0,0,0-81.92-.1L128,69.05,114.91,56.86A58,58,0,0,0,33,139l89.35,90.66a8,8,0,0,0,11.4,0L223,139a58,58,0,0,0,0-82Zm-11.35,70.76L128,212.6,44.3,127.68a42,42,0,0,1,59.4-59.4l.2.2,18.65,17.35a8,8,0,0,0,10.9,0L152.1,68.48l.2-.2a42,42,0,1,1,59.36,59.44Z\"></path></svg>",
+          "icon_color": "#000",
+          "icon_size": 30,
+          "count_x": 7,
+          "count_y": 7,
+          "count_color": "#fff",
+          "count_bg_color": "#000",
+          "count_font_size": 10,
+          "count_size": 20
+        }
+      },
+      "8813414294664651821": {
+        "type": "shopify://apps/xb-wishlist/blocks/wishlist_float/cc07f1e9-907b-431d-99f8-4fce3efa75f1",
+        "disabled": false,
+        "settings": {
+          "style": "style-1",
+          "button_color": "#fff",
+          "button_bg-color": "#6610f2",
+          "float_position": "middle-right",
+          "custom_position": false,
+          "x_position": 0,
+          "y_position": 0
         }
       }
     },
