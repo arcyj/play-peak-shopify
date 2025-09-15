@@ -324,12 +324,17 @@ blockquote {
 .customer .field input,
 .customer select,
 .field__input,
-.form__label,
 .select__select {
   font-size: 1.3rem;
   line-height: calc(1 + 0.5 / var(--font-body-scale));
   letter-spacing: 0.04rem;
   border: 1px solid rgba(var(--color-foreground), 0.2);
+}
+
+.form__label {
+  font-size: 1.3rem;
+  line-height: calc(1 + 0.5 / var(--font-body-scale));
+  letter-spacing: 0.04rem;
 }
 
 .color-foreground {
