@@ -1285,6 +1285,11 @@ video {
   padding-bottom: 6px;
 }
 
+.tw-py-32 {
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+
 .tw-pb-12 {
   padding-bottom: 12px;
 }

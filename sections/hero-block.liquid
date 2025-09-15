@@ -2,17 +2,19 @@
   {% case block.type %}
     {% when 'mainBanner' %}
       {% if block.settings.mainBanner_full_width_bg %}
-        <div
-          class='page-width tw-my-36 tw-rounded tablet:tw-min-h-[475px] tw-'
-          style="background-image: url('{{ block.settings.mainBanner_bg_image | image_url: width: 1920 }}'); background-size: cover; background-position: center; background-repeat: no-repeat;"
-        >
+        <div class="page-width">
           <div
-            class='tw-absolute tw-inset-0'
-            style='background: linear-gradient(to right, {{ block.settings.mainBanner_gradient_start }}, {{ block.settings.mainBanner_gradient_end }}); opacity: 0.8;'
-          ></div>
-          <div class='page-width tw-relative tw-z-10'>
-            <div class='tw-flex tw-flex-col tw-flex-col-reverse tablet:tw-grid tw-grid-cols-2 tw-p-32 tw-rounded tw-relative'>
-              {% render 'hero-main-banner-content', block: block %}
+            class='tw-my-36 tw-rounded tablet:tw-min-h-[475px]'
+            style="background-image: url('{{ block.settings.mainBanner_bg_image | image_url: width: 1920 }}'); background-size: cover; background-position: center; background-repeat: no-repeat;"
+          >
+            <div
+              class='tw-absolute tw-inset-0'
+              style='background: linear-gradient(to right, {{ block.settings.mainBanner_gradient_start }}, {{ block.settings.mainBanner_gradient_end }}); opacity: 0.8;'
+            ></div>
+            <div class='tw-relative'>
+              <div class='tw-flex tw-flex-col tw-flex-col-reverse tablet:tw-grid tw-grid-cols-2 tw-p-32 tw-rounded tw-relative'>
+                {% render 'hero-main-banner-content', block: block %}
+              </div>
             </div>
           </div>
         </div>

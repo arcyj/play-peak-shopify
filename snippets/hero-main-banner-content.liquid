@@ -3,7 +3,7 @@
   Renders the content for the main banner block
 {% endcomment %}
 
-<div class='tw-flex tw-flex-col tw-justify-between tw-z-10'>
+<div class='tw-flex tw-flex-col tw-justify-between'>
   {% if block.settings.mainBanner_logo %}
     <span class='tw-hidden tablet:tw-block'>
       <img
@@ -27,7 +27,7 @@
         url: block.settings.mainBanner_button_url,
         variant: 'solid-yellow',
         size: 'large',
-        class: 'tablet:tw-max-w-[320px] max-tablet:tw-w-full'
+        custom_class: 'tablet:tw-max-w-[320px] max-tablet:tw-w-full'
       %}
     {% endif %}
   </div>
