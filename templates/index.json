@@ -9,12 +9,67 @@
  */
 {
   "sections": {
+    "hero_block_zefADh": {
+      "type": "hero-block",
+      "blocks": {
+        "main_banner_GGVxHt": {
+          "type": "mainBanner",
+          "settings": {
+            "mainBanner_full_width_bg": true,
+            "mainBanner_bg_image": "shopify://shop_images/spiderman.jpg",
+            "mainBanner_gradient_start": "#3383BF",
+            "mainBanner_gradient_end": "#1069AD",
+            "mainBanner_logo": "shopify://shop_images/cCcdOen783302nBtTt84LLL.png",
+            "mainBanner_heading": "",
+            "mainBanner_text": "",
+            "mainBanner_button_text": "Get it now!",
+            "mainBanner_button_url": "https://www.playpeak.ee/products/mtg-marvels-spider-man-play-booster-box-30-packs?_pos=1&_fid=8d06faeed&_ss=c"
+          }
+        },
+        "small_banner_VVXrK4": {
+          "type": "smallBanner",
+          "disabled": true,
+          "settings": {
+            "smallBanner_gradient_start": "#D21242",
+            "smallBanner_gradient_end": "#D21258",
+            "smallBanner_heading": "",
+            "smallBanner_text": "",
+            "smallBanner_button_text": "",
+            "smallBanner_button_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "main_banner_GGVxHt",
+        "small_banner_VVXrK4"
+      ],
+      "name": "Hero Section",
+      "settings": {
+        "title": "Slideshow"
+      }
+    },
+    "featured_collection_6eCXcf": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "New arrivals",
+        "description": "",
+        "show_description": false,
+        "collection": "pokemon-tcg",
+        "products_to_show": 12,
+        "columns_desktop": 6,
+        "columns_mobile": 1,
+        "show_view_all": true,
+        "enable_desktop_slider": true,
+        "enable_mobile_slider": true
+      }
+    },
     "hero_block_CEUTCB": {
       "type": "hero-block",
       "blocks": {
         "main_banner_WcVc4n": {
           "type": "mainBanner",
           "settings": {
+            "mainBanner_full_width_bg": false,
             "mainBanner_gradient_start": "#3383bf",
             "mainBanner_gradient_end": "#1069ad",
             "mainBanner_image": "shopify://shop_images/main_banner-boosterpack.png",
@@ -46,6 +101,22 @@
         "title": "Slideshow"
       }
     },
+    "featured_collection_MVNcmk": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "title": "",
+        "description": "",
+        "show_description": false,
+        "collection": "booster-box",
+        "products_to_show": 13,
+        "columns_desktop": 6,
+        "columns_mobile": 2,
+        "show_view_all": false,
+        "enable_desktop_slider": true,
+        "enable_mobile_slider": true
+      }
+    },
     "featured_collection_6j3Gm3": {
       "type": "featured-collection",
       "settings": {
@@ -59,22 +130,6 @@
         "show_view_all": false,
         "enable_desktop_slider": false,
         "enable_mobile_slider": false
-      }
-    },
-    "featured_collection_MVNcmk": {
-      "type": "featured-collection",
-      "name": "t:sections.featured-collection.presets.name",
-      "settings": {
-        "title": "Lorcana TCG",
-        "description": "",
-        "show_description": false,
-        "collection": "lorcana-tcg",
-        "products_to_show": 13,
-        "columns_desktop": 6,
-        "columns_mobile": 2,
-        "show_view_all": true,
-        "enable_desktop_slider": true,
-        "enable_mobile_slider": true
       }
     },
     "featured_collection": {
@@ -95,28 +150,14 @@
         "enable_desktop_slider": true,
         "enable_mobile_slider": true
       }
-    },
-    "featured_collection_6eCXcf": {
-      "type": "featured-collection",
-      "settings": {
-        "title": "New arrivals",
-        "description": "",
-        "show_description": false,
-        "collection": "pokemon-tcg",
-        "products_to_show": 12,
-        "columns_desktop": 6,
-        "columns_mobile": 1,
-        "show_view_all": true,
-        "enable_desktop_slider": true,
-        "enable_mobile_slider": true
-      }
     }
   },
   "order": [
+    "hero_block_zefADh",
+    "featured_collection_6eCXcf",
     "hero_block_CEUTCB",
-    "featured_collection_6j3Gm3",
     "featured_collection_MVNcmk",
-    "featured_collection",
-    "featured_collection_6eCXcf"
+    "featured_collection_6j3Gm3",
+    "featured_collection"
   ]
 }
