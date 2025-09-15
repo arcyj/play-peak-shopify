@@ -274,6 +274,9 @@
     }
   },
   "sections": {
+    "image_slider": {
+      "placeholder": "Image placeholder"
+    },
     "announcements": {
       "previous_announcement": "Previous announcement",
       "next_announcement": "Next announcement",

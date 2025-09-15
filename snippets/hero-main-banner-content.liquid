@@ -1,0 +1,49 @@
+{% comment %}
+  Hero Main Banner Content Snippet
+  Renders the content for the main banner block
+{% endcomment %}
+
+<div class='tw-flex tw-flex-col tw-justify-between tw-z-10'>
+  {% if block.settings.mainBanner_logo %}
+    <span class='tw-hidden tablet:tw-block'>
+      <img
+        src='{{ block.settings.mainBanner_logo | image_url: width: 300 }}'
+        alt='Main Banner logo'
+        width='300'
+        height='auto'
+      >
+    </span>
+  {% endif %}
+  <div class=''>
+    <h2 class='max-tablet:tw-text-center tw-text-h1 tw-text-text-white tw-pb-8'>
+      {{ block.settings.mainBanner_heading }}
+    </h2>
+    <p class='max-tablet:tw-text-center tw-text-regular-semi tw-text-text-white tw-pb-24'>
+      {{ block.settings.mainBanner_text }}
+    </p>
+    {% if block.settings.mainBanner_button_text != blank and block.settings.mainBanner_button_url != blank %}
+      {% render 'button',
+        label: block.settings.mainBanner_button_text,
+        url: block.settings.mainBanner_button_url,
+        variant: 'solid-yellow',
+        size: 'large',
+        class: 'tablet:tw-max-w-[320px] max-tablet:tw-w-full'
+      %}
+    {% endif %}
+  </div>
+</div>
+<div class='tw-flex tw-justify-center tablet:tw-justify-end'>
+  {% if block.settings.mainBanner_image %}
+    <div class='tablet:tw--mb-32 tw-z-0'>
+      <img
+        src='{{ block.settings.mainBanner_image | image_url: width: 600 }}'
+        class=' max-tablet:tw-max-h-[230px]'
+        alt='Main Banner Image'
+      >
+      <div
+        class='tw-h-128 tw-w-full tw-absolute tw-bottom-0 tw-left-0'
+        style='background: linear-gradient(to bottom, rgba({{ block.settings.mainBanner_gradient_start | color_extract: 'red' }}, {{ block.settings.mainBanner_gradient_start | color_extract: 'green' }}, {{ block.settings.mainBanner_gradient_start | color_extract: 'blue' }}, 0), {{ block.settings.mainBanner_gradient_start }});'
+      ></div>
+    </div>
+  {% endif %}
+</div>
