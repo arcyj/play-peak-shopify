@@ -2,7 +2,7 @@
   {% case block.type %}
     {% when 'mainBanner' %}
       {% if block.settings.mainBanner_full_width_bg %}
-        <div class="page-width">
+        <div class='page-width'>
           <div
             class='tw-my-36 tw-rounded tablet:tw-min-h-[475px]'
             style="background-image: url('{{ block.settings.mainBanner_bg_image | image_url: width: 1920 }}'); background-size: cover; background-position: center; background-repeat: no-repeat;"
