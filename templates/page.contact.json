@@ -9,8 +9,72 @@
  */
 {
   "sections": {
+    "17595670789d21dc5f": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_19df55d_3Xt8dj": {
+          "type": "ai_gen_block_19df55d",
+          "settings": {
+            "max_width": 1200,
+            "section_padding": 60,
+            "column_gap": 40,
+            "mobile_gap": 30,
+            "content_padding": 40,
+            "mobile_padding": 25,
+            "border_radius": 8,
+            "background_color": "#ffffff",
+            "info_title": "Get in touch",
+            "contact_info": "<p><strong>Address:</strong><br/>123 Main Street<br/>City, State 12345</p><p><strong>Phone:</strong><br/>+1 (555) 123-4567</p><p><strong>Email:</strong><br/>hello@example.com</p><p><strong>Hours:</strong><br/>Monday - Friday: 9am - 6pm<br/>Saturday: 10am - 4pm<br/>Sunday: Closed</p>",
+            "info_background_color": "#f8f9fa",
+            "info_title_color": "#121212",
+            "info_text_color": "#666666",
+            "info_title_size": 24,
+            "info_text_size": 16,
+            "form_title": "Send us a message",
+            "form_background_color": "#ffffff",
+            "form_title_color": "#121212",
+            "form_title_size": 24,
+            "name_label": "Name",
+            "name_placeholder": "Your name",
+            "email_label": "Email",
+            "email_placeholder": "your@email.com",
+            "show_phone_field": true,
+            "phone_label": "Phone",
+            "phone_placeholder": "Your phone number",
+            "message_label": "Message",
+            "message_placeholder": "Tell us how we can help you...",
+            "field_spacing": 20,
+            "content_spacing": 20,
+            "label_color": "#121212",
+            "label_size": 14,
+            "input_background_color": "#ffffff",
+            "input_text_color": "#121212",
+            "input_border_color": "#d1d5db",
+            "input_focus_border_color": "#121212",
+            "input_border_width": 1,
+            "input_border_radius": 4,
+            "input_text_size": 16,
+            "button_text": "Send message",
+            "button_background_color": "#121212",
+            "button_hover_color": "#000000",
+            "button_text_color": "#ffffff",
+            "button_border_radius": 4,
+            "button_text_size": 16,
+            "success_message": "Thank you for your message! We'll get back to you soon.",
+            "success_color": "#10b981",
+            "error_color": "#ef4444"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_19df55d_3Xt8dj"
+      ],
+      "settings": {}
+    },
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 36,
         "padding_bottom": 36
@@ -18,6 +82,7 @@
     },
     "form": {
       "type": "contact-form",
+      "disabled": true,
       "settings": {
         "heading": "",
         "heading_size": "h1",
@@ -28,6 +93,7 @@
     }
   },
   "order": [
+    "17595670789d21dc5f",
     "main",
     "form"
   ]
