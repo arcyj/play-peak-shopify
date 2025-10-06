@@ -11,7 +11,7 @@
   "current": {
     "logo": "shopify://shop_images/LogoPlaypeak.svg",
     "logo_width": 140,
-    "favicon": "shopify://shop_images/Favicon-64x64.svg",
+    "favicon": "shopify://shop_images/Favicon-48x48.png",
     "type_header_font": "system_ui_n4",
     "heading_scale": 100,
     "type_body_font": "system_ui_n4",
@@ -141,11 +141,6 @@
     "blocks": {
       "1143683040400472741": {
         "type": "shopify://apps/trustoo-io-reviews/blocks/trustoo-review-switch/c8f15077-6475-4e86-ad06-b66038d5ba2c",
-        "disabled": false,
-        "settings": {}
-      },
-      "9660143156311636656": {
-        "type": "shopify://apps/parcely-app/blocks/delay/cbdd14b4-8c8a-445b-bf69-fadc23ab031d",
         "disabled": false,
         "settings": {}
       },
