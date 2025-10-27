@@ -42,7 +42,7 @@
       "type": "featured-collection",
       "name": "t:sections.featured-collection.presets.name",
       "settings": {
-        "title": "Featured collection",
+        "title": "TCG Accessories",
         "description": "",
         "show_description": true,
         "collection": "tcg-accessories-1",
