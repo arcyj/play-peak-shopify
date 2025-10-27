@@ -45,10 +45,10 @@
         "title": "Featured collection",
         "description": "",
         "show_description": true,
-        "collection": "{{ collection }}",
+        "collection": "tcg-accessories-1",
         "products_to_show": 25,
         "columns_desktop": 6,
-        "columns_mobile": 5,
+        "columns_mobile": 2,
         "show_view_all": true,
         "enable_desktop_slider": true,
         "enable_mobile_slider": true
