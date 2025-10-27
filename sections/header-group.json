@@ -11,8 +11,34 @@
   "name": "t:sections.header.name",
   "type": "header",
   "sections": {
+    "announcement_bar_VtKct9": {
+      "type": "announcement-bar",
+      "blocks": {
+        "announcement_WUG74m": {
+          "type": "announcement",
+          "settings": {
+            "text": "Free shipping in Europe over 100€",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "announcement_WUG74m"
+      ],
+      "name": "t:sections.announcement-bar.presets.name",
+      "settings": {
+        "color_scheme": "scheme-3",
+        "show_line_separator": false,
+        "show_social": false,
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "enable_country_selector": false,
+        "enable_language_selector": false
+      }
+    },
     "top_bar_menu_MdeU9q": {
       "type": "top-bar-menu",
+      "disabled": true,
       "name": "Topbar menu",
       "settings": {
         "color_scheme": "scheme-4",
@@ -49,6 +75,7 @@
     }
   },
   "order": [
+    "announcement_bar_VtKct9",
     "top_bar_menu_MdeU9q",
     "header",
     "mega_menu_BccPei"
