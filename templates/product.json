@@ -121,7 +121,7 @@
         "title": "Protect your cards",
         "description": "",
         "show_description": false,
-        "collection": "tcg-accessories",
+        "collection": "tcg-accessories-1",
         "products_to_show": 5,
         "columns_desktop": 5,
         "columns_mobile": 4,
