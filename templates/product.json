@@ -124,7 +124,7 @@
         "collection": "tcg-accessories-1",
         "products_to_show": 6,
         "columns_desktop": 6,
-        "columns_mobile": 4,
+        "columns_mobile": 2,
         "show_view_all": false,
         "enable_desktop_slider": false,
         "enable_mobile_slider": false
