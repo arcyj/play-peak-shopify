@@ -87,8 +87,10 @@ if (!customElements.get('media-gallery')) {
         this.preventStickyHeader();
         window.setTimeout(() => {
           if (!this.mql.matches || this.elements.thumbnails) {
+            // For the main viewer, always use horizontal scrolling
             activeMedia.parentElement.scrollTo({
               left: activeMedia.offsetLeft,
+              behavior: 'smooth',
             });
           }
           const activeMediaRect = activeMedia.getBoundingClientRect();
@@ -117,11 +119,36 @@ if (!customElements.get('media-gallery')) {
           .querySelectorAll('button')
           .forEach((element) => element.removeAttribute('aria-current'));
         thumbnail.querySelector('button').setAttribute('aria-current', true);
-        if (this.elements.thumbnails.isSlideVisible(thumbnail, 10)) return;
 
-        this.elements.thumbnails.slider.scrollTo({
-          left: thumbnail.offsetLeft,
-        });
+        // Check if slider is vertical or horizontal
+        const isVertical = this.elements.thumbnails.isVertical || false;
+        const slider = this.elements.thumbnails.slider;
+
+        if (isVertical) {
+          // Center the thumbnail vertically
+          const thumbnailTop = thumbnail.offsetTop;
+          const thumbnailHeight = thumbnail.clientHeight;
+          const sliderHeight = slider.clientHeight;
+          const scrollPosition =
+            thumbnailTop - sliderHeight / 2 + thumbnailHeight / 2;
+
+          slider.scrollTo({
+            top: Math.max(0, scrollPosition),
+            behavior: 'smooth',
+          });
+        } else {
+          // Center the thumbnail horizontally
+          const thumbnailLeft = thumbnail.offsetLeft;
+          const thumbnailWidth = thumbnail.clientWidth;
+          const sliderWidth = slider.clientWidth;
+          const scrollPosition =
+            thumbnailLeft - sliderWidth / 2 + thumbnailWidth / 2;
+
+          slider.scrollTo({
+            left: Math.max(0, scrollPosition),
+            behavior: 'smooth',
+          });
+        }
       }
 
       announceLiveRegion(activeItem, position) {
