@@ -1,0 +1,88 @@
+{
+  "sections": {
+    "hero_block": {
+      "type": "hero-block",
+      "blocks": {
+        "main_banner": {
+          "type": "mainBanner",
+          "settings": {
+            "mainBanner_full_width_bg": false,
+            "mainBanner_gradient_start": "#3383BF",
+            "mainBanner_gradient_end": "#1069AD",
+            "mainBanner_heading": "Special Promotion",
+            "mainBanner_text": "Don't miss out on our amazing deals!",
+            "mainBanner_button_text": "Shop Now",
+            "mainBanner_button_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "main_banner"
+      ],
+      "settings": {
+        "title": "Promotion Banner"
+      }
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Featured Products",
+        "description": "",
+        "show_description": false,
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "columns_mobile": 2,
+        "show_view_all": true,
+        "enable_desktop_slider": false,
+        "enable_mobile_slider": true
+      }
+    },
+    "rich_text": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Promotion Details",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Learn more about this special promotion and all the amazing products included.</p>"
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "button_label": "View All Products",
+            "button_link": "",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text",
+        "button"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": [
+    "hero_block",
+    "featured_collection",
+    "rich_text"
+  ]
+}
