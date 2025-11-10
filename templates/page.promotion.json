@@ -98,6 +98,22 @@
         "enable_desktop_slider": false,
         "enable_mobile_slider": false
       }
+    },
+    "featured_collection_fTMdTK": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "title": "The Little Prince",
+        "description": "<p>Step into the enchanting world of <em>The Little Prince</em> with Pantasy’s beautifully crafted construction sets. Each model captures the story’s poetic charm — from the gentle prince and his tiny planet to the rose, the fox, and the stars above. Designed with exquisite detail and emotional depth, these sets invite builders of all ages to relive the timeless tale of wonder, friendship, and imagination.</p>",
+        "show_description": true,
+        "collection": "pantasy-the-little-prince",
+        "products_to_show": 12,
+        "columns_desktop": 4,
+        "columns_mobile": 4,
+        "show_view_all": true,
+        "enable_desktop_slider": false,
+        "enable_mobile_slider": false
+      }
     }
   },
   "order": [
@@ -105,6 +121,7 @@
     "featured_collection",
     "featured_collection_h4q8km",
     "featured_collection_3BxGWq",
-    "featured_collection_itVj38"
+    "featured_collection_itVj38",
+    "featured_collection_fTMdTK"
   ]
 }
