@@ -66,11 +66,45 @@
         "enable_desktop_slider": false,
         "enable_mobile_slider": false
       }
+    },
+    "featured_collection_3BxGWq": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "title": "Modular Series",
+        "description": "<p>These sets focus on original themes (not necessarily licensed) and modular building designs — think multi-floor buildings, detailed interiors and openable sections designed with display in mind. They allow for creative rearrangement and carry a strong architectural sensibility.</p>",
+        "show_description": true,
+        "collection": "pantasy-modular-building",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "columns_mobile": 4,
+        "show_view_all": true,
+        "enable_desktop_slider": false,
+        "enable_mobile_slider": false
+      }
+    },
+    "featured_collection_itVj38": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "title": "Steampunk & Fantasy Series",
+        "description": "<p>In this collection Pantasy reaches into imaginative realms with mechanical touches, gear-driven details, brass and vintage machinery aesthetics — perfect for those who want a build that feels like a fantasy diorama as well as a display piece.</p>",
+        "show_description": true,
+        "collection": "pantasy-steampunk-more",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "columns_mobile": 4,
+        "show_view_all": true,
+        "enable_desktop_slider": false,
+        "enable_mobile_slider": false
+      }
     }
   },
   "order": [
     "hero_block",
     "featured_collection",
-    "featured_collection_h4q8km"
+    "featured_collection_h4q8km",
+    "featured_collection_3BxGWq",
+    "featured_collection_itVj38"
   ]
 }
