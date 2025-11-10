@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero_block": {
@@ -7,10 +16,14 @@
           "type": "mainBanner",
           "settings": {
             "mainBanner_full_width_bg": false,
-            "mainBanner_gradient_start": "#3383BF",
-            "mainBanner_gradient_end": "#1069AD",
-            "mainBanner_heading": "Special Promotion",
-            "mainBanner_text": "Don't miss out on our amazing deals!",
+            "mainBanner_gradient_start": "#efa4c6",
+            "mainBanner_gradient_end": "#f1bad3",
+            "mainBanner_image": "shopify://shop_images/pantasy-boxes.png",
+            "mainBanner_logo": "shopify://shop_images/pantasy-logo_2.png",
+            "mainBanner_heading": "From Classic Builds to Creative Masterpieces",
+            "mainBanner_heading_color": "#13071a",
+            "mainBanner_text": "Explore Pantasy’s Full Collection!",
+            "mainBanner_text_color": "#13071a",
             "mainBanner_button_text": "Shop Now",
             "mainBanner_button_url": ""
           }
@@ -29,6 +42,7 @@
         "title": "Featured Products",
         "description": "",
         "show_description": false,
+        "collection": "",
         "products_to_show": 8,
         "columns_desktop": 4,
         "columns_mobile": 2,
