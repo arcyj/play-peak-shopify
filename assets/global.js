@@ -864,6 +864,15 @@ class SliderComponent extends HTMLElement {
 
     if (!this.slider) return;
 
+    // Ensure slider starts at position 0
+    if (this.slider) {
+      if (this.isVertical) {
+        this.slider.scrollTop = 0;
+      } else {
+        this.slider.scrollLeft = 0;
+      }
+    }
+
     // Buttons are optional - slider can work with just scrolling
     if (!this.nextButton) {
       // If no buttons, we'll still initialize but skip button-related functionality
@@ -884,6 +893,35 @@ class SliderComponent extends HTMLElement {
     this.nextButton.addEventListener('click', this.onButtonClick.bind(this));
 
     this.initDragEvents();
+  }
+
+  connectedCallback() {
+    // Ensure slider starts at position 0 after being connected to DOM
+    // Re-query slider in case it wasn't available in constructor
+    if (!this.slider) {
+      this.slider = this.querySelector('[id^="Slider-"]');
+    }
+
+    if (this.slider) {
+      // Use multiple attempts to ensure scroll position is reset
+      const resetScroll = () => {
+        if (this.isVertical) {
+          this.slider.scrollTop = 0;
+        } else {
+          this.slider.scrollLeft = 0;
+        }
+      };
+
+      // Reset immediately
+      resetScroll();
+
+      // Reset after DOM is ready
+      requestAnimationFrame(() => {
+        resetScroll();
+        // Also reset after a short delay to catch any late layout changes
+        setTimeout(resetScroll, 100);
+      });
+    }
   }
 
   initPages() {

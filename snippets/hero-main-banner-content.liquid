@@ -6,19 +6,15 @@
 <div class='tw-flex tw-flex-col tw-justify-between'>
   {% if block.settings.mainBanner_logo %}
     <span class='tw-hidden tablet:tw-block'>
-      <img
-        src='{{ block.settings.mainBanner_logo | image_url: width: 300 }}'
-        alt='Main Banner logo'
-        width='300'
-        height='auto'
-      >
+      <img src='{{ block.settings.mainBanner_logo | image_url }}' alt='Main Banner logo' height='auto'
+        style="max-width: 300px;">
     </span>
   {% endif %}
   <div class=''>
-    <h2 class='max-tablet:tw-text-center tw-text-h1 tw-text-text-white tw-pb-8'>
+    <h2 class='max-tablet:tw-text-center tw-text-h1 tw-pb-8' style='color: {{ block.settings.mainBanner_heading_color | default: "#FFFFFF" }};'>
       {{ block.settings.mainBanner_heading }}
     </h2>
-    <p class='max-tablet:tw-text-center tw-text-regular-semi tw-text-text-white tw-pb-24'>
+    <p class='max-tablet:tw-text-center tw-text-h4 tw-pb-24' style='color: {{ block.settings.mainBanner_text_color | default: "#FFFFFF" }};'>
       {{ block.settings.mainBanner_text }}
     </p>
     {% if block.settings.mainBanner_button_text != blank and block.settings.mainBanner_button_url != blank %}

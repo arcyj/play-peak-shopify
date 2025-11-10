@@ -205,9 +205,7 @@
                     id='product-grid'
                     data-id='{{ section.id }}'
                     class='
-                      grid product-grid grid--2-col-tablet-down
-                      grid--3-col-tablet
-                      grid--5-col-desktop
+                      product-grid
                       tw-w-full
                       {% if section.settings.quick_add == 'bulk' %} collection-quick-add-bulk{% endif %}
                     '
@@ -219,7 +217,7 @@
                         {%- assign lazy_load = true -%}
                       {%- endif -%}
                       <li
-                        class='grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'
+                        class='product-grid-item {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'
                         {% if settings.animations_reveal_on_scroll %}
                           data-cascade
                           style='--animation-order: {{ forloop.index }};'

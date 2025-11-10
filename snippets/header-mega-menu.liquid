@@ -8,17 +8,6 @@
 <nav class='header__inline-menu'>
   <ul class='tw-flex tw-justify-between tw-pb-2' role='list'>
     {%- for link in section.settings.meag_menu.links -%}
-      <script>
-        console.log("Rendering header mega menu for link: {{ link | escape }}");
-        console.log("Link details: ", {
-          handle: "{{ link.handle }}",
-          title: "{{ link.title | escape }}",
-          url: "{{ link.url }}",
-          current: {{ link.current | json }},
-          child_active: {{ link.child_active | json }},
-          links: {{ link.links | json }}
-        });
-      </script>
       <li>
         {%- if link.links != blank -%}
           <header-menu>
