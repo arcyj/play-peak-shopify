@@ -198,6 +198,16 @@
         "default": 8,
         "unit": "px",
         "label": "t:settings_schema.layout.settings.spacing_grid_vertical.label"
+      },
+      {
+        "type": "range",
+        "id": "product_card_width_slider",
+        "min": 190,
+        "max": 261,
+        "step": 1,
+        "default": 248,
+        "unit": "px",
+        "label": "Product card width in slider",
       }
     ]
   },
