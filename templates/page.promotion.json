@@ -39,64 +39,38 @@
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
-        "title": "Featured Products",
-        "description": "",
-        "show_description": false,
-        "collection": "",
-        "products_to_show": 8,
-        "columns_desktop": 4,
+        "title": "Licensed & Pop-Culture Series",
+        "description": "<p>This collection brings together official collaborations with beloved characters and legendary franchises — such as Astro Boy, The Little Prince, Garfield, Popeye and Saint Seiya. These sets faithfully honour the source material while offering an elevated build quality suitable for display and creative play. </p>",
+        "show_description": true,
+        "collection": "pantasy-pop-culture",
+        "products_to_show": 12,
+        "columns_desktop": 6,
         "columns_mobile": 2,
         "show_view_all": true,
         "enable_desktop_slider": false,
-        "enable_mobile_slider": true
+        "enable_mobile_slider": false
       }
     },
-    "rich_text": {
-      "type": "rich-text",
-      "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "Promotion Details",
-            "heading_size": "h1"
-          }
-        },
-        "text": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Learn more about this special promotion and all the amazing products included.</p>"
-          }
-        },
-        "button": {
-          "type": "button",
-          "settings": {
-            "button_label": "View All Products",
-            "button_link": "",
-            "button_style_secondary": false,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        }
-      },
-      "block_order": [
-        "heading",
-        "text",
-        "button"
-      ],
+    "featured_collection_h4q8km": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.name",
       "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "scheme-1",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 52
+        "title": "Retro & Vintage Series",
+        "description": "<p>Celebrate the charm of bygone days: this collection revives objects and aesthetics from earlier eras — vintage televisions, classic phones, gramophones, 1990s PCs and more. Each set is built to both evoke emotion and serve as a design-piece.</p>",
+        "show_description": true,
+        "collection": "pantasy-retro-collection",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "columns_mobile": 4,
+        "show_view_all": true,
+        "enable_desktop_slider": false,
+        "enable_mobile_slider": false
       }
     }
   },
   "order": [
     "hero_block",
     "featured_collection",
-    "rich_text"
+    "featured_collection_h4q8km"
   ]
 }
