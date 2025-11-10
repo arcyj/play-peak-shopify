@@ -112,7 +112,7 @@
         "columns_mobile": 4,
         "show_view_all": true,
         "enable_desktop_slider": false,
-        "enable_mobile_slider": false
+        "enable_mobile_slider": true
       }
     }
   },
