@@ -1,4 +1,19 @@
 {% for block in section.blocks %}
+  {% assign content_justify = block.settings.mainBanner_content_justify | default: 'between' %}
+  {% assign justify_class = 'tw-justify-between' %}
+  {% if content_justify == 'start' %}
+    {% assign justify_class = 'tw-justify-start' %}
+  {% elsif content_justify == 'center' %}
+    {% assign justify_class = 'tw-justify-center' %}
+  {% elsif content_justify == 'end' %}
+    {% assign justify_class = 'tw-justify-end' %}
+  {% elsif content_justify == 'between' %}
+    {% assign justify_class = 'tw-justify-between' %}
+  {% elsif content_justify == 'around' %}
+    {% assign justify_class = 'tw-justify-around' %}
+  {% elsif content_justify == 'evenly' %}
+    {% assign justify_class = 'tw-justify-evenly' %}
+  {% endif %}
   {% case block.type %}
     {% when 'mainBanner' %}
       {% if block.settings.mainBanner_full_width_bg %}
@@ -12,9 +27,16 @@
               style='background: linear-gradient(to right, {{ block.settings.mainBanner_gradient_start }}, {{ block.settings.mainBanner_gradient_end }}); opacity: 0.8;'
             ></div>
             <div class='tw-relative'>
-              <div class='tw-flex tw-flex-col tw-flex-col-reverse tablet:tw-grid tw-grid-cols-2 tw-p-32 tw-rounded tw-relative'>
-                {% render 'hero-main-banner-content', block: block %}
-              </div>
+              {% assign content_alignment = block.settings.mainBanner_content_alignment | default: 'left' %}
+              {% if content_alignment == 'center' %}
+                <div class='tw-flex tw-flex-col tw-flex-col-reverse tablet:tw-flex tablet:tw-flex-col tw-items-center tw-p-32 tw-rounded tw-relative tablet:tw-min-h-[475px] {{ justify_class }} '>
+                  {% render 'hero-main-banner-content', block: block %}
+                </div>
+              {% else %}
+                <div class='tw-flex tw-flex-col tw-flex-col-reverse tablet:tw-grid tw-grid-cols-2 tw-p-32 tw-rounded tw-relative tablet:tw-min-h-[475px]'>
+                  {% render 'hero-main-banner-content', block: block %}
+                </div>
+              {% endif %}
             </div>
           </div>
         </div>
@@ -22,12 +44,23 @@
         <div class='page-width tw-py-36'>
           <style>
             .mainBanner-gradient-bg {
-              background: linear-gradient(to right, {{ block.settings.mainBanner_gradient_start }}, {{ block.settings.mainBanner_gradient_end }});
+              background: linear-gradient(
+                to right,
+                {{block.settings.mainBanner_gradient_start}},
+                {{block.settings.mainBanner_gradient_end}}
+              );
             }
           </style>
-          <div class='mainBanner-gradient-bg tw-flex tw-flex-col tw-flex-col-reverse tablet:tw-grid tw-grid-cols-2 tw-p-32 tw-rounded tw-relative tw-z-0'>
-            {% render 'hero-main-banner-content', block: block %}
-          </div>
+          {% assign content_alignment = block.settings.mainBanner_content_alignment | default: 'left' %}
+          {% if content_alignment == 'center' %}
+            <div class='mainBanner-gradient-bg tw-flex tw-flex-col tw-flex-col-reverse tablet:tw-flex tablet:tw-flex-col tw-items-center tw-p-32 tw-rounded tw-relative tw-z-0'>
+              {% render 'hero-main-banner-content', block: block %}
+            </div>
+          {% else %}
+            <div class='mainBanner-gradient-bg tw-flex tw-flex-col tw-flex-col-reverse tablet:tw-grid tw-grid-cols-2 tw-p-32 tw-rounded tw-relative tw-z-0'>
+              {% render 'hero-main-banner-content', block: block %}
+            </div>
+          {% endif %}
         </div>
       {% endif %}
     {% when 'smallBanner' %}
@@ -118,9 +151,121 @@
           "label": "Content Image"
         },
         {
+          "type": "select",
+          "id": "mainBanner_image_alignment",
+          "label": "Main Banner Image Alignment",
+          "options": [
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "start",
+              "label": "Start"
+            },
+            {
+              "value": "end",
+              "label": "End"
+            }
+          ],
+          "default": "end"
+        },
+        {
+          "type": "select",
+          "id": "mainBanner_image_align_items",
+          "label": "Main Banner Image Vertical Alignment",
+          "options": [
+            {
+              "value": "start",
+              "label": "Start"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "end",
+              "label": "End"
+            }
+          ],
+          "default": "center"
+        },
+        {
           "type": "image_picker",
           "id": "mainBanner_logo",
           "label": "Logo"
+        },
+        {
+          "type": "select",
+          "id": "mainBanner_logo_size",
+          "label": "Logo Size",
+          "options": [
+            {
+              "value": "small",
+              "label": "Small"
+            },
+            {
+              "value": "medium",
+              "label": "Medium"
+            },
+            {
+              "value": "large",
+              "label": "Large"
+            }
+          ],
+          "default": "medium"
+        },
+        {
+          "type": "select",
+          "id": "mainBanner_content_alignment",
+          "label": "Content Alignment",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "left"
+        },
+        {
+          "type": "select",
+          "id": "mainBanner_content_justify",
+          "label": "Content Justify",
+          "options": [
+            {
+              "value": "start",
+              "label": "Start"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "end",
+              "label": "End"
+            },
+            {
+              "value": "between",
+              "label": "Space Between"
+            },
+            {
+              "value": "around",
+              "label": "Space Around"
+            },
+            {
+              "value": "evenly",
+              "label": "Space Evenly"
+            }
+          ],
+          "default": "between"
         },
         {
           "type": "text",

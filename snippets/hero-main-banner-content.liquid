@@ -3,32 +3,86 @@
   Renders the content for the main banner block
 {% endcomment %}
 
-<div class='tw-flex tw-flex-col tw-justify-between'>
+{% assign content_alignment = block.settings.mainBanner_content_alignment | default: 'left' %}
+{% assign logo_size = block.settings.mainBanner_logo_size | default: 'medium' %}
+{% assign logo_max_width = '300px' %}
+{% if logo_size == 'small' %}
+  {% assign logo_max_width = '200px' %}
+{% elsif logo_size == 'large' %}
+  {% assign logo_max_width = '600px' %}
+{% endif %}
+{% assign content_align_class = '' %}
+{% if content_alignment == 'center' %}
+  {% assign content_align_class = 'tw-items-center tw-text-center' %}
+{% elsif content_alignment == 'right' %}
+  {% assign content_align_class = 'tw-items-end tw-text-right' %}
+{% endif %}
+<div class='tw-flex tw-flex-col {{ content_align_class }}'>
   {% if block.settings.mainBanner_logo %}
-    <span class='tw-hidden tablet:tw-block'>
-      <img src='{{ block.settings.mainBanner_logo | image_url }}' alt='Main Banner logo' height='auto'
-        style="max-width: 300px;">
+    <span class='tw-hidden tablet:tw-block tw-mb-[42px]'>
+      <img
+        src='{{ block.settings.mainBanner_logo | image_url }}'
+        alt='Main Banner logo'
+        height='auto'
+        style='max-width: {{ logo_max_width }};'
+      >
     </span>
   {% endif %}
   <div class=''>
-    <h2 class='max-tablet:tw-text-center tw-text-h1 tw-pb-8' style='color: {{ block.settings.mainBanner_heading_color | default: "#FFFFFF" }};'>
+    <h2
+      class='max-tablet:tw-text-center tw-text-h1 tw-pb-8 {% if content_alignment == 'center' %}tablet:tw-text-center{% elsif content_alignment == 'right' %}tablet:tw-text-right{% endif %}'
+      style='color: {{ block.settings.mainBanner_heading_color | default: "#FFFFFF" }};'
+    >
       {{ block.settings.mainBanner_heading }}
     </h2>
-    <p class='max-tablet:tw-text-center tw-text-h4 tw-pb-24' style='color: {{ block.settings.mainBanner_text_color | default: "#FFFFFF" }};'>
+    <p
+      class='max-tablet:tw-text-center tw-text-h4 tw-pb-24 {% if content_alignment == 'center' %}tablet:tw-text-center{% elsif content_alignment == 'right' %}tablet:tw-text-right{% endif %}'
+      style='color: {{ block.settings.mainBanner_text_color | default: "#FFFFFF" }};'
+    >
       {{ block.settings.mainBanner_text }}
     </p>
     {% if block.settings.mainBanner_button_text != blank and block.settings.mainBanner_button_url != blank %}
+      {% assign button_class = 'tablet:tw-max-w-[320px] max-tablet:tw-w-full' %}
+      {% if content_alignment == 'center' %}
+        {% assign button_class = button_class | append: ' tablet:tw-mx-auto' %}
+      {% elsif content_alignment == 'right' %}
+        {% assign button_class = button_class | append: ' tablet:tw-ml-auto' %}
+      {% endif %}
       {% render 'button',
         label: block.settings.mainBanner_button_text,
         url: block.settings.mainBanner_button_url,
         variant: 'solid-yellow',
         size: 'large',
-        custom_class: 'tablet:tw-max-w-[320px] max-tablet:tw-w-full'
+        custom_class: button_class
       %}
     {% endif %}
   </div>
 </div>
-<div class='tw-flex tw-justify-center tablet:tw-justify-end'>
+{% assign content_alignment = block.settings.mainBanner_content_alignment | default: 'left' %}
+{% if content_alignment == 'center' %}
+  {% assign justify_class = 'tw-justify-center' %}
+  {% assign align_items_class = 'tw-items-center' %}
+{% else %}
+  {% assign image_alignment = block.settings.mainBanner_image_alignment | default: 'center' %}
+  {% assign justify_class = 'tw-justify-center' %}
+  {% if image_alignment == 'start' %}
+    {% assign justify_class = 'tablet:tw-justify-start' %}
+  {% elsif image_alignment == 'center' %}
+    {% assign justify_class = 'tablet:tw-justify-center' %}
+  {% elsif image_alignment == 'end' %}
+    {% assign justify_class = 'tablet:tw-justify-end' %}
+  {% endif %}
+  {% assign image_align_items = block.settings.mainBanner_image_align_items | default: 'center' %}
+  {% assign align_items_class = 'tw-items-center' %}
+  {% if image_align_items == 'start' %}
+    {% assign align_items_class = 'tablet:tw-items-start' %}
+  {% elsif image_align_items == 'center' %}
+    {% assign align_items_class = 'tablet:tw-items-center' %}
+  {% elsif image_align_items == 'end' %}
+    {% assign align_items_class = 'tablet:tw-items-end' %}
+  {% endif %}
+{% endif %}
+<div class='tw-flex tw-justify-center tw-items-center {{ justify_class }} {{ align_items_class }}'>
   {% if block.settings.mainBanner_image %}
     <div class='tablet:tw--mb-32 tw-z-0'>
       <img
