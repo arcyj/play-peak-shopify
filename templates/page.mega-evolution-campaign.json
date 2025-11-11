@@ -27,10 +27,10 @@
             "mainBanner_logo_size": "large",
             "mainBanner_content_alignment": "center",
             "mainBanner_content_justify": "center",
-            "mainBanner_heading": "Mega Evolution Returns",
+            "mainBanner_heading": "Mega Evolution is back! ",
             "mainBanner_heading_color": "#f3f3f3",
-            "mainBanner_text": "",
-            "mainBanner_text_color": "#13071a",
+            "mainBanner_text": "Power up your deck and command the battlefield with the return of unstoppable Mega Pokémon!",
+            "mainBanner_text_color": "#ffffff",
             "mainBanner_button_text": "",
             "mainBanner_button_url": ""
           }
