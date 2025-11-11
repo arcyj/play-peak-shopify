@@ -1,0 +1,135 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero_block": {
+      "type": "hero-block",
+      "blocks": {
+        "main_banner": {
+          "type": "mainBanner",
+          "settings": {
+            "mainBanner_full_width_bg": false,
+            "mainBanner_bg_image": "shopify://shop_images/MegaEvolutionBanner-pattern.jpg",
+            "mainBanner_gradient_start": "#fd98c6",
+            "mainBanner_gradient_end": "#f1bad3",
+            "mainBanner_image": "shopify://shop_images/pantasy-boxes.png",
+            "mainBanner_image_hide_mobile": false,
+            "mainBanner_image_alignment": "end",
+            "mainBanner_image_align_items": "center",
+            "mainBanner_logo": "shopify://shop_images/pantasy-logo_2.png",
+            "mainBanner_logo_hide_mobile": true,
+            "mainBanner_logo_size": "small",
+            "mainBanner_content_alignment": "left",
+            "mainBanner_content_justify": "center",
+            "mainBanner_heading": "From Classic Builds to Creative Masterpieces",
+            "mainBanner_heading_color": "#13071a",
+            "mainBanner_text": "Explore Pantasy’s Full Collection!",
+            "mainBanner_text_color": "#13071a",
+            "mainBanner_button_text": "",
+            "mainBanner_button_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "main_banner"
+      ],
+      "settings": {
+        "title": "Promotion Banner"
+      }
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Licensed & Pop-Culture Series",
+        "description": "<p>This collection brings together official collaborations with beloved characters and legendary franchises — such as Astro Boy, The Little Prince, Garfield, Popeye and Saint Seiya. These sets faithfully honour the source material while offering an elevated build quality suitable for display and creative play. </p>",
+        "show_description": true,
+        "collection": "pantasy-pop-culture",
+        "products_to_show": 12,
+        "columns_desktop": 6,
+        "columns_mobile": 2,
+        "show_view_all": true,
+        "enable_desktop_slider": false,
+        "enable_mobile_slider": false
+      }
+    },
+    "featured_collection_h4q8km": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "title": "Retro & Vintage Series",
+        "description": "<p>Celebrate the charm of bygone days: this collection revives objects and aesthetics from earlier eras — vintage televisions, classic phones, gramophones, 1990s PCs and more. Each set is built to both evoke emotion and serve as a design-piece.</p>",
+        "show_description": true,
+        "collection": "pantasy-retro-collection",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "columns_mobile": 4,
+        "show_view_all": true,
+        "enable_desktop_slider": false,
+        "enable_mobile_slider": false
+      }
+    },
+    "featured_collection_3BxGWq": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "title": "Modular Series",
+        "description": "<p>These sets focus on original themes (not necessarily licensed) and modular building designs — think multi-floor buildings, detailed interiors and openable sections designed with display in mind. They allow for creative rearrangement and carry a strong architectural sensibility.</p>",
+        "show_description": true,
+        "collection": "pantasy-modular-building",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "columns_mobile": 4,
+        "show_view_all": true,
+        "enable_desktop_slider": false,
+        "enable_mobile_slider": false
+      }
+    },
+    "featured_collection_itVj38": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "title": "Steampunk & Fantasy Series",
+        "description": "<p>In this collection Pantasy reaches into imaginative realms with mechanical touches, gear-driven details, brass and vintage machinery aesthetics — perfect for those who want a build that feels like a fantasy diorama as well as a display piece.</p>",
+        "show_description": true,
+        "collection": "pantasy-steampunk-more",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "columns_mobile": 4,
+        "show_view_all": true,
+        "enable_desktop_slider": false,
+        "enable_mobile_slider": false
+      }
+    },
+    "featured_collection_fTMdTK": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "title": "The Little Prince",
+        "description": "<p>Step into the enchanting world of <em>The Little Prince</em> with Pantasy’s beautifully crafted construction sets. Each model captures the story’s poetic charm — from the gentle prince and his tiny planet to the rose, the fox, and the stars above. Designed with exquisite detail and emotional depth, these sets invite builders of all ages to relive the timeless tale of wonder, friendship, and imagination.</p>",
+        "show_description": true,
+        "collection": "pantasy-the-little-prince",
+        "products_to_show": 12,
+        "columns_desktop": 4,
+        "columns_mobile": 4,
+        "show_view_all": true,
+        "enable_desktop_slider": false,
+        "enable_mobile_slider": true
+      }
+    }
+  },
+  "order": [
+    "hero_block",
+    "featured_collection",
+    "featured_collection_h4q8km",
+    "featured_collection_3BxGWq",
+    "featured_collection_itVj38",
+    "featured_collection_fTMdTK"
+  ]
+}
