@@ -187,22 +187,6 @@
           "notification_animation": "fade"
         }
       },
-      "11413113034274116516": {
-        "type": "shopify://apps/xb-wishlist/blocks/wishlist_collection/cc07f1e9-907b-431d-99f8-4fce3efa75f1",
-        "disabled": false,
-        "settings": {
-          "selector_collection": ".product-card > a[href*='/products'],.card__heading.h5 > a[href*='/products'],.card__heading > a[href*='/products'],.product-card  a[href*='/products'],.card__heading  a[href*='/products'],.product-grid-item a[href*='/products'], .grid__item.grid-product a[href*='/products']",
-          "icon_position": "top-right",
-          "custom_position": false,
-          "x_position": 0,
-          "y_position": 0,
-          "x_position-mobile": 0,
-          "y_position-mobile": 0,
-          "icon_size": 2,
-          "icon_color": "#ff0000",
-          "custom_placement": ""
-        }
-      },
       "8813414294664651821": {
         "type": "shopify://apps/xb-wishlist/blocks/wishlist_float/cc07f1e9-907b-431d-99f8-4fce3efa75f1",
         "disabled": true,
@@ -238,6 +222,22 @@
           "button_horizontal_position": "bottom_right",
           "button_vertical_position": "lowest",
           "greeting_message": ""
+        }
+      },
+      "11413113034274116516": {
+        "type": "shopify://apps/xb-wishlist/blocks/wishlist_collection/cc07f1e9-907b-431d-99f8-4fce3efa75f1",
+        "disabled": true,
+        "settings": {
+          "selector_collection": ".product-card > a[href*='/products'],.card__heading.h5 > a[href*='/products'],.card__heading > a[href*='/products'],.product-card  a[href*='/products'],.card__heading  a[href*='/products'],.product-grid-item a[href*='/products'], .grid__item.grid-product a[href*='/products']",
+          "icon_position": "top-right",
+          "custom_position": false,
+          "x_position": 0,
+          "y_position": 0,
+          "x_position-mobile": 0,
+          "y_position-mobile": 0,
+          "icon_size": 2,
+          "icon_color": "#ff0000",
+          "custom_placement": ""
         }
       }
     },
