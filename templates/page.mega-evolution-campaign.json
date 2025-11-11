@@ -23,7 +23,7 @@
             "mainBanner_image_alignment": "center",
             "mainBanner_image_align_items": "center",
             "mainBanner_logo": "shopify://shop_images/me01-logo-2x.png",
-            "mainBanner_logo_hide_mobile": true,
+            "mainBanner_logo_hide_mobile": false,
             "mainBanner_logo_size": "large",
             "mainBanner_content_alignment": "center",
             "mainBanner_content_justify": "center",
