@@ -19,12 +19,17 @@
 {% endif %}
 <div class='tw-flex tw-flex-col {{ content_align_class }}'>
   {% if block.settings.mainBanner_logo %}
-    <span class='tw-hidden tablet:tw-block tw-mb-[42px]'>
+    {% assign logo_hide_mobile = block.settings.mainBanner_logo_hide_mobile %}
+    {% assign logo_class = 'tw-block' %}
+    {% if logo_hide_mobile %}
+      {% assign logo_class = 'tw-block max-tablet:tw-hidden' %}
+    {% endif %}
+    <span class='{{ logo_class }} tw-mb-[42px]' style='max-width: {{ logo_max_width }};'>
       <img
         src='{{ block.settings.mainBanner_logo | image_url }}'
         alt='Main Banner logo'
         height='auto'
-        style='max-width: {{ logo_max_width }};'
+        width='100%'
       >
     </span>
   {% endif %}
@@ -84,7 +89,12 @@
 {% endif %}
 <div class='tw-flex tw-justify-center tw-items-center {{ justify_class }} {{ align_items_class }}'>
   {% if block.settings.mainBanner_image %}
-    <div class='tablet:tw--mb-32 tw-z-0'>
+    {% assign image_hide_mobile = block.settings.mainBanner_image_hide_mobile %}
+    {% assign image_wrapper_class = 'tw-mb-32 tablet:tw--mb-32 tw-z-0' %}
+    {% if image_hide_mobile %}
+      {% assign image_wrapper_class = 'tablet:tw--mb-32 tw-z-0 max-tablet:tw-hidden' %}
+    {% endif %}
+    <div class='{{ image_wrapper_class }}'>
       <img
         src='{{ block.settings.mainBanner_image | image_url: width: 600 }}'
         class=' max-tablet:tw-max-h-[230px]'
