@@ -253,7 +253,7 @@
             >
               <div class="loading-overlay gradient"></div>
               <ul
-                class="grid product-grid  grid--{{ section.settings.columns_mobile }}-col-tablet-down grid--{{ section.settings.columns_desktop }}-col-desktop"
+                class="product-grid "
                 role="list"
               >
                 {%- assign skip_card_product_styles = false -%}
@@ -264,7 +264,7 @@
                   {%- endif -%}
 
                   <li
-                    class="grid__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                    class="product-grid-item {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
                     {% if settings.animations_reveal_on_scroll %}
                       data-cascade
                     {% endif %}
