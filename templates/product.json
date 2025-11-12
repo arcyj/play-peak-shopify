@@ -9,6 +9,52 @@
  */
 {
   "sections": {
+    "main_product_v2_tLx9Vt": {
+      "type": "main-product-v2",
+      "blocks": {
+        "text_KALWRK": {
+          "type": "text",
+          "settings": {
+            "text": "Text block",
+            "text_style": "body"
+          }
+        },
+        "title_mkzkNx": {
+          "type": "title",
+          "settings": {}
+        },
+        "price_bQyKdU": {
+          "type": "price",
+          "settings": {}
+        },
+        "variant_picker_DMWAMG": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "buy_buttons_KLiG8t": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": false,
+            "show_gift_card_recipient": true
+          }
+        }
+      },
+      "block_order": [
+        "text_KALWRK",
+        "title_mkzkNx",
+        "price_bQyKdU",
+        "variant_picker_DMWAMG",
+        "buy_buttons_KLiG8t"
+      ],
+      "name": "Main Product v2",
+      "settings": {
+        "enable_sticky_info": true,
+        "color_scheme": ""
+      }
+    },
     "main": {
       "type": "main-product",
       "blocks": {
@@ -147,52 +193,6 @@
         "columns_mobile": "2",
         "padding_top": 36,
         "padding_bottom": 28
-      }
-    },
-    "main_product_v2_tLx9Vt": {
-      "type": "main-product-v2",
-      "blocks": {
-        "text_KALWRK": {
-          "type": "text",
-          "settings": {
-            "text": "Text block",
-            "text_style": "body"
-          }
-        },
-        "title_mkzkNx": {
-          "type": "title",
-          "settings": {}
-        },
-        "price_bQyKdU": {
-          "type": "price",
-          "settings": {}
-        },
-        "variant_picker_DMWAMG": {
-          "type": "variant_picker",
-          "settings": {
-            "picker_type": "button",
-            "swatch_shape": "circle"
-          }
-        },
-        "buy_buttons_KLiG8t": {
-          "type": "buy_buttons",
-          "settings": {
-            "show_dynamic_checkout": true,
-            "show_gift_card_recipient": true
-          }
-        }
-      },
-      "block_order": [
-        "text_KALWRK",
-        "title_mkzkNx",
-        "price_bQyKdU",
-        "variant_picker_DMWAMG",
-        "buy_buttons_KLiG8t"
-      ],
-      "name": "Main Product v2",
-      "settings": {
-        "enable_sticky_info": true,
-        "color_scheme": ""
       }
     }
   },
