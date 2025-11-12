@@ -1,7 +1,6 @@
 {
   "article": [],
   "blog": [],
-  "brand": [],
   "collection": [
     {
       "key": "parent",
@@ -48,7 +47,18 @@
   "company_location": [],
   "location": [],
   "market": [],
-  "order": [],
+  "order": [
+    {
+      "key": "PickupPoint",
+      "namespace": "Globe",
+      "name": "Pickup Point",
+      "description": "Globe Pickup Points",
+      "type": {
+        "name": "json",
+        "category": "JSON"
+      }
+    }
+  ],
   "page": [
     {
       "key": "menu_image",
@@ -300,6 +310,26 @@
       "type": {
         "name": "boolean",
         "category": "TRUE_FALSE"
+      }
+    },
+    {
+      "key": "expansion_stockx",
+      "namespace": "stockx",
+      "name": "Expansion stockx",
+      "description": "",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
+      }
+    },
+    {
+      "key": "language_stockx",
+      "namespace": "stockx",
+      "name": "Language stockX",
+      "description": "",
+      "type": {
+        "name": "single_line_text_field",
+        "category": "TEXT"
       }
     }
   ],

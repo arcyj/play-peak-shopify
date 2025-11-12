@@ -32,7 +32,7 @@
   {%- when 'solid' -%}
     {% assign btn_class = 'tw-bg-blue-500 tw-text-white hover:tw-bg-blue-600' %}
   {%- when 'solid-purple' -%}
-    {% assign btn_class = 'tw-bg-[#943BF2] tw-text-white hover:tw-bg-[#AE6AF5] [&_.svg-wrapper_svg_path]:tw-fill-white [&_.svg-wrapper_svg_path]:tw-transition-all' %}
+    {% assign btn_class = 'tw-border-2 tw-border-[#943BF2] tw-bg-[#943BF2] tw-text-white hover:tw-bg-[#AE6AF5] hover:tw-border-[#AE6AF5] [&_.svg-wrapper_svg_path]:tw-fill-white [&_.svg-wrapper_svg_path]:tw-transition-all' %}
   {%- when 'solid-yellow' -%}
     {% assign btn_class = 'tw-bg-yellow-400 tw-text-black hover:tw-bg-yellow-500' %}
   {%- when 'solid-green' -%}
@@ -40,7 +40,7 @@
   {%- when 'tertiary-dark' -%}
     {% assign btn_class = 'tw-border tw-border-white tw-text-white hover:tw-bg-white hover:tw-text-black' %}
   {%- when 'tertiary-light' -%}
-    {% assign btn_class = 'tw-border tw-border-black tw-text-black hover:tw-bg-black hover:tw-text-white' %}
+    {% assign btn_class = 'tw-border-2 tw-border-black tw-text-black hover:tw-bg-black hover:tw-text-white [&_.svg-wrapper_svg_path]:hover:tw-fill-white [&_.svg-wrapper_svg]:hover:tw-fill-white [&_.svg-wrapper_svg]:tw-transition-all [&_.svg-wrapper_svg_path]:tw-transition-all' %}
   {%- else -%}
     {% assign btn_class = 'tw-bg-blue-500 tw-text-white hover:tw-bg-blue-600' %}
 {%- endcase -%}

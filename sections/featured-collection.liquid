@@ -84,7 +84,7 @@
 
         {%- if section.settings.show_description -%}
           <div class='tw-text-body tw-text-text-body tw-max-w-[850px] tw-mt-12 tw-mb-0 {% if section.settings.description_style == 'subtitle' %} tw-text-subtitle{% elsif section.settings.description_style == 'uppercase' %} tw-uppercase{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'>
-              {{ section.settings.description }}
+            {{ section.settings.description }}
           </div>
         {%- endif -%}
       </div>

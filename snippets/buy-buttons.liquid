@@ -60,7 +60,7 @@
           {%- render 'gift-card-recipient-form', product: product, form: form, section: section -%}
         {%- endif -%}
 
-        <div class='tw-flex tw-gap-8 tw-flex-col tablet:tw-flex-row'>
+        <div class='tw-flex tw-gap-8 tw-flex-col tablet:tw-flex-row tw-items-start'>
           {%- liquid
             assign check_against_inventory = true
             if product.selected_or_first_available_variant.inventory_management != 'shopify' or product.selected_or_first_available_variant.inventory_policy == 'continue'
@@ -69,9 +69,31 @@
             if product.selected_or_first_available_variant.quantity_rule.min > product.selected_or_first_available_variant.inventory_quantity and check_against_inventory
               assign quantity_rule_soldout = true
             endif
+
+            assign button_disabled = false
+            if product.selected_or_first_available_variant == null
+              assign button_disabled = true
+            elsif product.selected_or_first_available_variant.available == false or quantity_rule_soldout
+              assign button_disabled = true
+            endif
           -%}
-          {%- if show_dynamic_checkout and product.selected_or_first_available_variant.available == true -%}
-            {{ form | payment_button }}
+          {%- if product.selected_or_first_available_variant.available == true -%}
+            {%- if show_dynamic_checkout -%}
+              {{ form | payment_button }}
+            {%- else -%}
+              {%- liquid
+                assign buy_now_url = '/cart/' | append: product.selected_or_first_available_variant.id | append: ':1'
+              -%}
+              {%- render 'button',
+                label: 'Buy Now',
+                variant: 'solid-purple',
+                disabled: button_disabled,
+                url: buy_now_url,
+                size: 'large',
+                icon: '',
+                custom_class: 'tw-relative tw-w-full tw-flex-1'
+              -%}
+            {%- endif -%}
           {%- endif -%}
           {%- liquid
             assign button_label = 'products.product.add_to_cart' | t
@@ -95,11 +117,11 @@
             type: 'submit',
             name: 'add',
             id: 'ProductSubmitButton-' | append: section_id,
-            variant: 'solid-green',
+            variant: 'tertiary-light',
             disabled: button_disabled,
             size: 'large',
             icon: button_icon,
-            custom_class: 'tw-relative tw-w-full'
+            custom_class: 'tw-relative tw-w-full tw-flex-1'
           -%}
 
           {%- render 'loading-spinner' -%}

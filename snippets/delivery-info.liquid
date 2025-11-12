@@ -1,0 +1,23 @@
+{%- comment -%}
+  Renders a delivery information component with logo, title, and delivery time
+
+  Accepts:
+  - logo: {String} SVG filename (e.g., 'icon-dpd.svg')
+  - title: {String} Delivery service name (e.g., 'DPD')
+  - delivery_time: {String} Delivery time description (e.g., 'delivery 2-3 business days')
+
+  Usage:
+  {% render 'delivery-info', logo: 'icon-dpd.svg', title: 'DPD', delivery_time: 'delivery 2-3 business days' %}
+{%- endcomment -%}
+
+<div class='tw-flex tw-items-center tw-justify-between tw-gap-16 tw-mb-16 tw-mt-8 tw-w-full'>
+  <span class='tw-flex tw-items-center'>
+    <span class='svg-wrapper tw-w-[25px] tw-h-[25px] tw-mr-12'>
+      {{- logo | inline_asset_content -}}
+    </span>
+    <p class='tw-text-regular-semi'>
+      {{ title }}
+    </p>
+  </span>
+  <span class='tw-text-regular-semi'>{{ delivery_time }}</span>
+</div>

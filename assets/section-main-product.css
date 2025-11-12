@@ -334,6 +334,17 @@ a.product__text {
   }
 }
 
+.product__description h1,
+.product__description h2,
+.product__description h3 {
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.product__description p {
+  margin-bottom: 12px;
+}
+
 .product__description-title {
   font-weight: 600;
 }

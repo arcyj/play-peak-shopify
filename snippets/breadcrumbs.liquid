@@ -72,7 +72,16 @@
 
 {%- unless template == 'index' or template == 'cart' or template == 'list-collections' or template == '404' -%}
   {%- assign t = template | split: '.' | first -%}
-  <div class='page-width'>
+  {%- if page_width == false -%}
+    {%- assign show_page_width = false -%}
+  {%- else -%}
+    {%- assign show_page_width = true -%}
+  {%- endif -%}
+  <div
+    {% if show_page_width %}
+      class='page-width'
+    {% endif %}
+  >
     <nav class='breadcrumbs' role='navigation' aria-label='breadcrumbs'>
       <div class='breadcrumbs__list'>
         <span class='breadcrumbs__item'>
