@@ -6,9 +6,10 @@
   - product_form_id: {String} product form id.
   - section_id: {String} id of section to which this snippet belongs.
   - show_pickup_availability: {Boolean} for the pickup availability. If true the pickup availability is rendered, false - not rendered (optional).
+  - wishlist_block: {Object} optional wishlist app block to render inline with buy buttons.
 
   Usage:
-  {% render 'buy-buttons', block: block, product: product, product_form_id: product_form_id, section_id: section.id, show_pickup_availability: true %}
+  {% render 'buy-buttons', block: block, product: product, product_form_id: product_form_id, section_id: section.id, show_pickup_availability: true, wishlist_block: wishlist_block %}
 {% endcomment %}
 <div {{ block.shopify_attributes }}>
   {%- if product != blank -%}
@@ -91,7 +92,7 @@
                 url: buy_now_url,
                 size: 'large',
                 icon: '',
-                custom_class: 'tw-relative tw-w-full tw-flex-1'
+                custom_class: 'tw-relative tw-w-full tw-flex-1 tablet:tw-w-1/2'
               -%}
             {%- endif -%}
           {%- endif -%}
@@ -111,18 +112,26 @@
             endif
           -%}
 
-          {%-
-            render 'button',
-            label: button_label,
-            type: 'submit',
-            name: 'add',
-            id: 'ProductSubmitButton-' | append: section_id,
-            variant: 'tertiary-light',
-            disabled: button_disabled,
-            size: 'large',
-            icon: button_icon,
-            custom_class: 'tw-relative tw-w-full tw-flex-1'
-          -%}
+          <div class='tw-flex tablet:tw-w-1/2 tw-gap-8 tw-w-full'>
+            {%-
+              render 'button',
+              label: button_label,
+              type: 'submit',
+              name: 'add',
+              id: 'ProductSubmitButton-' | append: section_id,
+              variant: 'tertiary-light',
+              disabled: button_disabled,
+              size: 'large',
+              icon: button_icon,
+              custom_class: 'tw-relative tw-w-full tw-flex-1'
+            -%}
+
+            {%- if wishlist_block != null -%}
+              <div class='tw-flex-shrink-0'>
+                {% render wishlist_block %}
+              </div>
+            {%- endif -%}
+          </div>
 
           {%- render 'loading-spinner' -%}
         </div>

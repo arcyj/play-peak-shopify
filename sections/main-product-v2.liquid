@@ -14,6 +14,9 @@
 
   <script src='{{ 'product-info.js' | asset_url }}' defer='defer'></script>
   <script src='{{ 'product-form.js' | asset_url }}' defer='defer'></script>
+  {%- if product.media.size > 0 -%}
+    <script src='{{ 'media-gallery.js' | asset_url }}' defer='defer'></script>
+  {%- endif -%}
 
   {% comment %} Template Variables {% endcomment %}
   {% assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' %}
@@ -23,7 +26,12 @@
   {%- endif -%}
 
   <div class='page-width'>
-    <div class='tablet:tw-flex '>
+    {% comment %}
+      <div class='tw-block tablet:tw-hidden'>
+        {%- render 'breadcrumbs', page_width: false -%}
+      </div>
+    {% endcomment %}
+    <div class='tablet:tw-flex tw-mt-24 tablet:tw-mt-0'>
       <div class='tw-flex-1 tw-max-w-[500px]'>
         <div class=''>
           {% render 'product-media-gallery-v2', variant_images: variant_images %}
@@ -31,27 +39,59 @@
       </div>
       <div class='tw-flex-1 tablet:tw-pl-32 scroll-trigger'>
         <div class=''>
-          {%- render 'breadcrumbs', page_width: false -%}
+          <div class='tw-hidden tablet:tw-block'>
+            {%- render 'breadcrumbs', page_width: false -%}
+          </div>
+          {%- liquid
+            assign wishlist_block = null
+            for block in section.blocks
+              if block.type == '@app'
+                assign block_id_string = block.id | downcase | append: ''
+                assign block_attrs = block.shopify_attributes | downcase | append: ''
+                if block_id_string contains 'wishlist' or block_attrs contains 'wishlist'
+                  assign wishlist_block = block
+                  break
+                endif
+              endif
+            endfor
+          -%}
           {%- for block in section.blocks -%}
+            {%- liquid
+              assign skip_app_block = false
+              if block.type == '@app' and wishlist_block
+                assign current_block_id = block.id | append: ''
+                assign wishlist_block_id = wishlist_block.id | append: ''
+                if current_block_id == wishlist_block_id
+                  assign skip_app_block = true
+                endif
+              endif
+            -%}
             {%- case block.type -%}
               {%- when '@app' -%}
-                {% render block %}
+                {%- unless skip_app_block -%}
+                  {% render block %}
+                {%- endunless -%}
               {%- when 'text' -%}
-                <p class='tw-hidden tablet:tw-block tw-text-text-gray tw-text-medium'>
-                  {{- product.vendor -}}
-                </p>
+                <div class='tw-flex tw-justify-between tw-items-center tw-mt-16 tablet:tw-mt-0'>
+                  <p class='tw-block tw-text-text-gray tw-text-medium'>
+                    {{- product.vendor -}}
+                  </p>
+                  <div class='tw-block tablet:tw-hidden'>
+                    {% render 'stock-status', target: product, showQuantity: true %}
+                  </div>
+                </div>
               {%- when 'title' -%}
                 <div
-                  class='product__title tw-mb-24 tw-hidden tablet:tw-block tw-max-w-[750px]'
+                  class='product__title tw-mb-24 tw-block tw-max-w-[750px]'
                   {{ block.shopify_attributes }}
                 >
                   <h1 class='tw-text-h1'>{{ product.title | escape }}</h1>
                 </div>
-                <p class='tw-text-regular-semi tw-mb-24 tw-max-w-[750px]'>
+                <p class='tw-text-regular-semi tw-mb-24 tw-max-w-[750px] tw-hidden tablet:tw-block'>
                   {{ product.metafields.details.short_description.value }}
                 </p>
               {%- when 'price' -%}
-                <div class='tw-flex max-tablet:tw-justify-between'>
+                <div class='tw-flex max-tablet:tw-justify-between tw-max-w-[750px]'>
                   <div id='price-{{ section.id }}' role='status' {{ block.shopify_attributes }}>
                     {%- render 'price',
                       product: product,
@@ -62,55 +102,60 @@
                     -%}
                   </div>
                   {% comment %}  Start qty input{% endcomment %}
-                  <div
-                    id='Quantity-Form-{{ section.id }}'
-                    class='product-form__quantity tw-flex tw-flex-col tw-justify-end {% if settings.inputs_shadow_vertical_offset != 0 and settings.inputs_shadow_vertical_offset < 0 %} product-form__quantity-top{% endif %}'
-                    {{ block.shopify_attributes }}
-                  >
-                    {% comment %} TODO: enable theme-check once `item_count_for_variant` is accepted as valid filter {% endcomment %}
-                    {% # theme-check-disable %}
-                    {%- assign cart_qty = cart
-                      | item_count_for_variant: product.selected_or_first_available_variant.id
-                    -%}
-                    {% # theme-check-enable %}
-                    <label class='quantity__label form__label' for='Quantity-{{ section.id }}'>
-                      {{ 'products.product.quantity.label' | t }}
-                    </label>
-                    <div class='tw-flex'>
-                      <quantity-input class='quantity' data-url='{{ product.url }}' data-section='{{ section.id }}'>
-                        <button class='quantity__button' name='minus' type='button'>
-                          <span class='visually-hidden'>
-                            {{- 'products.product.quantity.decrease' | t: product: product.title | escape -}}
-                          </span>
-                          <span class='svg-wrapper'>
-                            {{- 'icon-minus.svg' | inline_asset_content -}}
-                          </span>
-                        </button>
-                        <input
-                          class='quantity__input'
-                          type='number'
-                          name='quantity'
-                          id='Quantity-{{ section.id }}'
-                          data-cart-quantity='{{ cart_qty }}'
-                          data-min='{{ product.selected_or_first_available_variant.quantity_rule.min }}'
-                          min='{{ product.selected_or_first_available_variant.quantity_rule.min }}'
-                          {% if product.selected_or_first_available_variant.quantity_rule.max != null %}
-                            data-max='{{ product.selected_or_first_available_variant.quantity_rule.max }}'
-                            max='{{ product.selected_or_first_available_variant.quantity_rule.max }}'
-                          {% endif %}
-                          step='{{ product.selected_or_first_available_variant.quantity_rule.increment }}'
-                          value='{{ product.selected_or_first_available_variant.quantity_rule.min }}'
-                          form='{{ product_form_id }}'
-                        >
-                        <button class='quantity__button' name='plus' type='button'>
-                          <span class='visually-hidden'>
-                            {{- 'products.product.quantity.increase' | t: product: product.title | escape -}}
-                          </span>
-                          <span class='svg-wrapper'>
-                            {{- 'icon-plus.svg' | inline_asset_content -}}
-                          </span>
-                        </button>
-                      </quantity-input>
+                  <div class='tw-flex tw-flex-1 tw-justify-between tw-items-end'>
+                    <div
+                      id='Quantity-Form-{{ section.id }}'
+                      class='product-form__quantity tw-flex tw-items-center tw-justify-end {% if settings.inputs_shadow_vertical_offset != 0 and settings.inputs_shadow_vertical_offset < 0 %} product-form__quantity-top{% endif %}'
+                      {{ block.shopify_attributes }}
+                    >
+                      {% comment %} TODO: enable theme-check once `item_count_for_variant` is accepted as valid filter {% endcomment %}
+                      {% # theme-check-disable %}
+                      {%- assign cart_qty = cart
+                        | item_count_for_variant: product.selected_or_first_available_variant.id
+                      -%}
+                      {% # theme-check-enable %}
+                      <label class='quantity__label tw-mr-12 tw-text-regular' for='Quantity-{{ section.id }}'>
+                        {{ 'products.product.quantity.label' | t }}
+                      </label>
+                      <div class='tw-flex'>
+                        <quantity-input class='quantity' data-url='{{ product.url }}' data-section='{{ section.id }}'>
+                          <button class='quantity__button' name='minus' type='button'>
+                            <span class='visually-hidden'>
+                              {{- 'products.product.quantity.decrease' | t: product: product.title | escape -}}
+                            </span>
+                            <span class='svg-wrapper'>
+                              {{- 'icon-minus.svg' | inline_asset_content -}}
+                            </span>
+                          </button>
+                          <input
+                            class='quantity__input'
+                            type='number'
+                            name='quantity'
+                            id='Quantity-{{ section.id }}'
+                            data-cart-quantity='{{ cart_qty }}'
+                            data-min='{{ product.selected_or_first_available_variant.quantity_rule.min }}'
+                            min='{{ product.selected_or_first_available_variant.quantity_rule.min }}'
+                            {% if product.selected_or_first_available_variant.quantity_rule.max != null %}
+                              data-max='{{ product.selected_or_first_available_variant.quantity_rule.max }}'
+                              max='{{ product.selected_or_first_available_variant.quantity_rule.max }}'
+                            {% endif %}
+                            step='{{ product.selected_or_first_available_variant.quantity_rule.increment }}'
+                            value='{{ product.selected_or_first_available_variant.quantity_rule.min }}'
+                            form='{{ product_form_id }}'
+                          >
+                          <button class='quantity__button' name='plus' type='button'>
+                            <span class='visually-hidden'>
+                              {{- 'products.product.quantity.increase' | t: product: product.title | escape -}}
+                            </span>
+                            <span class='svg-wrapper'>
+                              {{- 'icon-plus.svg' | inline_asset_content -}}
+                            </span>
+                          </button>
+                        </quantity-input>
+                      </div>
+                    </div>
+                    <div class='tw-hidden tablet:tw-block'>
+                      {% render 'stock-status', target: product, showQuantity: true %}
                     </div>
                   </div>
                 </div>
@@ -126,21 +171,23 @@
                     product: product,
                     product_form_id: product_form_id,
                     section_id: section.id,
-                    show_pickup_availability: true
+                    show_pickup_availability: true,
+                    wishlist_block: wishlist_block
                   -%}
                 </div>
-                <h3 class='tw-text-dark tw-text-large tw-mb-24 tw-mt-32'>Product Specification</h3>
+              {%- when 'description' -%}
+                {%- if product.description != blank or product.metafields.custom != blank -%}
+                  <h3 class='tw-text-dark tw-text-large tw-mb-24 tw-mt-32'>Product Specification</h3>
+                {%- endif -%}
                 <div class='tw-block tablet:tw-flex'>
-                  <div>
-                    {%- if product.description != blank -%}
-                      <div
-                        class='product__description tw-mr-24 tw-text-regular tw-text-dark'
-                        {{ block.shopify_attributes }}
-                      >
-                        {{ product.description }}
-                      </div>
-                    {%- endif -%}
-                  </div>
+                  {%- if product.description != blank -%}
+                    <div
+                      class='product__description tw-mr-24 tw-text-regular tw-text-dark'
+                      {{ block.shopify_attributes }}
+                    >
+                      {{ product.description }}
+                    </div>
+                  {%- endif -%}
                   <div class='tw-min-w-[300px]'>
                     {% render 'product-detail-list',
                       label: 'Expansion',
@@ -156,6 +203,7 @@
                     %}
                   </div>
                 </div>
+              {%- when 'shipping_info' -%}
                 <div class='tw-bg-surface-lightGrey tw-rounded-lg tw-p-24 tw-max-w-[750px] tw-mt-32'>
                   <h3 class='tw-text-dark tw-text-large tw-mb-16'>Shipping options</h3>
                   <div class=''>
@@ -400,6 +448,11 @@
     {
       "type": "description",
       "name": "t:sections.main-product.blocks.description.name",
+      "limit": 1
+    },
+    {
+      "type": "shipping_info",
+      "name": "Shipping info",
       "limit": 1
     },
     {
@@ -1595,6 +1648,9 @@
         },
         {
           "type": "buy_buttons"
+        },
+        {
+          "type": "description"
         }
       ]
     }

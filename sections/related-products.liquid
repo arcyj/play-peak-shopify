@@ -20,24 +20,24 @@
   }
 {%- endstyle -%}
 
-<div class="tw-bg-background-light">
+<div>
   <product-recommendations
-    class="related-products page-width section-{{ section.id }}-padding isolate{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-    data-url="{{ routes.product_recommendations_url }}?limit={{ section.settings.products_to_show }}"
-    data-section-id="{{ section.id }}"
-    data-product-id="{{ product.id }}"
+    class='related-products page-width section-{{ section.id }}-padding isolate{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}'
+    data-url='{{ routes.product_recommendations_url }}?limit={{ section.settings.products_to_show }}'
+    data-section-id='{{ section.id }}'
+    data-product-id='{{ product.id }}'
   >
     {% if recommendations.performed and recommendations.products_count > 0 %}
-      <h2 class="tw-text-h1 tw-mb-20 tw-text-center">
+      <h2 class='tw-text-h1 tw-mb-20 tw-text-center'>
         {{ section.settings.heading }}
       </h2>
       <ul
-        class="product-grid"
-        role="list"
+        class='product-grid'
+        role='list'
       >
         {% assign skip_card_product_styles = false %}
         {% for recommendation in recommendations.products %}
-          <li class="product-grid-item">
+          <li class='product-grid-item'>
             {% render 'card-product',
               card_product: recommendation,
               media_aspect_ratio: section.settings.image_ratio,

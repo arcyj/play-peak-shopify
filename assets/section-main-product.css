@@ -21,6 +21,21 @@ product-info {
   overflow: visible;
 }
 
+.xb-wishlist-button__add-style-5,
+.xb-wishlist-button__remove-style-5,
+.xb-wishlist-button__loading-style-5 {
+  height: 60px !important;
+  width: 60px !important;
+  border-radius: 6px !important;
+}
+.xb-wishlist-button__add-style-5:hover,
+.xb-wishlist-button__remove-style-5:hover {
+  background-color: #110516 !important;
+}
+.xb-wishlist-button__add-style-5:hover svg path,
+.xb-wishlist-button__remove-style-5:hover svg path {
+  fill: #fff !important;
+}
 @media screen and (min-width: 750px) {
   .product__column-sticky {
     display: block;
