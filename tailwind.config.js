@@ -58,14 +58,14 @@ const typographyConfig = {
     },
   },
   '.text-regular': {
-    font: "400 14px/20px 'Gilroy', sans-serif !important",
+    font: "400 15px/20px 'Gilroy', sans-serif !important",
     '@media (max-width: 768px)': {
       fontSize: '15px !important',
       lineHeight: '27px !important',
     },
   },
   '.text-regular-semi': {
-    font: "500 14px/20px 'Gilroy', sans-serif !important",
+    font: "500 15px/20px 'Gilroy', sans-serif !important",
     '@media (max-width: 768px)': {
       fontSize: '15px !important',
       lineHeight: '27px !important',

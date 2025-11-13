@@ -6,9 +6,10 @@
   - product_form_id: {String} product form id.
   - section_id: {String} id of section to which this snippet belongs.
   - show_pickup_availability: {Boolean} for the pickup availability. If true the pickup availability is rendered, false - not rendered (optional).
+  - wishlist_block: {Object} optional wishlist app block to render inline with buy buttons.
 
   Usage:
-  {% render 'buy-buttons', block: block, product: product, product_form_id: product_form_id, section_id: section.id, show_pickup_availability: true %}
+  {% render 'buy-buttons', block: block, product: product, product_form_id: product_form_id, section_id: section.id, show_pickup_availability: true, wishlist_block: wishlist_block %}
 {% endcomment %}
 <div {{ block.shopify_attributes }}>
   {%- if product != blank -%}
@@ -60,7 +61,7 @@
           {%- render 'gift-card-recipient-form', product: product, form: form, section: section -%}
         {%- endif -%}
 
-        <div class='tw-flex tw-gap-8 tw-flex-col tablet:tw-flex-row'>
+        <div class='tw-flex tw-gap-8 tw-flex-col tablet:tw-flex-row tw-items-start'>
           {%- liquid
             assign check_against_inventory = true
             if product.selected_or_first_available_variant.inventory_management != 'shopify' or product.selected_or_first_available_variant.inventory_policy == 'continue'
@@ -69,9 +70,31 @@
             if product.selected_or_first_available_variant.quantity_rule.min > product.selected_or_first_available_variant.inventory_quantity and check_against_inventory
               assign quantity_rule_soldout = true
             endif
+
+            assign button_disabled = false
+            if product.selected_or_first_available_variant == null
+              assign button_disabled = true
+            elsif product.selected_or_first_available_variant.available == false or quantity_rule_soldout
+              assign button_disabled = true
+            endif
           -%}
-          {%- if show_dynamic_checkout and product.selected_or_first_available_variant.available == true -%}
-            {{ form | payment_button }}
+          {%- if product.selected_or_first_available_variant.available == true -%}
+            {%- if show_dynamic_checkout -%}
+              {{ form | payment_button }}
+            {%- else -%}
+              {%- liquid
+                assign buy_now_url = '/cart/' | append: product.selected_or_first_available_variant.id | append: ':1'
+              -%}
+              {%- render 'button',
+                label: 'Buy Now',
+                variant: 'solid-purple',
+                disabled: button_disabled,
+                url: buy_now_url,
+                size: 'large',
+                icon: '',
+                custom_class: 'tw-relative tw-w-full tw-flex-1 tablet:tw-w-1/2'
+              -%}
+            {%- endif -%}
           {%- endif -%}
           {%- liquid
             assign button_label = 'products.product.add_to_cart' | t
@@ -89,18 +112,26 @@
             endif
           -%}
 
-          {%-
-            render 'button',
-            label: button_label,
-            type: 'submit',
-            name: 'add',
-            id: 'ProductSubmitButton-' | append: section_id,
-            variant: 'solid-green',
-            disabled: button_disabled,
-            size: 'large',
-            icon: button_icon,
-            custom_class: 'tw-relative tw-w-full'
-          -%}
+          <div class='tw-flex tablet:tw-w-1/2 tw-gap-8 tw-w-full'>
+            {%-
+              render 'button',
+              label: button_label,
+              type: 'submit',
+              name: 'add',
+              id: 'ProductSubmitButton-' | append: section_id,
+              variant: 'tertiary-light',
+              disabled: button_disabled,
+              size: 'large',
+              icon: button_icon,
+              custom_class: 'tw-relative tw-w-full tw-flex-1'
+            -%}
+
+            {%- if wishlist_block != null -%}
+              <div class='tw-flex-shrink-0'>
+                {% render wishlist_block %}
+              </div>
+            {%- endif -%}
+          </div>
 
           {%- render 'loading-spinner' -%}
         </div>

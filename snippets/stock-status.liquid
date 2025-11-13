@@ -1,0 +1,41 @@
+{% comment %}
+  Renders stock status indicator
+
+  Accepts:
+  - target: {Object} Product or Variant Liquid object
+  - showQuantity: {Boolean} Whether to show the quantity indicator (optional)
+
+  Usage:
+  {% render 'stock-status', target: product.selected_or_first_available_variant, showQuantity: true %}
+{% endcomment %}
+{%- if showQuantity -%}
+  {%- liquid
+    assign check_against_inventory = true
+    if target.inventory_management != 'shopify' or target.inventory_policy == 'continue'
+      assign check_against_inventory = false
+    endif
+
+    assign inventory_quantity = target.inventory_quantity | default: 0
+    assign is_low_stock = false
+    if check_against_inventory and inventory_quantity > 0 and inventory_quantity < 10
+      assign is_low_stock = true
+    endif
+  -%}
+
+  <span class='tw-flex tw-items-center tw-text-small tw-text-text-gray'>
+    {% if target.available %}
+      {% if is_low_stock %}
+        <span class='tw-block tw-w-[8px] tw-h-[8px] tw-tracking-tight tw-rounded-full tw-bg-orange-500 tw-mr-4'></span>
+        Low on stock
+      {% else %}
+        <span
+          class='tw-block tw-w-[8px] tw-h-[8px] tw-tracking-tight tw-rounded-full tw-bg-accent-green tw-mr-4'
+        ></span>
+        In stock
+      {% endif %}
+    {% else %}
+      <span class='tw-block tw-w-[8px] tw-h-[8px] tw-tracking-tight tw-rounded-full tw-bg-accent-pink tw-mr-4'></span>
+      Out of stock
+    {% endif %}
+  </span>
+{%- endif -%}

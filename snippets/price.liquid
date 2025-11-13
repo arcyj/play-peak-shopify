@@ -63,25 +63,18 @@
             </span>
           {%- endunless -%}
         {%- endif -%}
-        <div class="tw-flex tw-items-center tw-justify-between tw-w-full">
+        <div class='tw-flex tw-items-center tw-justify-between tw-w-full'>
           <span
             class='
               tw-text-[18px] desktop:tw-text-[22px] tw-leading-[26px] tw-font-bold
               {% if compare_at_price %} tw-text-accent-pink {% endif %}
               {%- if price_text_class %} {{ price_text_class }}{% endif -%}
-            '>
+            '
+          >
             {{ money_price }}
           </span>
 
-          {% if showQuantity %}
-            <span class="tw-flex tw-items-center tw-text-small tw-text-text-gray">
-              {% if target.available %}
-                <span class="tw-block tw-w-[8px] tw-h-[8px] tw-tracking-tight tw-rounded-full tw-bg-accent-green tw-mr-4"></span> In stock
-              {% else %}
-                <span class="tw-block tw-w-[8px] tw-h-[8px] tw-tracking-tight tw-rounded-full tw-bg-accent-pink tw-mr-4"></span> Out of stock
-              {% endif %}
-            </span>
-          {% endif %}
+          {% render 'stock-status', target: target, showQuantity: showQuantity %}
         </div>
       </div>
     </div>

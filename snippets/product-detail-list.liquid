@@ -1,0 +1,16 @@
+{% comment %}
+  Renders a product specification detail
+
+  Accepts:
+  - label: {String} Label
+    value; {String} Value
+
+  Usage:
+  {% render 'product-detail', label: "label", value: "value" %}
+{% endcomment %}
+
+{% if value %}
+  <p class='tw-text-regular-semi tw-text-text-dark tw-py-4 tw-rounded tw-mb-4'>
+    <span class='tw-text-text-gray tw-pr-4'>{{ label }}: </span>{{ value }}
+  </p>
+{% endif %}

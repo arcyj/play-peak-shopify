@@ -139,11 +139,6 @@
     },
     "content_for_index": [],
     "blocks": {
-      "1143683040400472741": {
-        "type": "shopify://apps/trustoo-io-reviews/blocks/trustoo-review-switch/c8f15077-6475-4e86-ad06-b66038d5ba2c",
-        "disabled": false,
-        "settings": {}
-      },
       "5059203847231188605": {
         "type": "shopify://apps/smart-product-filter-search/blocks/app-embed/5cc1944c-3014-4a2a-af40-7d65abc0ef73",
         "disabled": true,
@@ -158,33 +153,6 @@
           "customSearchTemplateLoader": "",
           "customPaginationTemplateLoader": "",
           "customYMMTemplateLoader": ""
-        }
-      },
-      "12342438634123318931": {
-        "type": "shopify://apps/xb-wishlist/blocks/xo-wishlist/cc07f1e9-907b-431d-99f8-4fce3efa75f1",
-        "disabled": false,
-        "settings": {
-          "price_color": "#ff0000",
-          "icon_add": "",
-          "icon_remove": "",
-          "custom_open_cart": ""
-        }
-      },
-      "9994742477291898530": {
-        "type": "shopify://apps/xb-wishlist/blocks/wishlist_notification/cc07f1e9-907b-431d-99f8-4fce3efa75f1",
-        "disabled": false,
-        "settings": {
-          "notification_placement": "top-end",
-          "top": 20,
-          "left": 20,
-          "right": 20,
-          "bottom": 20,
-          "color_success": "#ffffff",
-          "background_color_success": "#19af66",
-          "color_error": "#ffffff",
-          "background_color_error": "#f35746",
-          "notification_duration": 3000,
-          "notification_animation": "fade"
         }
       },
       "8813414294664651821": {
@@ -239,6 +207,39 @@
           "icon_color": "#ff0000",
           "custom_placement": ""
         }
+      },
+      "9994742477291898530": {
+        "type": "shopify://apps/xb-wishlist/blocks/wishlist_notification/cc07f1e9-907b-431d-99f8-4fce3efa75f1",
+        "disabled": true,
+        "settings": {
+          "notification_placement": "top-end",
+          "top": 20,
+          "left": 20,
+          "right": 20,
+          "bottom": 20,
+          "color_success": "#ffffff",
+          "background_color_success": "#19af66",
+          "color_error": "#ffffff",
+          "background_color_error": "#f35746",
+          "notification_duration": 3000,
+          "notification_animation": "fade"
+        }
+      },
+      "12342438634123318931": {
+        "type": "shopify://apps/xb-wishlist/blocks/xo-wishlist/cc07f1e9-907b-431d-99f8-4fce3efa75f1",
+        "disabled": true,
+        "settings": {
+          "auto_header": false,
+          "price_color": "#ff0000",
+          "icon_add": "",
+          "icon_remove": "",
+          "custom_open_cart": ""
+        }
+      },
+      "1143683040400472741": {
+        "type": "shopify://apps/trustoo-io-reviews/blocks/trustoo-review-switch/c8f15077-6475-4e86-ad06-b66038d5ba2c",
+        "disabled": true,
+        "settings": {}
       }
     },
     "color_schemes": {

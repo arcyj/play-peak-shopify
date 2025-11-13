@@ -44,10 +44,9 @@ html,
   -moz-tab-size: 4;
   /* 3 */
   -o-tab-size: 4;
-  tab-size: 4;
+     tab-size: 4;
   /* 3 */
-  font-family: ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
-    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   /* 4 */
   font-feature-settings: normal;
   /* 5 */
@@ -90,7 +89,7 @@ Add the correct text decoration in Chrome, Edge, and Safari.
 
 abbr:where([title]) {
   -webkit-text-decoration: underline dotted;
-  text-decoration: underline dotted;
+          text-decoration: underline dotted;
 }
 
 /*
@@ -136,8 +135,7 @@ code,
 kbd,
 samp,
 pre {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-    'Liberation Mono', 'Courier New', monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   /* 1 */
   font-feature-settings: normal;
   /* 2 */
@@ -378,16 +376,14 @@ textarea {
 2. Set the default placeholder color to the user's configured gray 400 color.
 */
 
-input::-moz-placeholder,
-textarea::-moz-placeholder {
+input::-moz-placeholder, textarea::-moz-placeholder {
   opacity: 1;
   /* 1 */
   color: #9ca3af;
   /* 2 */
 }
 
-input:-ms-input-placeholder,
-textarea:-ms-input-placeholder {
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {
   opacity: 1;
   /* 1 */
   color: #9ca3af;
@@ -407,7 +403,7 @@ Set the default cursor for buttons.
 */
 
 button,
-[role='button'] {
+[role="button"] {
   cursor: pointer;
 }
 
@@ -455,9 +451,7 @@ video {
   display: none;
 }
 
-*,
-::before,
-::after {
+*, ::before, ::after {
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
   --tw-translate-x: 0;
@@ -467,19 +461,19 @@ video {
   --tw-skew-y: 0;
   --tw-scale-x: 1;
   --tw-scale-y: 1;
-  --tw-pan-x: ;
-  --tw-pan-y: ;
-  --tw-pinch-zoom: ;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
   --tw-scroll-snap-strictness: proximity;
-  --tw-gradient-from-position: ;
-  --tw-gradient-via-position: ;
-  --tw-gradient-to-position: ;
-  --tw-ordinal: ;
-  --tw-slashed-zero: ;
-  --tw-numeric-figure: ;
-  --tw-numeric-spacing: ;
-  --tw-numeric-fraction: ;
-  --tw-ring-inset: ;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
   --tw-ring-offset-width: 0px;
   --tw-ring-offset-color: #fff;
   --tw-ring-color: rgb(59 130 246 / 0.5);
@@ -487,24 +481,24 @@ video {
   --tw-ring-shadow: 0 0 #0000;
   --tw-shadow: 0 0 #0000;
   --tw-shadow-colored: 0 0 #0000;
-  --tw-blur: ;
-  --tw-brightness: ;
-  --tw-contrast: ;
-  --tw-grayscale: ;
-  --tw-hue-rotate: ;
-  --tw-invert: ;
-  --tw-saturate: ;
-  --tw-sepia: ;
-  --tw-drop-shadow: ;
-  --tw-backdrop-blur: ;
-  --tw-backdrop-brightness: ;
-  --tw-backdrop-contrast: ;
-  --tw-backdrop-grayscale: ;
-  --tw-backdrop-hue-rotate: ;
-  --tw-backdrop-invert: ;
-  --tw-backdrop-opacity: ;
-  --tw-backdrop-saturate: ;
-  --tw-backdrop-sepia: ;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
 }
 
 ::-webkit-backdrop {
@@ -517,19 +511,19 @@ video {
   --tw-skew-y: 0;
   --tw-scale-x: 1;
   --tw-scale-y: 1;
-  --tw-pan-x: ;
-  --tw-pan-y: ;
-  --tw-pinch-zoom: ;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
   --tw-scroll-snap-strictness: proximity;
-  --tw-gradient-from-position: ;
-  --tw-gradient-via-position: ;
-  --tw-gradient-to-position: ;
-  --tw-ordinal: ;
-  --tw-slashed-zero: ;
-  --tw-numeric-figure: ;
-  --tw-numeric-spacing: ;
-  --tw-numeric-fraction: ;
-  --tw-ring-inset: ;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
   --tw-ring-offset-width: 0px;
   --tw-ring-offset-color: #fff;
   --tw-ring-color: rgb(59 130 246 / 0.5);
@@ -537,24 +531,24 @@ video {
   --tw-ring-shadow: 0 0 #0000;
   --tw-shadow: 0 0 #0000;
   --tw-shadow-colored: 0 0 #0000;
-  --tw-blur: ;
-  --tw-brightness: ;
-  --tw-contrast: ;
-  --tw-grayscale: ;
-  --tw-hue-rotate: ;
-  --tw-invert: ;
-  --tw-saturate: ;
-  --tw-sepia: ;
-  --tw-drop-shadow: ;
-  --tw-backdrop-blur: ;
-  --tw-backdrop-brightness: ;
-  --tw-backdrop-contrast: ;
-  --tw-backdrop-grayscale: ;
-  --tw-backdrop-hue-rotate: ;
-  --tw-backdrop-invert: ;
-  --tw-backdrop-opacity: ;
-  --tw-backdrop-saturate: ;
-  --tw-backdrop-sepia: ;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
 }
 
 ::backdrop {
@@ -567,19 +561,19 @@ video {
   --tw-skew-y: 0;
   --tw-scale-x: 1;
   --tw-scale-y: 1;
-  --tw-pan-x: ;
-  --tw-pan-y: ;
-  --tw-pinch-zoom: ;
+  --tw-pan-x:  ;
+  --tw-pan-y:  ;
+  --tw-pinch-zoom:  ;
   --tw-scroll-snap-strictness: proximity;
-  --tw-gradient-from-position: ;
-  --tw-gradient-via-position: ;
-  --tw-gradient-to-position: ;
-  --tw-ordinal: ;
-  --tw-slashed-zero: ;
-  --tw-numeric-figure: ;
-  --tw-numeric-spacing: ;
-  --tw-numeric-fraction: ;
-  --tw-ring-inset: ;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
+  --tw-ordinal:  ;
+  --tw-slashed-zero:  ;
+  --tw-numeric-figure:  ;
+  --tw-numeric-spacing:  ;
+  --tw-numeric-fraction:  ;
+  --tw-ring-inset:  ;
   --tw-ring-offset-width: 0px;
   --tw-ring-offset-color: #fff;
   --tw-ring-color: rgb(59 130 246 / 0.5);
@@ -587,24 +581,24 @@ video {
   --tw-ring-shadow: 0 0 #0000;
   --tw-shadow: 0 0 #0000;
   --tw-shadow-colored: 0 0 #0000;
-  --tw-blur: ;
-  --tw-brightness: ;
-  --tw-contrast: ;
-  --tw-grayscale: ;
-  --tw-hue-rotate: ;
-  --tw-invert: ;
-  --tw-saturate: ;
-  --tw-sepia: ;
-  --tw-drop-shadow: ;
-  --tw-backdrop-blur: ;
-  --tw-backdrop-brightness: ;
-  --tw-backdrop-contrast: ;
-  --tw-backdrop-grayscale: ;
-  --tw-backdrop-hue-rotate: ;
-  --tw-backdrop-invert: ;
-  --tw-backdrop-opacity: ;
-  --tw-backdrop-saturate: ;
-  --tw-backdrop-sepia: ;
+  --tw-blur:  ;
+  --tw-brightness:  ;
+  --tw-contrast:  ;
+  --tw-grayscale:  ;
+  --tw-hue-rotate:  ;
+  --tw-invert:  ;
+  --tw-saturate:  ;
+  --tw-sepia:  ;
+  --tw-drop-shadow:  ;
+  --tw-backdrop-blur:  ;
+  --tw-backdrop-brightness:  ;
+  --tw-backdrop-contrast:  ;
+  --tw-backdrop-grayscale:  ;
+  --tw-backdrop-hue-rotate:  ;
+  --tw-backdrop-invert:  ;
+  --tw-backdrop-opacity:  ;
+  --tw-backdrop-saturate:  ;
+  --tw-backdrop-sepia:  ;
 }
 
 .tw-text-h1 {
@@ -674,7 +668,7 @@ video {
 }
 
 .tw-text-regular {
-  font: 400 14px/20px 'Gilroy', sans-serif !important;
+  font: 400 15px/20px 'Gilroy', sans-serif !important;
 }
 
 @media (max-width: 768px) {
@@ -685,7 +679,7 @@ video {
 }
 
 .tw-text-regular-semi {
-  font: 500 14px/20px 'Gilroy', sans-serif !important;
+  font: 500 15px/20px 'Gilroy', sans-serif !important;
 }
 
 @media (max-width: 768px) {
@@ -715,6 +709,18 @@ video {
     font-size: 15px !important;
     line-height: 27px !important;
   }
+}
+
+.tw-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
 
 .tw-pointer-events-none {
@@ -751,6 +757,10 @@ video {
   left: 0px;
 }
 
+.tw-right-1 {
+  right: 0.25rem;
+}
+
 .tw-right-16 {
   right: 16px;
 }
@@ -771,6 +781,10 @@ video {
   top: 0px;
 }
 
+.tw-top-1 {
+  top: 0.25rem;
+}
+
 .tw-top-16 {
   top: 16px;
 }
@@ -787,6 +801,10 @@ video {
   z-index: 0;
 }
 
+.tw-z-10 {
+  z-index: 10;
+}
+
 .tw-z-50 {
   z-index: 50;
 }
@@ -797,6 +815,10 @@ video {
 
 .tw-order-2 {
   order: 2;
+}
+
+.tw-m-0 {
+  margin: 0px;
 }
 
 .tw-m-auto {
@@ -907,10 +929,6 @@ video {
   margin-top: auto;
 }
 
-.tw--mb-32 {
-  margin-bottom: -32px;
-}
-
 .tw-line-clamp-2 {
   overflow: hidden;
   display: -webkit-box;
@@ -938,8 +956,20 @@ video {
   height: 128px;
 }
 
+.tw-h-20 {
+  height: 20px;
+}
+
+.tw-h-4 {
+  height: 4px;
+}
+
 .tw-h-48 {
   height: 48px;
+}
+
+.tw-h-\[25px\] {
+  height: 25px;
 }
 
 .tw-h-\[50px\] {
@@ -958,6 +988,22 @@ video {
   height: 100%;
 }
 
+.tw-h-40 {
+  height: 40px;
+}
+
+.tw-h-\[40\] {
+  height: 40;
+}
+
+.tw-h-\[40px\] {
+  height: 40px;
+}
+
+.tw-h-\[60px\] {
+  height: 60px;
+}
+
 .tw-max-h-\[164px\] {
   max-height: 164px;
 }
@@ -974,8 +1020,20 @@ video {
   width: 50%;
 }
 
+.tw-w-20 {
+  width: 20px;
+}
+
+.tw-w-4 {
+  width: 4px;
+}
+
 .tw-w-\[25\%\] {
   width: 25%;
+}
+
+.tw-w-\[25px\] {
+  width: 25px;
 }
 
 .tw-w-\[80px\] {
@@ -990,12 +1048,36 @@ video {
   width: 100%;
 }
 
+.tw-w-40 {
+  width: 40px;
+}
+
+.tw-w-\[40px\] {
+  width: 40px;
+}
+
+.tw-w-\[60px\] {
+  width: 60px;
+}
+
 .tw-min-w-0 {
   min-width: 0px;
 }
 
+.tw-min-w-\[300px\] {
+  min-width: 300px;
+}
+
 .tw-max-w-\[350px\] {
   max-width: 350px;
+}
+
+.tw-max-w-\[500px\] {
+  max-width: 500px;
+}
+
+.tw-max-w-\[750px\] {
+  max-width: 750px;
 }
 
 .tw-max-w-\[850px\] {
@@ -1014,6 +1096,18 @@ video {
   flex: 1 1 0%;
 }
 
+.tw-flex-shrink-0 {
+  flex-shrink: 0;
+}
+
+.tw-cursor-pointer {
+  cursor: pointer;
+}
+
+.tw-list-none {
+  list-style-type: none;
+}
+
 .tw-grid-cols-2 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
@@ -1028,6 +1122,10 @@ video {
 
 .tw-flex-wrap {
   flex-wrap: wrap;
+}
+
+.tw-items-start {
+  align-items: flex-start;
 }
 
 .tw-items-end {
@@ -1062,8 +1160,20 @@ video {
   justify-content: space-evenly;
 }
 
+.tw-gap-12 {
+  gap: 12px;
+}
+
+.tw-gap-16 {
+  gap: 16px;
+}
+
 .tw-gap-8 {
   gap: 8px;
+}
+
+.tw-gap-4 {
+  gap: 4px;
 }
 
 .tw-justify-self-start {
@@ -1074,8 +1184,16 @@ video {
   overflow: hidden;
 }
 
+.tw-overflow-x-auto {
+  overflow-x: auto;
+}
+
 .tw-overflow-x-hidden {
   overflow-x: hidden;
+}
+
+.tw-overflow-y-hidden {
+  overflow-y: hidden;
 }
 
 .tw-text-ellipsis {
@@ -1092,6 +1210,10 @@ video {
 
 .tw-rounded-full {
   border-radius: 50%;
+}
+
+.tw-rounded-lg {
+  border-radius: 12px;
 }
 
 .tw-rounded-md {
@@ -1115,6 +1237,10 @@ video {
   border-width: 0px;
 }
 
+.tw-border-2 {
+  border-width: 2px;
+}
+
 .tw-border-\[1\.5px\] {
   border-width: 1.5px;
 }
@@ -1129,6 +1255,11 @@ video {
 
 .tw-border-solid {
   border-style: solid;
+}
+
+.tw-border-\[\#943BF2\] {
+  --tw-border-opacity: 1;
+  border-color: rgb(148 59 242 / var(--tw-border-opacity));
 }
 
 .tw-border-accent-purple {
@@ -1146,21 +1277,20 @@ video {
 }
 
 .tw-border-lightGray {
-  border-color: rgba(17 5 22/0.08);
+  border-color: rgba(17 5 22/.08);
 }
 
 .tw-border-text-gray {
-  border-color: rgba(17 5 22/0.4);
+  border-color: rgba(17 5 22/.40);
+}
+
+.tw-border-transparent {
+  border-color: transparent;
 }
 
 .tw-border-white {
   --tw-border-opacity: 1;
   border-color: rgb(255 255 255 / var(--tw-border-opacity));
-}
-
-.\!tw-bg-background-light {
-  --tw-bg-opacity: 1 !important;
-  background-color: rgb(250 250 252 / var(--tw-bg-opacity)) !important;
 }
 
 .\!tw-bg-transparent {
@@ -1226,6 +1356,16 @@ video {
   background-color: rgb(250 204 21 / var(--tw-bg-opacity));
 }
 
+.tw-bg-orange-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(249 115 22 / var(--tw-bg-opacity));
+}
+
+.tw-object-cover {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 .tw-p-0 {
   padding: 0px;
 }
@@ -1234,8 +1374,16 @@ video {
   padding: 16px;
 }
 
+.tw-p-24 {
+  padding: 24px;
+}
+
 .tw-p-32 {
   padding: 32px;
+}
+
+.tw-p-\[1px\] {
+  padding: 1px;
 }
 
 .tw-px-12 {
@@ -1301,6 +1449,11 @@ video {
 .tw-py-36 {
   padding-top: 36px;
   padding-bottom: 36px;
+}
+
+.tw-py-4 {
+  padding-top: 4px;
+  padding-bottom: 4px;
 }
 
 .tw-py-8 {
@@ -1385,6 +1538,10 @@ video {
   padding-top: 24px;
 }
 
+.tw-pt-32 {
+  padding-top: 32px;
+}
+
 .tw-pt-4 {
   padding-top: 4px;
 }
@@ -1395,6 +1552,10 @@ video {
 
 .tw-pt-80 {
   padding-top: 80px;
+}
+
+.tw-pb-0 {
+  padding-bottom: 0px;
 }
 
 .tw-text-center {
@@ -1472,7 +1633,7 @@ video {
 }
 
 .tw-text-text-gray {
-  color: rgba(17 5 22/0.4);
+  color: rgba(17 5 22/.40);
 }
 
 .tw-text-text-white {
@@ -1487,7 +1648,7 @@ video {
 
 .tw-no-underline {
   -webkit-text-decoration-line: none;
-  text-decoration-line: none;
+          text-decoration-line: none;
 }
 
 .tw-opacity-50 {
@@ -1499,21 +1660,26 @@ video {
 }
 
 .tw-transition {
-  transition-property: color, background-color, border-color, fill, stroke,
-    opacity, box-shadow, transform, filter, -webkit-text-decoration-color,
-    -webkit-backdrop-filter;
-  transition-property: color, background-color, border-color,
-    text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter,
-    backdrop-filter;
-  transition-property: color, background-color, border-color,
-    text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter,
-    backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;
+  transition-property: color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.tw-transition-opacity {
+  transition-property: opacity;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
 
 .tw-duration-300 {
   transition-duration: 300ms;
+}
+
+.hover\:tw-border-\[\#AE6AF5\]:hover {
+  --tw-border-opacity: 1;
+  border-color: rgb(174 106 245 / var(--tw-border-opacity));
 }
 
 .hover\:tw-bg-\[\#A15CF5\]:hover {
@@ -1566,13 +1732,14 @@ video {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
+.hover\:tw-opacity-80:hover {
+  opacity: 0.8;
+}
+
 .hover\:tw-shadow-lg:hover {
-  --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1),
-    0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color),
-    0 4px 6px -4px var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
-    var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
 @media not all and (min-width: 990px) {
@@ -1631,6 +1798,18 @@ video {
     margin-left: auto;
   }
 
+  .tablet\:tw-mb-0 {
+    margin-bottom: 0px;
+  }
+
+  .tablet\:tw-mt-0 {
+    margin-top: 0px;
+  }
+
+  .tablet\:tw-mb-16 {
+    margin-bottom: 16px;
+  }
+
   .tablet\:tw-block {
     display: block;
   }
@@ -1657,6 +1836,10 @@ video {
 
   .tablet\:tw-w-2\/3 {
     width: 66.666667%;
+  }
+
+  .tablet\:tw-w-1\/2 {
+    width: 50%;
   }
 
   .tablet\:tw-max-w-\[320px\] {
@@ -1729,6 +1912,10 @@ video {
     display: flex;
   }
 
+  .desktop\:tw-hidden {
+    display: none;
+  }
+
   .desktop\:tw-w-\[30\%\] {
     width: 30%;
   }
@@ -1784,9 +1971,6 @@ video {
   transition-duration: 150ms;
 }
 
-.\[\&_\.svg-wrapper_svg_path\]\:hover\:tw-fill-white:hover
-  .svg-wrapper
-  svg
-  path {
+.\[\&_\.svg-wrapper_svg_path\]\:hover\:tw-fill-white:hover .svg-wrapper svg path {
   fill: #fff;
 }
