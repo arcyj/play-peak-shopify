@@ -122,6 +122,22 @@
         "enable_desktop_slider": false,
         "enable_mobile_slider": true
       }
+    },
+    "featured_collection_ACDp8h": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "title": "Kungfu Panda",
+        "description": "",
+        "show_description": false,
+        "collection": "kungfu-panda",
+        "products_to_show": 12,
+        "columns_desktop": 4,
+        "columns_mobile": 4,
+        "show_view_all": true,
+        "enable_desktop_slider": false,
+        "enable_mobile_slider": false
+      }
     }
   },
   "order": [
@@ -130,7 +146,7 @@
     "featured_collection_h4q8km",
     "featured_collection_3BxGWq",
     "featured_collection_itVj38",
-    "featured_collection_fTMdTK"
+    "featured_collection_fTMdTK",
+    "featured_collection_ACDp8h"
   ]
 }
-
