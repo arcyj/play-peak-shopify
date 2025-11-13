@@ -225,9 +225,14 @@
           "notification_animation": "fade"
         }
       },
+      "1143683040400472741": {
+        "type": "shopify://apps/trustoo-io-reviews/blocks/trustoo-review-switch/c8f15077-6475-4e86-ad06-b66038d5ba2c",
+        "disabled": true,
+        "settings": {}
+      },
       "12342438634123318931": {
         "type": "shopify://apps/xb-wishlist/blocks/xo-wishlist/cc07f1e9-907b-431d-99f8-4fce3efa75f1",
-        "disabled": true,
+        "disabled": false,
         "settings": {
           "auto_header": false,
           "price_color": "#ff0000",
@@ -235,11 +240,6 @@
           "icon_remove": "",
           "custom_open_cart": ""
         }
-      },
-      "1143683040400472741": {
-        "type": "shopify://apps/trustoo-io-reviews/blocks/trustoo-review-switch/c8f15077-6475-4e86-ad06-b66038d5ba2c",
-        "disabled": true,
-        "settings": {}
       }
     },
     "color_schemes": {
