@@ -40,11 +40,11 @@
             "btn_style": "style5",
             "btn_width-type": "manual",
             "btn_width": 440,
-            "btn_bg-color": "transparent",
-            "btn_border-color": "#000",
+            "btn_bg-color": "rgba(0,0,0,0)",
+            "btn_border-color": "#000000",
             "btn_border-radius": 4,
             "text_size": 16,
-            "text_color": "#000",
+            "text_color": "#000000",
             "icon_color": "#13071a",
             "icon_size": 2
           }
@@ -187,22 +187,6 @@
         "padding_bottom": 16
       }
     },
-    "featured_collection_cWaXy4": {
-      "type": "featured-collection",
-      "name": "t:sections.featured-collection.presets.name",
-      "settings": {
-        "title": "Protect your cards",
-        "description": "",
-        "show_description": false,
-        "collection": "tcg-accessories-1",
-        "products_to_show": 6,
-        "columns_desktop": 6,
-        "columns_mobile": 2,
-        "show_view_all": false,
-        "enable_desktop_slider": false,
-        "enable_mobile_slider": false
-      }
-    },
     "related-products": {
       "type": "related-products",
       "settings": {
@@ -220,12 +204,28 @@
         "padding_top": 36,
         "padding_bottom": 28
       }
+    },
+    "featured_collection_cWaXy4": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "title": "Protect your cards",
+        "description": "",
+        "show_description": false,
+        "collection": "tcg-accessories-1",
+        "products_to_show": 6,
+        "columns_desktop": 6,
+        "columns_mobile": 2,
+        "show_view_all": false,
+        "enable_desktop_slider": false,
+        "enable_mobile_slider": false
+      }
     }
   },
   "order": [
     "main_product_v2_tLx9Vt",
     "main",
-    "featured_collection_cWaXy4",
-    "related-products"
+    "related-products",
+    "featured_collection_cWaXy4"
   ]
 }
