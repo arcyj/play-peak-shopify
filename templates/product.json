@@ -56,6 +56,10 @@
             "show_gift_card_recipient": true
           }
         },
+        "description_phBzyp": {
+          "type": "description",
+          "settings": {}
+        },
         "shipping_info_4BBnqf": {
           "type": "shipping_info",
           "settings": {}
@@ -68,6 +72,7 @@
         "variant_picker_DMWAMG",
         "xb_wishlist_button_wishlist_QnBJBy",
         "buy_buttons_KLiG8t",
+        "description_phBzyp",
         "shipping_info_4BBnqf"
       ],
       "name": "Main Product v2",
