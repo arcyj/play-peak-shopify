@@ -1165,7 +1165,7 @@ summary::-webkit-details-marker {
 .product-grid.slider {
   grid-template-columns: none;
   grid-auto-flow: column;
-  grid-auto-columns: 248px;
+  grid-auto-columns: 210px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   justify-content: start;
@@ -1207,7 +1207,7 @@ summary::-webkit-details-marker {
   }
 }
 
-@media screen and (min-width: 990px) and (max-width: 1390px) {
+@media screen and (min-width: 990px) and (max-width: 1190px) {
   .product-grid {
     grid-template-columns: repeat(4, 1fr);
   }
@@ -1217,9 +1217,18 @@ summary::-webkit-details-marker {
   }
 }
 
-@media screen and (min-width: 1391px) {
+@media screen and (min-width: 1191px) and (max-width: 1441px) {
   .product-grid {
     grid-template-columns: repeat(6, 1fr);
+  }
+  .product-grid .product-grid-item {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 1441px) {
+  .product-grid {
+    grid-template-columns: repeat(7, 1fr);
   }
 
   #ProductGridContainer .product-grid {
@@ -1234,18 +1243,18 @@ summary::-webkit-details-marker {
 /* Fix product card width in sliders - uses global setting from theme settings */
 .slider.contains-card--product .slider__slide,
 .slider.contains-card--product .grid__item {
-  width: var(--product-card-width-slider, 248px) !important;
-  min-width: var(--product-card-width-slider, 248px) !important;
-  max-width: var(--product-card-width-slider, 248px) !important;
+  width: var(--product-card-width-slider, 210px) !important;
+  min-width: var(--product-card-width-slider, 210px) !important;
+  max-width: var(--product-card-width-slider, 210px) !important;
   flex-shrink: 0;
 }
 
 /* Override all width calculations for product cards in sliders */
 .slider.contains-card--product.grid--peek .slider__slide,
 .slider.contains-card--product.grid--peek .grid__item {
-  width: var(--product-card-width-slider, 248px) !important;
-  min-width: var(--product-card-width-slider, 248px) !important;
-  max-width: var(--product-card-width-slider, 248px) !important;
+  width: var(--product-card-width-slider, 210px) !important;
+  min-width: var(--product-card-width-slider, 210px) !important;
+  max-width: var(--product-card-width-slider, 210px) !important;
 }
 
 /* Override specific width calculations that cause overlap */
@@ -1255,9 +1264,9 @@ summary::-webkit-details-marker {
 .slider.contains-card--product.grid--peek.grid--4-col-tablet-down
   .slider__slide,
 .slider.contains-card--product.grid--peek.grid--4-col-tablet-down .grid__item {
-  width: var(--product-card-width-slider, 248px) !important;
-  min-width: var(--product-card-width-slider, 248px) !important;
-  max-width: var(--product-card-width-slider, 248px) !important;
+  width: var(--product-card-width-slider, 210px) !important;
+  min-width: var(--product-card-width-slider, 210px) !important;
+  max-width: var(--product-card-width-slider, 210px) !important;
 }
 
 /* Override desktop slider width calculations for product cards */
@@ -1269,16 +1278,16 @@ summary::-webkit-details-marker {
 .slider.contains-card--product.slider--desktop.grid--3-col-desktop .grid__item,
 .slider.contains-card--product.slider--desktop.grid--2-col-desktop .grid__item,
 .slider.contains-card--product.slider--desktop.grid--1-col-desktop .grid__item {
-  width: var(--product-card-width-slider, 248px) !important;
-  min-width: var(--product-card-width-slider, 248px) !important;
-  max-width: var(--product-card-width-slider, 248px) !important;
+  width: var(--product-card-width-slider, 210px) !important;
+  min-width: var(--product-card-width-slider, 210px) !important;
+  max-width: var(--product-card-width-slider, 210px) !important;
 }
 
 /* Ensure product card wrapper respects fixed width */
 .slider.contains-card--product .product-card-wrapper {
-  width: var(--product-card-width-slider, 248px);
-  min-width: var(--product-card-width-slider, 248px);
-  max-width: var(--product-card-width-slider, 248px);
+  width: var(--product-card-width-slider, 210px);
+  min-width: var(--product-card-width-slider, 210px);
+  max-width: var(--product-card-width-slider, 210px);
 }
 
 /* component-media */
@@ -1434,7 +1443,9 @@ button.shopify-payment-button__button--unbranded {
 }
 
 .button:focus:not(:focus-visible):not(.focused),
-.shopify-payment-button__button--unbranded:focus:not(:focus-visible):not(.focused) {
+.shopify-payment-button__button--unbranded:focus:not(:focus-visible):not(
+    .focused
+  ) {
   box-shadow: inherit;
 }
 
