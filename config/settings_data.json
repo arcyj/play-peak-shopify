@@ -192,20 +192,20 @@
           "greeting_message": ""
         }
       },
-      "11413113034274116516": {
-        "type": "shopify://apps/xb-wishlist/blocks/wishlist_collection/cc07f1e9-907b-431d-99f8-4fce3efa75f1",
+      "1143683040400472741": {
+        "type": "shopify://apps/trustoo-io-reviews/blocks/trustoo-review-switch/c8f15077-6475-4e86-ad06-b66038d5ba2c",
         "disabled": true,
+        "settings": {}
+      },
+      "12342438634123318931": {
+        "type": "shopify://apps/xb-wishlist/blocks/xo-wishlist/cc07f1e9-907b-431d-99f8-4fce3efa75f1",
+        "disabled": false,
         "settings": {
-          "selector_collection": ".product-card > a[href*='/products'],.card__heading.h5 > a[href*='/products'],.card__heading > a[href*='/products'],.product-card  a[href*='/products'],.card__heading  a[href*='/products'],.product-grid-item a[href*='/products'], .grid__item.grid-product a[href*='/products']",
-          "icon_position": "top-right",
-          "custom_position": false,
-          "x_position": 0,
-          "y_position": 0,
-          "x_position-mobile": 0,
-          "y_position-mobile": 0,
-          "icon_size": 2,
-          "icon_color": "#ff0000",
-          "custom_placement": ""
+          "auto_header": false,
+          "price_color": "#ff0000",
+          "icon_add": "",
+          "icon_remove": "",
+          "custom_open_cart": ""
         }
       },
       "9994742477291898530": {
@@ -225,20 +225,20 @@
           "notification_animation": "fade"
         }
       },
-      "1143683040400472741": {
-        "type": "shopify://apps/trustoo-io-reviews/blocks/trustoo-review-switch/c8f15077-6475-4e86-ad06-b66038d5ba2c",
-        "disabled": true,
-        "settings": {}
-      },
-      "12342438634123318931": {
-        "type": "shopify://apps/xb-wishlist/blocks/xo-wishlist/cc07f1e9-907b-431d-99f8-4fce3efa75f1",
+      "11413113034274116516": {
+        "type": "shopify://apps/xb-wishlist/blocks/wishlist_collection/cc07f1e9-907b-431d-99f8-4fce3efa75f1",
         "disabled": false,
         "settings": {
-          "auto_header": false,
-          "price_color": "#ff0000",
-          "icon_add": "",
-          "icon_remove": "",
-          "custom_open_cart": ""
+          "selector_collection": ".product-card > a[href*='/products'],.card__heading.h5 > a[href*='/products'],.card__heading > a[href*='/products'],.product-card  a[href*='/products'],.card__heading  a[href*='/products'],.product-grid-item a[href*='/products'], .grid__item.grid-product a[href*='/products']",
+          "icon_position": "top-right",
+          "custom_position": false,
+          "x_position": 0,
+          "y_position": 0,
+          "x_position-mobile": 0,
+          "y_position-mobile": 0,
+          "icon_size": 2.4,
+          "icon_color": "#707070",
+          "custom_placement": ""
         }
       }
     },
