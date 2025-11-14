@@ -243,7 +243,7 @@
       },
       "6933373160360723723": {
         "type": "shopify://apps/swishlist-simple-wishlist/blocks/wishlist_settings/bfcb80f2-f00d-42ae-909a-9f00c726327b",
-        "disabled": false,
+        "disabled": true,
         "settings": {
           "custom_css": ""
         }
