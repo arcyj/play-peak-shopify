@@ -12,6 +12,7 @@
   - id: Button id attribute (optional)
   - disabled: Boolean to disable button (optional)
   - icon: Icon to display before text (optional)
+  - rel: Rel attribute for links (optional, e.g., 'nofollow')
 
   {% render 'button', label: block.settings.mainBanner_button_text, url: block.settings.mainBanner_button_url , variant: 'solid-yellow', size: 'large' custom_class: 'tw-block'%}
 {% endcomment %}
@@ -27,6 +28,7 @@
 {% assign btn_id = id | default: '' %}
 {% assign btn_disabled = disabled | default: false %}
 {% assign btn_icon = icon | default: '' %}
+{% assign btn_rel = rel | default: '' %}
 
 {%- case btn_variant -%}
   {%- when 'solid' -%}
@@ -81,6 +83,9 @@
     href='{{ btn_url }}'
     {% if btn_id != '' %}
       id='{{ btn_id }}'
+    {% endif %}
+    {% if btn_rel != '' %}
+      rel='{{ btn_rel }}'
     {% endif %}
     class='tw-inline-block tw-text-nowrap tw-text-center tw-rounded-md tw-font-semibold tw-transition tw-duration-300 max-tablet:tw-w-full tw-flex tw-items-center tw-justify-center tw-gap-8 {{ btn_class }} {{ size_class }} {{ class_name }}'
   >

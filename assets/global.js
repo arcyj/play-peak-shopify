@@ -76,28 +76,51 @@ class HTMLUpdateUtility {
     });
   }
 }
+// Connect mobile-menu-toggle button to header-drawer
+function initMobileMenuToggle() {
+  document.querySelectorAll('.mobile-menu-toggle').forEach((button) => {
+    // Skip if already initialized
+    if (button.dataset.menuToggleInitialized) return;
+    button.dataset.menuToggleInitialized = 'true';
 
-document.querySelectorAll('[id^="Details-"] summary').forEach((summary) => {
-  summary.setAttribute('role', 'button');
-  summary.setAttribute(
-    'aria-expanded',
-    summary.parentNode.hasAttribute('open'),
-  );
+    button.setAttribute('role', 'button');
+    button.setAttribute('aria-controls', 'Details-menu-drawer-container');
 
-  if (summary.nextElementSibling.getAttribute('id')) {
-    summary.setAttribute('aria-controls', summary.nextElementSibling.id);
-  }
+    // Find the header-drawer element
+    const headerDrawer = document.querySelector('header-drawer');
+    if (!headerDrawer) return;
 
-  summary.addEventListener('click', (event) => {
-    event.currentTarget.setAttribute(
-      'aria-expanded',
-      !event.currentTarget.closest('details').hasAttribute('open'),
-    );
+    // Update aria-expanded based on drawer state
+    const updateAriaExpanded = () => {
+      const isOpen = headerDrawer.classList.contains('drawer-open');
+      button.setAttribute('aria-expanded', isOpen);
+    };
+
+    // Initial state
+    updateAriaExpanded();
+
+    // Handle button click
+    button.addEventListener('click', (event) => {
+      event.preventDefault();
+      const isOpen = headerDrawer.classList.contains('drawer-open');
+
+      if (isOpen) {
+        // Close the drawer
+        headerDrawer.closeMenuDrawer(event, button);
+      } else {
+        // Open the drawer
+        headerDrawer.openMenuDrawer(button);
+      }
+    });
   });
+}
 
-  if (summary.closest('header-drawer, menu-drawer')) return;
-  summary.parentElement.addEventListener('keyup', onKeyUpEscape);
-});
+// Initialize when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initMobileMenuToggle);
+} else {
+  initMobileMenuToggle();
+}
 
 const trapFocusHandlers = {};
 
@@ -475,11 +498,31 @@ class MenuDrawer extends HTMLElement {
   constructor() {
     super();
 
-    this.mainDetailsToggle = this.querySelector('details');
+    this.mainDetailsToggle = this.querySelector('.menu-drawer-container');
+    this.menuDrawer = this.querySelector('.menu-drawer');
 
     this.addEventListener('keyup', this.onKeyUp.bind(this));
     this.addEventListener('focusout', this.onFocusOut.bind(this));
     this.bindEvents();
+
+    // Add click handler for backdrop overlay
+    if (this.mainDetailsToggle) {
+      this.mainDetailsToggle.addEventListener(
+        'click',
+        this.onBackdropClick.bind(this),
+      );
+    }
+  }
+
+  onBackdropClick(event) {
+    // Close menu if clicking on the backdrop (container, not the drawer itself)
+    if (
+      event.target === this.mainDetailsToggle &&
+      this.classList.contains('drawer-open')
+    ) {
+      const toggleButton = document.querySelector('.mobile-menu-toggle');
+      this.closeMenuDrawer(event, toggleButton);
+    }
   }
 
   bindEvents() {
@@ -496,15 +539,17 @@ class MenuDrawer extends HTMLElement {
   onKeyUp(event) {
     if (event.code.toUpperCase() !== 'ESCAPE') return;
 
-    const openDetailsElement = event.target.closest('details[open]');
-    if (!openDetailsElement) return;
+    // Check if drawer is open
+    if (this.classList.contains('drawer-open')) {
+      const toggleButton = document.querySelector('.mobile-menu-toggle');
+      this.closeMenuDrawer(event, toggleButton);
+    }
 
-    openDetailsElement === this.mainDetailsToggle
-      ? this.closeMenuDrawer(
-          event,
-          this.mainDetailsToggle.querySelector('summary'),
-        )
-      : this.closeSubmenu(openDetailsElement);
+    // Handle submenu escape
+    const openDetailsElement = event.target.closest('details[open]');
+    if (openDetailsElement && openDetailsElement !== this.mainDetailsToggle) {
+      this.closeSubmenu(openDetailsElement);
+    }
   }
 
   onSummaryClick(event) {
@@ -553,18 +598,29 @@ class MenuDrawer extends HTMLElement {
   }
 
   openMenuDrawer(summaryElement) {
+    // Mark drawer as open
+    this.classList.add('drawer-open');
+    this.mainDetailsToggle.setAttribute('data-open', 'true');
+
+    // Add menu-opening class for animation
     setTimeout(() => {
       this.mainDetailsToggle.classList.add('menu-opening');
-    });
-    summaryElement.setAttribute('aria-expanded', true);
+    }, 10);
+
+    summaryElement?.setAttribute('aria-expanded', true);
     trapFocus(this.mainDetailsToggle, summaryElement);
     document.body.classList.add(`overflow-hidden-${this.dataset.breakpoint}`);
   }
 
   closeMenuDrawer(event, elementToFocus = false) {
-    if (event === undefined) return;
+    if (event === undefined && !this.classList.contains('drawer-open')) return;
 
+    // Remove open state
+    this.classList.remove('drawer-open');
     this.mainDetailsToggle.classList.remove('menu-opening');
+    this.mainDetailsToggle.removeAttribute('data-open');
+
+    // Close all submenus
     this.mainDetailsToggle.querySelectorAll('details').forEach((details) => {
       details.removeAttribute('open');
       details.classList.remove('menu-opening');
@@ -574,29 +630,39 @@ class MenuDrawer extends HTMLElement {
       .forEach((submenu) => {
         submenu.classList.remove('submenu-open');
       });
+
     document.body.classList.remove(
       `overflow-hidden-${this.dataset.breakpoint}`,
     );
     removeTrapFocus(elementToFocus);
     this.closeAnimation(this.mainDetailsToggle);
 
-    if (event instanceof KeyboardEvent)
+    if (event instanceof KeyboardEvent || event) {
       elementToFocus?.setAttribute('aria-expanded', false);
+    }
   }
 
   onFocusOut() {
     setTimeout(() => {
       if (
-        this.mainDetailsToggle.hasAttribute('open') &&
+        this.classList.contains('drawer-open') &&
         !this.mainDetailsToggle.contains(document.activeElement)
-      )
-        this.closeMenuDrawer();
+      ) {
+        const toggleButton = document.querySelector('.mobile-menu-toggle');
+        this.closeMenuDrawer(new Event('focusout'), toggleButton);
+      }
     });
   }
 
   onCloseButtonClick(event) {
     const detailsElement = event.currentTarget.closest('details');
-    this.closeSubmenu(detailsElement);
+    if (detailsElement) {
+      this.closeSubmenu(detailsElement);
+    } else {
+      // If no details element, close the main drawer
+      const toggleButton = document.querySelector('.mobile-menu-toggle');
+      this.closeMenuDrawer(event, toggleButton);
+    }
   }
 
   closeSubmenu(detailsElement) {
@@ -605,7 +671,7 @@ class MenuDrawer extends HTMLElement {
     detailsElement.classList.remove('menu-opening');
     detailsElement
       .querySelector('summary')
-      .setAttribute('aria-expanded', false);
+      ?.setAttribute('aria-expanded', false);
     removeTrapFocus(detailsElement.querySelector('summary'));
     this.closeAnimation(detailsElement);
   }
@@ -623,7 +689,9 @@ class MenuDrawer extends HTMLElement {
       if (elapsedTime < 400) {
         window.requestAnimationFrame(handleAnimation);
       } else {
-        detailsElement.removeAttribute('open');
+        if (detailsElement.hasAttribute('open')) {
+          detailsElement.removeAttribute('open');
+        }
         if (detailsElement.closest('details[open]')) {
           trapFocus(
             detailsElement.closest('details[open]'),
@@ -645,36 +713,48 @@ class HeaderDrawer extends MenuDrawer {
   }
 
   openMenuDrawer(summaryElement) {
-    this.header = this.header || document.querySelector('.mega-menu-section');
+    this.header =
+      this.header ||
+      document.querySelector('.header') ||
+      document.querySelector('.mega-menu-section');
     this.borderOffset =
       this.borderOffset ||
-      this.closest('.header-wrapper').classList.contains(
+      (this.closest('.header-wrapper')?.classList.contains(
         'header-wrapper--border-bottom',
       )
         ? 1
-        : 0;
-    document.documentElement.style.setProperty(
-      '--header-bottom-position',
-      `${parseInt(
-        this.header.getBoundingClientRect().bottom - this.borderOffset,
-      )}px`,
-    );
-    this.header.classList.add('menu-open');
+        : 0);
 
-    setTimeout(() => {
-      this.mainDetailsToggle.classList.add('menu-opening');
-    });
+    if (this.header) {
+      document.documentElement.style.setProperty(
+        '--header-bottom-position',
+        `${parseInt(
+          this.header.getBoundingClientRect().bottom - this.borderOffset,
+        )}px`,
+      );
+      this.header.classList.add('menu-open');
+    }
 
-    summaryElement.setAttribute('aria-expanded', true);
+    // Set viewport height for mobile
+    if (window.matchMedia('(max-width: 990px)').matches) {
+      document.documentElement.style.setProperty(
+        '--viewport-height',
+        `${window.innerHeight}px`,
+      );
+    }
+
+    // Call parent openMenuDrawer
+    super.openMenuDrawer(summaryElement);
+
     window.addEventListener('resize', this.onResize);
-    trapFocus(this.mainDetailsToggle, summaryElement);
-    document.body.classList.add(`overflow-hidden-${this.dataset.breakpoint}`);
   }
 
   closeMenuDrawer(event, elementToFocus) {
-    if (!elementToFocus) return;
+    if (!elementToFocus && event === undefined) return;
     super.closeMenuDrawer(event, elementToFocus);
-    this.header.classList.remove('menu-open');
+    if (this.header) {
+      this.header.classList.remove('menu-open');
+    }
     window.removeEventListener('resize', this.onResize);
   }
 
