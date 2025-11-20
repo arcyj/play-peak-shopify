@@ -126,7 +126,7 @@
           "type": "mainBanner",
           "settings": {
             "mainBanner_full_width_bg": false,
-            "mainBanner_gradient_start": "#8f1af9",
+            "mainBanner_gradient_start": "#7203d7",
             "mainBanner_gradient_end": "#eaf6ff",
             "mainBanner_image": "shopify://shop_images/Untitled_1.png",
             "mainBanner_image_hide_mobile": false,
