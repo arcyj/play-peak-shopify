@@ -188,6 +188,12 @@
                             {%- endif -%}
                           </li>
                         {%- endfor -%}
+                        {% render 'button',
+                          label: 'View All',
+                          url: link.url,
+                          variant: 'solid-purple',
+                          custom_class: 'tw-mt-16'
+                        %}
                       </ul>
                     </div>
                   </details>

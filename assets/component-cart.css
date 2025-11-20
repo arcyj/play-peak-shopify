@@ -187,15 +187,15 @@ cart-items {
 
 .cart__checkout-button {
   max-width: 36rem;
-  background-color: #63e96c;
-  border: 2px solid #63e96c;
-  color: #110516;
+  background-color: #943bf2;
+  border: 2px solid #943bf2;
+  color: #fff;
   font-weight: 600;
   border-radius: 6px;
 }
 .cart__checkout-button:hover {
-  background-color: #000;
-  border: 2px solid #000;
+  background-color: #ae6af5;
+  border: 2px solid #ae6af5;
   color: #fff;
 }
 
