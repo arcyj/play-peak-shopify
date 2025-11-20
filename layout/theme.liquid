@@ -3,7 +3,7 @@
   <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <meta name='viewport' content='width=device-width,initial-scale=1'>
+    <meta name='viewport' content='width=device-width,initial-scale=1,viewport-fit=cover'>
     <meta name='theme-color' content=''>
 
     <link rel='canonical' href='{{ canonical_url }}'>
@@ -343,6 +343,12 @@
     <a class='skip-to-content-link button visually-hidden tw-bg-white' href='#MainContent'>
       {{ 'accessibility.skip_to_text' | t }}
     </a>
+
+    {%- comment -%} Render header-drawer with menu from linklists - will be updated by header section {%- endcomment -%}
+    {%- assign header_menu_handle = 'main-menu' -%}
+    {%- if linklists[header_menu_handle] != blank -%}
+      {%- render 'header-drawer', menu: linklists[header_menu_handle], menu_type_desktop: 'dropdown' -%}
+    {%- endif -%}
 
     {%- if settings.cart_type == 'drawer' -%}
       {%- render 'cart-drawer' -%}
