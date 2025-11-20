@@ -19,6 +19,10 @@
             "text_style": "body"
           }
         },
+        "judge_me_reviews_preview_badge_bHPWJq": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        },
         "title_mkzkNx": {
           "type": "title",
           "settings": {}
@@ -63,17 +67,28 @@
         "shipping_info_4BBnqf": {
           "type": "shipping_info",
           "settings": {}
+        },
+        "judge_me_reviews_review_widget_XgHAYt": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "no_reviews",
+            "max_width": 750,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
         }
       },
       "block_order": [
         "text_KALWRK",
+        "judge_me_reviews_preview_badge_bHPWJq",
         "title_mkzkNx",
         "price_bQyKdU",
         "variant_picker_DMWAMG",
         "xb_wishlist_button_wishlist_QnBJBy",
         "buy_buttons_KLiG8t",
         "description_phBzyp",
-        "shipping_info_4BBnqf"
+        "shipping_info_4BBnqf",
+        "judge_me_reviews_review_widget_XgHAYt"
       ],
       "name": "Main Product v2",
       "settings": {
