@@ -3738,3 +3738,9 @@ details-disclosure > details {
     transform: translateX(100%) scaleX(0);
   }
 }
+
+.jdgm-review-widget {
+  margin: 32px 0 0 0 !important;
+  background-color: #f6f7fa;
+  border-radius: 12px;
+}
