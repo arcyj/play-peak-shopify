@@ -57,6 +57,53 @@
         "title": "Slideshow"
       }
     },
+    "hero_block_CRwbx3": {
+      "type": "hero-block",
+      "blocks": {
+        "main_banner_QUXgBy": {
+          "type": "mainBanner",
+          "settings": {
+            "mainBanner_full_width_bg": false,
+            "mainBanner_gradient_start": "#3383BF",
+            "mainBanner_gradient_end": "#1069AD",
+            "mainBanner_image_hide_mobile": false,
+            "mainBanner_image_alignment": "end",
+            "mainBanner_image_align_items": "center",
+            "mainBanner_logo_hide_mobile": false,
+            "mainBanner_logo_size": "medium",
+            "mainBanner_content_alignment": "left",
+            "mainBanner_content_justify": "between",
+            "mainBanner_heading": "",
+            "mainBanner_heading_color": "#FFFFFF",
+            "mainBanner_text": "",
+            "mainBanner_text_color": "#FFFFFF",
+            "mainBanner_button_text": "",
+            "mainBanner_button_url": ""
+          }
+        },
+        "small_banner_gpgfw3": {
+          "type": "smallBanner",
+          "disabled": true,
+          "settings": {
+            "smallBanner_gradient_start": "#D21242",
+            "smallBanner_gradient_end": "#D21258",
+            "smallBanner_heading": "",
+            "smallBanner_text": "",
+            "smallBanner_button_text": "",
+            "smallBanner_button_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "main_banner_QUXgBy",
+        "small_banner_gpgfw3"
+      ],
+      "disabled": true,
+      "name": "Hero Section",
+      "settings": {
+        "title": "Slideshow"
+      }
+    },
     "featured_collection_6eCXcf": {
       "type": "featured-collection",
       "settings": {
@@ -81,7 +128,7 @@
             "mainBanner_full_width_bg": false,
             "mainBanner_gradient_start": "#3383bf",
             "mainBanner_gradient_end": "#1069ad",
-            "mainBanner_image": "shopify://shop_images/main_banner-boosterpack.png",
+            "mainBanner_image": "shopify://shop_images/Untitled_1.png",
             "mainBanner_image_hide_mobile": false,
             "mainBanner_image_alignment": "end",
             "mainBanner_image_align_items": "center",
@@ -172,6 +219,7 @@
   },
   "order": [
     "hero_block_zefADh",
+    "hero_block_CRwbx3",
     "featured_collection_6eCXcf",
     "hero_block_CEUTCB",
     "featured_collection_MVNcmk",
