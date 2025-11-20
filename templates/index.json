@@ -126,8 +126,8 @@
           "type": "mainBanner",
           "settings": {
             "mainBanner_full_width_bg": false,
-            "mainBanner_gradient_start": "#3383bf",
-            "mainBanner_gradient_end": "#1069ad",
+            "mainBanner_gradient_start": "#8f1af9",
+            "mainBanner_gradient_end": "#eaf6ff",
             "mainBanner_image": "shopify://shop_images/Untitled_1.png",
             "mainBanner_image_hide_mobile": false,
             "mainBanner_image_alignment": "end",
